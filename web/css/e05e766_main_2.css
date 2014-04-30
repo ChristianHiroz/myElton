@@ -1,0 +1,12 @@
+.btnOrangeElton {
+  background-color: #f79321 !important;
+  color: black;
+  margin: 0px 0px 0px 0px;
+}
+.btnBeigeElton {
+  background-color: #f8c693 !important;
+  color: black;
+}
+.shadow {
+  box-shadow: 1px 1px 12px #555;
+}

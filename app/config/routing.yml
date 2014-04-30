@@ -1,0 +1,20 @@
+elton_core:
+    resource: "@EltonCoreBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+elton_division:
+    resource: "@EltonDivisionBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+elton_lesson:
+    resource: "@EltonLessonBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+elton_teacher:
+    resource: "@EltonTeacherBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

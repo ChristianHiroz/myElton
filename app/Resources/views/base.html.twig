@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Elton, pour vous servir !{% endblock %}</title>
+        {% stylesheets filter='lessphp,?cssrewrite' 
+                '%kernel.root_dir%/../vendor/twbs/bootstrap/less/bootstrap.less' 
+                'bundles/eltoncore/less/*'  %}
+            <link rel="stylesheet" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" /> 
+        {% block googleAnalytics %}
+            <script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-50453065-1', 'myelton.fr');
+              ga('send', 'pageview');
+
+            </script>
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+            <div class="page-header"> </div> 
+        {% endblock %}
+        
+        {% block javascripts %}
+            <script src="{{ asset('bundles/eltoncore/js/jquery.min.js') }}"></script>
+            <script src="{{ asset('bundles/eltoncore/js/bootstrap.min.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

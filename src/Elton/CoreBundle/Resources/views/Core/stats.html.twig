@@ -1,0 +1,13 @@
+{% extends 'EltonCoreBundle:Core:backOffice.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="smallElton"></div>
+    <center class="badge" style="margin:50px 0px 0px 450px">
+        Nombre de professeurs : {{nbT}} <br/>
+        Nombre de classes : {{nbD}} <br/>
+        Nombre d'activité : {{nbL}} <br/>
+        Nombre de fichiers : {{nbF}} <br/>
+    </center>
+    
+{% endblock %}

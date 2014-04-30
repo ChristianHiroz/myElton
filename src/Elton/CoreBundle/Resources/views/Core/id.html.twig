@@ -1,0 +1,10 @@
+{% extends 'EltonCoreBundle:Core:backOffice.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="smallElton"></div>
+    {% form_theme form 'EltonCoreBundle:Form:create_field.html.twig' %}
+    <div>
+        {{form(form)}}
+    </div>
+{% endblock %}

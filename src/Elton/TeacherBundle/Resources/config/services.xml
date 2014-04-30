@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="elton.teacher_manager.class">Elton\TeacherBundle\Manager\TeacherManager</parameter>
+        <parameter key="elton.cart_manager.class">Elton\TeacherBundle\Manager\CartManager</parameter>
+    </parameters>
+    
+    <services>
+        <service id="elton.teacher.manager" class="%elton.teacher_manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager"/>            
+        </service>        
+        <service id="elton.cart.manager" class="%elton.cart_manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager"/>            
+        </service>
+    </services>
+</container>

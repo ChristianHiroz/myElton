@@ -1,0 +1,78 @@
+{% extends "::base.html.twig" %}
+
+{% block body -%}
+    {{ parent() }}
+    <div>
+        <a class="btn btnBeigeEltonGrand shadow bold" href="{{path('teacher')}}">Retour à la liste des professeurs</a>
+        <br/><br/>
+    </div>
+    <div>
+        <div  style="margin: 0px 0px 25px 0px;">
+            <h1 class="label label-warning bold">&nbsp  Professeur</h1>
+        </div>
+
+        <table class="breadcrumb">
+            <tbody>
+                <tr>
+                    <th class="txtOrangeElton">Nom d'utilisateur</th>
+                    <td>{{ entity.username }}</td>
+                </tr>
+                <tr>
+                    <th class="txtOrangeElton">Nom du professeur</th>
+                    <td>{{ entity.name }}</td>
+                </tr>
+                <tr>
+                    <th class="txtOrangeElton">Prénom du professeur</th>
+                    <td>{{ entity.firstName }}</td>
+                </tr>
+                <tr>
+                    <th class="txtOrangeElton">Code postal du professeur</th>
+                    <td>{{ entity.postalCode }}</td>
+                </tr>
+                <tr>
+                    <th class="txtOrangeElton">Email</th>
+                    <td>{{ entity.email }}</td>
+                </tr>
+                <tr>
+                    <th class="txtOrangeElton">Dernière connection &nbsp &nbsp</th>
+                    <td>{{ entity.lastLogin|date('Y-m-d H:i:s') }}</td>
+                </tr>
+                <tr>
+                    <th class="txtOrangeElton">Id</th>
+                    <td>{{ entity.id }}</td>
+                </tr>
+                <tr>
+                    <th>
+                        <br/>
+                        <a class="btn shadow center-block bold btnBeigeEltonPetit" data-toggle="modal" data-target="#myTeacherUpdateModal">Modifier</a>
+                        {# Teacher edit modal #}
+                        <div class="modal fade" id="myTeacherUpdateModal" tabindex="-1" role="dialog" aria-labelledby="myTeacherUpdateModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                                        <h4 class="modal-title label label-warning modalFS" id="myTeacherUpdateModalLabel">Modification de professeur</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        {{render(controller('EltonTeacherBundle:Teacher:edit', {'id' : entity.id})) }}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </th>
+                    <td>
+                        <br/>
+                        {% form_theme delete_form 'EltonCoreBundle:Form:delete_field.html.twig' %}
+                        {{ form(delete_form) }}
+                    </td>
+                </tr>
+                <tr>
+                    <div class="smallElton"></div>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

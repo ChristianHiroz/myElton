@@ -1,0 +1,57 @@
+{% extends "::base.html.twig" %}
+
+{% block body -%}
+    {{ parent() }}
+    <div>
+        <a class="btn btnBeigeEltonGrand shadow bold" href="{{path('competence')}}">Retour à la liste des compétances</a>
+        <br/><br/>
+    </div>
+    <div>
+        <div  style="margin: 0px 0px 25px 0px;">
+            <h1 class="label label-warning bold">&nbsp  Compétance</h1>
+        </div>
+
+        <table class="breadcrumb">
+            <tbody>
+                <tr>
+                    <th class="txtOrangeElton">Nom</th>
+                    <td>{{ entity.libelle }}</td>
+                </tr>
+                    <th class="txtOrangeElton">Id</th>
+                    <td>{{ entity.id }}</td>
+                </tr>
+                <tr>
+                    <th>
+                        <br/>
+                        <a class="btn shadow center-block bold btnBeigeEltonPetit" data-toggle="modal" data-target="#myCompetenceModal">Modifier</a>
+                        {# Competence edit modal #}
+                        <div class="modal fade" id="myCompetenceModal" tabindex="-1" role="dialog" aria-labelledby="myCompetenceModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                                        <h4 class="modal-title label label-warning modalFS" id="myCompetenceModalLabel">Modification de la compétance</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        {{render(controller('EltonLessonBundle:Competence:edit', {'id' : entity.id})) }}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </th>
+                    <td>
+                        <br/>
+                        {% form_theme delete_form 'EltonCoreBundle:Form:delete_field.html.twig' %}
+                        {{ form(delete_form) }}
+                    </td>
+                </tr>
+                <tr>
+                    <div class="smallElton"></div>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="elton.lesson_manager.class">Elton\LessonBundle\Manager\LessonManager</parameter>
+        <parameter key="elton.competence_manager.class">Elton\LessonBundle\Manager\CompetenceManager</parameter>
+        <parameter key="elton.category_manager.class">Elton\LessonBundle\Manager\CategoryManager</parameter>
+    </parameters>
+    
+    <services>
+        <service id="elton.lesson.manager" class="%elton.lesson_manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager"/>            
+        </service>        
+        <service id="elton.competence.manager" class="%elton.competence_manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager"/>            
+        </service>
+        <service id="elton.category.manager" class="%elton.category_manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager"/>            
+        </service>
+    </services>
+</container>

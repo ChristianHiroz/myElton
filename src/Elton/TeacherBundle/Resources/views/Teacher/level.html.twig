@@ -1,0 +1,37 @@
+{% extends 'EltonCoreBundle:Core:backOffice.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <div  style="margin: 0px 0px 25px 0px;">
+        <h1 class="label label-warning bold">&nbsp  Liste des professeurs ayant une classe de {{level.libelle}}</h1>
+    </div>
+    <center>   
+            {% for teacher in teachers %}
+            <table class="breadcrumb" style="margin: 0px 0px 100px 0px">
+                <thead>
+                    <tr>
+                        <th>Nom du champ &nbsp</th>
+                        <th>Valeur du champ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="txtOrangeElton">Nom d'utilisateur</th>
+                        <td>{{ teacher.username }}</td>
+                    </tr>
+                    <tr>
+                        <th class="txtOrangeElton">Email</th>
+                        <td>{{ teacher.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <br/>
+                            <a class="btn shadow bold btnBeigeEltonPetit" href="{{ path('teacher_show', {'id' : teacher.id})}}" style="margin: 0px 0px 0px 90px;">Détails</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            {% endfor %}
+    </center>    
+    {% endblock %}

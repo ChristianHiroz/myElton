@@ -1,0 +1,312 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    {{ parent() }} 
+    
+    {# Modals #}
+    <div>
+        {# Activity modal #}
+        <div class="modal fade" id="myActivityModal" tabindex="-1" role="dialog" aria-labelledby="myActivityModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                         <h4 class="modal-title label label-warning modalFS" id="myActivityModalLabel">Nouvelle activité</h4>
+                    </div>
+                    <div class="modal-body">
+                        {{ render(controller('EltonLessonBundle:Lesson:new')) }}
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {# Teacher modal #}
+        <div class="modal fade" id="myTeacherModal" tabindex="-1" role="dialog" aria-labelledby="myTeacherModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                        <h4 class="modal-title label label-warning modalFS" id="myTeacherModalLabel">Nouveau professeur</h4>
+                    </div>
+                    <div class="modal-body">
+                        {{ render(controller('EltonTeacherBundle:Teacher:new')) }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {# Division modal #}
+        <div class="modal fade" id="myDivisionModal" tabindex="-1" role="dialog" aria-labelledby="myDivisionModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                        <h4 class="modal-title txtOrangeElton" id="myDivisionModalLabel">Nouvelle classe</h4>
+                    </div>
+                    <div class="modal-body">
+                        {{ render(controller('EltonDivisionBundle:Division:new')) }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {# File modal #}
+        <div class="modal fade" id="myFileModal" tabindex="-1" role="dialog" aria-labelledby="myFileModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                        <h4 class="modal-title txtOrangeElton" id="myFileModalLabel">Nouveau fichier</h4>
+                    </div>
+                    <div class="modal-body">
+                        {{ render(controller('EltonCoreBundle:File:new')) }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {# Category modal #}
+        <div class="modal fade" id="myCategoryModal" tabindex="-1" role="dialog" aria-labelledby="myCategoryModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                        <h4 class="modal-title txtOrangeElton" id="myCategoryModalLabel">Nouvelle catégorie</h4>
+                    </div>
+                    <div class="modal-body">
+                        {{ render(controller('EltonLessonBundle:Category:new')) }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {# Competence modal #}
+        <div class="modal fade" id="myCompetenceModal" tabindex="-1" role="dialog" aria-labelledby="myCompetenceModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                        <h4 class="modal-title txtOrangeElton" id="myCompetenceModalLabel">Nouvelle compétance</h4>
+                    </div>
+                    <div class="modal-body">
+                        {{ render(controller('EltonLessonBundle:Competence:new')) }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>                   
+    </div>
+           
+    {# Navbar & dropdown #}
+    <ul class="nav nav-tabs">
+        {# Teacher dropdown #}
+        <li class="dropdown">
+            <a href="#" data-toggle="dropdown" id="dropdownTeacher">Professeur<span class="caret"></span></a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownTeacher" role="menu">
+                <li>
+                    <a href="{{path('teacher')}}">Voir les professeurs</a>             
+                </li>
+                <li>  
+                    <a data-toggle="modal" data-target="#myTeacherModal">Nouveau professeur</a>
+                </li>
+                <li role="presentation" class="divider"></li>
+                <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#">Rechercher par</a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <li class="dropdown-submenu">
+                                <a href="#">Région</a>
+                                <ul class="dropdown-menu">
+                                    {# Regions #}
+                                    <li>
+                                        <a href="{{path('teacher_by_region', {'region' : 'Alsace'}) }}">Alsace</a>
+                                        <a href="{{path('teacher_by_region', {'region' : 'Aquitaine'}) }}">Aquitaine</a>
+                                        <a href="{{path('teacher_by_region', {'region' : 'Auvergne'}) }}">Auvergne</a>
+                                        <a href="{{path('teacher_by_region', {'region' : 'Basse-Normandie'}) }}">Basse-Normandie</a>
+                                        <a href="{{path('teacher_by_region', {'region' : 'Bourgogne'}) }}">Bourgogne</a>
+                                        <a href="{{path('teacher_by_region', {'region' : 'Bretagne'}) }}">Bretagne</a>
+                                        <a href="{{path('teacher_by_region', {'region' : 'Centre'}) }}">Centre</a>
+                                        <a href="{{path('teacher_by_region', {'region' : 'Champagne-Ardenne'}) }}">Champagne-Ardenne</a>
+                                        <a href="{{path('teacher_by_region', {'region' : 'Corse'}) }}">Corse</a>
+                                        <a href="{{path('teacher_by_region', {'region' : 'DOM-TOM'}) }}">DOM-TOM</a>
+                                        <a href="{{path('teacher_by_region', {'region' : 'Franche-Comté'}) }}">Franche-Comté</a>
+                                        <a href="{{path('teacher_by_region', {'region' : 'Haute-Normandie'}) }}">Haute-Normandie</a>
+                                        <a href="{{path('teacher_by_region', {'region' : 'Ile de France'}) }}">Ile de France</a>
+                                        <a href="{{path('teacher_by_region', {'region' : 'Languedoc-Roussillon'}) }}">Languedoc-Roussillon</a>
+                                        <a href="{{path('teacher_by_region', {'region' : 'Limousin'}) }}">Limousin</a>
+                                        <a href="{{path('teacher_by_region', {'region' : 'Lorraine'}) }}">Lorraine</a>
+                                        <a href="{{path('teacher_by_region', {'region' : 'Midi-Pyrénées'}) }}">Midi-Pyrénées</a>
+                                        <a href="{{path('teacher_by_region', {'region' : 'Nord Pas-de-Calais'}) }}">Nord Pas-de-Calais</a>
+                                        <a href="{{path('teacher_by_region', {'region' : 'Pays de la Loire'}) }}">Pays de la Loire</a>
+                                        <a href="{{path('teacher_by_region', {'region' : 'Picardie'}) }}">Picardie</a>
+                                        <a href="{{path('teacher_by_region', {'region' : 'Poitou-Charentes'}) }}">Poitou-Charentes</a>
+                                        <a href="{{path('teacher_by_region', {'region' : 'PACA'}) }}">PACA</a>
+                                        <a href="{{path('teacher_by_region', {'region' : 'Rhône-Alpes'}) }}">Rhône-Alpes</a>
+                                    </li>
+                                </ul>
+                             </li>
+                             <li class="dropdown-submenu">
+                                <a href="#">Niveau</a>
+                                <ul class="dropdown-menu">
+                                    {# Level #}
+                                    <li>
+                                        <a href="{{path('teacher_by_level', {'level' : 1}) }}">CP</a>
+                                        <a href="{{path('teacher_by_level', {'level' : 2}) }}">CE</a>
+                                        <a href="{{path('teacher_by_level', {'level' : 3}) }}">CM</a>
+                                    </li>
+                                </ul>
+                             </li>
+                             <li class="dropdown-submenu">
+                                <a href="#">Trier par</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="{{path('teacher_by_id')}}">Id</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{path('teacher_by_username')}}">Nom d'utilisateur</a>
+                                    </li>
+                                </ul>
+                             </li>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        {# Division dropdown #}
+        <li class="dropdown">
+            <a href="#" data-toggle="dropdown" id="dropdownDivision">Classe<span class="caret"></span></a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownDivision" role="menu">
+                <li>
+                    <a href="{{path('division')}}">Voir les divisions</a>            
+                </li>
+                <li>  
+                    <a data-toggle="modal" data-target="#myDivisionModal">Nouvelle classe</a>
+                </li>
+                <li role="presentation" class="divider"></li>
+                <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#">Rechercher par</a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a href="#">Niveau</a>
+                            <ul class="dropdown-menu">
+                                {# Level #}
+                                <li>
+                                    <a href="{{path('division_by_level', {'level' : 1}) }}">CP</a>
+                                    <a href="{{path('division_by_level', {'level' : 2}) }}">CE</a>
+                                    <a href="{{path('division_by_level', {'level' : 3}) }}">CM</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="{{path('division_by_teacherId')}}">Id professeur</a>
+                        </li>
+                        <li>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        {# Activity dropdown #}
+        <li class="dropdown">
+            <a href="#" data-toggle="dropdown" id="dropdownActivity">Activité<span class="caret"></span></a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownActivity" role="menu">
+                <li>
+                    <a href="{{path('lesson')}}">Voir les activités</a>              
+                </li>
+                <li>  
+                    <a data-toggle="modal" data-target="#myActivityModal">Nouvelle activité</a>
+                </li>
+                <li role="presentation" class="divider"></li>
+                <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#">Rechercher par</a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a href="#">Niveau</a>
+                            <ul class="dropdown-menu">
+                                {# Level #}
+                                <li>
+                                    <a href="{{path('lesson_by_level', {'level' : 1}) }}">CP</a>
+                                    <a href="{{path('lesson_by_level', {'level' : 2}) }}">CE</a>
+                                    <a href="{{path('lesson_by_level', {'level' : 3}) }}">CM</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="{{path('lesson_by_category')}}">Catégorie</a>
+                        </li>
+                        <li>
+                            <a href="{{path('lesson_by_id')}}">Id</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        {# File dropdown #}
+        <li class="dropdown">
+            <a href="#" data-toggle="dropdown" id="dropdownFile">Fichier<span class="caret"></span></a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownFile" role="menu">
+                <li>
+                    <a href="{{path('file')}}">Voir les fichiers</a>             
+                </li>
+                <li>  
+                    <a data-toggle="modal" data-target="#myFileModal">Nouveau fichier</a>
+                </li>
+                <li role="presentation" class="divider"></li>
+                <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#">Rechercher par</a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{{path('file_by_extension')}}">Extension</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>            
+        {# Category dropdown #}
+        <li class="dropdown">
+            <a href="#" data-toggle="dropdown" id="dropdownCategory">Catégories<span class="caret"></span></a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownCategory" role="menu">
+                <li>
+                    <a href="{{path('category')}}">Voir les catégories</a>             
+                </li>
+                <li>  
+                    <a data-toggle="modal" data-target="#myCategoryModal">Nouvelle catégorie</a>
+                </li>
+            </ul>
+        </li>
+        {# Competence dropdown #}
+        <li class="dropdown">
+            <a href="#" data-toggle="dropdown" id="dropdownCompetence">Compétance<span class="caret"></span></a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownCompetence" role="menu">
+                <li>
+                    <a href="{{path('competence')}}">Voir les compétances</a>             
+                </li>
+                <li>  
+                    <a data-toggle="modal" data-target="#myCompetenceModal">Nouvelle compétence</a>
+                </li>
+            </ul>
+        </li>
+
+        {# Level link #}
+        <li class="dropdown">
+            <a href="{{path('level')}}">Voir les niveaux</a>
+        </li>
+        {# Stats link #}
+        <li class="dropdown">
+            <a href="{{path('stats')}}">Statistiques</a>
+        </li>
+    </ul>
+        
+{% endblock %}

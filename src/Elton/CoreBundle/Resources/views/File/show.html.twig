@@ -1,0 +1,66 @@
+{% extends "::base.html.twig" %}
+
+{% block body -%}
+    {{ parent() }}
+    <div>
+        <a class="btn btnBeigeEltonGrand shadow bold" href="{{path('file')}}">Retour à la liste des fichiers</a>
+        <br/><br/>
+    </div>
+    <div>
+        <div  style="margin: 0px 0px 25px 0px;">
+            <h1 class="label label-warning bold">&nbsp  Fichier</h1>
+        </div>
+
+        <table class="breadcrumb">
+            <tbody>
+                <tr>
+                    <th class="txtOrangeElton">Image</th>
+                    <td><img src="{{ asset(entity.uploadDir ~ '/' ~ entity.id ~ '.' ~ entity.url) }}" alt="{{entity.alt}}"/></td>
+                </tr>
+                <tr>
+                    <th class="txtOrangeElton">Extension</th>
+                    <td>{{ entity.url }}</td>
+                </tr>
+                <tr>
+                    <th class="txtOrangeElton">Alt</th>
+                    <td>{{ entity.alt }}</td>
+                </tr>
+                <tr>
+                    <th class="txtOrangeElton">Id</th>
+                    <td>{{ entity.id }}</td>
+                </tr>
+                <tr>
+                    <th>
+                        <br/>
+                        <a class="btn shadow center-block bold btnBeigeEltonPetit" data-toggle="modal" data-target="#myFileUpdateModal">Modifier</a>
+                        {# File edit modal #}
+                        <div class="modal fade" id="myFileUpdateModal" tabindex="-1" role="dialog" aria-labelledby="myFileUpdateModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                                        <h4 class="modal-title label label-warning modalFS" id="myFileUpdateModalLabel">Modification de professeur</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        {{render(controller('EltonCoreBundle:File:edit', {'id' : entity.id})) }}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </th>
+                    <td>
+                        <br/>
+                        {% form_theme delete_form 'EltonCoreBundle:Form:delete_field.html.twig' %}
+                        {{ form(delete_form) }}
+                    </td>
+                </tr>
+                <tr>
+                    <div class="smallElton"></div>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
