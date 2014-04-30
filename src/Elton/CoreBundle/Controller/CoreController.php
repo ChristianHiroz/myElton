@@ -37,4 +37,13 @@ class CoreController extends Controller
         
         return array('nbT' => $nbTeachers[1], 'nbD' => $nbDivisions[1], 'nbL' => $nbLessons[1], 'nbF' => $nbFiles[1]);
     }
+    
+    /**
+     * @Route("/", name="index")
+     * @Template()
+     */
+    public function indexAction()
+    {
+        return array();
+    }
 }

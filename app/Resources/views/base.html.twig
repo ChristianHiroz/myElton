@@ -24,7 +24,23 @@
     </head>
     <body>
         {% block body %}
-            <div class="page-header"> </div> 
+            <nav>
+                <ul class="nav nav-pills menuBar curve" role="navigation">
+                    <li style="margin-left:350px" class="divider-vertical"></li>
+                    <li class="active"><a class='myEltonButtonMenu text-center' href="#home" data-toggle="tab">Accueil</a></li>
+                    <li class="divider-vertical"></li>
+                    <li><a class='myEltonButtonMenu text-center' href="#knowMore" data-toggle="tab">En savoir plus</a></li>
+                    <li class="divider-vertical"></li>
+                    <li><a class='myEltonButtonMenu text-center' href="#theySay" data-toggle="tab">Ce qu'ils en disent</a></li>
+                    <li class="divider-vertical"></li>
+                </ul>
+            </nav>
+            
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="home">Lalalala</div>
+                    <div class="tab-pane fade" id="knowMore">Lulululu</div>
+                    <div class="tab-pane fade" id="theySay">Lililili</div>
+                </div>
         {% endblock %}
         
         {% block javascripts %}

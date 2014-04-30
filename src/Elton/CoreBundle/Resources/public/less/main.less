@@ -5,6 +5,11 @@
 
 @import "variables.less";
 
+.menuBar{
+    background:@orangeElton;
+    height: 40px;
+}
+
 .smallElton{
     background:@smallEltonPicture no-repeat;
     width:128px;
@@ -93,11 +98,6 @@ thead{
     border:1px solid #000000;
 }
 
-.nav-pills > li.active > a, .nav-pills > li.active > a:hover{
-    background-color: @orangeElton;
-    color: @black;
-}
-
 .ml50{
     margin-left:50px;
 }
@@ -172,4 +172,55 @@ thead{
     height:1000px;
     margin-top:50px;
     margin-left:300px;
+}
+
+.curve:before {  
+    top: 52px;  
+    left: 5px;  
+    transform: rotate(-5deg);  
+    box-shadow: 7px 6px 15px #333;  
+}  
+.curve:after {  
+    top: 52px;  
+    right: 5px;  
+    transform: rotate(5deg);  
+    box-shadow: -7px 6px 15px #333;  
+} 
+
+.divider-vertical{
+    border-left:1px solid @orangeElton;
+    border-right:1px solid @orangeEltonDeg;
+    height:40px;
+}
+
+.myEltonButtonMenu {
+    margin-right: -3px;
+    background-color: @orangeElton;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:arial;
+    font-size:15px;
+    font-weight:bold;
+    height:40px;
+    width:200px;
+}
+.myEltonButtonMenu:hover {
+    background-image: linear-gradient(to bottom,@orangeElton,@orangeEltonDeg);
+    background-color:@orangeEltonDeg;    color:#ffffff;
+}
+
+.myEltonButtonMenu:focus {
+    background-image: linear-gradient(to bottom,@orangeElton,@orangeEltonDeg);
+    background-color:@orangeEltonDeg;    color:#ffffff;
+}
+
+.myEltonButtonMenu.active {
+    background-image: linear-gradient(to bottom,@orangeElton,@orangeEltonDeg);
+    background-color:@orangeEltonDeg;     color:#ffffff;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover > .myEltonButtonMenu.active {
+    background-image: linear-gradient(to bottom,@orangeElton,@orangeEltonDeg);
+    background-color:@orangeEltonDeg;     color:#ffffff;
 }
