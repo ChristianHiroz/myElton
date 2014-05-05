@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Elton\TeacherBundle\Entity\Teacher;
-use Elton\TeacherBundle\Form\TeacherType;
+use Elton\TeacherBundle\Form\RegistrationFormType;
 use Elton\CoreBundle\Form\IntegerType;
 use Elton\CoreBundle\Form\StringType;
 
@@ -19,7 +19,6 @@ use Elton\CoreBundle\Form\StringType;
  */
 class TeacherController extends Controller
 {
-
     /**
      * Lists all Teacher entities.
      *
@@ -103,7 +102,7 @@ class TeacherController extends Controller
     */
     private function createCreateForm(Teacher $entity)
     {
-        $form = $this->createForm(new TeacherType(), $entity, array(
+        $form = $this->createForm(new RegistrationFormType(), $entity, array(
             'action' => $this->generateUrl('teacher_create'),
             'method' => 'POST',
         ));
@@ -275,7 +274,7 @@ class TeacherController extends Controller
     */
     private function createEditForm(Teacher $entity)
     {
-        $form = $this->createForm(new TeacherType(), $entity, array(
+        $form = $this->createForm(new RegistrationFormType(), $entity, array(
             'action' => $this->generateUrl('teacher_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));

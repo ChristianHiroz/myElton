@@ -6,6 +6,14 @@
     Created on : 17 avr. 2014, 11:04:52
     Author     : Christian Hiroz
 */
+img.resizeHeaderLogo {
+  width: auto;
+  height: 200px;
+}
+img.resizeHeaderElton {
+  width: auto;
+  height: 150px;
+}
 .menuBar {
   background: #f79321;
   height: 40px;
@@ -25,16 +33,33 @@
 .txtOrangeElton {
   color: #f79321;
 }
+.shadow {
+  box-shadow: 1px 1px 12px #555555;
+}
 .btnBeigeElton {
   background-color: #f8c693;
   box-shadow: 1px 1px 12px #555555;
   color: #000000;
   width: 210px;
 }
-.header {
-  width: 219px;
-  height: 119px;
-  background: url(../bundles/eltoncore/images/Logo_myeltonSmall.jpg) no-repeat;
+.header .elton {
+  margin: -15px 0px -10px 440px;
+}
+.header .playbac {
+  margin: 34px 0px -5px 21px;
+  float: left;
+}
+.header .title {
+  margin-bottom: 30px;
+  margin-right: 30px;
+  margin-top: -20px;
+}
+.header .buttons {
+  float: right;
+  margin: -125px 75px 0px 0px;
+}
+.width150 {
+  width: 150px;
 }
 .bold {
   font-weight: bold;
@@ -184,13 +209,13 @@ thead {
   color: #ffffff;
 }
 .nav-pills > li.active > a,
-.nav-pills > li.active > a:hover > .myEltonButtonMenu.active {
+.nav-pills > li.active > a:hover {
   background-image: linear-gradient(to bottom, #f79321, #df7401);
   background-color: #df7401;
   color: #ffffff;
 }
 .playBacPresse {
-  background: url(../bundles/eltoncore/images/playbacpresse.jpg) no-repeat;
+  background: url(../bundles/eltoncore/images/logoplaybac.png) no-repeat;
   height: 84px;
   width: 200px;
 }

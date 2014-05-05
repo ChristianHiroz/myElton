@@ -1,9 +1,0 @@
-{% extends '::base.html.twig' %}
-
-{% block body -%}
-    <div class="smallElton"></div>
-    {% form_theme edit_form 'EltonCoreBundle:Form:create_field.html.twig' %}
-    <div>
-        {{form(edit_form)}} 
-    </div>
-{% endblock %}

@@ -36,7 +36,6 @@ class TeacherControllerTest extends WebTestCase
             'elton_teacherbundle_teachertype[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
-
         $client->submit($form);
         $crawler = $client->followRedirect();
 

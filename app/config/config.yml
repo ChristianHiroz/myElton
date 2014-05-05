@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -75,4 +75,7 @@ swiftmailer:
 fos_user:
     db_driver: orm 
     firewall_name: main
-    user_class: Elton\TeacherBundle\Entity\Teacher
+    user_class: Elton\TeacherBundle\Entity\Teacher    
+    registration:
+        form:
+            type: elton_teacher_registration

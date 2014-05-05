@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <div class="smallElton"></div>
+    {% form_theme form 'EltonCoreBundle:Form:create_field.html.twig' %}
+    <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+        {{ form_widget(form) }}
+        <div>
+            <center>
+            <input type="submit" class="btn btn-warning shadow" value="{{ 'Modifier'|trans }}" />
+            </center>
+        </div>
+    </form>
+{% endblock %}

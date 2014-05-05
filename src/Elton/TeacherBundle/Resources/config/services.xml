@@ -16,5 +16,9 @@
         <service id="elton.cart.manager" class="%elton.cart_manager.class%">
             <argument type="service" id="doctrine.orm.entity_manager"/>            
         </service>
+        <service id="elton_teacher.registration.form.type" class="Elton\TeacherBundle\Form\RegistrationFormType">
+            <tag name="form.type" alias="elton_teacher_registration" />
+            <argument>%fos_user.model.user.class%</argument>
+        </service>
     </services>
 </container>

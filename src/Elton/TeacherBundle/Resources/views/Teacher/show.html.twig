@@ -1,4 +1,4 @@
-{% extends "::base.html.twig" %}
+{% extends 'EltonCoreBundle:Core:backOffice.html.twig' %}
 
 {% block body -%}
     {{ parent() }}
@@ -54,7 +54,7 @@
                                         <h4 class="modal-title label label-warning modalFS" id="myTeacherUpdateModalLabel">Modification de professeur</h4>
                                     </div>
                                     <div class="modal-body">
-                                        {{render(controller('EltonTeacherBundle:Teacher:edit', {'id' : entity.id})) }}
+                                        {{ render(controller('FOSUserBundle:Profile:edit')) }}
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>

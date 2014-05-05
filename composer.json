@@ -21,9 +21,7 @@
         "incenteev/composer-parameter-handler": "~2.0",
 	"friendsofsymfony/user-bundle": "~2.0@dev",
 	"twbs/bootstrap": "3.1.1",
-        "oyejorge/less.php": "*",
-        "antimattr/google-bundle": "*"
-
+        "oyejorge/less.php": "*"
     },
     "scripts": {
         "post-install-cmd": [

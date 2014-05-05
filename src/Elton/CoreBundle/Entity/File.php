@@ -104,7 +104,7 @@ class File
     /**
      * Get lesson
      * 
-     * @return Elton\CoreBundle\Entity\Lesson
+     * @return Elton\LessonBundle\Entity\Lesson
      */
     public function getLesson()
     {
@@ -114,9 +114,9 @@ class File
     /**
      * Set lesson
      * 
-     * @param Elton\CoreBundle\Entity\Lesson $lesson
+     * @param Elton\LessonBundle\Entity\Lesson $lesson
      */
-    public function setLesson(\Elton\CoreBundle\Entity\Lesson $lesson)
+    public function setLesson(\Elton\LessonBundle\Entity\Lesson $lesson)
     {
         $this->lesson = $lesson;
     }

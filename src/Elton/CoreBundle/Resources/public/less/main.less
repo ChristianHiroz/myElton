@@ -5,6 +5,16 @@
 
 @import 'variable.less';
 
+img.resizeHeaderLogo{
+    width:auto;
+    height: 200px;
+}
+
+img.resizeHeaderElton{
+    width:auto;
+    height: 150px;
+}
+
 .menuBar {
   background: @orangeElton;
   height: 40px;
@@ -31,10 +41,32 @@
   width: 210px;
 }
 .header {
-  width: 219px;
-  height: 119px;
-  background: @smallBannerEltonOrange no-repeat;
+    .elton {
+        margin:-15px 0px -10px 440px;
+    }
+    .playbac {
+        margin:34px 0px -5px 21px;
+        float:left;
+    }
+    .title{
+        margin-bottom: 30px;
+        margin-right:30px;
+        margin-top:-20px;
+    }
+    .buttons{
+        float: right;
+        margin: -125px 75px 0px 0px; 
+    }
 }
+
+.width150{
+    width:150px;
+}
+
+.shadow{
+   box-shadow: 1px 1px 12px #555555;
+}
+
 .bold {
   font-weight: bold;
 }
@@ -184,7 +216,7 @@ thead {
 }
 
 .nav-pills > li.active > a,
-.nav-pills > li.active > a:hover > .myEltonButtonMenu.active{
+.nav-pills > li.active > a:hover{
   background-image: linear-gradient(to bottom, #f79321, #df7401);
   background-color: #df7401;
   color: #ffffff;
