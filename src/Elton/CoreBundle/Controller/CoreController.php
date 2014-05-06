@@ -16,12 +16,20 @@ use Elton\CoreBundle\Form\FileType;
 class CoreController extends Controller
 {
     /**
-     * @Route("/backOffice", name="backOffice")
+     * @Route("/backOffice", name="back_office")
      * @Template("EltonCoreBundle:Core:backOffice.html.twig")
      */
     public function backOfficeAction()
     {
-        return array();
+        $user = $this->get('security.context')->getToken()->getUser();
+        if($user->hasRole('ROLE_ADMIN'))
+        {
+            return array('user' => $user);
+        }
+        else
+        {
+            return $this->redirect($this->generateUrl('index'));
+        }
     }
     
     /**
@@ -44,6 +52,7 @@ class CoreController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        $user = $this->get('security.context')->getToken()->getUser();
+        return array('user' => $user);
     }
 }

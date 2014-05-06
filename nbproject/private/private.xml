@@ -14,11 +14,9 @@
         <group>
             <file>file:/var/www/myElton/src/Elton/CoreBundle/Resources/views/Core/backOffice.html.twig</file>
             <file>file:/var/www/myElton/web/bundles/eltoncore/less/main.less</file>
-            <file>file:/var/www/myElton/app/Resources/views/base.html.twig</file>
-            <file>file:/var/www/myElton/src/Elton/CoreBundle/Controller/CoreController.php</file>
-            <file>file:/var/www/myElton/web/bundles/eltoncore/less/variable.less</file>
-            <file>file:/var/www/myElton/src/Elton/CoreBundle/Resources/views/Core/index.html.twig</file>
-            <file>file:/var/www/myElton/src/Elton/CoreBundle/Resources/public/images/Logo_myeltonSmall.jpg</file>
+            <file>file:/var/www/myElton/vendor/twbs/bootstrap/less/glyphicons.less</file>
+            <file>file:/var/www/myElton/app/Resources/views/headerTeacher.html.twig</file>
+            <file>file:/var/www/myElton/app/Resources/views/header.html.twig</file>
         </group>
     </open-files>
 </project-private>

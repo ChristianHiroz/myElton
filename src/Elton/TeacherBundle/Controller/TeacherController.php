@@ -20,6 +20,21 @@ use Elton\CoreBundle\Form\StringType;
 class TeacherController extends Controller
 {
     /**
+     * Index of teachers
+     * 
+     * @Route("/teacher", name="teacher_index")
+     * @Method("GET")
+     * @Template()
+     */
+    public function indexTeacherAction()
+    {
+        $user = $this->get('security.context')->getUser()->getToken();
+        
+        return array(
+            'user' => $user,
+        );
+    }
+    /**
      * Lists all Teacher entities.
      *
      * @Route("/", name="teacher")

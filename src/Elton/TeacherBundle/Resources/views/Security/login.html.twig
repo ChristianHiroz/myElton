@@ -1,6 +1,6 @@
 {% extends '::base.html.twig' %}
 
-{% block body -%}
+{% block body %}
     <div class="smallElton"></div>
 
 {% if error %}
@@ -20,6 +20,8 @@
     <label for="remember_me">Se souvenir de moi</label>
     <br/>
     <input class="btn btn-warning ml50" type="submit" id="_submit" name="_submit" value="Envoyer" />
+    <br/>
+    <a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a>
 </form>
 
 {% endblock %}

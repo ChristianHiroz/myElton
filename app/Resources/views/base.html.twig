@@ -24,85 +24,21 @@
     </head>
     <body>
         {% block body %}
-            <header class="">
-                {# Buttons modals #}
-                <div class="modal fade" id="myRegisterModal" tabindex="-1" role="dialog" aria-labelledby="myRegisterModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                                <h4 class="modal-title label label-warning modalFS" id="myRegisterModalLabel">Connection</h4>
-                            </div>
-                            <div class="modal-body">
-                                {{ render(controller('FOSUserBundle:Registration:register')) }}
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="myLoginModal" tabindex="-1" role="dialog" aria-labelledby="myLoginModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                                <h4 class="modal-title label label-warning modalFS" id="myLoginModalLabel">Connection</h4>
-                            </div>
-                            <div class="modal-body">
-                                {{ render(controller('FOSUserBundle:Security:Login')) }}
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="header">
-                    <div class="playbac">
-                        <a href="http://www.playbacpresse.fr/">
-                        <img src="{{asset('bundles/eltoncore/images/logoplaybac.png')}}"/>
-                        </a>
-                    </div>
-                    <div class="elton">
-                        <a href="{{path('index')}}">
-                        <img class="resizeHeaderElton" src="{{asset('bundles/eltoncore/images/smallElton_orange.png')}}"/>
-                        <img class="resizeHeaderLogo" src="{{asset('bundles/eltoncore/images/Logo.jpg')}}"/>
-                        </a>
-                    </div>
-                    <div class="buttons">
-                        <a class="btn btn-danger width150 shadow" data-toggle="modal" data-target="#myLoginModal">Connection</a> <br/><br/>                        
-                        <a class="btn btn-warning width150 shadow" data-toggle="modal" data-target="#myRegisterModal">Inscription</a>
-                    </div>
-                    <div class="title">
-                        <center>
-                            <h3>La méthode d'anglais pensée pour les professeurs des Ecoles !</h3>
-                        </center>
-                    </div>
-                </div>
-            </header>
-            <nav>
-                <ul class="nav nav-pills menuBar " role="navigation">
-                    <li style="margin-left:350px" class="divider-vertical"></li>
-                    <li class="active"><a class='myEltonButtonMenu text-center' href="#home" data-toggle="tab">Accueil</a></li>
-                    <li class="divider-vertical"></li>
-                    <li><a class='myEltonButtonMenu text-center' href="#knowMore" data-toggle="tab">En savoir plus</a></li>
-                    <li class="divider-vertical"></li>
-                    <li><a class='myEltonButtonMenu text-center' href="#theySay" data-toggle="tab">Ce qu'ils en disent</a></li>
-                    <li class="divider-vertical"></li>
-                </ul>
-            </nav>
-            
-                <div class="tab-content">
-                    <div class="tab-pane fade in active" id="home">Lalalala</div>
-                    <div class="tab-pane fade" id="knowMore">Lulululu</div>
-                    <div class="tab-pane fade" id="theySay">Lililili</div>
-                </div>
+            {% if is_granted('ROLE_USER') %}
+                {% include('::headerTeacher.html.twig') %}
+            {% else %}
+                {% include('::header.html.twig') %}
+            {% endif %}
         {% endblock %}
         
         {% block javascripts %}
             <script src="{{ asset('bundles/eltoncore/js/jquery.min.js') }}"></script>
             <script src="{{ asset('bundles/eltoncore/js/bootstrap.min.js') }}"></script>
+            <script type="text/javascript">
+            $(function(){
+               $('[rel="tooltip"]').tooltip();
+            });
+             </script>
         {% endblock %}
     </body>
 </html>
