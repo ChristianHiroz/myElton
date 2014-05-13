@@ -193,4 +193,11 @@ class Teacher extends User
     {
         $this->carts->removeElement($cart);
     }
+    
+    /**
+     * toString
+     */
+    public function __toString() {
+        return $this->username;
+    }
 }

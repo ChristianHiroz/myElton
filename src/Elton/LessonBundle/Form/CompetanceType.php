@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class CompetenceType extends AbstractType
+class CompetanceType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -25,7 +25,7 @@ class CompetenceType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Elton\LessonBundle\Entity\Competence'
+            'data_class' => 'Elton\LessonBundle\Entity\Competance'
         ));
     }
 
@@ -34,6 +34,6 @@ class CompetenceType extends AbstractType
      */
     public function getName()
     {
-        return 'elton_lessonbundle_competence';
+        return 'elton_lessonbundle_competance';
     }
 }

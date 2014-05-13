@@ -89,16 +89,16 @@
                 </div>
             </div>
         </div>
-        {# Competence modal #}
-        <div class="modal fade" id="myCompetenceModal" tabindex="-1" role="dialog" aria-labelledby="myCompetenceModalLabel" aria-hidden="true">
+        {# Competance modal #}
+        <div class="modal fade" id="myCompetanceModal" tabindex="-1" role="dialog" aria-labelledby="myCompetanceModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                        <h4 class="modal-title txtOrangeElton" id="myCompetenceModalLabel">Nouvelle compétance</h4>
+                        <h4 class="modal-title txtOrangeElton" id="myCompetanceModalLabel">Nouvelle compétance</h4>
                     </div>
                     <div class="modal-body">
-                        {{ render(controller('EltonLessonBundle:Competence:new')) }}
+                        {{ render(controller('EltonLessonBundle:Competance:new')) }}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
@@ -284,15 +284,15 @@
                 </li>
             </ul>
         </li>
-        {# Competence dropdown #}
+        {# Competance dropdown #}
         <li class="dropdown">
-            <a href="#" data-toggle="dropdown" id="dropdownCompetence">Compétance<span class="caret"></span></a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownCompetence" role="menu">
+            <a href="#" data-toggle="dropdown" id="dropdownCompetance">Compétance<span class="caret"></span></a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownCompetance" role="menu">
                 <li>
-                    <a href="{{path('competence')}}">Voir les compétances</a>             
+                    <a href="{{path('competance')}}">Voir les compétances</a>             
                 </li>
                 <li>  
-                    <a data-toggle="modal" data-target="#myCompetenceModal">Nouvelle compétence</a>
+                    <a data-toggle="modal" data-target="#myCompetanceModal">Nouvelle compétance</a>
                 </li>
             </ul>
         </li>

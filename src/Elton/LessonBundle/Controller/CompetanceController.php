@@ -7,21 +7,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Elton\LessonBundle\Entity\Competence;
-use Elton\LessonBundle\Form\CompetenceType;
+use Elton\LessonBundle\Entity\Competance;
+use Elton\LessonBundle\Form\CompetanceType;
 
 /**
- * Competence controller.
+ * Competance controller.
  *
- * @Route("/competence")
+ * @Route("/competance")
  */
-class CompetenceController extends Controller
+class CompetanceController extends Controller
 {
 
     /**
-     * Lists all Competence entities.
+     * Lists all Competance entities.
      *
-     * @Route("/", name="competence")
+     * @Route("/", name="competance")
      * @Method("GET")
      * @Template()
      */
@@ -29,22 +29,22 @@ class CompetenceController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('EltonLessonBundle:Competence')->findAll();
+        $entities = $em->getRepository('EltonLessonBundle:Competance')->findAll();
 
         return array(
             'entities' => $entities,
         );
     }
     /**
-     * Creates a new Competence entity.
+     * Creates a new Competance entity.
      *
-     * @Route("/", name="competence_create")
+     * @Route("/", name="competance_create")
      * @Method("POST")
-     * @Template("EltonLessonBundle:Competence:new.html.twig")
+     * @Template("EltonLessonBundle:Competance:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new Competence();
+        $entity = new Competance();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -53,7 +53,7 @@ class CompetenceController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('competence_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('competance_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -63,16 +63,16 @@ class CompetenceController extends Controller
     }
 
     /**
-    * Creates a form to create a Competence entity.
+    * Creates a form to create a Competance entity.
     *
-    * @param Competence $entity The entity
+    * @param Competance $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(Competence $entity)
+    private function createCreateForm(Competance $entity)
     {
-        $form = $this->createForm(new CompetenceType(), $entity, array(
-            'action' => $this->generateUrl('competence_create'),
+        $form = $this->createForm(new CompetanceType(), $entity, array(
+            'action' => $this->generateUrl('competance_create'),
             'method' => 'POST',
         ));
 
@@ -82,15 +82,15 @@ class CompetenceController extends Controller
     }
 
     /**
-     * Displays a form to create a new Competence entity.
+     * Displays a form to create a new Competance entity.
      *
-     * @Route("/new", name="competence_new")
+     * @Route("/new", name="competance_new")
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new Competence();
+        $entity = new Competance();
         $form   = $this->createCreateForm($entity);
 
         return array(
@@ -100,9 +100,9 @@ class CompetenceController extends Controller
     }
 
     /**
-     * Finds and displays a Competence entity.
+     * Finds and displays a Competance entity.
      *
-     * @Route("/{id}", name="competence_show")
+     * @Route("/{id}", name="competance_show")
      * @Method("GET")
      * @Template()
      */
@@ -110,10 +110,10 @@ class CompetenceController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EltonLessonBundle:Competence')->find($id);
+        $entity = $em->getRepository('EltonLessonBundle:Competance')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Competence entity.');
+            throw $this->createNotFoundException('Unable to find Competance entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -125,9 +125,9 @@ class CompetenceController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Competence entity.
+     * Displays a form to edit an existing Competance entity.
      *
-     * @Route("/{id}/edit", name="competence_edit")
+     * @Route("/{id}/edit", name="competance_edit")
      * @Method("GET")
      * @Template()
      */
@@ -135,10 +135,10 @@ class CompetenceController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EltonLessonBundle:Competence')->find($id);
+        $entity = $em->getRepository('EltonLessonBundle:Competance')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Competence entity.');
+            throw $this->createNotFoundException('Unable to find Competance entity.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -152,16 +152,16 @@ class CompetenceController extends Controller
     }
 
     /**
-    * Creates a form to edit a Competence entity.
+    * Creates a form to edit a Competance entity.
     *
-    * @param Competence $entity The entity
+    * @param Competance $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Competence $entity)
+    private function createEditForm(Competance $entity)
     {
-        $form = $this->createForm(new CompetenceType(), $entity, array(
-            'action' => $this->generateUrl('competence_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new CompetanceType(), $entity, array(
+            'action' => $this->generateUrl('competance_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -170,20 +170,20 @@ class CompetenceController extends Controller
         return $form;
     }
     /**
-     * Edits an existing Competence entity.
+     * Edits an existing Competance entity.
      *
-     * @Route("/{id}", name="competence_update")
+     * @Route("/{id}", name="competance_update")
      * @Method("PUT")
-     * @Template("EltonLessonBundle:Competence:edit.html.twig")
+     * @Template("EltonLessonBundle:Competance:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EltonLessonBundle:Competence')->find($id);
+        $entity = $em->getRepository('EltonLessonBundle:Competance')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Competence entity.');
+            throw $this->createNotFoundException('Unable to find Competance entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -193,7 +193,7 @@ class CompetenceController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('competence_show', array('id' => $id)));
+            return $this->redirect($this->generateUrl('competance_show', array('id' => $id)));
         }
 
         return array(
@@ -203,9 +203,9 @@ class CompetenceController extends Controller
         );
     }
     /**
-     * Deletes a Competence entity.
+     * Deletes a Competance entity.
      *
-     * @Route("/{id}", name="competence_delete")
+     * @Route("/{id}", name="competance_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -215,21 +215,21 @@ class CompetenceController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('EltonLessonBundle:Competence')->find($id);
+            $entity = $em->getRepository('EltonLessonBundle:Competance')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Competence entity.');
+                throw $this->createNotFoundException('Unable to find Competance entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('competence'));
+        return $this->redirect($this->generateUrl('competance'));
     }
 
     /**
-     * Creates a form to delete a Competence entity by id.
+     * Creates a form to delete a Competance entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -238,7 +238,7 @@ class CompetenceController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('competence_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('competance_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

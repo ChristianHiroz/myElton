@@ -5,7 +5,6 @@ namespace Elton\LessonBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Elton\CoreBundle\Form\FileType as FileType;
 
 class LessonType extends AbstractType
 {
@@ -22,7 +21,7 @@ class LessonType extends AbstractType
                                           'label' => 'Fichiers',
                                           'expanded' => false,
                                           'multiple' => true))
-            ->add('competences', 'entity', array('class' => 'EltonLessonBundle:Competence', 
+            ->add('competances', 'entity', array('class' => 'EltonLessonBundle:Competance', 
                                                  'property' => 'libelle',
                                                  'label' => 'Compétances',
                                                  'expanded' => false,

@@ -37,9 +37,9 @@ class Lesson
     
 
     /**
-     * @ORM\ManyToMany(targetEntity="Elton\LessonBundle\Entity\Competence")
+     * @ORM\ManyToMany(targetEntity="Elton\LessonBundle\Entity\Competance")
      */
-    private $competences;
+    private $competances;
     
     /**
      *
@@ -57,7 +57,7 @@ class Lesson
     
     public function __construct()
     {
-        $this->competences = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->competances = new \Doctrine\Common\Collections\ArrayCollection();
         $this->files = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -135,43 +135,43 @@ class Lesson
     }
     
     /**
-     * Get competences
+     * Get competances
      * 
      * @return Doctrine\Common\Collections\Collection
      */
-    public function getCompetences()
+    public function getCompetances()
     {
-        return $this->competences;
+        return $this->competances;
     }
     
     /**
-     * Add competences
+     * Add competances
      * 
-     * @param Elton\LessonBundle\Entity\Competence $competences
+     * @param Elton\LessonBundle\Entity\Competance $competances
      */
-    public function setCompetences(\Elton\LessonBundle\Entity\Competence $competences)
+    public function setCompetances(\Elton\LessonBundle\Entity\Competance $competances)
     {
-        $this->competences[] = $competences;
+        $this->competances[] = $competances;
     }
     
     /**
-     * Set competence
+     * Set competance
      * 
-     * @param Elton\LessonBundle\Entity\Competence $competence
+     * @param Elton\LessonBundle\Entity\Competance $competance
      */
-    public function addCompetence(\Elton\LessonBundle\Entity\Competence $competence)
+    public function addCompetance(\Elton\LessonBundle\Entity\Competance $competance)
     {
-        $this->competences[] = $competence;
+        $this->competances[] = $competance;
     }
     
     /**
-     * Remove competence
+     * Remove competance
      * 
-     * @param Elton\LessonBundle\Entity\Competence $competence
+     * @param Elton\LessonBundle\Entity\Competance $competance
      */
-    public function removeCompetence(\Elton\LessonBundle\Entity\Competence $competence)
+    public function removeCompetance(\Elton\LessonBundle\Entity\Competance $competance)
     {
-        $this->competences->removeElement($competence);
+        $this->competances->removeElement($competance);
     }
     
     /**

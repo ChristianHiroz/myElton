@@ -1,6 +1,6 @@
 <?php
 /**
- * Description of CompetenceManager
+ * Description of CompetanceManager
  *
  * @author Christian Hiroz
  */
@@ -10,7 +10,7 @@ namespace Elton\LessonBundle\Manager;
 use Doctrine\ORM\EntityManager;
 use Elton\CoreBundle\Manager\CoreManager as CoreManager;
 
-class CompetenceManager extends CoreManager
+class CompetanceManager extends CoreManager
 {
     protected $em;
     
@@ -21,6 +21,6 @@ class CompetenceManager extends CoreManager
     
     public function getRepository()
     {
-        return $this->em->getRepository('EltonLessonBundle:Competence');
+        return $this->em->getRepository('EltonLessonBundle:Competance');
     }
 }

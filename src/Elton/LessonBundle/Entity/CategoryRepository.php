@@ -12,4 +12,25 @@ use Doctrine\ORM\EntityRepository;
  */
 class CategoryRepository extends EntityRepository
 {
+    
+    /**
+     * Get categorys by level id.
+     * @param int $levelId id of the level
+     * @return array Array of categorys
+     * 
+     */
+    public function getCategoryByLevelId($levelId)
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+            'SELECT *
+             FROM EltonLessonBundle:Category c
+             JOIN c.level l
+             WHERE l.id = :levelid ');
+        $query->setParameter('levelid', $levelId);
+
+        $result = $query->getResult();
+        
+        return $result;
+    }
 }

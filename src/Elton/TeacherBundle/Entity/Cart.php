@@ -28,17 +28,18 @@ class Cart
     private $division;
     
     /**
+     * @var boolean
+     *
+     * @ORM\Id
+     * @ORM\Column(name="attribuer", type="boolean")
+     */
+    private $settedToDivision; //mean this is the cart setted to the division
+    
+    /**
      * @ORM\Column(name="lessons", type="array")
      * @ORM\ManyToMany(targetEntity="Elton\LessonBundle\Entity\Lesson", mappedBy="id")
      */
     private $lessons;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="attribuer", type="boolean")
-     */
-    private $settedToDivision; //mean the teacher setted the lesson to his division
     
     public function __construct()
     {

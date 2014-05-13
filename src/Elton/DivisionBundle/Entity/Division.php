@@ -32,6 +32,13 @@ class Division
     private $libelle;
     
     /**
+     * @var boolean
+     * 
+     * @ORM\Column(name="selected", type="boolean")
+     */
+    private $selectedDivision; //mean this is the division selected by the teacher in his divisions list
+    
+    /**
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=50)
@@ -60,9 +67,9 @@ class Division
     private $level;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Elton\LessonBundle\Entity\Competence")
+     * @ORM\ManyToMany(targetEntity="Elton\LessonBundle\Entity\Competance")
      */
-    private $competences;
+    private $competances;
     
     /**
      * @ORM\OneToOne(targetEntity="Elton\TeacherBundle\Entity\Cart", mappedBy="division", cascade="persist")
@@ -71,7 +78,7 @@ class Division
 
     public function __construct()
     {
-        $this->competences = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->competances = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -215,32 +222,55 @@ class Division
     }
     
     /**
-     * Get competences
+     * Get competances
      * 
      * @return Doctrine\Common\Collections\Collection
      */
-    public function getCompetences()
+    public function getCompetances()
     {
-        return $this->competences;
+        return $this->competances;
     }
     
     /**
-     * Add competence
+     * Add competance
      * 
-     * @param Elton\LessonBundle\Entity\Competence $competence
+     * @param Elton\LessonBundle\Entity\Competance $competance
      */
-    public function addCompetence(\Elton\LessonBundle\Entity\Competence $competence)
+    public function addCompetance(\Elton\LessonBundle\Entity\Competance $competance)
     {
-        $this->competences[] = $competence;
+        $this->competances[] = $competance;
     }
     
     /**
-     * Remove competence
+     * Remove competance
      * 
-     * @param Elton\LessonBundle\Entity\Competence $competence
+     * @param Elton\LessonBundle\Entity\Competance $competance
      */
-    public function removeCompetence(\Elton\LessonBundle\Entity\Competence $competence)
+    public function removeCompetance(\Elton\LessonBundle\Entity\Competance $competance)
     {
-        $this->competences->removeElement($competence);
+        $this->competances->removeElement($competance);
     }
+    
+    /**
+     * Get selectedDivision
+     * 
+     * @return boolean
+     */
+    public function isSelectedDivision()
+    {
+        return $this->selectedDivision;
+    }
+    
+    /**
+     * Set selectedDivision
+     * 
+     * @param boolean $selectedDivision
+     */
+    public function setSelectedDivision($selectedDivision)
+    {
+       $this->selectedDivision = $selectedDivision;  
+    }
+    
+    
+    
 }

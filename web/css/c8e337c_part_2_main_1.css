@@ -6,6 +6,69 @@
     Created on : 17 avr. 2014, 11:04:52
     Author     : Christian Hiroz
 */
+.btn-elton {
+  position: relative;
+  color: white;
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  width: 109%;
+  max-width: 150px;
+  border-radius: 15px 0px 15px 15px;
+}
+.btn-elton:before {
+  max-width: 150px;
+  display: block;
+  content: " ";
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  top: -15px;
+  border-style: solid;
+  border-width: 0 0px 15px 135px;
+  border-radius: 0px 45px 0px 0px;
+  left: 15px;
+}
+.btn-elton > span {
+  display: block;
+  padding: 20px;
+  font-weight: bold;
+  margin-top: -5px;
+}
+.btn-elton > ul {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  position: absolute;
+  bottom: 2px;
+  text-align: center;
+}
+.btn-elton > ul li {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  border: 2px solid white;
+  display: inline-block;
+}
+.blue {
+  background: #0a71b4;
+}
+.blue:before {
+  border-color: transparent transparent #0a71b4 transparent;
+}
+.orange {
+  background: #f29400;
+}
+.orange:before {
+  border-color: transparent transparent #f29400 transparent;
+}
+.beige {
+  background: #ffcc96;
+}
+.beige:before {
+  border-color: transparent transparent #ffcc96 transparent;
+}
 img.resizeHeaderLogo {
   width: auto;
   height: 200px;
@@ -13,28 +76,6 @@ img.resizeHeaderLogo {
 img.resizeHeaderElton {
   width: auto;
   height: 150px;
-}
-a.white {
-  color: white;
-}
-.eltonCaret {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  margin-left: 2px;
-  vertical-align: middle;
-  border-top: 16px solid;
-  border-right: 9px solid transparent;
-  border-left: 9px solid transparent;
-  margin: 5px 0px 0px 25px;
-}
-.btn-division {
-  margin: -15px 0px 0px 505px;
-  background-color: #ffcc96;
-  width: 300px;
-  height: 75px;
-  border-radius: 10px;
-  font-size: 40px;
 }
 .menuBar {
   background: #f29400;
@@ -54,11 +95,6 @@ a.white {
 }
 .txtOrangeElton {
   color: #f29400;
-}
-.btnEltonChelou {
-  background: url(../bundles/eltoncore/images/bouton.jpg) no-repeat;
-  width: auto;
-  height: auto;
 }
 .btnBeigeElton {
   background-color: #ffcc96;
@@ -82,15 +118,11 @@ a.white {
   float: right;
   margin: -180px 75px 0px 0px;
 }
-.headerTeacher .elton {
-  float: right;
-  margin-top: -20px;
-}
-.headerTeacher .buttons {
-  margin: -180px 75px 0px 0px;
-}
 .width150 {
   width: 150px;
+}
+.shadow {
+  box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7), -1px 2px 20px rgba(255, 255, 255, 0.6) inset;
 }
 .bold {
   font-weight: bold;
@@ -218,8 +250,8 @@ thead {
   box-shadow: -7px 6px 15px #333333;
 }
 .divider-vertical {
-  border-left: 1px solid #f29400;
-  border-right: 1px solid #e36929;
+  border-left: 1px solid #f79321;
+  border-right: 1px solid #df7401;
   height: 40px;
 }
 .myEltonButtonMenu {
@@ -241,7 +273,7 @@ thead {
 }
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover {
-  background-image: linear-gradient(to bottom, #f29400, #e36929);
+  background-image: linear-gradient(to bottom, #f79321, #df7401);
   background-color: #df7401;
   color: #ffffff;
 }

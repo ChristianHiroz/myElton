@@ -114,4 +114,8 @@ class Category
     {
         $this->level = $level;
     }
+    
+    public function __toString() {
+        return $this->libelle;
+    }
 }

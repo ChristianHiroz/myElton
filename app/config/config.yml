@@ -1,6 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: @EltonCoreBundle/Resources/config/admin.xml }
 
 framework:
     #esi:             ~
@@ -79,3 +80,15 @@ fos_user:
     registration:
         form:
             type: elton_teacher_registration
+            
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # Enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+            
+sonata_admin:
+    title: myElton
+    templates:
+        layout: ::standard_layout.html.twig

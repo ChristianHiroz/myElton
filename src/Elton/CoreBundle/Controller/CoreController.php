@@ -22,9 +22,9 @@ class CoreController extends Controller
     public function backOfficeAction()
     {
         $user = $this->get('security.context')->getToken()->getUser();
-        if($user->hasRole('ROLE_ADMIN'))
+        if(is_object($user) && $user->hasRole('ROLE_ADMIN'))
         {
-            return array('user' => $user);
+            return $this->redirect($this->generateUrl('sonata_admin_dashboard'));
         }
         else
         {
@@ -53,6 +53,26 @@ class CoreController extends Controller
     public function indexAction()
     {
         $user = $this->get('security.context')->getToken()->getUser();
-        return array('user' => $user);
+        if(is_object($user) && $user->hasRole('ROLE_USER'))
+        {
+            if($user->hasRole('ROLE_ADMIN'))
+            {
+                return array('user' => $user,);
+            }
+//            $selectedDivision = $this->get('elton.division.manager')->getRepository()->getSelectedDivisionByTeacherId($user->getId());
+//            $othersDivisions = $this->get('elton.division.manager')->getRepository()->getNonSelectedDivisionByTeacherId($user->getId());
+//            $categorys = $this->get('elton.category.manager')->getRepository()->getCategoryByLevelId($selectedDivision->getLevel()->getId());
+//            //RETURN SI PAS DE DIVISION TO CREATE DIVISION
+//            
+//            return array('user' => $user, 
+//                         'selectedDivision' => $selectedDivision, 
+//                         'othersDivisions' => $othersDivisions,
+//                         'categorys' => $categorys);                
+             return array('user' => $user,);
+        }
+        else
+        {
+            return array('user' => $user,);
+        }
     }
 }

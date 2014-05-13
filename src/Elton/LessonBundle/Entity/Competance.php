@@ -5,13 +5,13 @@ namespace Elton\LessonBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Competence
+ * Competance
  * 
  * @author Christian Hiroz
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Elton\LessonBundle\Entity\CompetenceRepository")
+ * @ORM\Entity(repositoryClass="Elton\LessonBundle\Entity\CompetanceRepository")
  */
-class Competence
+class Competance
 {
     /**
      * @var integer
@@ -44,7 +44,7 @@ class Competence
      * Set libelle
      *
      * @param string $libelle
-     * @return Competence
+     * @return Competance
      */
     public function setLibelle($libelle)
     {
