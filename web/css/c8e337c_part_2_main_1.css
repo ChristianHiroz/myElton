@@ -6,72 +6,21 @@
     Created on : 17 avr. 2014, 11:04:52
     Author     : Christian Hiroz
 */
-.btn-elton {
-  position: relative;
-  color: white;
-  display: inline-block;
-  text-align: center;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  width: 109%;
-  max-width: 150px;
-  border-radius: 15px 0px 15px 15px;
-}
-.btn-elton:before {
-  max-width: 150px;
-  display: block;
-  content: " ";
-  position: absolute;
-  width: 0px;
-  height: 0px;
-  top: -15px;
-  border-style: solid;
-  border-width: 0 0px 15px 135px;
-  border-radius: 0px 45px 0px 0px;
-  left: 15px;
-}
-.btn-elton > span {
-  display: block;
-  padding: 20px;
-  font-weight: bold;
-  margin-top: -5px;
-}
-.btn-elton > ul {
-  padding: 0px;
-  margin: 0px;
-  width: 100%;
-  position: absolute;
-  bottom: 2px;
-  text-align: center;
-}
-.btn-elton > ul li {
-  height: 10px;
-  width: 10px;
-  border-radius: 50%;
-  border: 2px solid white;
-  display: inline-block;
-}
-.blue {
-  background: #0a71b4;
-}
-.blue:before {
-  border-color: transparent transparent #0a71b4 transparent;
-}
-.orange {
-  background: #f29400;
-}
-.orange:before {
-  border-color: transparent transparent #f29400 transparent;
-}
-.beige {
-  background: #ffcc96;
-}
-.beige:before {
-  border-color: transparent transparent #ffcc96 transparent;
-}
 img.resizeHeaderLogo {
   width: auto;
   height: 200px;
+}
+img.btn-gestion {
+  height: 60px;
+  width: auto;
+}
+img.resizeHeaderTeacherElton {
+  width: auto;
+  height: 80px;
+}
+img.resizeHeaderTeacherLogo {
+  width: auto;
+  height: 100px;
 }
 img.resizeHeaderElton {
   width: auto;
@@ -101,22 +50,6 @@ img.resizeHeaderElton {
   box-shadow: 1px 1px 12px #555555;
   color: #000000;
   width: 210px;
-}
-.header .elton {
-  margin: -15px 0px -10px 440px;
-}
-.header .playbac {
-  margin: 34px 0px -5px 21px;
-  float: left;
-}
-.header .title {
-  margin-bottom: 30px;
-  margin-right: 30px;
-  margin-top: -20px;
-}
-.header .buttons {
-  float: right;
-  margin: -180px 75px 0px 0px;
 }
 .width150 {
   width: 150px;
@@ -281,4 +214,144 @@ thead {
   background: url(../bundles/eltoncore/images/logoplaybac.png) no-repeat;
   height: 84px;
   width: 200px;
+}
+a.btn-elton {
+  position: relative;
+  color: white;
+  display: inline-block;
+  text-align-last: center;
+  text-transform: uppercase;
+  max-width: 150px;
+  border-radius: 15px 0px 15px 15px;
+  width: 150px;
+  margin-bottom: 10px;
+}
+a.btn-elton:before {
+  max-width: 150px;
+  display: block;
+  content: " ";
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  top: -15px;
+  border-style: solid;
+  border-width: 0 0px 15px 135px;
+  border-radius: 0px 45px 0px 0px;
+  left: 15px;
+}
+a.btn-elton > span {
+  display: block;
+  padding: 20px;
+  font-weight: bold;
+}
+ul.btn-divisionUl li {
+  height: auto;
+  width: 217px;
+}
+.btn-division {
+  width: 220px;
+  height: 45px;
+  margin: 35px 0px 0px 353px;
+  font-size: 20px;
+}
+.btn-division span {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 15px solid;
+  border-right: 9px solid transparent;
+  border-left: 9px solid transparent;
+  margin: -3px -27px -4px 27px;
+}
+.btn-division .white {
+  color: white !important;
+}
+.blueLogo {
+  background: #0a71b4;
+}
+.blueLogo:before {
+  border-color: transparent transparent #0a71b4 transparent;
+}
+.orange {
+  background: #f29400;
+}
+.orange:before {
+  border-color: transparent transparent #f29400 transparent;
+}
+.orangeDeg {
+  background: #e36929;
+}
+.orangeDeg:before {
+  border-color: transparent transparent #e36929 transparent;
+}
+.blue {
+  background: #66b8dc;
+}
+.blue:before {
+  border-color: transparent transparent #66b8dc transparent;
+}
+.gris {
+  background: #cdcad4;
+}
+.gris:before {
+  border-color: transparent transparent #cdcad4 transparent;
+}
+.grisSombre {
+  background: #38373a;
+}
+.grisSombre:before {
+  border-color: transparent transparent #38373a transparent;
+}
+.rouge {
+  background: #be0926;
+}
+.rouge:before {
+  border-color: transparent transparent #be0926 transparent;
+}
+.turquoise {
+  background: #219e98;
+}
+.turquoise:before {
+  border-color: transparent transparent #219e98 transparent;
+}
+.violet {
+  background: #cd0054;
+}
+.violet:before {
+  border-color: transparent transparent #cd0054 transparent;
+}
+.beige {
+  background: #ffcc96;
+}
+.beige:before {
+  border-color: transparent transparent #ffcc96 transparent;
+}
+.header .elton {
+  margin: -15px 0px -10px 440px;
+}
+.header .playbac {
+  margin: 34px 0px -5px 21px;
+  float: left;
+}
+.header .title {
+  margin-bottom: 30px;
+  margin-right: 30px;
+  margin-top: -20px;
+}
+.header .buttons {
+  float: right;
+  margin: -200px 75px 0px 0px;
+}
+.headerTeacher {
+  margin: -5px 0px 106px 0px;
+}
+.headerTeacher .elton {
+  float: left;
+  margin-left: 10px;
+}
+.headerTeacher .buttons {
+  float: right;
+  margin: 25px 30px 0px 0px;
 }

@@ -47,4 +47,44 @@ class DivisionRepository extends EntityRepository
         
         return $result;
     }
+    
+    /**
+     * Function used to find the division selected with his teacherId
+     * @param int $teacherId if of a teacher
+     * @return division
+     */
+    public function getSelectedDivisionByTeacherId($teacherId)
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+                'Select d
+                 From EltonDivisionBundle:Division d
+                 Join d.teacher t
+                 Where t.id = ?1
+                 And d.selected = true');
+        $query->setParameter(1, $teacherId);
+        $result = $query->getResult();
+        
+        return $result;
+    }
+    
+    /**
+     * Function used to find the divisions not selected with his teacherId
+     * @param int $teacherId if of a teacher
+     * @return array of Division
+     */
+    public function getNotSelectedDivisionByTeacherId($teacherId)
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+                'Select d
+                 From EltonDivisionBundle:Division d
+                 Join d.teacher t
+                 Where t.id = ?1
+                 And d.selected = false');
+        $query->setParameter(1, $teacherId);
+        $result = $query->getResult();
+        
+        return $result;
+    }
 }

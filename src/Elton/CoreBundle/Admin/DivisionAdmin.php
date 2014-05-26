@@ -13,11 +13,11 @@ class DivisionAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('libelle', 'text', array('label' => 'Nom'))
+            ->add('libelle', 'text', array('label' => 'Nom de la classe'))
             ->add('username', 'text', array('label' => 'Identifiant'))
             ->add('password', 'password', array('label' => 'Mot de passe'))
-            ->add('teacher', 'sonata_type_model', array('label' => 'Professeur de la classe', 'associated_property' => 'name'))
-            ->add('level', 'sonata_type_model', array('label' => 'Niveau de la classe', 'associated_property' => 'libelle'))
+            ->add('teacher', 'sonata_type_model', array('label' => 'Professeur de la classe'))
+            ->add('level', 'sonata_type_model', array('label' => 'Niveau de la classe'))
             ;
     }
 

@@ -1,37 +1,51 @@
-<header class="">
+<header>
     <div class="headerTeacher">
         <div class="elton">
             <a href="{{path('index')}}">
-            <img class="resizeHeaderElton" src="{{asset('bundles/eltoncore/images/smallElton_orange.png')}}"/>
-            <img class="resizeHeaderLogo" src="{{asset('bundles/eltoncore/images/Logo.jpg')}}"/>
+            <img class="resizeHeaderTeacherElton" src="{{asset('bundles/eltoncore/images/smallElton_orange.png')}}"/>
+            <img class="resizeHeaderTeacherLogo" src="{{asset('bundles/eltoncore/images/Logo.jpg')}}"/>
             </a>
         </div>
-        <div class="buttonsCO">
+        <div class="buttons">
             {% if is_granted('ROLE_ADMIN') %}
-                <a class="btn-elton blue" href="{{path('back_office')}}"><span>Admin - {{ user.username }}</span></a> <br/><br/>   
-                <p>{{user.name}}  {{user.firstname}}</p>
-                <a class="btn-elton orange" class="btn btn-warning width150" href="{{path('fos_user_security_logout')}}"><span>Déconnection</span></a>
+                <a href="{{path('fos_user_profile_show')}}">{{user.firstName}} {{user.name | upper}} </a>
+                <a href="{{path('sonata_admin_dashboard')}}">
+                    <img class="btn-gestion" src="{{asset('bundles/eltoncore/images/admin.jpg')}}"/>
+                </a>
+                <a href="{{path('fos_user_profile_show')}}">
+                    <img class="btn-gestion" src="{{asset('bundles/eltoncore/images/edit.png')}}"/>
+                </a>
+                <a href="{{path('fos_user_security_logout')}}">
+                    <img class="btn-gestion" src="{{asset('bundles/eltoncore/images/logout.png')}}"/>
+                </a>
             {% elseif is_granted('ROLE_USER') %}
-                <a class="btn-elton blue" href="{{path('fos_user_profile_show')}}"><span>{{ user.username }}</span></a>   
-                <p>{{user.name}}  {{user.firstname}}</p><br/>                    
-                <a class="btn-elton orange" class="deconnexion" href="{{path('fos_user_security_logout')}}"><span>Déconnection</span></a>
+                <a href="{{path('fos_user_profile_show')}}">{{user.firstName}} {{user.name | upper}} </a>
+                <a href="{{path('fos_user_profile_show')}}">
+                    <img class="btn-gestion" src="{{asset('bundles/eltoncore/images/edit.png')}}"/>
+                </a>
+                <a href="{{path('fos_user_security_logout')}}">
+                    <img class="btn-gestion" src="{{asset('bundles/eltoncore/images/logout.png')}}"/><br/>
+                </a>
             {% endif %}
         </div>
-        <div class="dropdown btn btn-division">
+        <div class="dropdown btn orangeDeg btn-division">
             <a class="white" href="#" data-toggle="dropdown" id="dropDownDivision">
-                CMDeJacky
-                <span class="eltonCaret"></span>
+                {{selectedDivision.libelle}}
+                <span></span>
             </a>
-            <ul class="dropdown-menu" aria-labelledby="dropDownDivision" role="menu">
-                <li>CEDeJacky</li>
-                <li>CPDeJacky</li>
+            <ul class="dropdown-menu btn-divisionUl" aria-labelledby="dropDownDivision" role="menu">
+                {% for division in othersDivisions %}
+                    <a href="{{path('division_change', {'id' : division.id} ) }}">{{division.libelle}}</a>
+                    <li class="divider"></li>
+                {% endfor %}
+                <a href="{{path('teacher_create_division')}}">Nouvelle classe</a>
             </ul>
         </div>
     </div>
 </header>
 {# Menu teacher #}
 <nav>
-    <ul class="nav nav-pills menuBar" style="margin-top:30px;" role="navigation">
+    <ul class="nav nav-pills menuBar" style="margin-top:-86px;" role="navigation">
         <li style="margin-left:350px" class="divider-vertical"></li>
         <li class="active">
             <a class='myEltonButtonMenu text-center' href="#pratiquer" data-toggle="tab">Pratiquer !</a>

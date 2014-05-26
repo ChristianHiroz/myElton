@@ -212,4 +212,8 @@ class File
     {
         return __DIR__.'/../../../../web/'.$this->getUploadDir();
     }
+    
+    public function __toString() {
+        return $this->alt;
+    }
 }

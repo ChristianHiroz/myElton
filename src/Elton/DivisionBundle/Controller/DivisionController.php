@@ -300,4 +300,27 @@ class DivisionController extends Controller
             ->getForm()
         ;
     }
+    
+    
+    /**
+     * Change the selectedDivision
+     * 
+     * @param int $id The entity id
+     * @Route("/change/{id}", name="division_change")
+     */
+    public function divisionChangeAction($id)
+    {
+        $user = $this->get('security.context')->getToken()->getUser();
+        if(is_object($user) && $user->hasRole('ROLE_USER'))
+        {
+            $oldSelectedDivision = $this->get('elton.division.manager')->getRepository()->getSelectedDivisionByTeacherId($user->getId());
+            $newSelectedDivision = $this->get('elton.division.manager')->getRepository()->findById($id);
+            $oldSelectedDivision[0]->setSelected(false);
+            $newSelectedDivision[0]->setSelected(true);
+            $this->get('elton.division.manager')->persist($newSelectedDivision[0]);
+            $this->get('elton.division.manager')->persist($oldSelectedDivision[0]);
+            
+            return $this->redirect($this->generateUrl('index'));
+        }
+    }
 }

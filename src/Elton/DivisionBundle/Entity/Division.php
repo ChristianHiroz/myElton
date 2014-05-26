@@ -3,8 +3,8 @@
 namespace Elton\DivisionBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use FOS\UserBundle\Model\User as User;
-
+use Doctrine\ORM\Event\LifecycleEventArgs;
+use FOS\UserBundle\Model\User;
 
 /**
  * Class
@@ -12,8 +12,9 @@ use FOS\UserBundle\Model\User as User;
  * @author Christian Hiroz
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Elton\DivisionBundle\Entity\DivisionRepository")
+ * @ORM\HasLifecycleCallbacks
  */
-class Division
+class Division extends User
 {
     /**
      * @var integer
@@ -23,11 +24,11 @@ class Division
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
+    
     /**
      * @var string
      *
-     * @ORM\Column(name="libelle", type="string", length=50)
+     * @ORM\Column(name="libelle", type="string", length=10)
      */
     private $libelle;
     
@@ -36,22 +37,8 @@ class Division
      * 
      * @ORM\Column(name="selected", type="boolean")
      */
-    private $selectedDivision; //mean this is the division selected by the teacher in his divisions list
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="username", type="string", length=50)
-     */
-    private $username;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=50)
-     */
-    private $password;
-    
+    private $selected; //mean this is the division selected by the teacher in his divisions list
+
     /**
      *
      * @ORM\ManyToOne(targetEntity="Elton\TeacherBundle\Entity\Teacher", inversedBy="carts")
@@ -78,6 +65,7 @@ class Division
 
     public function __construct()
     {
+        parent::__construct();
         $this->competances = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -103,6 +91,19 @@ class Division
 
         return $this;
     }
+    
+    public function setUserName($username)
+    {
+        $this->email = $username;
+        $this->username = $username; 
+    }
+    
+    public function setUsernameCanonical($usernameCanonical)
+    {
+        $this->emailCanonical = $usernameCanonical;
+        $this->usernameCanonical = $usernameCanonical; 
+    }
+    
 
     /**
      * Get libelle
@@ -112,52 +113,6 @@ class Division
     public function getLibelle()
     {
         return $this->libelle;
-    }
-    
-    /**
-     * Set username
-     *
-     * @param string $username
-     * @return Division
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
-    /**
-     * Get username
-     *
-     * @return string 
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-    
-    /**
-     * Set password
-     *
-     * @param string $password
-     * @return Division
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string 
-     */
-    public function getPassword()
-    {
-        return $this->password;
     }
     
     /**
@@ -252,25 +207,56 @@ class Division
     }
     
     /**
-     * Get selectedDivision
+     * Get selected
      * 
      * @return boolean
      */
-    public function isSelectedDivision()
+    public function isSelected()
     {
-        return $this->selectedDivision;
+        return $this->selected;
     }
     
     /**
-     * Set selectedDivision
+     * Set selected
      * 
-     * @param boolean $selectedDivision
+     * @param boolean $selected
      */
-    public function setSelectedDivision($selectedDivision)
+    public function setSelected($selected)
     {
-       $this->selectedDivision = $selectedDivision;  
+       $this->selected = $selected;  
     }
     
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function prePersist(LifecycleEventArgs $event)
+    {
+        $selected = $event->getEntityManager()->getRepository( get_class($this) )->getSelectedDivisionByTeacherId($this->getTeacher()->getId());
+        if($selected == null)
+        {
+            $this->selected = true;
+        }
+        else
+        {
+            $this->selected = false;
+        }
+    }
     
-    
+    /**
+     * @ORM\PostRemove()
+     */
+    public function deSelected(LifecycleEventArgs $event)
+    {
+        if($this->selected == true)
+        {
+            $divisions = $event->getEntityManager()->getRepository( get_class($this) )->getNotSelectedDivisionByTeacherId($this->getTeacher()->getId());
+            if($divisions != null)
+            {
+                $divisions[0]->setSelected(true);
+                $event->getEntityManager()->persist($divisions[0]);
+                $event->getEntityManager()->flush();
+            }
+        }
+    }
 }

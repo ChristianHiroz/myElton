@@ -14,10 +14,10 @@ class LessonAdmin extends Admin
     {
         $formMapper
             ->add('libelle')
-            ->add('files', 'sonata_type_model', array('label' => 'Niveau de la classe', 'associated_property' => 'libelle'))
-            ->add('competances', 'sonata_type_collection', array('label' => 'Compétances de l\'activité', 'type_options' => array('delete' => false)))
-            ->add('level', 'sonata_type_model', array('label' => 'Niveau de l\'activité', 'associated_property' => 'libelle'))
-            ->add('category', 'sonata_type_model', array('label' => 'Niveau de la classe', 'associated_property' => 'libelle'))
+            ->add('files', 'sonata_type_model', array('label' => 'Fichiers','by_reference' => false,'multiple' => true,))
+            ->add('competances', 'sonata_type_model', array('label' => 'Compétances de l\'activité', 'by_reference' => false,'multiple' => true,))
+            ->add('level', 'sonata_type_model', array('label' => 'Niveau de l\'activité'))
+            ->add('category', 'sonata_type_model', array('label' => 'Niveau de la classe'))
             ;
     }
 
@@ -33,7 +33,7 @@ class LessonAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('libelle')->add('competances')->add('level')->add('category')->add('files')
+            ->add('libelle')->add('competances')->add('level')->add('category')
         ;
     }
 }

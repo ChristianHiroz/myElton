@@ -1,6 +1,7 @@
 security:
     encoders:
         Elton\TeacherBundle\Entity\Teacher: md5
+        Elton\DivisionBundle\Entity\Division: md5
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER

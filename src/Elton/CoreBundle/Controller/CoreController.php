@@ -16,23 +16,6 @@ use Elton\CoreBundle\Form\FileType;
 class CoreController extends Controller
 {
     /**
-     * @Route("/backOffice", name="back_office")
-     * @Template("EltonCoreBundle:Core:backOffice.html.twig")
-     */
-    public function backOfficeAction()
-    {
-        $user = $this->get('security.context')->getToken()->getUser();
-        if(is_object($user) && $user->hasRole('ROLE_ADMIN'))
-        {
-            return $this->redirect($this->generateUrl('sonata_admin_dashboard'));
-        }
-        else
-        {
-            return $this->redirect($this->generateUrl('index'));
-        }
-    }
-    
-    /**
      * @Route("/stats", name="stats")
      * @Template("EltonCoreBundle:Core:stats.html.twig")
      */
@@ -55,20 +38,18 @@ class CoreController extends Controller
         $user = $this->get('security.context')->getToken()->getUser();
         if(is_object($user) && $user->hasRole('ROLE_USER'))
         {
-            if($user->hasRole('ROLE_ADMIN'))
+            $selectedDivision = $this->get('elton.division.manager')->getRepository()->getSelectedDivisionByTeacherId($user->getId());
+            if($selectedDivision == null)
             {
-                return array('user' => $user,);
+                return $this->redirect($this->generateUrl("teacher_create_division")); 
             }
-//            $selectedDivision = $this->get('elton.division.manager')->getRepository()->getSelectedDivisionByTeacherId($user->getId());
-//            $othersDivisions = $this->get('elton.division.manager')->getRepository()->getNonSelectedDivisionByTeacherId($user->getId());
-//            $categorys = $this->get('elton.category.manager')->getRepository()->getCategoryByLevelId($selectedDivision->getLevel()->getId());
-//            //RETURN SI PAS DE DIVISION TO CREATE DIVISION
-//            
-//            return array('user' => $user, 
-//                         'selectedDivision' => $selectedDivision, 
-//                         'othersDivisions' => $othersDivisions,
-//                         'categorys' => $categorys);                
-             return array('user' => $user,);
+            $othersDivisions = $this->get('elton.division.manager')->getRepository()->getNotSelectedDivisionByTeacherId($user->getId());
+            $categorys = $this->get('elton.category.manager')->getRepository()->getCategoryByLevelId($selectedDivision[0]->getLevel()->getId());
+            
+            return array('user' => $user, 
+                         'selectedDivision' => $selectedDivision[0], 
+                         'othersDivisions' => $othersDivisions,
+                         'categorys' => $categorys);          
         }
         else
         {

@@ -14,14 +14,20 @@ class DivisionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        parent::buildForm($builder, $options);
         $builder
             ->add('libelle', 'text', array('label' => 'Nom'))
-            ->add('username', 'text', array('label' => 'Identifiant'))
-            ->add('password', 'password', array('label' => 'Mot de passe'))
-            ->add('teacher', 'entity', array('class' => 'EltonTeacherBundle:Teacher', 'property' => 'name',
-                                           'label' => 'Professeur'))
+            ->add('username', 'text', array('label' => 'Nom d\'utilisateur', 'attr'=> array('placeholder' => 'Entrez votre nom d\'utilisateur')))
+            ->add('plainPassword', 'repeated', array(
+                'type' => 'password',
+                'options' => array('translation_domain' => 'FOSUserBundle'),
+                'first_options' => array('label' => 'Mot de passe', 'attr'=> array('placeholder' => 'Entrez votre mot de passe')),
+                'second_options' => array('label' => 'Confirmation du mot de passe', 'attr'=> array('placeholder' => 'Confirmez votre mot de passe')),
+                'invalid_message' => 'fos_user.password.mismatch',
+            ))
             ->add('level', 'entity', array('class' => 'EltonCoreBundle:Level', 'property' => 'libelle',
                                            'label' => 'Niveau'))
+            ->add('submit', 'submit', array('label' => 'Créer votre classe'))
         ;
     }
     

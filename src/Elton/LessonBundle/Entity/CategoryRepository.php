@@ -23,7 +23,7 @@ class CategoryRepository extends EntityRepository
     {
         $em = $this->getEntityManager();
         $query = $em->createQuery(
-            'SELECT *
+            'SELECT c
              FROM EltonLessonBundle:Category c
              JOIN c.level l
              WHERE l.id = :levelid ');

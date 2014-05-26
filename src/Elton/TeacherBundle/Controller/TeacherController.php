@@ -11,6 +11,8 @@ use Elton\TeacherBundle\Entity\Teacher;
 use Elton\TeacherBundle\Form\RegistrationFormType;
 use Elton\CoreBundle\Form\IntegerType;
 use Elton\CoreBundle\Form\StringType;
+use Elton\DivisionBundle\Form\DivisionType;
+use Elton\DivisionBundle\Entity\Division;
 
 /**
  * Teacher controller.
@@ -22,7 +24,7 @@ class TeacherController extends Controller
     /**
      * Index of teachers
      * 
-     * @Route("/teacher", name="teacher_index")
+     * @Route("/", name="teacher_index")
      * @Method("GET")
      * @Template()
      */
@@ -238,9 +240,7 @@ class TeacherController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('EltonTeacherBundle:Teacher')->find($id);
-
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Teacher entity.');
         }
@@ -372,5 +372,38 @@ class TeacherController extends Controller
             ->add('submit', 'submit', array('label' => 'Supprimer'))
             ->getForm()
         ;
+    }
+    
+    /**
+     * Create a division for the teacher
+     * 
+     * @Route("/create/division", name="teacher_create_division")
+     */
+    public function createDivisionAction()
+    {
+        $user = $this->get('security.context')->getToken()->getUser();
+        $division = new Division();
+        $form = $this->createForm(new DivisionType(), $division, array(
+            'action' => $this->generateUrl('teacher_create_division'),
+            'method' => 'POST',
+        ));
+        $request = $this->get('request');
+
+        if($request->getMethod() == 'POST')
+        {
+            $form->bind($request);
+            if($form->isValid())
+            {
+                $division->setTeacher($user);
+                
+                $em = $this->get('elton.division.manager');
+                $em->persist($division);
+
+                return $this->redirect($this->generateUrl("index")); 
+            }
+
+        }
+        
+        return $this->render('EltonDivisionBundle:Division:new.html.twig', array('form' => $form->createView()));
     }
 }
