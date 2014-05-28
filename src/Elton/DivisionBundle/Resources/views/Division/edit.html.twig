@@ -2,8 +2,10 @@
 
 {% block body -%}
     <div class="smallElton"></div>
-    {% form_theme edit_form 'EltonCoreBundle:Form:create_field.html.twig' %}
+    {% form_theme edit_form 'EltonCoreBundle:Form:create_field.html.twig' %} 
+    {% form_theme delete_form 'EltonCoreBundle:Form:create_field.html.twig' %}
     <div>
-        {{form(edit_form)}}
+        {{form(edit_form)}}  {{form(delete_form)}}
+        
     </div>
 {% endblock %}

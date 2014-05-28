@@ -1,0 +1,10 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <center>
+        <h1>Réglages</h1><br/><br/>
+        <a class="btn-elton blueLogo" href="{{path('teacher_options_divisions')}}"><span>Classes</span></a> &nbsp &nbsp                     
+        <a class="btn-elton rouge" href="{{path('fos_user_profile_edit')}}"><span>Compte</span></a>
+    </center>
+{% endblock %}

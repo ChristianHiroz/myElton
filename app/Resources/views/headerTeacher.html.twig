@@ -12,7 +12,7 @@
                 <a href="{{path('sonata_admin_dashboard')}}">
                     <img class="btn-gestion" src="{{asset('bundles/eltoncore/images/admin.jpg')}}"/>
                 </a>
-                <a href="{{path('fos_user_profile_show')}}">
+                <a href="{{path('teacher_options')}}">
                     <img class="btn-gestion" src="{{asset('bundles/eltoncore/images/edit.png')}}"/>
                 </a>
                 <a href="{{path('fos_user_security_logout')}}">
@@ -20,7 +20,7 @@
                 </a>
             {% elseif is_granted('ROLE_USER') %}
                 <a href="{{path('fos_user_profile_show')}}">{{user.firstName}} {{user.name | upper}} </a>
-                <a href="{{path('fos_user_profile_show')}}">
+                <a href="{{path('teacher_options')}}">
                     <img class="btn-gestion" src="{{asset('bundles/eltoncore/images/edit.png')}}"/>
                 </a>
                 <a href="{{path('fos_user_security_logout')}}">

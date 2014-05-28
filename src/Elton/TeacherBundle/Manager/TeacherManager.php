@@ -74,5 +74,17 @@ class TeacherManager extends CoreManager
         
         return $teachers;
     }
+    
+    public function isHisDivision($division, $teacher)
+    {
+        foreach($teacher->getDivisions() as $div)
+        {
+            if($div == $division)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

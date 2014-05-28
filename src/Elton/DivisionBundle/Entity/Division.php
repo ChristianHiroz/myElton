@@ -41,7 +41,7 @@ class Division extends User
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="Elton\TeacherBundle\Entity\Teacher", inversedBy="carts")
+     * @ORM\ManyToOne(targetEntity="Elton\TeacherBundle\Entity\Teacher", inversedBy="divisions")
      * @ORM\JoinColumn(nullable=false)
      */
     private $teacher;
@@ -237,7 +237,7 @@ class Division extends User
         {
             $this->selected = true;
         }
-        else
+        else if($selected[0] != $this)
         {
             $this->selected = false;
         }

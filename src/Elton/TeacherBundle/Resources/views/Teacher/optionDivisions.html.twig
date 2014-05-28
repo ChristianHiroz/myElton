@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <center><h1>Réglages</h1></center>
+        <a href="{{path('division_change', {'id' : selectedDivision.id} ) }}">{{selectedDivision.libelle}}</a>
+        <a href="{{path('teacher_update_division', {'id' : selectedDivision.id} )}}">Modifier</a>
+        <br/>
+    {% for division in othersDivisions %}
+        <a href="{{path('division_change', {'id' : division.id} ) }}">{{division.libelle}}</a>
+        <a href="{{path('teacher_update_division', {'id' : division.id} )}}">Modifier</a>
+        <br/>
+    {% endfor %}
+{% endblock %}

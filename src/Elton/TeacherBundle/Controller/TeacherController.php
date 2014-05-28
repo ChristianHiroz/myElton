@@ -36,6 +36,7 @@ class TeacherController extends Controller
             'user' => $user,
         );
     }
+    
     /**
      * Lists all Teacher entities.
      *
@@ -233,7 +234,7 @@ class TeacherController extends Controller
     /**
      * Finds and displays a Teacher entity.
      *
-     * @Route("/{id}", name="teacher_show")
+     * @Route("/show/{id}", name="teacher_show")
      * @Method("GET")
      * @Template()
      */
@@ -242,7 +243,7 @@ class TeacherController extends Controller
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('EltonTeacherBundle:Teacher')->find($id);
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Teacher entity.');
+            throw $this->createNotFoundException('Unable to find Teacher.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -405,5 +406,104 @@ class TeacherController extends Controller
         }
         
         return $this->render('EltonDivisionBundle:Division:new.html.twig', array('form' => $form->createView()));
+    }
+    
+    /**
+     * Update divisions of the teacher
+     * 
+     * @Route("/update/division/{id}", name="teacher_update_division")
+     * @param type $id id of the division
+     */
+    public function editDivisionAction($id)
+    {
+        $user = $this->get('security.context')->getToken()->getUser();
+        $entity = $this->get('elton.division.manager')->getRepository()->find($id);
+        if (!$entity) {
+            throw $this->createNotFoundException('Classe inexistante');
+        }
+        $form = $this->createForm(new DivisionType(), $entity, array(
+            'action' => $this->generateUrl('teacher_update_division', array('id' => $entity->getId())),
+            'method' => 'PUT',
+        ));
+        
+        $deleteForm = $this->createFormBuilder()
+            ->setAction($this->generateUrl('division_delete', array('id' => $id)))
+            ->setMethod('DELETE')
+            ->add('submit', 'submit', array('label' => 'Supprimer'
+                ))->getForm();
+        
+        $form->add('submit', 'submit', array('label' => 'Modifier'));
+        $request = $this->get('request');
+        $form->handleRequest($request);
+        if($request->getMethod() == "DELETE")
+        {
+            var_dump("JAMBON POUR TOUS"); exit;
+        }
+        if($request->getMethod() == "PUT")
+        {
+            if($form->isValid())
+            {
+                $em = $this->get('elton.division.manager');
+                $em->persist($entity);
+
+                return $this->redirect($this->generateUrl("index")); 
+            }  
+        }
+        if($this->get('elton.teacher.manager')->isHisDivision($entity, $user))
+        {
+            return $this->render('EltonDivisionBundle:Division:edit.html.twig', array('edit_form' => $form->createView(), 'delete_form' => $deleteForm->createView()));
+        }
+        else
+        {
+            return $this->redirect($this->generateUrl("index")); 
+        }
+    }
+    
+    /**
+     * @Route("/options", name="teacher_options")
+     * @Template()
+     */
+    public function optionAction()
+    {
+        $user = $this->get('security.context')->getToken()->getUser();
+        if(is_object($user) && $user->hasRole('ROLE_USER'))
+        {
+            $selectedDivision = $this->get('elton.division.manager')->getRepository()->getSelectedDivisionByTeacherId($user->getId());
+            $othersDivisions = $this->get('elton.division.manager')->getRepository()->getNotSelectedDivisionByTeacherId($user->getId());
+            $categorys = $this->get('elton.category.manager')->getRepository()->getCategoryByLevelId($selectedDivision[0]->getLevel()->getId());
+            
+            return array('user' => $user, 
+                         'selectedDivision' => $selectedDivision[0], 
+                         'othersDivisions' => $othersDivisions,
+                         'categorys' => $categorys);          
+        }
+        else
+        {
+            return $this->redirect($this->generateUrl("index")); 
+        }
+    }
+    
+    /**
+     * @Route("/options/divisions", name="teacher_options_divisions")
+     * @Template()
+     */
+    public function optionDivisionsAction()
+    {
+        $user = $this->get('security.context')->getToken()->getUser();
+        if(is_object($user) && $user->hasRole('ROLE_USER'))
+        {
+            $selectedDivision = $this->get('elton.division.manager')->getRepository()->getSelectedDivisionByTeacherId($user->getId());
+            $othersDivisions = $this->get('elton.division.manager')->getRepository()->getNotSelectedDivisionByTeacherId($user->getId());
+            $categorys = $this->get('elton.category.manager')->getRepository()->getCategoryByLevelId($selectedDivision[0]->getLevel()->getId());
+            
+            return array('user' => $user, 
+                         'selectedDivision' => $selectedDivision[0], 
+                         'othersDivisions' => $othersDivisions,
+                         'categorys' => $categorys);          
+        }
+        else
+        {
+            return $this->redirect($this->generateUrl("index")); 
+        }
     }
 }
