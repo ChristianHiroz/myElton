@@ -6,6 +6,9 @@ parameters:
     database_user:     root
     database_password: ~
 
+    elton.user: userpass
+    elton.admin: adminpass
+
     mailer_transport:  smtp
     mailer_host:       127.0.0.1
     mailer_user:       ~
