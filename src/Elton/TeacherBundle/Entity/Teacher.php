@@ -48,6 +48,27 @@ class Teacher extends User
     private $postalCode;
     
     /**
+     * @var string
+     * 
+     * @ORM\Column(name="ecole", type="string", length=255)
+     */
+    private $school;
+    
+    /**
+     * @var string
+     * 
+     * @ORM\Column(name="adresse", type="string", length=255)
+     */
+    private $address;
+    
+    /**
+     * @var string
+     * 
+     * @ORM\Column(name="ville", type="string", length=100)
+     */
+    private $town;
+    
+    /**
      * @ORM\OneToMany(targetEntity="Elton\TeacherBundle\Entity\Cart", mappedBy="teacher", cascade={"remove"})
      */
     private $carts;
@@ -143,6 +164,66 @@ class Teacher extends User
     public function setPostalCode($postalCode)
     {
         $this->postalCode = $postalCode;
+    }
+    
+    /**
+     * Get school
+     * 
+     * @return string
+     */
+    public function getSchool()
+    {
+        return $this->school;
+    }
+    
+    /**
+     * Set school
+     * 
+     * @param string $school
+     */
+    public function setSchool($school)
+    {
+        $this->school = $school;
+    }
+    
+    /**
+     * Get address
+     * 
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+    
+    /**
+     * Set address
+     * 
+     * @param string $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+    
+    /**
+     * Get town
+     * 
+     * @return string
+     */
+    public function getTown()
+    {
+        return $this->town;
+    }
+    
+    /**
+     * Set town
+     * 
+     * @param string $town
+     */
+    public function setTown($town)
+    {
+        $this->town = $town;
     }
     
     /**

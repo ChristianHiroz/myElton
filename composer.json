@@ -24,7 +24,8 @@
         "oyejorge/less.php": "*",
         "sonata-project/admin-bundle": "dev-master",
         "sonata-project/doctrine-orm-admin-bundle": "dev-master",
-        "pugx/multi-user-bundle": "3.0.*@dev"
+        "pugx/multi-user-bundle": "3.0.*@dev",
+        "friendsofsymfony/jsrouting-bundle": "@stable"
     },
     "scripts": {
         "post-install-cmd": [

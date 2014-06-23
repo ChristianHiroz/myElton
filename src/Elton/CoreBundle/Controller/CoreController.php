@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Elton\CoreBundle\Entity\AuthentificationSoapHeader;
 use Elton\CoreBundle\Entity\SessionSoapHeader;
@@ -61,7 +62,7 @@ class CoreController extends Controller
     
     
     /**
-     * @Route("/try/{cp}", name="tryAjax")
+     * @Route("/try/{cp}", name="tryAjax", options={"expose"=true})
      * @Method("GET")
      */
     public function tryAction($cp)
@@ -85,7 +86,6 @@ class CoreController extends Controller
         $xmlDoc->preserveWhiteSpace = false;
         $xmlDoc->formatOutput = true;
         $xmlDoc->loadXML($result);
-        $XMLFileSchools = $xmlDoc->saveXML();
 
         $noms = $xmlDoc->getElementsByTagName("NOM");
         $adresses = $xmlDoc->getElementsByTagName("VOIE");
@@ -110,10 +110,11 @@ class CoreController extends Controller
             {
                 $render['VILLE'][$i] = "";
             }
-            var_dump($render);
             $i = $i + 1;
         }
         
-        return array('result' => $render,);
+        echo (\json_encode($render));
+        
+        return new Response();
     }
 }

@@ -382,7 +382,7 @@ class TeacherController extends Controller
      */
     public function createDivisionAction()
     {
-        $user = $this->get('security.context')->getToken()->getUser();
+        $user = $this->get('etlon.teacher.manager')->getCurrentUser();
         $division = new Division();
         $form = $this->createForm(new DivisionType(), $division, array(
             'action' => $this->generateUrl('teacher_create_division'),
@@ -416,7 +416,7 @@ class TeacherController extends Controller
      */
     public function editDivisionAction($id)
     {
-        $user = $this->get('security.context')->getToken()->getUser();
+        $user = $this->get('etlon.teacher.manager')->getCurrentUser();
         $entity = $this->get('elton.division.manager')->getRepository()->find($id);
         if (!$entity) {
             throw $this->createNotFoundException('Classe inexistante');
@@ -435,10 +435,6 @@ class TeacherController extends Controller
         $form->add('submit', 'submit', array('label' => 'Modifier'));
         $request = $this->get('request');
         $form->handleRequest($request);
-        if($request->getMethod() == "DELETE")
-        {
-            var_dump("JAMBON POUR TOUS"); exit;
-        }
         if($request->getMethod() == "PUT")
         {
             if($form->isValid())
@@ -465,7 +461,7 @@ class TeacherController extends Controller
      */
     public function optionAction()
     {
-        $user = $this->get('security.context')->getToken()->getUser();
+        $user = $this->get('etlon.teacher.manager')->getCurrentUser();
         if(is_object($user) && $user->hasRole('ROLE_USER'))
         {
             $selectedDivision = $this->get('elton.division.manager')->getRepository()->getSelectedDivisionByTeacherId($user->getId());
@@ -489,7 +485,7 @@ class TeacherController extends Controller
      */
     public function optionDivisionsAction()
     {
-        $user = $this->get('security.context')->getToken()->getUser();
+        $user = $this->get('etlon.teacher.manager')->getCurrentUser();
         if(is_object($user) && $user->hasRole('ROLE_USER'))
         {
             $selectedDivision = $this->get('elton.division.manager')->getRepository()->getSelectedDivisionByTeacherId($user->getId());

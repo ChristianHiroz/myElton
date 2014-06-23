@@ -31,7 +31,7 @@ class Lesson
 
     /**
      *
-     * @ORM\ManyToMany(targetEntity="Elton\CoreBundle\Entity\File")
+     * @ORM\ManyToMany(targetEntity="Elton\CoreBundle\Entity\File", inversedBy $lesson)
      */
     private $files;
     
