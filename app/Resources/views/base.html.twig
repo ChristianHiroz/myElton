@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Elton, pour vous servir !{% endblock %}</title>
+        <title>{% block title %}MyElton{% endblock %}</title>
         {% stylesheets filter='lessphp,?cssrewrite' 
                 '%kernel.root_dir%/../vendor/twbs/bootstrap/less/bootstrap.less' 
                 'bundles/eltoncore/less/*'  %}
@@ -48,11 +48,8 @@
         {% block javascripts %}
             <script src="{{ asset('bundles/eltoncore/js/jquery.min.js') }}"></script>
             <script src="{{ asset('bundles/eltoncore/js/bootstrap.min.js') }}"></script>
-            <script type="text/javascript">
-            $(function(){
-               $('[rel="tooltip"]').tooltip();
-            });
-             </script>
+            <script src="{{ asset('bundles/eltoncore/js/main.js') }}"></script>
+            <script src="{{ asset('bundles/eltoncore/js/ajax.js') }}"></script>
         {% endblock %}
     </body>
 </html>

@@ -31,7 +31,7 @@ class TeacherController extends Controller
     public function indexTeacherAction()
     {
         $user = $this->get('security.context')->getUser()->getToken();
-        
+
         return array(
             'user' => $user,
         );
@@ -47,7 +47,7 @@ class TeacherController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
+        
         $entities = $em->getRepository('EltonTeacherBundle:Teacher')->findAll();
 
         return array(

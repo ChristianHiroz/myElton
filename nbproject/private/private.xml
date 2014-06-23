@@ -12,18 +12,12 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/myElton/src/Elton/DivisionBundle/Resources/views/Division/edit.html.twig</file>
-            <file>file:/var/www/myElton/src/Elton/TeacherBundle/Resources/views/Teacher/option.html.twig</file>
-            <file>file:/var/www/myElton/src/Elton/TeacherBundle/Entity/TeacherRepository.php</file>
-            <file>file:/var/www/myElton/src/Elton/DivisionBundle/Form/DivisionType.php</file>
+            <file>file:/var/www/myElton/src/Elton/CoreBundle/Entity/SessionSoapHeader.php</file>
             <file>file:/var/www/myElton/src/Elton/CoreBundle/Controller/CoreController.php</file>
-            <file>file:/var/www/myElton/src/Elton/TeacherBundle/Resources/views/Teacher/optionDivisions.html.twig</file>
-            <file>file:/var/www/myElton/src/Elton/DivisionBundle/Entity/Division.php</file>
-            <file>file:/var/www/myElton/app/Resources/views/headerTeacher.html.twig</file>
-            <file>file:/var/www/myElton/src/Elton/TeacherBundle/Controller/TeacherController.php</file>
-            <file>file:/var/www/myElton/src/Elton/TeacherBundle/Manager/TeacherManager.php</file>
-            <file>file:/var/www/myElton/src/Elton/DivisionBundle/Controller/DivisionController.php</file>
-            <file>file:/var/www/myElton/app/Resources/views/header.html.twig</file>
+            <file>file:/var/www/myElton/src/Elton/TeacherBundle/Form/RegistrationFormType.php</file>
+            <file>file:/var/www/myElton/src/Elton/CoreBundle/Entity/AuthentificationSoapHeader.php</file>
+            <file>file:/var/www/myElton/src/Elton/CoreBundle/Resources/public/js/ajax.js</file>
+            <file>file:/var/www/myElton/src/Elton/TeacherBundle/Resources/views/Registration/register.html.twig</file>
         </group>
     </open-files>
 </project-private>

@@ -3,13 +3,73 @@
 {% block body -%}
     <div class="smallElton"></div>
     {% form_theme form 'EltonCoreBundle:Form:create_field.html.twig' %}
-
-    <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_register">
-        {{ form_widget(form) }}
-        <div>
-            <center>
-            <input type="submit" class="btn btn-warning shadow" value="{{ 'S\'inscrire'|trans }}" />
-            </center>
+   {# <div class="tab-content" role="menu">
+        <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_register">
+        <div class="tab-pane fade in active" id="1" style="position:absolute;">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+            {{ form_label(form.firstName) }}
+            {{ form_widget(form.firstName) }}
+            {{ form_label(form.postalCode) }}
+            {{ form_widget(form.postalCode) }}
+            <div style="text-align:center;">
+                <a class="btn btn-warning shadow" href="#2" data-toggle="tab">Suivant</a>
+            </div>
         </div>
-    </form>
+        <div class="tab-pane fade" id="2" style="position:absolute;">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+            {{ form_label(form.firstName) }}
+            {{ form_widget(form.firstName) }}
+            <div style="text-align:center;">
+                <a class="btn btn-warning shadow" href="#3" data-toggle="tab">Suivant</a>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="3" style="position:absolute;">
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email) }}
+            {{ form_label(form.username) }}
+            {{ form_widget(form.username) }}
+            {{ form_widget(form.plainPassword) }}
+        </div>
+        </form>
+    </div> #}
+              <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_register">
+    <div id="carousel-example-generic" class="" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <div class="carousel-inner">
+    <div class="item active">
+        <CENTER>
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+            {{ form_label(form.firstName) }}
+            {{ form_widget(form.firstName) }}
+        </CENTER>
+      <div class="carousel-caption">
+      </div>
+    </div>
+    <div class="item ">
+        <center>
+            {{ form_label(form.postalCode) }}
+            {{ form_widget(form.postalCode) }}
+        </center>
+      <div class="carousel-caption">
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="" href="#carousel-example-generic" data-slide="prev">
+    <span class=""><<<</span>
+  </a>
+  <a class="" href="#carousel-example-generic" data-slide="next">
+    <span class="">>>></span>
+  </a>
+    </div> </FORM>
 {% endblock %}

@@ -76,10 +76,9 @@ swiftmailer:
 fos_user:
     db_driver: orm 
     firewall_name: main
-    user_class: Elton\TeacherBundle\Entity\Teacher
-    registration:
-        form:
-            type: elton_teacher_registration
+    user_class: Elton\CoreBundle\Entity\User
+    service:
+        user_manager: pugx_user_manager
             
 sonata_block:
     default_contexts: [cms]
@@ -92,3 +91,27 @@ sonata_admin:
     title: myElton
     templates:
         layout: ::standard_layout.html.twig
+        
+pugx_multi_user:
+  users:
+    user_one:
+        entity: 
+          class: Elton\TeacherBundle\Entity\Teacher
+#          factory: 
+        registration:
+          form: 
+            type: Elton\TeacherBundle\Form\RegistrationFormType
+            name: fos_user_registration_form
+            validation_groups:  [Registration, Default]
+          template: EltonTeacherBundle:Registration:register.form.html.twig
+#        profile:
+#          form:
+#            type: Acme\UserBundle\Form\Type\ProfileUserOneFormType
+#            name: fos_user_profile_form
+#            validation_groups:  [Profile, Default] 
+    user_two:
+        entity: 
+          class: Elton\DivisionBundle\Entity\Division
+#        profile:
+#          form: 
+#            type: Acme\UserBundle\Form\Type\ProfileUserTwoFormType

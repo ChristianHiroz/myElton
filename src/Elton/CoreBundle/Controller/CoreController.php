@@ -6,6 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Elton\CoreBundle\Entity\AuthentificationSoapHeader;
+use Elton\CoreBundle\Entity\SessionSoapHeader;
+
 
 /**
  * Core controller
@@ -32,7 +36,7 @@ class CoreController extends Controller
      * @Template()
      */
     public function indexAction()
-    {
+    {                
         $user = $this->get('security.context')->getToken()->getUser();
         if(is_object($user) && $user->hasRole('ROLE_USER'))
         {
@@ -53,5 +57,63 @@ class CoreController extends Controller
         {
             return array('user' => $user,);
         }
+    }
+    
+    
+    /**
+     * @Route("/try/{cp}", name="tryAjax")
+     * @Method("GET")
+     */
+    public function tryAction($cp)
+    {
+        $session = new Session();
+        $render = array ("NOM" => array(), "VOIE" => array(), "VILLE" => array(),);
+        $wsdlName = "https://simple.bisnode.fr/WebServices/GeoLocalisation.asmx?wsdl";
+        $wsNamespace = "http://services.bisnode.fr";
+        $soapClient = new \SoapClient($wsdlName, array("trace" => true));
+        $soapClientHeader = new \SoapHeader($wsNamespace, "AuthentificationSoapHeader", new AuthentificationSoapHeader("PBPWS001", "d4f5b48e-b20d"), true);
+        $soapClient->__setSoapHeaders($soapClientHeader);
+        $IDSession = $soapClient->WSAuthentification()->WSAuthentificationResult;
+        
+        $session->set('idWS', $IDSession);
+	$soapClientHeaderSecond = new \SoapHeader($wsNamespace, "SessionHeader", new SessionSoapHeader($IDSession), true);
+        
+        $soapClient->__setSoapHeaders($soapClientHeaderSecond);
+        
+        $result = $soapClient->GetLocalSchools(array("codePostal" => $cp))->GetLocalSchoolsResult;
+        $xmlDoc = new \DomDocument("1.0", "utf-8");
+        $xmlDoc->preserveWhiteSpace = false;
+        $xmlDoc->formatOutput = true;
+        $xmlDoc->loadXML($result);
+        $XMLFileSchools = $xmlDoc->saveXML();
+
+        $noms = $xmlDoc->getElementsByTagName("NOM");
+        $adresses = $xmlDoc->getElementsByTagName("VOIE");
+        $villes = $xmlDoc->getElementsByTagName("COMMUNE");
+        $i = 1;
+        foreach ($noms as $nom)
+        {
+            $render['NOM'][$i] = $nom->nodeValue;
+            if(isset($adresses->item($i)->nodeValue))
+            {
+                $render['VOIE'][$i] = $adresses->item($i)->nodeValue;
+            }
+            else 
+            {
+                $render['VOIE'][$i] = "";
+            }
+            if(isset($villes->item($i)->nodeValue))
+            {
+                $render['VILLE'][$i] = $villes->item($i)->nodeValue;
+            }
+            else
+            {
+                $render['VILLE'][$i] = "";
+            }
+            var_dump($render);
+            $i = $i + 1;
+        }
+        
+        return array('result' => $render,);
     }
 }

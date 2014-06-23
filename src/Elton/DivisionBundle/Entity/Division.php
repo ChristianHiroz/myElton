@@ -4,7 +4,8 @@ namespace Elton\DivisionBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use FOS\UserBundle\Model\User;
+use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
+use Elton\CoreBundle\Entity\User as User;
 
 /**
  * Class
@@ -13,6 +14,8 @@ use FOS\UserBundle\Model\User;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Elton\DivisionBundle\Entity\DivisionRepository")
  * @ORM\HasLifecycleCallbacks
+ * @UniqueEntity(fields = "username", targetClass = "Elton\CoreBundle\Entity\User", message="fos_user.username.already_used")
+ * @UniqueEntity(fields = "email", targetClass = "Elton\CoreBundle\Entity\User", message="fos_user.email.already_used")
  */
 class Division extends User
 {
@@ -239,7 +242,11 @@ class Division extends User
         }
         else if($selected[0] != $this)
         {
-            $this->selected = false;
+            $selected[0]->selected = false;                
+            $event->getEntityManager()->persist($selected[0]);
+            $event->getEntityManager()->flush();
+            $this->selected = true;
+            $this->enabled = true;
         }
     }
     

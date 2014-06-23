@@ -3,7 +3,8 @@
 namespace Elton\TeacherBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use FOS\UserBundle\Model\User as User;
+use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
+use Elton\CoreBundle\Entity\User as User;
 
 /**
  * Teacher
@@ -11,6 +12,8 @@ use FOS\UserBundle\Model\User as User;
  * @author Christian Hiroz
  * @ORM\Table(name="Teacher")
  * @ORM\Entity(repositoryClass="Elton\TeacherBundle\Entity\TeacherRepository")
+ * @UniqueEntity(fields = "username", targetClass = "Elton\CoreBundle\Entity\User", message="fos_user.username.already_used")
+ * @UniqueEntity(fields = "email", targetClass = "Elton\CoreBundle\Entity\User", message="fos_user.email.already_used")
  */
 class Teacher extends User
 {
