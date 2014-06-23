@@ -57,7 +57,7 @@ file that was distributed with this source code.
             {{ 'Admin'|trans({}, 'SonataAdminBundle') }}
 
             {% if _title is not empty %}
-                {{ _title|raw }}
+                {{ _title }}
             {% else %}
                 {% if action is defined %}
                     -
@@ -107,7 +107,7 @@ file that was distributed with this source code.
                                                         {% if not loop.last  %}
                                                             <li>
                                                                 {% if menu.uri is not empty %}
-                                                                    <a href="{{ menu.uri }}">{{ menu.label|raw }}</a>
+                                                                    <a href="{{ menu.uri }}">{{ menu.label }}</a>
                                                                 {% else %}
                                                                     {{ menu.label }}
                                                                 {% endif %}
@@ -118,7 +118,7 @@ file that was distributed with this source code.
                                                     {% endfor %}
                                                 {% endif %}
                                             {% else %}
-                                                {{ _breadcrumb|raw }}
+                                                {{ _breadcrumb }}
                                             {% endif %}
                                         </ol>
                                     {% endif %}
@@ -204,7 +204,7 @@ file that was distributed with this source code.
                                                 {% if display and (item_count > 0) %}
                                                     <li class="treeview">
                                                         <a href="#">
-                                                            {% if group.icon|default() %}{{ group.icon|raw }}{% endif %}
+                                                            {% if group.icon|default() %}{{ group.icon }}{% endif %}
                                                             <span>{{ group.label|trans({}, group.label_catalogue) }}</span>
                                                             <i class="fa pull-right fa-angle-left"></i>
                                                         </a>
@@ -243,13 +243,13 @@ file that was distributed with this source code.
                                         <nav class="navbar navbar-default" role="navigation">
                                             {% if _navbar_title is not empty %}
                                                 <div class="navbar-header">
-                                                    <span class="navbar-brand">{{ _navbar_title|raw }}</span>
+                                                    <span class="navbar-brand">{{ _navbar_title }}</span>
                                                 </div>
                                             {% endif %}
                                             <div class="container-fluid">
                                                 <div class="navbar-left">
                                                     {% if _tab_menu is not empty %}
-                                                        {{ _tab_menu|raw }}
+                                                        {{ _tab_menu }}
                                                     {% endif %}
                                                 </div>
 
@@ -258,7 +258,7 @@ file that was distributed with this source code.
                                                         <li class="dropdown sonata-actions">
                                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Actions <b class="caret"></b></a>
                                                             <ul class="dropdown-menu" role="menu">
-                                                                {{ _actions|raw }}
+                                                                {{ _actions }}
                                                             </ul>
                                                         </li>
                                                     </ul>
@@ -279,30 +279,30 @@ file that was distributed with this source code.
                                 {% endblock notice %}
 
                                 {% if _preview is not empty %}
-                                    <div class="sonata-ba-preview">{{ _preview|raw }}</div>
+                                    <div class="sonata-ba-preview">{{ _preview }}</div>
                                 {% endif %}
 
                                 {% if _content is not empty %}
-                                    <div class="sonata-ba-content">{{ _content|raw }}</div>
+                                    <div class="sonata-ba-content">{{ _content }}</div>
                                 {% endif %}
 
                                 {% if _show is not empty %}
-                                    <div class="sonata-ba-show">{{ _show|raw }}</div>
+                                    <div class="sonata-ba-show">{{ _show }}</div>
                                 {% endif %}
 
                                 {% if _form is not empty %}
-                                    <div class="sonata-ba-form">{{ _form|raw }}</div>
+                                    <div class="sonata-ba-form">{{ _form }}</div>
                                 {% endif %}
 
                                 {% if _list_table is not empty or _list_filters is not empty %}
                                     <div class="row">
                                         <div class="sonata-ba-list {% if _list_filters|trim %}col-md-10{% else %}col-md-12{% endif %}">
-                                            {{ _list_table|raw }}
+                                            {{ _list_table }}
                                         </div>
 
                                         {% if _list_filters|trim %}
                                             <div class="sonata-ba-filter col-md-2">
-                                                {{ _list_filters|raw }}
+                                                {{ _list_filters }}
                                             </div>
                                         {% endif %}
                                     </div>
