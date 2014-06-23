@@ -2,12 +2,28 @@ myElton project
 
 ===
 
+Done:
+
+-Architecture
+
+-Back Office
+
+-Teacher registration/login
+
+-Division manage for Teacher
+
+-Profil manage for Teacher
+
+-Teachers interface
+
+===
+
 In progress:
 
--back office done
--arch ok
+-Login for Division
 
-TODO
--favicon
--front
--userIHM
+-Lessons
+
+-Divisions interface
+
+-Cart manage
