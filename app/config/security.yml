@@ -14,7 +14,7 @@ security:
             memory:
                 users:
                     user:  { password: %elton.user%, roles: [ 'ROLE_USER' ] }
-                    admin: { password: %etlon.admin%, roles: [ 'ROLE_ADMIN' ] }
+                    admin: { password: %elton.admin%, roles: [ 'ROLE_ADMIN' ] }
 
     firewalls:
         main:
