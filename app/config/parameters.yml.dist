@@ -8,6 +8,7 @@ parameters:
 
     elton.user: userpass
     elton.admin: adminpass
+    session_name: polo
 
     mailer_transport:  smtp
     mailer_host:       127.0.0.1
