@@ -4,6 +4,7 @@ namespace Elton\TeacherBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Elton\DivisionBundle\Form\DivisionType;
 use Elton\DivisionBundle\Entity\Division;
@@ -19,6 +20,7 @@ class TeacherController extends Controller
      * Create a division for the teacher
      * 
      * @Route("/create/division", name="teacher_create_division")
+     * @Method("POST")
      */
     public function createDivisionAction()
     {
