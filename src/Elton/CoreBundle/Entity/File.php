@@ -210,7 +210,10 @@ class File
 
     protected function getUploadRootDir()
     {
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+        $dir = new \ReflectionClass($this);
+        $length = strlen($dir->getFileName()) - 8;
+        $directory = substr($dir->getFileName(), 0, $length);
+        return $directory.'/../../../../../web/'.$this->getUploadDir();
     }
     
     public function __toString() {
