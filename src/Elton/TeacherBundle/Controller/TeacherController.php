@@ -16,7 +16,7 @@ use Elton\DivisionBundle\Entity\Division;
  */
 class TeacherController extends Controller
 {   
-    private function currentUser()
+    private function check()
     {
         $user = $this->get('elton.teacher.manager')->getCurrentUser(); $returnArray = "";
         if(is_object($user) && $user->hasRole('ROLE_USER'))
