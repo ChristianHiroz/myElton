@@ -123,7 +123,7 @@ class TeacherController extends Controller
      */
     public function optionAction()
     {
-        $returnArray = check();
+        $returnArray = $this->check();
 
         if($returnArray=='')
         {
@@ -142,7 +142,7 @@ class TeacherController extends Controller
      */
     public function optionDivisionsAction()
     {
-        $returnArray = check();
+        $returnArray = $this->check();
 
         if($returnArray=='')
         {

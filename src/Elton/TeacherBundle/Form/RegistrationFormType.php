@@ -8,7 +8,7 @@ use FOS\UserBundle\Form\Type\RegistrationFormType as BaseType;
 
 class RegistrationFormType extends BaseType
 {
-    public function getArrayForm()
+    public static function getArrayForm()
     {
         $builder = array();
         return $builder
