@@ -37,7 +37,7 @@ class File
     private $alt;
     
     /**
-     *@ORM\ManyToMany(targetEntity="Elton\LessonBundle\Entity\Lesson", inversedBy="files")
+     *@ORM\ManyToMany(targetEntity="Elton\LessonBundle\Entity\Lesson", mappedBy="files")
      */
     private $lesson;
 
