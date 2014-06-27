@@ -54,6 +54,7 @@ class TeacherController extends Controller
      * Update divisions of the teacher
      * 
      * @Route("/update/division/{id}", name="teacher_update_division")
+     * @Method("POST")
      * @param type $id id of the division
      */
     public function editDivisionAction($id)
@@ -99,6 +100,7 @@ class TeacherController extends Controller
     
     /**
      * @Route("/options", name="teacher_options")
+     * @Method("POST")
      * @Template()
      */
     public function optionAction()
@@ -123,6 +125,7 @@ class TeacherController extends Controller
     
     /**
      * @Route("/options/divisions", name="teacher_options_divisions")
+     * @Method("POST")
      * @Template()
      */
     public function optionDivisionsAction()

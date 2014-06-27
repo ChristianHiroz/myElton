@@ -20,6 +20,7 @@ class CoreController extends Controller
 {
     /**
      * @Route("/stats", name="stats")
+     * @Method({"POST"})
      * @Template("EltonCoreBundle:Core:stats.html.twig")
      */
     public function statistiqueAction()
@@ -34,6 +35,7 @@ class CoreController extends Controller
     
     /**
      * @Route("/", name="index")
+     * @Method({"POST"})
      * @Template()
      */
     public function indexAction()

@@ -37,42 +37,7 @@ class FileController extends Controller
         );
     }
     
-    /**
-     * Lists all File entities with this extension (param)
-     * 
-     * @Route("/filesWithExtension", name="file_by_extension")
-     */
-    public function fileByExtensionAction()
-    {
-        $form = $this->createForm(new ExtensionType());
-        $request = $this->get('request');
-
-        if($request->getMethod() == 'POST')
-        {
-            $form->bind($request);
-            if($form->isValid())
-            {
-                $extension = $form->get('extension')->getData();
-                try
-                {
-                    $files = $this->get('elton.file.manager')->getRepository()->getFilesByExtension($extension);
-                    if($files == null)
-                    {
-                        throw new \Doctrine\ORM\NoResultException();
-                    }
-                }
-                catch(\Doctrine\ORM\NoResultException $ex)
-                {
-                    return $this->render('EltonCoreBundle:Error:BackOffice/notFound.html.twig');
-                }
-                
-                return $this->render('EltonCoreBundle:File:index.html.twig', array(
-                    'entities' => $files));
-            }
-        }
-        
-        return $this->render('EltonCoreBundle:Core:id.html.twig', array('form' => $form->createView()));
-    }
+    
     
     /**
      * Creates a new File entity.

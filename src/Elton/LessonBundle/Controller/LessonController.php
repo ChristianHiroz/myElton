@@ -42,6 +42,7 @@ class LessonController extends Controller
      * To search lesson by Id
      * 
      * @Route("/byId", name="lesson_by_id")
+     * @Method({"POST"})
      * @Template()
      */
     public function searchLessonByIdAction()
@@ -80,6 +81,7 @@ class LessonController extends Controller
      * Show lessons by their category
      * 
      * @Route("/findByCategory", name="lesson_by_category")
+     * @Method({"POST"})
      */
     public function findByCategoryAction()
     {
