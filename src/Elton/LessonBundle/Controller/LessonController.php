@@ -9,8 +9,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Elton\LessonBundle\Entity\Lesson;
 use Elton\LessonBundle\Form\LessonType;
-use Elton\CoreBundle\Form\IntegerType;
-use Elton\LessonBundle\Form\CategoryLibelleType;
 
 /**
  * Lesson controller.
