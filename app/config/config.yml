@@ -89,8 +89,6 @@ sonata_block:
             
 sonata_admin:
     title: myElton
-    templates:
-        layout: ::standard_layout.html.twig
         
 pugx_multi_user:
   users:

@@ -9,17 +9,14 @@ namespace Elton\TeacherBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
 use Elton\CoreBundle\Manager\CoreManager as CoreManager;
-use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 
 class TeacherManager extends CoreManager
 {
     protected $em;
-    private $container;
     
-    public function __construct(EntityManager $em, Container $container)
+    public function __construct(EntityManager $em)
     {
         $this->em = $em;
-        $this->container = $container;
     }
     
     public function getRepository()

@@ -19,23 +19,8 @@ use Elton\CoreBundle\Entity\SessionSoapHeader;
 class CoreController extends Controller
 {
     /**
-     * @Route("/stats", name="stats")
-     * @Method({"POST"})
-     * @Template("EltonCoreBundle:Core:stats.html.twig")
-     */
-    public function statistiqueAction()
-    {
-        $nbTeachers = $this->get('elton.teacher.manager')->getRepository()->count();
-        $nbDivisions = $this->get('elton.division.manager')->getRepository()->count();
-        $nbLessons = $this->get('elton.lesson.manager')->getRepository()->count();
-        $nbFiles = $this->get('elton.file.manager')->getRepository()->count();
-        
-        return array('nbT' => $nbTeachers[1], 'nbD' => $nbDivisions[1], 'nbL' => $nbLessons[1], 'nbF' => $nbFiles[1]);
-    }
-    
-    /**
      * @Route("/", name="index")
-     * @Method({"POST"})
+     * @Method({"GET"})
      * @Template()
      */
     public function indexAction()
