@@ -23,7 +23,7 @@
 	"twbs/bootstrap": "3.1.1",
         "oyejorge/less.php": "*",
         "sonata-project/admin-bundle": "dev-master",
-        "sonata-project/doctrine-orm-admin-bundle": "dev-master",
+        "sonata-project/doctrine-orm-admin-bundle": "2.3.*@dev*",
         "pugx/multi-user-bundle": "3.0.*@dev",
         "friendsofsymfony/jsrouting-bundle": "@stable",
         "sonata-project/seo-bundle": "*"
