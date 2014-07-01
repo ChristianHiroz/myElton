@@ -33,4 +33,43 @@ class CategoryRepository extends EntityRepository
         
         return $result;
     }
+    
+    /**
+     * Get categorys by level name.
+     * @param string $levelName name of the level
+     * @return array Array of categorys
+     * 
+     */
+    public function getCategoryByLevelName($levelName)
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+            'SELECT c
+             FROM EltonLessonBundle:Category c
+             JOIN c.level l
+             WHERE l.libelle = :levelName ');
+        $query->setParameter('levelName', $levelName);
+
+        $result = $query->getResult();
+        
+        return $result;
+    }
+    
+    /**
+     * Get category by name
+     * @param string $name name of the category
+     * @return array Array filled up with one category
+     */
+    public function getCategoryByName($name)
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+                'SELECT c
+                 FROM EltonLessonBundle:Category c
+                 WHERE c.libelle = :name');
+        $query->setParameter('name', $name);
+        $result = $query->getResult();
+        
+        return $result;
+    }
 }

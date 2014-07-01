@@ -1,0 +1,38 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+    {{ parent() }}
+    <div class="container" id="accordion">
+        <div class="row">
+            <div class="col-md-2">
+                <h3 style="left:25%">Plan du site</h3>
+            </div>
+            <div class="col-md-8">
+                <h3 style=" margin-top:75px;">Information sur My Elton</h3>
+                <hr style="width:80%; float:left;"/>
+            </div>
+        </div>
+        <div class="row" style="text-align:left;">
+            <div class="col-md-2"></div>
+            <div class="col-md-3">
+                <h4 style="margin-left:0px!important;">Accueil</h4><br/>
+                <a class="grey" href="{{path('index')}}">My Elton</a><br/>
+                <a class="grey" href="{{path('savoir_plus')}}">En savoir plus</a><br/>
+                <a class="grey" href="{{path('a_propos')}}">À propos</a><br/>
+                <a class="grey" href="{{path('faq')}}">Foire aux questions</a>
+            </div>
+            <div class="col-md-3">
+                <h4 style="margin-left:0px!important;">Contact</h4><br/>
+                <a class="grey" href="mailto:elton@playbac.fr">Email</a><br/>
+                <a class="grey" href="http://twitter.com/my_elton/">Twitter</a><br/>
+                <a class="grey" href="https://plus.google.com/113317395844460135000/posts">Google+</a>
+            </div>
+            <div class="col-md-3">
+                <h4 style="margin-left:0px!important;">Ce que nous faisons</h4><br/>
+                <a class="grey" href="http://www.playbacpresse.fr/">Play Bac Presse</a><br/>
+                <a class="grey" href="http://www.monquotidien.fr/">Mon quotidien</a><br/>
+                <a class="grey" href="http://www.lepetitquotidien.fr/">Le petit quotidien</a><br/>
+                <a class="grey" href="http://www.lesincollables.com/">Les incollables</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

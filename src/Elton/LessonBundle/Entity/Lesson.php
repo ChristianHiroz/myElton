@@ -28,37 +28,22 @@ class Lesson
      * @ORM\Column(name="libelle", type="string", length=100)
      */
     private $libelle;
-
-    /**
-     *
-     * @ORM\ManyToMany(targetEntity="Elton\CoreBundle\Entity\File", inversedBy="lesson")
-     */
-    private $files;
-    
-
-    /**
-     * @ORM\ManyToMany(targetEntity="Elton\LessonBundle\Entity\Competance")
-     */
-    private $competances;
     
     /**
      *
-     * @ORM\ManyToOne(targetEntity="Elton\CoreBundle\Entity\Level")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="Elton\CoreBundle\Entity\File", inversedBy="lesson")
      */
-    private $level;
+    private $file;
     
     /**
      *
-     * @ORM\ManyToOne(targetEntity="Elton\LessonBundle\Entity\Category", inversedBy="lessons")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToMany(targetEntity="Elton\LessonBundle\Entity\Activity", inversedBy="lessons")
      */
-    private $category;
+    private $activitys;
     
     public function __construct()
     {
-        $this->competances = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->files = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->activity = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -95,122 +80,62 @@ class Lesson
     }
 
     /**
-     * Get files
+     * Get activitys
      * 
      * @return Doctrine\Common\Collections\Collection
      */
-    public function getFiles()
+    public function getActivitys()
     {
-        return $this->files;
+        return $this->activitys;
     }
     
     /**
-     * Add file
+     * Add activity
+     * 
+     * @param Elton\LessonBundle\Entity\Activity $activity
+     */
+    public function addActivity(\Elton\LessonBundle\Entity\Activity $activity)
+    {
+        $this->activitys[] = $activity;
+    }
+    
+    /**
+     * Set activitys
+     * 
+     * @param Elton\LessonBundle\Entity\Activity $activitys
+     */
+    public function setActivitys(\Elton\LessonBundle\Entity\Activity $activitys)
+    {
+        $this->activitys[] = $activitys;
+    }
+    
+    /**
+     * Remove activity
+     * 
+     * @param Elton\LessonBundle\Entity\Activity $activity
+     */
+    public function removeActivity(\Elton\LessonBundle\Entity\Activity $activity)
+    {
+        $this->activitys->removeElement($activity);
+    }
+    
+    /**
+     * Get file
+     * 
+     * @return Elton\CoreBundle\Entity\File
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+    
+    /**
+     * Set file
      * 
      * @param Elton\CoreBundle\Entity\File $file
      */
-    public function addFile(\Elton\CoreBundle\Entity\File $file)
+    public function setFile(\Elton\CoreBundle\Entity\File $file)
     {
-        $this->files[] = $file;
-    }
-    
-    /**
-     * Set files
-     * 
-     * @param Elton\CoreBundle\Entity\File $files
-     */
-    public function setFiles(\Elton\CoreBundle\Entity\File $files)
-    {
-        $this->files[] = $files;
-    }
-    
-    /**
-     * Remove file
-     * 
-     * @param Elton\CoreBundle\Entity\File $file
-     */
-    public function removeFile(\Elton\CoreBundle\Entity\File $file)
-    {
-        $this->files->removeElement($file);
-    }
-    
-    /**
-     * Get competances
-     * 
-     * @return Doctrine\Common\Collections\Collection
-     */
-    public function getCompetances()
-    {
-        return $this->competances;
-    }
-    
-    /**
-     * Add competances
-     * 
-     * @param Elton\LessonBundle\Entity\Competance $competances
-     */
-    public function setCompetances(\Elton\LessonBundle\Entity\Competance $competances)
-    {
-        $this->competances[] = $competances;
-    }
-    
-    /**
-     * Set competance
-     * 
-     * @param Elton\LessonBundle\Entity\Competance $competance
-     */
-    public function addCompetance(\Elton\LessonBundle\Entity\Competance $competance)
-    {
-        $this->competances[] = $competance;
-    }
-    
-    /**
-     * Remove competance
-     * 
-     * @param Elton\LessonBundle\Entity\Competance $competance
-     */
-    public function removeCompetance(\Elton\LessonBundle\Entity\Competance $competance)
-    {
-        $this->competances->removeElement($competance);
-    }
-    
-    /**
-     * Get level
-     * 
-     * @return Elton\CoreBundle\Entity\Level
-     */
-    public function getLevel()
-    {
-        return $this->level;
-    }
-    
-    /**
-     * Set level
-     * 
-     * @param Elton\CoreBundle\Entity\Level $level
-     */
-    public function setLevel(\Elton\CoreBundle\Entity\Level $level)
-    {
-        $this->level = $level;
-    }
-    
-    /**
-     * Get category
-     * 
-     * @return Elton\LessonBundle\Entity\Category
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-    
-    /**
-     * Set category
-     * 
-     * @param Elton\LessonBundle\Entity\Category $category
-     */
-    public function setCategory(\Elton\LessonBundle\Entity\Category $category)
-    {
-        $this->category = $category;
+        $this->file = $file;
     }
 }

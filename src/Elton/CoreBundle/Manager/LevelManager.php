@@ -9,7 +9,8 @@ namespace Elton\CoreBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
 
-class LevelManager extends CoreManager{
+class LevelManager extends CoreManager
+{
     protected $em;
     
     public function __construct(EntityManager $em)

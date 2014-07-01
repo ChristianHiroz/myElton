@@ -31,13 +31,12 @@ class Category
     /**
      *
      * @ORM\ManyToOne(targetEntity="Elton\CoreBundle\Entity\Level")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $level;
     
     /**
      * 
-     * @ORM\OneToMany(targetEntity="Elton\LessonBundle\Entity\Lesson", mappedBy="category")
+     * @ORM\ManyToMany(targetEntity="Elton\LessonBundle\Entity\Lesson", mappedBy="category")
      */
     private $lessons;
 
@@ -85,6 +84,16 @@ class Category
         $this->lessons = $lessons;
     }
 
+    /**
+     * add lesson
+     *
+     * @param Elton\LessonBundle\Entity\Lesson $lesson
+     */
+    public function addLesson(\Elton\LessonBundle\Entity\Lesson $lesson)
+    {
+        $this->lessons[] = $lesson;
+    }
+    
     /**
      * Get lessons
      *

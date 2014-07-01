@@ -56,6 +56,7 @@ class DivisionController extends Controller
      * To search division by teacher Id
      * 
      * @Route("/byTeacherId", name="division_by_teacherId")
+     * @Method("PUT")
      * @Template()
      */
     public function searchByTeacherIdAction()
@@ -307,6 +308,7 @@ class DivisionController extends Controller
      * 
      * @param int $id The entity id
      * @Route("/change/{id}", name="division_change")
+     * @Method({"DELETE"})
      */
     public function divisionChangeAction($id)
     {

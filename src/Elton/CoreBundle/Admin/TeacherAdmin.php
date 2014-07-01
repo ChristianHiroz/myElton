@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Elton\TeacherBundle\Form\RegistrationFormType;
 
 class TeacherAdmin extends Admin
 {
@@ -25,8 +26,7 @@ class TeacherAdmin extends Admin
             ->add('firstName', 'text', array('label' => 'Prénom', 'attr' => array('placeholder' => 'Entrez votre prénom')))
             ->add('postalCode', 'text', array('label' => 'Code postal', 'attr' => array('placeholder' => 'Entrez le code postal de votre école')))
             ->add('email', 'email', array('label' => 'Adresse email', 'attr'=> array('placeholder' => 'Entrez votre adresse email')))
-        
-            ;
+        ;
     }
 
     // Fields to be shown on filter forms

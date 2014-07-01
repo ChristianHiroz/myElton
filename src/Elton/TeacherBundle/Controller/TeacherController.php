@@ -4,6 +4,7 @@ namespace Elton\TeacherBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Elton\DivisionBundle\Form\DivisionType;
 use Elton\DivisionBundle\Entity\Division;
@@ -15,14 +16,33 @@ use Elton\DivisionBundle\Entity\Division;
  */
 class TeacherController extends Controller
 {   
+    private function check()
+    {
+        $user = $this->get('security.context')->getToken()->getUser();
+        if(is_object($user) && $user->hasRole('ROLE_USER'))
+        {
+            $selectedDivision = $this->get('elton.division.manager')->getRepository()->getSelectedDivisionByTeacherId($user->getId());
+            $othersDivisions = $this->get('elton.division.manager')->getRepository()->getNotSelectedDivisionByTeacherId($user->getId());
+            $categorys = $this->get('elton.category.manager')->getRepository()->getCategoryByLevelId($selectedDivision[0]->getLevel()->getId());
+            
+            $returnArray =  array('user' => $user, 
+                         'selectedDivision' => $selectedDivision[0], 
+                         'othersDivisions' => $othersDivisions,
+                         'categorys' => $categorys);          
+        }
+        
+        return $returnArray;
+    }
+
     /**
      * Create a division for the teacher
      * 
      * @Route("/create/division", name="teacher_create_division")
+     * @Method("POST")
      */
     public function createDivisionAction()
     {
-        $user = $this->get('elton.teacher.manager')->getCurrentUser();
+        $user = $this->get('security.context')->getToken()->getUser();
         $division = new Division();
         $form = $this->createForm(new DivisionType(), $division, array(
             'action' => $this->generateUrl('teacher_create_division'),
@@ -52,11 +72,12 @@ class TeacherController extends Controller
      * Update divisions of the teacher
      * 
      * @Route("/update/division/{id}", name="teacher_update_division")
+     * @Method("POST")
      * @param type $id id of the division
      */
     public function editDivisionAction($id)
     {
-        $user = $this->get('elton.teacher.manager')->getCurrentUser();
+        $user = $this->get('security.context')->getToken()->getUser();
         $entity = $this->get('elton.division.manager')->getRepository()->find($id);
         if (!$entity) {
             throw $this->createNotFoundException('Classe inexistante');
@@ -97,49 +118,39 @@ class TeacherController extends Controller
     
     /**
      * @Route("/options", name="teacher_options")
+     * @Method("GET")
      * @Template()
      */
     public function optionAction()
     {
-        $user = $this->get('etlon.teacher.manager')->getCurrentUser();
-        if(is_object($user) && $user->hasRole('ROLE_USER'))
+        $returnArray = $this->check();
+
+        if($returnArray=='')
         {
-            $selectedDivision = $this->get('elton.division.manager')->getRepository()->getSelectedDivisionByTeacherId($user->getId());
-            $othersDivisions = $this->get('elton.division.manager')->getRepository()->getNotSelectedDivisionByTeacherId($user->getId());
-            $categorys = $this->get('elton.category.manager')->getRepository()->getCategoryByLevelId($selectedDivision[0]->getLevel()->getId());
-            
-            return array('user' => $user, 
-                         'selectedDivision' => $selectedDivision[0], 
-                         'othersDivisions' => $othersDivisions,
-                         'categorys' => $categorys);          
+            return $this->redirect($this->generateUrl("index")); 
         }
         else
         {
-            return $this->redirect($this->generateUrl("index")); 
+            return $returnArray;
         }
     }
     
     /**
      * @Route("/options/divisions", name="teacher_options_divisions")
+     * @Method("GET")
      * @Template()
      */
     public function optionDivisionsAction()
     {
-        $user = $this->get('etlon.teacher.manager')->getCurrentUser();
-        if(is_object($user) && $user->hasRole('ROLE_USER'))
+        $returnArray = $this->check();
+
+        if($returnArray=='')
         {
-            $selectedDivision = $this->get('elton.division.manager')->getRepository()->getSelectedDivisionByTeacherId($user->getId());
-            $othersDivisions = $this->get('elton.division.manager')->getRepository()->getNotSelectedDivisionByTeacherId($user->getId());
-            $categorys = $this->get('elton.category.manager')->getRepository()->getCategoryByLevelId($selectedDivision[0]->getLevel()->getId());
-            
-            return array('user' => $user, 
-                         'selectedDivision' => $selectedDivision[0], 
-                         'othersDivisions' => $othersDivisions,
-                         'categorys' => $categorys);          
+            return $this->redirect($this->generateUrl("index")); 
         }
         else
         {
-            return $this->redirect($this->generateUrl("index")); 
+            return $returnArray;
         }
     }
 }

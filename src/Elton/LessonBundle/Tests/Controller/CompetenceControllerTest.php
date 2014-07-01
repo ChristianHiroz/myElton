@@ -4,7 +4,7 @@ namespace Elton\LessonBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class CompetanceControllerTest extends WebTestCase
+class CompetenceControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()

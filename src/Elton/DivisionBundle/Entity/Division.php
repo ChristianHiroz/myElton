@@ -57,9 +57,9 @@ class Division extends User
     private $level;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Elton\LessonBundle\Entity\Competance")
+     * @ORM\ManyToMany(targetEntity="Elton\LessonBundle\Entity\Competence")
      */
-    private $competances;
+    private $competences;
     
     /**
      * @ORM\OneToOne(targetEntity="Elton\TeacherBundle\Entity\Cart", mappedBy="division", cascade="persist")
@@ -69,7 +69,7 @@ class Division extends User
     public function __construct()
     {
         parent::__construct();
-        $this->competances = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->competences = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -180,33 +180,33 @@ class Division extends User
     }
     
     /**
-     * Get competances
+     * Get competences
      * 
      * @return Doctrine\Common\Collections\Collection
      */
-    public function getCompetances()
+    public function getCompetences()
     {
-        return $this->competances;
+        return $this->competences;
     }
     
     /**
-     * Add competance
+     * Add competence
      * 
-     * @param Elton\LessonBundle\Entity\Competance $competance
+     * @param Elton\LessonBundle\Entity\Competence $competence
      */
-    public function addCompetance(\Elton\LessonBundle\Entity\Competance $competance)
+    public function addCompetence(\Elton\LessonBundle\Entity\Competence $competence)
     {
-        $this->competances[] = $competance;
+        $this->competences[] = $competence;
     }
     
     /**
-     * Remove competance
+     * Remove competence
      * 
-     * @param Elton\LessonBundle\Entity\Competance $competance
+     * @param Elton\LessonBundle\Entity\Competence $competence
      */
-    public function removeCompetance(\Elton\LessonBundle\Entity\Competance $competance)
+    public function removeCompetence(\Elton\LessonBundle\Entity\Competence $competence)
     {
-        $this->competances->removeElement($competance);
+        $this->competences->removeElement($competence);
     }
     
     /**

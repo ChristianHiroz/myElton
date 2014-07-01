@@ -21,9 +21,9 @@ class LessonType extends AbstractType
                                           'label' => 'Fichiers',
                                           'expanded' => false,
                                           'multiple' => true))
-            ->add('competances', 'entity', array('class' => 'EltonLessonBundle:Competance', 
+            ->add('competences', 'entity', array('class' => 'EltonLessonBundle:Competence', 
                                                  'property' => 'libelle',
-                                                 'label' => 'Compétances',
+                                                 'label' => 'Compétences',
                                                  'expanded' => false,
                                                  'multiple' => true))
             ->add('level', 'entity', array('class' => 'EltonCoreBundle:Level', 

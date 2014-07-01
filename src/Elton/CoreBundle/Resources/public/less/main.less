@@ -1,11 +1,4 @@
-/* 
-    Created on : 17 avr. 2014, 11:03:32
-    Author     : Christian Hiroz
-*/
-
-@import 'variable.less';
-
-h2, h3, h4 {font-weight:normal !important;}
+h1, h2, h3, h4 {font-weight:normal !important;}
 
 h4{margin-left:5px!important;}
 
@@ -13,11 +6,21 @@ hr {color: grey;background: grey; width: 95%; height: 2px!important;}
 
 a, a:hover, a:focus{text-decoration:none!important;}
 
-h3 { margin-top:-5px !important;}
+a.grey{ color:grey !important;}
+
+.buttons{ right:2%; top:15px; position:absolute;}
+
+.divisionButton {position:absolute; text-align:center;}
+
+.menuBarTeacher{background: #F29400; height:40px !important; position:relative; margin-top:-40px;}
+
+h1 { margin-top:-5px !important;  font-size:24px!important;}
 
 .justify{ text-align:justify; padding-left:60px; }
 
-body {font-family:helvetica, trebuchet, sans-serif !important;font-size:14px;min-height:100%; width:100%; }
+body {font-family:helvetica, trebuchet, sans-serif !important;font-size:14px;min-height:100%; width:100%; overflow-x: hidden ; position: relative !important;}
+
+html { width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden ; position: relative !important;}
  
 p {color:grey;margin-left:36px !important; text-align:inherit;}
 
@@ -28,6 +31,8 @@ img.resizePlume{width:auto; height:20px; margin-left:5px;opacity: 0.7;filter: al
 img.resizeRes{width:auto; height:40px; }
 
 img.resizeCons{width:auto; height:160px; }
+
+img.resizeButton{width:auto; height:96px; }
 
 img.resizeSpan2{width:auto;height:25px; padding-bottom:7px; margin-left:10px; margin-bottom:15px; margin-right:7px;}
 
@@ -49,7 +54,7 @@ img.resizeSpan{width:auto;height:30px; margin-top:-14px;}
 
 .playbac {margin:15px 0px 0px 15px; position:absolute;}
 
-.cons { margin-left:230px; margin-top:25px; position:absolute; float:left;}
+.cons { position:absolute; top:15px; right:11%;}
 
 .menuBar {background: #F29400; height:40px !important;}
 
@@ -79,13 +84,24 @@ img.resizeSpan{width:auto;height:30px; margin-top:-14px;}
 
 *+html .centered-pills ul.nav-pills { display:inline; } /* IE7 */
 
-.footer{margin-top:75px;}
+a.linkSiteMap{color:grey;}
+
+a.linkSiteMap:hover{color:grey; font-weight:bold;}
+
+.footer{margin-top:75px; position:absolute;
+bottom:0px; width:100%;}
 
 .centeredFooter{margin-bottom:25px;}
 
 .rightFooter{float:right!important; text-align:right!important;}
 
 .footerText{ text-align:center; margin-top: 35px;}
+
+.leftFooter{margin-left:30px}
+
+input[type=submit]{background:url(../images/envoyer.png) no-repeat;width:140px;height: 75px;cursor: pointer;border:0;margin-left:15px;}
+
+.submit{background:url(../images/fermer.png) no-repeat;width:140px;height: 75px;cursor: pointer;border:0;margin-left:15px;}
 
 .row{width:100%!important;}
 .container {width: 100%!important;}
@@ -102,7 +118,7 @@ img.resizeSpan{width:auto;height:30px; margin-top:-14px;}
   .divider-vertical{height:50px;}
   .rightFooter{ text-align:center!important; margin-bottom:25px;}
   .row{margin-left:0px !important;}
-  .leftFooter{margin-bottom:25px;}
+  .leftFooter{margin-bottom:25px; margin-left:0px !important}
   hr{width:75%;}
   .sectionH2bis{font-size:22px!important; margin-left:-5px;}
   .spanFAQ{margin-bottom:75px!important;}
@@ -111,24 +127,23 @@ img.resizeSpan{width:auto;height:30px; margin-top:-14px;}
 
 
 @media screen and (max-width: 993px){
-  .leftFooter, .rightFooter{float:none!important; text-align:center!important; margin-bottom:25px;}
   .sectionH2bis{font-size:22px!important; margin-left:-5px;}
   .spanFAQ{margin-bottom:75px!important;}
   .row{margin-left:0px !important;}
+    .cons { right: 14%;}
 }
 
 @media screen and (min-width:1067px) and (max-width:1225px){
-  .cons {margin-left:180px;}
   img.resizeCons{height:140px;}
+  .cons { right: 12%;}
 }
 
 @media screen and (min-width:900px) and (max-width:1067px){
-  .cons {margin-left:130px;}
   img.resizeCons{height:120px;}
+  .cons { right: 13%;}
 }
 
 @media screen and (min-width:700px) and (max-width:900px){
-  .cons {margin-left:75px;}
   img.resizeCons{height:120px;}
+    .cons { right: 15%;}
 }
-

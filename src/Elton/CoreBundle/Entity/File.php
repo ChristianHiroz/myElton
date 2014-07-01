@@ -37,9 +37,9 @@ class File
     private $alt;
     
     /**
-     *@ORM\ManyToMany(targetEntity="Elton\LessonBundle\Entity\Lesson", inversedBy="files")
+     *@ORM\ManyToMany(targetEntity="Elton\LessonBundle\Entity\Activity", mappedBy="files")
      */
-    private $lesson;
+    private $activitys;
 
     private $file; 
     private $tempFilename;
@@ -102,23 +102,23 @@ class File
     }
     
     /**
-     * Get lesson
+     * Get lessons
      * 
      * @return Elton\LessonBundle\Entity\Lesson
      */
-    public function getLesson()
+    public function getLessons()
     {
-        return $this->lesson;
+        return $this->lessons;
     }
     
     /**
-     * Set lesson
+     * Set lessons
      * 
-     * @param Elton\LessonBundle\Entity\Lesson $lesson
+     * @param Elton\LessonBundle\Entity\Lesson $lessons
      */
-    public function setLesson(\Elton\LessonBundle\Entity\Lesson $lesson)
+    public function setLesson(\Elton\LessonBundle\Entity\Lesson $lessons)
     {
-        $this->lesson = $lesson;
+        $this->lessons = $lessons;
     }
     
 

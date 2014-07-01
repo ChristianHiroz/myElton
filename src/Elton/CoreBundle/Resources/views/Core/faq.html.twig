@@ -1,0 +1,46 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+    {{ parent() }}
+    <div class="container" id="accordion">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-7">
+                <h2 class="sectionH2bis" style="margin-top:60px">
+                    <img class="resizeSpan spanFAQ" style="padding-right: 25px; float:left; margin-bottom:20px; margin-top:-8px;" src="{{asset('bundles/eltoncore/images/gris.jpg')}}"/>
+                    <a data-toggle="collapse" data-parent="#accordion" style="padding-right:10px; color:black;" href="#collapseOne">Je n’ai pas d’outils numérique en classe : puis-je tout de même utiliser My Elton ?</a>
+                </h2>
+                <p id="collapseOne" class="panel-collapse screenMl20 collapse"><b>Oui ! </b>La méthode My Elton s’adapte aux support de cours dont vous disposez : tablettes numériques, TBI, vidéo-projecteur, ordinateur, tableau ou même… les mains ! My Elton propose en effet pour chaque notion de cours et chaque activité 3 types de ressources, qui permettent d’embrasser l’ensemble des possibilités d’animation de cours. Il y a donc toujours des activités à faire sans aucun matériel numérique et sans écran </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-7">
+                <h2 class="sectionH2bis">
+                    <img class="resizeSpan spanFAQ" style="padding-right: 25px;  float:left; margin-bottom:20px; margin-top:-8px;" src="{{asset('bundles/eltoncore/images/turquoise.jpg')}}"/>
+                    <a data-toggle="collapse" data-parent="#accordion" style="padding-right:10px; color:black;" href="#collapseTwo">Pourquoi proposer les ressources pédagogiques uniquement sur Internet ? </a>
+                </h2>
+                <p id="collapseTwo" class="panel-collapse screenMl20 collapse ">Nous voyons plusieurs intérêts et avantages à proposer la méthode en ligne. Le premier est clairement de pouvoir immédiatement s’adapter aux supports numériques, en proposant des ressources multimédia. Ensuite, cela permet de mettre à jour très simplement le contenu, et ainsi de pouvoir rebondir rapidement sur les retours effectués par les utilisateurs. C’est aussi une économie de papier et de temps passé à la photocopieuse : cette méthode permet de ne rien imprimer du tout, ou d’imprimer directement à partir du fichier, ce qui donnera une impression de meilleur qualité qu’une photocopie. Enfin, cela offre la possibilité aux élèves d’accéder en ligne au contenu choisi par le professeur et de se passer de livre ! </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-7">
+                <h2 class="sectionH2bis">
+                    <img class="resizeSpan spanFAQ" style="padding-right: 25px;  float:left; margin-bottom:20px; margin-top:-8px;" src="{{asset('bundles/eltoncore/images/noir.jpg')}}"/>
+                    <a data-toggle="collapse" data-parent="#accordion" style="padding-right:10px; color:black;" href="#collapseThree">La méthode est-elle complète aujourd’hui ?</a>
+                </h2>
+                <p id="collapseThree" class="panel-collapse screenMl20 collapse "><b>Oui et non !</b> Les notions de cours à aborder sont toutes présentes et utilisables dès la première connexion. Ce sont les ressources qui demandent un temps de développement supplémentaire qui ne sont pas encore disponibles : vidéos, jeux interactifs, quizz, etc. Leur mise en ligne est prévue pour le début d’année 2015 </p>
+            </div>
+        </div>
+        <div class="row">
+        <div class="col-md-3"></div>
+            <div class="col-md-7">
+                <h2 class="sectionH2bis">
+                    <img class="resizeSpan spanFAQ" style="padding-right: 25px;  float:left; margin-bottom:20px; " src="{{asset('bundles/eltoncore/images/bleuclair.jpg')}}"/>
+                    <a data-toggle="collapse" data-parent="#accordion" style="padding-right:10px; color:black;" href="#collapseFour">Comment s’abonner ? Se connecter ?</a>
+                </h2>
+                <p id="collapseFour" class="panel-collapse screenMl20 collapse ">C’est en haut à droite de votre écran que vous trouverez les boutons d’inscription et de connexion à votre espace abonné. Vous serez alors guidé par les indications données à l’écran. À l’abonnement, vous pourrez payer directement ou demander à recevoir une facture. Dans ce dernier cas, l’accès à la méthode sera limitée jusqu’à réception du paiement </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
