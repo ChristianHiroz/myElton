@@ -36,14 +36,14 @@ class Cart
     private $settedToDivision; //mean this is the cart setted to the division
     
     /**
-     * @ORM\Column(name="lessons", type="array")
-     * @ORM\ManyToMany(targetEntity="Elton\LessonBundle\Entity\Lesson", mappedBy="id")
+     * @ORM\Column(name="activity", type="array")
+     * @ORM\ManyToMany(targetEntity="Elton\LessonBundle\Entity\Activity")
      */
-    private $lessons;
+    private $activitys;
     
     public function __construct()
     {
-        $this->lessons = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->activitys = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -107,32 +107,32 @@ class Cart
     }
     
     /**
-     * Get lessons
+     * Get activitys
      * 
      * @return Doctrine\Common\Collections\Collection
      */
-    public function getLessons()
+    public function getActivitys()
     {
-        return $this->lessons;
+        return $this->activitys;
     }
     
     /**
-     * Add lesson
+     * Add activity
      * 
-     * @param Elton\LessonBundle\Entity\Lesson $lesson
+     * @param Elton\LessonBundle\Entity\Activity $activity
      */
-    public function addLesson(\Elton\LessonBundle\Entity\Lesson $lesson)
+    public function addActivity(\Elton\LessonBundle\Entity\Activity $activity)
     {
-        $this->lessons[] = $lesson;
+        $this->activitys[] = $activity;
     }
     
     /**
-     * Remove lesson
+     * Remove activity
      * 
-     * @param Elton\LessonBundle\Entity\Lesson $lesson
+     * @param Elton\LessonBundle\Entity\Activity $activity
      */
-    public function removeLesson(\Elton\LessonBundle\Entity\Lesson $lesson)
+    public function removeLesson(\Elton\LessonBundle\Entity\Activity $activity)
     {
-        $this->lessons->removeElement($lesson);
+        $this->activitys->removeElement($activity);
     }
 }

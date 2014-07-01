@@ -35,10 +35,5 @@ class TeacherManager extends CoreManager
         }
         return false;
     }
-    
-    public function getCurrentUser()
-    {
-        return $this->get('security.context')->getToken()->getUser();
-    }
 
 }

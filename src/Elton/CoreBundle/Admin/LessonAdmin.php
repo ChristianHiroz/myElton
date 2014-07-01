@@ -14,8 +14,9 @@ class LessonAdmin extends Admin
     {
         $formMapper
             ->add('libelle')
+            ->add('file', 'sonata_type_model', array('label' => 'Photo de l\'activité'))
             ->add('files', 'sonata_type_model', array('label' => 'Fichiers','by_reference' => false,'multiple' => true,))
-            ->add('competances', 'sonata_type_model', array('label' => 'Compétances de l\'activité', 'by_reference' => false,'multiple' => true,))
+            ->add('competences', 'sonata_type_model', array('label' => 'Compétences de l\'activité', 'by_reference' => false,'multiple' => true,))
             ->add('level', 'sonata_type_model', array('label' => 'Niveau de l\'activité'))
             ->add('category', 'sonata_type_model', array('label' => 'Niveau de la classe'))
             ;
@@ -25,7 +26,7 @@ class LessonAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('libelle')->add('competances')->add('level')->add('category')
+            ->add('libelle')->add('competences')->add('level')->add('category')
         ;
     }
 
@@ -33,7 +34,7 @@ class LessonAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('libelle')->add('competances')->add('level')->add('category')
+            ->add('libelle')->add('competences')->add('level')->add('category')
         ;
     }
 }

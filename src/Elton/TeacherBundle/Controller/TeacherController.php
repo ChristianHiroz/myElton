@@ -18,7 +18,7 @@ class TeacherController extends Controller
 {   
     private function check()
     {
-        $user = $this->get('elton.teacher.manager')->getCurrentUser(); $returnArray = "";
+        $user = $this->get('security.context')->getToken()->getUser();
         if(is_object($user) && $user->hasRole('ROLE_USER'))
         {
             $selectedDivision = $this->get('elton.division.manager')->getRepository()->getSelectedDivisionByTeacherId($user->getId());
@@ -42,7 +42,7 @@ class TeacherController extends Controller
      */
     public function createDivisionAction()
     {
-        $user = $this->get('elton.teacher.manager')->getCurrentUser();
+        $user = $this->get('security.context')->getToken()->getUser();
         $division = new Division();
         $form = $this->createForm(new DivisionType(), $division, array(
             'action' => $this->generateUrl('teacher_create_division'),
@@ -77,7 +77,7 @@ class TeacherController extends Controller
      */
     public function editDivisionAction($id)
     {
-        $user = $this->get('elton.teacher.manager')->getCurrentUser();
+        $user = $this->get('security.context')->getToken()->getUser();
         $entity = $this->get('elton.division.manager')->getRepository()->find($id);
         if (!$entity) {
             throw $this->createNotFoundException('Classe inexistante');

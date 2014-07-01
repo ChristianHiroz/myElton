@@ -6,7 +6,7 @@
 
     <parameters>
         <parameter key="elton.lesson_manager.class">Elton\LessonBundle\Manager\LessonManager</parameter>
-        <parameter key="elton.competance_manager.class">Elton\LessonBundle\Manager\CompetanceManager</parameter>
+        <parameter key="elton.competence_manager.class">Elton\LessonBundle\Manager\CompetenceManager</parameter>
         <parameter key="elton.category_manager.class">Elton\LessonBundle\Manager\CategoryManager</parameter>
     </parameters>
     
@@ -14,7 +14,7 @@
         <service id="elton.lesson.manager" class="%elton.lesson_manager.class%">
             <argument type="service" id="doctrine.orm.entity_manager"/>            
         </service>        
-        <service id="elton.competance.manager" class="%elton.competance_manager.class%">
+        <service id="elton.competence.manager" class="%elton.competence_manager.class%">
             <argument type="service" id="doctrine.orm.entity_manager"/>            
         </service>
         <service id="elton.category.manager" class="%elton.category_manager.class%">

@@ -13,101 +13,39 @@ use Elton\LessonBundle\Form\CategoryType;
 /**
  * Category controller.
  *
- * @Route("/category")
+ * @Route("/")
  */
 class CategoryController extends Controller
 {
-
-    /**
-     * Lists all Category entities.
-     *
-     * @Route("/", name="category")
-     * @Method("GET")
-     * @Template()
-     */
-    public function indexAction()
+    private function check()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('EltonLessonBundle:Category')->findAll();
-
-        return array(
-            'entities' => $entities,
-        );
-    }
-    /**
-     * Creates a new Category entity.
-     *
-     * @Route("/", name="category_create")
-     * @Method("POST")
-     * @Template("EltonLessonBundle:Category:new.html.twig")
-     */
-    public function createAction(Request $request)
-    {
-        $entity = new Category();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('category_show', array('id' => $entity->getId())));
+        $user = $this->get('security.context')->getToken()->getUser();
+        if(is_object($user) && $user->hasRole('ROLE_USER'))
+        {
+            $selectedDivision = $this->get('elton.division.manager')->getRepository()->getSelectedDivisionByTeacherId($user->getId());
+            $othersDivisions = $this->get('elton.division.manager')->getRepository()->getNotSelectedDivisionByTeacherId($user->getId());
+            $categorys = $this->get('elton.category.manager')->getRepository()->getCategoryByLevelId($selectedDivision[0]->getLevel()->getId());
+            
+            $returnArray =  array('user' => $user, 
+                         'selectedDivision' => $selectedDivision[0], 
+                         'othersDivisions' => $othersDivisions,
+                         'categorys' => $categorys);          
         }
-
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
+        
+        return $returnArray;
     }
-
-    /**
-    * Creates a form to create a Category entity.
-    *
-    * @param Category $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createCreateForm(Category $entity)
-    {
-        $form = $this->createForm(new CategoryType(), $entity, array(
-            'action' => $this->generateUrl('category_create'),
-            'method' => 'POST',
-        ));
-
-        $form->add('submit', 'submit', array('label' => 'Créer'));
-
-        return $form;
-    }
-
-    /**
-     * Displays a form to create a new Category entity.
-     *
-     * @Route("/new", name="category_new")
-     * @Method("GET")
-     * @Template()
-     */
-    public function newAction()
-    {
-        $entity = new Category();
-        $form   = $this->createCreateForm($entity);
-
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
-    }
-
+    
     /**
      * Finds and displays a Category entity.
      *
-     * @Route("/{id}", name="category_show")
+     * @Route("/category/{id}", name="category_show")
      * @Method("GET")
      * @Template()
      */
     public function showAction($id)
     {
+        $returnArray = $this->check();
+        
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('EltonLessonBundle:Category')->find($id);
@@ -115,133 +53,50 @@ class CategoryController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Category entity.');
         }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        );
+        $returnArray['entity'] = $entity;
+        
+        return $returnArray;
     }
 
     /**
-     * Displays a form to edit an existing Category entity.
-     *
-     * @Route("/{id}/edit", name="category_edit")
+     * @Route("/pratiquer", name="practice")
      * @Method("GET")
-     * @Template()
+     * @Template("EltonLessonBundle:Category:pratiquer.html.twig")
      */
-    public function editAction($id)
+    public function pratiquerAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('EltonLessonBundle:Category')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Category entity.');
+        $returnArray = $this->check();
+        $categorys = $this->get('elton.category.manager')->getRepository()->getCategoryByLevelName("Commun");
+        if($returnArray=='')
+        {
+            return $this->redirect($this->generateUrl("index")); 
         }
-
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
+        else
+        {
+            $returnArray['categorys'] = $categorys;
+            
+            return $returnArray;
+        }
     }
-
+    
     /**
-    * Creates a form to edit a Category entity.
-    *
-    * @param Category $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Category $entity)
-    {
-        $form = $this->createForm(new CategoryType(), $entity, array(
-            'action' => $this->generateUrl('category_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
-
-        $form->add('submit', 'submit', array('label' => 'Modifier'));
-
-        return $form;
-    }
-    /**
-     * Edits an existing Category entity.
-     *
-     * @Route("/{id}", name="category_update")
-     * @Method("PUT")
-     * @Template("EltonLessonBundle:Category:edit.html.twig")
+     * @Route("/pratiquer/{levelId}", name="practice_level")
+     * @Method("GET")
+     * @Template("EltonLessonBundle:Category:pratiquerNiveau.html.twig")
      */
-    public function updateAction(Request $request, $id)
+    public function pratiquerNiveauAction($levelId)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('EltonLessonBundle:Category')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Category entity.');
+        $returnArray = $this->check();
+        $categorys = $this->get('elton.category.manager')->getRepository()->getCategoryByLevelId($levelId);
+        if($returnArray=='')
+        {
+            return $this->redirect($this->generateUrl("index")); 
         }
-
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isValid()) {
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('category_show', array('id' => $id)));
+        else
+        {
+            $returnArray['categorys'] = $categorys;
+            
+            return $returnArray;
         }
-
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
-    /**
-     * Deletes a Category entity.
-     *
-     * @Route("/{id}", name="category_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, $id)
-    {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('EltonLessonBundle:Category')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Category entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
-        }
-
-        return $this->redirect($this->generateUrl('category'));
-    }
-
-    /**
-     * Creates a form to delete a Category entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('category_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Supprimer'))
-            ->getForm()
-        ;
     }
 }

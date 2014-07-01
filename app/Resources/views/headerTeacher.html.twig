@@ -1,6 +1,6 @@
 <header>
-    <div class="headerTeacher">
-        <div class="elton">
+    <div>
+        <div>
             <a href="{{path('index')}}">
             <img class="resizeHeaderTeacherElton" src="{{asset('bundles/eltoncore/images/smallElton_orange.png')}}"/>
             <img class="resizeHeaderTeacherLogo" src="{{asset('bundles/eltoncore/images/Logo.jpg')}}"/>
@@ -28,7 +28,7 @@
                 </a>
             {% endif %}
         </div>
-        <div class="dropdown btn orangeDeg btn-division">
+        <div class="dropdown btn orangeDeg center-block">
             <a class="white" href="#" data-toggle="dropdown" id="dropDownDivision">
                 {{selectedDivision.libelle}}
                 <span></span>
@@ -45,25 +45,25 @@
 </header>
 {# Menu teacher #}
 <nav>
-    <ul class="nav nav-pills menuBar" style="margin-top:-86px;" role="navigation">
-        <li style="margin-left:350px" class="divider-vertical"></li>
-        <li class="active">
-            <a class='myEltonButtonMenu text-center' href="#pratiquer" data-toggle="tab">Pratiquer !</a>
-        </li>
-        <li class="divider-vertical"></li>
-        <li>
-            <a class='myEltonButtonMenu text-center' href="#acquis" data-toggle="tab">Acquis</a>
-        </li>
-        <li class="divider-vertical"></li>
-        <li>
-            <a class='myEltonButtonMenu text-center' href="#monPanier" data-toggle="tab">Mon panier</a>
-        </li>
-        <li class="divider-vertical"></li>
-    </ul>
+    <div class="centered-pills menuBarTeacher" role="navigation">
+        <ul class="nav nav-pills">
+            <li class="divider-vertical"></li>
+            <li>
+                <a class="myEltonButtonMenu text-center" href="{{path('practice')}}">Pratiquer</a>    
+            </li>
+            <li class="divider-vertical"></li>
+            <li>
+                <a class="myEltonButtonMenu text-center" href="{{path('index')}}">Culture</a>
+            </li>
+            <li class="divider-vertical"></li>
+            <li>
+                <a class="myEltonButtonMenu text-center" href="{{path('index')}}">Acquis</a>
+            </li>
+            <li class="divider-vertical"></li>
+            <li>
+                <a class="myEltonButtonMenu text-center" href="{{path('index')}}">Mon Panier</a>
+            </li>
+            <li class="divider-vertical"></li>
+        </ul>
+    </div>
 </nav>
-{# Menu teacher contend #}
-<div class="tab-content">
-    <div class="tab-pane fade in active" id="pratiquer">Lalalalax</div>
-    <div class="tab-pane fade" id="acquis">Lulululu</div>
-    <div class="tab-pane fade" id="monPanier">Lililili</div>
-</div>

@@ -7,9 +7,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Elton\CoreBundle\Entity\AuthentificationSoapHeader;
-use Elton\CoreBundle\Entity\SessionSoapHeader;
 
 
 /**
@@ -18,6 +15,24 @@ use Elton\CoreBundle\Entity\SessionSoapHeader;
  */
 class CoreController extends Controller
 {
+    private function check()
+    {
+        $user = $this->get('security.context')->getToken()->getUser();
+        if(is_object($user) && $user->hasRole('ROLE_USER'))
+        {
+            $selectedDivision = $this->get('elton.division.manager')->getRepository()->getSelectedDivisionByTeacherId($user->getId());
+            $othersDivisions = $this->get('elton.division.manager')->getRepository()->getNotSelectedDivisionByTeacherId($user->getId());
+            $categorys = $this->get('elton.category.manager')->getRepository()->getCategoryByLevelId($selectedDivision[0]->getLevel()->getId());
+            
+            $returnArray =  array('user' => $user, 
+                         'selectedDivision' => $selectedDivision[0], 
+                         'othersDivisions' => $othersDivisions,
+                         'categorys' => $categorys);          
+        }
+        
+        return $returnArray;
+    }
+    
     /**
      * @Route("/", name="index")
      * @Method({"GET"})
@@ -47,6 +62,55 @@ class CoreController extends Controller
         }
     }
     
+    /**
+     * @Route("/en-savoir-plus", name="savoir_plus")
+     * @Method({"GET"})
+     * @Template("EltonCoreBundle:Core:en-savoir-plus.html.twig")
+     */
+    public function enSavoirPlusAction()
+    {
+        return array();
+    }
+    
+    /**
+     * @Route("/a-propos", name="a_propos")
+     * @Method({"GET"})
+     * @Template("EltonCoreBundle:Core:a-propos.html.twig")
+     */
+    public function aProposAction()
+    {
+        return array();
+    }
+    
+    /**
+     * @Route("/cgu", name="cgu")
+     * @Method({"GET"})
+     * @Template("EltonCoreBundle:Core:cgu.html.twig")
+     */
+    public function cguAction()
+    {
+        return array();
+    }
+    
+    /**
+     * @Route("/sitemap", name="sitemap")
+     * @Method({"GET"})
+     * @Template("EltonCoreBundle:Core:sitemap.html.twig")
+     */
+    public function siteMapAction()
+    {
+        return array();
+    }
+    
+    /**
+     * @Route("/foire-aux-questions", name="faq")
+     * @Method({"GET"})
+     * @Template("EltonCoreBundle:Core:faq.html.twig")
+     */
+    public function faqAction()
+    {
+        return array();
+    }
     
     /**
      * @Route("/try/{cp}", name="tryAjax", options={"expose"=true})
@@ -54,54 +118,10 @@ class CoreController extends Controller
      */
     public function tryAction($cp)
     {
-        $session = new Session();
-        $render = array ("NOM" => array(), "VOIE" => array(), "VILLE" => array(),);
-        $wsdlName = "https://simple.bisnode.fr/WebServices/GeoLocalisation.asmx?wsdl";
-        $wsNamespace = "http://services.bisnode.fr";
-        $soapClient = new \SoapClient($wsdlName, array("trace" => true));
-        $soapClientHeader = new \SoapHeader($wsNamespace, "AuthentificationSoapHeader", new AuthentificationSoapHeader("PBPWS001", "d4f5b48e-b20d"), true);
-        $soapClient->__setSoapHeaders($soapClientHeader);
-        $IDSession = $soapClient->WSAuthentification()->WSAuthentificationResult;
-        
-        $session->set('idWS', $IDSession);
-	$soapClientHeaderSecond = new \SoapHeader($wsNamespace, "SessionHeader", new SessionSoapHeader($IDSession), true);
-        
-        $soapClient->__setSoapHeaders($soapClientHeaderSecond);
-        
-        $result = $soapClient->GetLocalSchools(array("codePostal" => $cp))->GetLocalSchoolsResult;
-        $xmlDoc = new \DomDocument("1.0", "utf-8");
-        $xmlDoc->preserveWhiteSpace = false;
-        $xmlDoc->formatOutput = true;
-        $xmlDoc->loadXML($result);
-
-        $noms = $xmlDoc->getElementsByTagName("NOM");
-        $adresses = $xmlDoc->getElementsByTagName("VOIE");
-        $villes = $xmlDoc->getElementsByTagName("COMMUNE");
-        $i = 1;
-        foreach ($noms as $nom)
-        {
-            $render['NOM'][$i] = $nom->nodeValue;
-            if(isset($adresses->item($i)->nodeValue))
-            {
-                $render['VOIE'][$i] = $adresses->item($i)->nodeValue;
-            }
-            else 
-            {
-                $render['VOIE'][$i] = "";
-            }
-            if(isset($villes->item($i)->nodeValue))
-            {
-                $render['VILLE'][$i] = $villes->item($i)->nodeValue;
-            }
-            else
-            {
-                $render['VILLE'][$i] = "";
-            }
-            $i = $i + 1;
-        }
+        $xmlDoc = $this->get('elton.core.manager')->schoolWS($cp);
+        $render = $this->get('elton.core.manager')->fillSchoolArray($xmlDoc);
         
         echo (\json_encode($render));
-        
         return new Response();
     }
 }

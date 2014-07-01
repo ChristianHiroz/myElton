@@ -41,10 +41,10 @@
               <argument>EltonCoreBundle</argument>
           </call>
         </service>    
-       <service id="sonata.competance.type" class="Elton\CoreBundle\Admin\CompetanceAdmin">
-          <tag name="sonata.admin" manager_type="orm" group="Content" label="Compétances"/>
+       <service id="sonata.competence.type" class="Elton\CoreBundle\Admin\CompetenceAdmin">
+          <tag name="sonata.admin" manager_type="orm" group="Content" label="Compétences"/>
           <argument />
-          <argument>Elton\LessonBundle\Entity\Competance</argument>
+          <argument>Elton\LessonBundle\Entity\Competence</argument>
           <argument />
           <call method="setTranslationDomain">
               <argument>EltonCoreBundle</argument>

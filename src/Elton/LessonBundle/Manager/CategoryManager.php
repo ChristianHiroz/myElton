@@ -22,5 +22,5 @@ class CategoryManager extends CoreManager
     public function getRepository()
     {
         return $this->em->getRepository('EltonLessonBundle:Category');
-    }
+    }   
 }

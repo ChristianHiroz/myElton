@@ -14,7 +14,7 @@ class CategoryAdmin extends Admin
     {
         $formMapper
             ->add('libelle', 'text', array('label' => 'Nom de la catégorie'))
-            ->add('level', 'sonata_type_model', array('label' => 'Niveau de la catégorie', 'associated_property' => 'libelle'))
+            ->add('level', 'sonata_type_model', array('label' => 'Niveau de la catégorie', 'property' => 'libelle'))
         ;
     }
 

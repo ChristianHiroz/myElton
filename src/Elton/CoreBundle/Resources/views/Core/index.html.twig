@@ -1,5 +1,57 @@
 {% extends "::base.html.twig" %}
-
 {% block body %}
-    {{parent()}}
+    {{ parent() }}
+    {% if is_granted('ROLE_USER') %}
+        <div>
+            lalala
+        </div>
+    {% else %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="col-md-11">
+                        <h2 class="sectionH2"><img class="resizeSpan" src="{{asset('bundles/eltoncore/images/turquoise.jpg')}}" alt=""> &nbsp; Qu’est-ce que My Elton ?</h2>
+
+                        <img style="float:left;" class="resizeSpan2" src="{{asset('bundles/eltoncore/images/span.jpg')}}" alt="">
+                        <h4> une méthode complète d’apprentissage de l’anglais du CP au CM2 </h4>
+                        <p>Pratiquer l’anglais en reprenant toutes les bases chaque année. Les élèves de la classe commencent tous au même point : il est alors plus simple de gérer le niveau des élèves venant de classes différentes</p>
+
+                        <img style="float:left;" class="resizeSpan2" src="{{asset('bundles/eltoncore/images/span.jpg')}}" alt="">
+                        <h4> une méthode pensée pour les professeurs des Écoles </h4>
+                        <p>Les cours et activités sont donnés clé en main. Vous êtes mis dans les meilleures conditions pour vous approprier rapidement le déroulement de la séance ainsi que les notions abordées</p>
+
+                        <img style="float:left;" class="resizeSpan2" src="{{asset('bundles/eltoncore/images/span.jpg')}}" alt="">
+                        <h4> une méthode ludique</h4>
+                        <p>La priorité de My Elton est le plaisir de la pratique de l’anglais. Pour cela, de nombreuses activités accompagnent chaque notion de cours abordée. Un plaisir continu pour un apprentissage en toute simplicité !</p>
+
+                        <img style="float:left;" class="resizeSpan2" src="{{asset('bundles/eltoncore/images/span.jpg')}}" alt="">
+                        <h4>une méthode en ligne</h4>
+                        <p>Connectez-vous à votre espace abonné pour retrouver la méthode complète My Elton sur myelton.fr. Accessible de partout et directement utilisable en classe, ce format permet également de proposer simplement un accès pour les élèves en vous donnant le contrôle des activités accessibles</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-11">
+                        <h2 class="sectionH2 screenML10"><img class="resizeSpan" src="{{asset('bundles/eltoncore/images/bleuclair.jpg')}}" alt=""> &nbsp; Les objectifs de My Elton</h2>
+
+                        <img style="float:left;" class="resizeSpan2" src="{{asset('bundles/eltoncore/images/span.jpg')}}" alt="">
+                        <h4 class="screenML10">commencer l’apprentissage de l’anglais au plus jeune âge</h4>
+                        <p class="screenML15">C’est à l’enfance que les capacités linguistiques sont les plus développées, et qu’il est le plus facile de s’imprégner des sons entendus</p>
+
+                        <img style="float:left;" class="resizeSpan2" src="{{asset('bundles/eltoncore/images/span.jpg')}}" alt="">
+                        <h4 class="screenML10"> donner aux enseignants une vue claire et centralisée du programme d’anglais</h4>
+                        <p class="screenML15">Les cours de My Elton sont pensés à partir du programme officiel proposé par l’Éducation nationale. La progression est simplifiée et transparente pour le professeur</p>
+
+                        <img style="float:left;" class="resizeSpan2" src="{{asset('bundles/eltoncore/images/span.jpg')}}" alt="">
+                        <h4 class="screenML10"> permettre à tout professeur, quelque soit son niveau d’anglais, d’enseigner efficacement la langue</h4>
+                        <p class="screenML15">My Elton vous accompagne et vous propose tous les outils nécessaires pour transmettre efficacement les notions d’anglais abordées : pas besoin d’être bilingue !</p>
+
+                        <img style="float:left;" class="resizeSpan2" src="{{asset('bundles/eltoncore/images/span.jpg')}}" alt="">
+                        <h4 class="screenML10"> remettre l’école et le professeur au centre du processus d’apprentissage de l’anglais chez les enfants</h4>
+                        <p class="screenML15">Aujourd’hui, la qualité des produits d’enseignement de l’anglais disponibles dans le cadre privé créé un écart entre les familles pouvant y accéder ou non. En proposant des outils éducatifs de qualité à l’École, My Elton permet à tous les enfants de partir avec de bonnes bases et le plaisir de pratiquer l’anglais !</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
