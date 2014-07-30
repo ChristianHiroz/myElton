@@ -1,0 +1,8 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+    {{ parent() }}
+    <a href="{{path('practice_level', {levelId : selectedDivision.level.id })}}">Pratiquer l'anglais</a>
+    {% for category in categorys %}
+        <a href="{{path('category_show', { id : category.id })}}">{{category.libelle}}</a>
+    {% endfor %}
+{% endblock %}
