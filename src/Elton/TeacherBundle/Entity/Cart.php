@@ -14,30 +14,21 @@ use Doctrine\ORM\Mapping as ORM;
 class Cart
 {
     /**
+     * @var integer
      *
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Elton\TeacherBundle\Entity\Teacher", inversedBy="carts")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $teacher;
+    private $id;
     
     /**
-     * 
-     * @ORM\Id
      * @ORM\OneToOne(targetEntity="Elton\DivisionBundle\Entity\Division", inversedBy="cart")
      */
     private $division;
     
     /**
-     * @var boolean
-     *
-     * @ORM\Id
-     * @ORM\Column(name="attribuer", type="boolean")
-     */
-    private $settedToDivision; //mean this is the cart setted to the division
-    
-    /**
-     * @ORM\Column(name="activity", type="array")
-     * @ORM\ManyToMany(targetEntity="Elton\LessonBundle\Entity\Activity")
+     * @ORM\OneToMany(targetEntity="Elton\TeacherBundle\Entity\CartActivity", mappedBy="cart")
      */
     private $activitys;
     
@@ -47,43 +38,13 @@ class Cart
     }
     
     /**
-     * Get settedToDivision
-     * 
-     * @return boolean
+     * Get id
+     *
+     * @return integer 
      */
-    public function isSettedToDivision()
+    public function getId()
     {
-        return $this->settedToDivision;
-    }
-    
-    /**
-     * Set settedToDivision
-     * 
-     * @param boolean $settedToDivision
-     */
-    public function setSettedToDivision($settedToDivision)
-    {
-      $this->settedToDivision = $settedToDivision;  
-    }
-    
-    /**
-     * Get teacher
-     * 
-     * @return Elton\TeacherBundle\Entity\Teacher
-     */
-    public function getTeacher()
-    {
-        return $this->teacher;
-    }
-    
-    /**
-     * Set teacher
-     * 
-     * @param Elton\TeacherBundle\Entity\Teacher $teacher
-     */
-    public function setTeacher(\Elton\TeacherBundle\Entity\Teacher $teacher)
-    {
-        $this->teacher = $teacher;
+        return $this->id;
     }
     
     /**
@@ -119,20 +80,19 @@ class Cart
     /**
      * Add activity
      * 
-     * @param Elton\LessonBundle\Entity\Activity $activity
+     * @param Elton\TeacherBundle\Entity\CartActivity $activity
      */
-    public function addActivity(\Elton\LessonBundle\Entity\Activity $activity)
+    public function addActivity(\Elton\TeacherBundle\Entity\CartActivity $activity)
     {
         $this->activitys[] = $activity;
     }
     
     /**
-     * Remove activity
-     * 
-     * @param Elton\LessonBundle\Entity\Activity $activity
+     * Empty cart
      */
-    public function removeLesson(\Elton\LessonBundle\Entity\Activity $activity)
+    public function setEmpty()
     {
-        $this->activitys->removeElement($activity);
+        $this->activitys = new \Doctrine\Common\Collections\ArrayCollection();
     }
+             
 }

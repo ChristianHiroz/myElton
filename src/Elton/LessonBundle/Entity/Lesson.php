@@ -30,6 +30,21 @@ class Lesson
     private $libelle;
     
     /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255)
+     */
+    private $description;
+    
+    /**
+     * @var lessonType
+     * 
+     * @ORM\Column(name="type", type="lessonType")
+     */
+    private $type;
+
+    
+    /**
      *
      * @ORM\ManyToOne(targetEntity="Elton\CoreBundle\Entity\File", inversedBy="lesson")
      */
@@ -41,9 +56,23 @@ class Lesson
      */
     private $activitys;
     
+    
+    /**
+     *
+     * @ORM\ManyToMany(targetEntity="Elton\LessonBundle\Entity\Competence")
+     */
+    private $competences;
+    
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Elton\LessonBundle\Entity\Category", inversedBy="lessons")
+     */
+    private $category;
+    
     public function __construct()
     {
-        $this->activity = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->activitys = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->competences = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -79,6 +108,50 @@ class Lesson
         return $this->libelle;
     }
 
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Lesson
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    
+    /**
+     * Set type
+     * 
+     * @param lessonType $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+    
+    /**
+     * Get type
+     * 
+     * @return lessonType
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+    
     /**
      * Get activitys
      * 
@@ -137,5 +210,61 @@ class Lesson
     public function setFile(\Elton\CoreBundle\Entity\File $file)
     {
         $this->file = $file;
+    }
+    
+    /**
+     * Get category
+     * 
+     * @return Elton\LessonBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+    
+    /**
+     * Set category
+     * 
+     * @param Elton\LessonBundle\Entity\Category $category
+     */
+    public function setCategory(\Elton\LessonBundle\Entity\Category $category)
+    {
+        $this->category = $category;
+        $category->addLesson($this);
+    }
+    
+    public function __toString() 
+    {
+        return $this->libelle;
+    }
+    
+    /**
+     * Get competences
+     * 
+     * @return Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getCompetences()
+    {
+        return $this->competences;
+    }
+    
+    /**
+     * Add competence
+     * 
+     * @param Elton\LessonBundle\Entity\Competence $competence
+     */
+    public function addCompetence(\Elton\LessonBundle\Entity\Competence $competence)
+    {
+        $this->competences[] = $competence;
+    }
+    
+    /**
+     * Set competences
+     * 
+     * @param Elton\LessonBundle\Entity\Competence $competences
+     */
+    public function setCompetences(\Elton\LessonBundle\Entity\Competence $competences)
+    {
+        $this->competences[] = $competences;
     }
 }

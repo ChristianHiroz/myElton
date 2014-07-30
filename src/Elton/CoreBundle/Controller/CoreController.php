@@ -15,23 +15,6 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class CoreController extends Controller
 {
-    private function check()
-    {
-        $user = $this->get('security.context')->getToken()->getUser();
-        if(is_object($user) && $user->hasRole('ROLE_USER'))
-        {
-            $selectedDivision = $this->get('elton.division.manager')->getRepository()->getSelectedDivisionByTeacherId($user->getId());
-            $othersDivisions = $this->get('elton.division.manager')->getRepository()->getNotSelectedDivisionByTeacherId($user->getId());
-            $categorys = $this->get('elton.category.manager')->getRepository()->getCategoryByLevelId($selectedDivision[0]->getLevel()->getId());
-            
-            $returnArray =  array('user' => $user, 
-                         'selectedDivision' => $selectedDivision[0], 
-                         'othersDivisions' => $othersDivisions,
-                         'categorys' => $categorys);          
-        }
-        
-        return $returnArray;
-    }
     
     /**
      * @Route("/", name="index")
@@ -40,26 +23,12 @@ class CoreController extends Controller
      */
     public function indexAction()
     {                
-        $user = $this->get('security.context')->getToken()->getUser();
-        if(is_object($user) && $user->hasRole('ROLE_USER'))
+        $returnArray = $this->get('elton.teacher.manager')->check();
+        if(is_array($returnArray) && is_object($returnArray['selectedDivision']))
         {
-            $selectedDivision = $this->get('elton.division.manager')->getRepository()->getSelectedDivisionByTeacherId($user->getId());
-            if($selectedDivision == null)
-            {
-                return $this->redirect($this->generateUrl("teacher_create_division")); 
-            }
-            $othersDivisions = $this->get('elton.division.manager')->getRepository()->getNotSelectedDivisionByTeacherId($user->getId());
-            $categorys = $this->get('elton.category.manager')->getRepository()->getCategoryByLevelId($selectedDivision[0]->getLevel()->getId());
-            
-            return array('user' => $user, 
-                         'selectedDivision' => $selectedDivision[0], 
-                         'othersDivisions' => $othersDivisions,
-                         'categorys' => $categorys);          
+            return $this->redirect($this->generateUrl('practice'));
         }
-        else
-        {
-            return array('user' => $user,);
-        }
+        return $returnArray;
     }
     
     /**

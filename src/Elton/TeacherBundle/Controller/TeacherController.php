@@ -38,7 +38,6 @@ class TeacherController extends Controller
      * Create a division for the teacher
      * 
      * @Route("/create/division", name="teacher_create_division")
-     * @Method("POST")
      */
     public function createDivisionAction()
     {
@@ -72,7 +71,6 @@ class TeacherController extends Controller
      * Update divisions of the teacher
      * 
      * @Route("/update/division/{id}", name="teacher_update_division")
-     * @Method("POST")
      * @param type $id id of the division
      */
     public function editDivisionAction($id)
@@ -123,7 +121,7 @@ class TeacherController extends Controller
      */
     public function optionAction()
     {
-        $returnArray = $this->check();
+        $returnArray = $this->get('elton.teacher.manager')->check();
 
         if($returnArray=='')
         {
@@ -142,8 +140,7 @@ class TeacherController extends Controller
      */
     public function optionDivisionsAction()
     {
-        $returnArray = $this->check();
-
+        $returnArray = $this->get('elton.teacher.manager')->check();
         if($returnArray=='')
         {
             return $this->redirect($this->generateUrl("index")); 
@@ -152,5 +149,9 @@ class TeacherController extends Controller
         {
             return $returnArray;
         }
+    }
+    
+    public function __toString() {
+        return $this->username;
     }
 }

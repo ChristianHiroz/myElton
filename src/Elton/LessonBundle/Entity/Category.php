@@ -27,6 +27,13 @@ class Category
      * @ORM\Column(name="libelle", type="string", length=255)
      */
     private $libelle;
+    
+    /**
+     * @var color
+     * 
+     * @ORM\Column(name="color", type="color")
+     */
+    private $color;
 
     /**
      *
@@ -36,9 +43,15 @@ class Category
     
     /**
      * 
-     * @ORM\ManyToMany(targetEntity="Elton\LessonBundle\Entity\Lesson", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Elton\LessonBundle\Entity\Lesson", mappedBy="category")
      */
     private $lessons;
+    
+    public function __construct()
+    {
+        $this->lessons = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
 
 
     /**
@@ -73,15 +86,25 @@ class Category
     {
         return $this->libelle;
     }
-
+    
     /**
-     * Set lessons
-     *
-     * @param Elton\LessonBundle\Entity\Lesson $lessons
+     * Set color
+     * 
+     * @param color $color
      */
-    public function setLessons(\Elton\LessonBundle\Entity\Lesson $lessons)
+    public function setColor($color)
     {
-        $this->lessons = $lessons;
+        $this->color = $color;
+    }
+    
+    /**
+     * Get color
+     * 
+     * @return color
+     */
+    public function getColor()
+    {
+        return $this->color;
     }
 
     /**

@@ -13,10 +13,13 @@ use Elton\CoreBundle\Manager\CoreManager as CoreManager;
 class TeacherManager extends CoreManager
 {
     protected $em;
-    
-    public function __construct(EntityManager $em)
+    protected $container;
+
+
+    public function __construct(EntityManager $em, \Symfony\Component\DependencyInjection\Container $container)
     {
         $this->em = $em;
+        $this->container = $container;
     }
     
     public function getRepository()
@@ -34,6 +37,28 @@ class TeacherManager extends CoreManager
             }
         }
         return false;
+    }
+    
+    public function check()
+    {
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        if(is_object($user) && $user->hasRole('ROLE_USER'))
+        {
+            $selectedDivision = $this->container->get('elton.division.manager')->getRepository()->getSelectedDivisionByTeacherId($user->getId());
+            $cartNumber = $selectedDivision[0]->getCart()->getActivitys()->count();
+            $othersDivisions = $this->container->get('elton.division.manager')->getRepository()->getNotSelectedDivisionByTeacherId($user->getId());
+            
+            $returnArray =  array('user' => $user, 
+                         'selectedDivision' => $selectedDivision[0], 
+                         'othersDivisions' => $othersDivisions,
+                         'cartNumber' => $cartNumber);          
+        }
+        else
+        {
+            $returnArray = array('selectedDivision' => 0);
+        }
+        
+        return $returnArray;
     }
 
 }

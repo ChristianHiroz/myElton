@@ -27,6 +27,14 @@ class Activity
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+    
+    /**
+     * @var activityType
+     * 
+     * @ORM\Column(name="type", type="activityType")
+     * 
+     */
+    private $type;
 
     /**
      * @var string
@@ -37,22 +45,21 @@ class Activity
 
     /**
      *
-     * @ORM\ManyToMany(targetEntity="Elton\LessonBundle\Entity\Competence")
-     */
-    private $competences;
-
-    /**
-     * @var \stdClass
-     *
-     * @ORM\Column(name="files", type="object")
+     * @ORM\ManyToMany(targetEntity="Elton\CoreBundle\Entity\File")
      */
     private $files;
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="Elton\CoreBundle\Entity\File", inversedBy="lesson")
+     * @ORM\ManyToOne(targetEntity="Elton\CoreBundle\Entity\File")
      */
     private $file;
+    
+    
+    public function __construct()
+    {
+        $this->files = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -109,25 +116,25 @@ class Activity
     {
         return $this->description;
     }
-
+    
     /**
-     * Add competence
+     * Get type
      * 
-     * @param Elton\LessonBundle\Entity\Competence $competence
+     * @return activityType
      */
-    public function addActivity(\Elton\LessonBundle\Entity\Competence $competence)
+    public function getType()
     {
-        $this->competences[] = $competence;
+        return $this->type;
     }
     
     /**
-     * Set competences
+     * Set type
      * 
-     * @param Elton\LessonBundle\Entity\Competence $competences
+     * @param activityType $type
      */
-    public function setActivitys(\Elton\LessonBundle\Entity\Competence $competences)
+    public function setType($type)
     {
-        $this->competences[] = $competences;
+        $this->type = $type;
     }
     
     /**
@@ -135,9 +142,19 @@ class Activity
      * 
      * @param Elton\LessonBundle\Entity\Competence $competence
      */
-    public function removeActivity(\Elton\LessonBundle\Entity\Competence $competence)
+    public function removeCompetence(\Elton\LessonBundle\Entity\Competence $competence)
     {
         $this->competences->removeElement($competence);
+    }
+    
+    /**
+     * Get files
+     * 
+     * @return Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getFiles()
+    {
+        return $this->files;
     }
     
 
@@ -189,5 +206,10 @@ class Activity
     public function setFile(\Elton\CoreBundle\Entity\File $file)
     {
         $this->file = $file;
+    }
+    
+    public function __toString() 
+    {
+        return $this->name;
     }
 }

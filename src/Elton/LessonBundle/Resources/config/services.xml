@@ -8,6 +8,7 @@
         <parameter key="elton.lesson_manager.class">Elton\LessonBundle\Manager\LessonManager</parameter>
         <parameter key="elton.competence_manager.class">Elton\LessonBundle\Manager\CompetenceManager</parameter>
         <parameter key="elton.category_manager.class">Elton\LessonBundle\Manager\CategoryManager</parameter>
+        <parameter key="elton.activity_manager.class">Elton\LessonBundle\Manager\ActivityManager</parameter>
     </parameters>
     
     <services>
@@ -18,6 +19,9 @@
             <argument type="service" id="doctrine.orm.entity_manager"/>            
         </service>
         <service id="elton.category.manager" class="%elton.category_manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager"/>            
+        </service>
+        <service id="elton.activity.manager" class="%elton.activity_manager.class%">
             <argument type="service" id="doctrine.orm.entity_manager"/>            
         </service>
     </services>

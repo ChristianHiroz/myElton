@@ -2,24 +2,22 @@
 
 {% block body -%}
     {{ parent() }}
-    <div>
-        <table class="breadcrumb">
-            <tbody>
-                <tr>
-                    <th class="txtOrangeElton">Nom</th>
-                    <td>{{ entity.libelle }}</td>
-                </tr>
-                <tr>
-                    <th class="txtOrangeElton">Niveau</th>
-                    <td>{{ entity.level.libelle }}</td>
-                </tr>
-                    <th class="txtOrangeElton">Id</th>
-                    <td>{{ entity.id }}</td>
-                </tr>
-                <tr>
-                    <div class="smallElton"></div>
-                </tr>
-            </tbody>
-        </table>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h1 class="lessonCategoryTitle">{{entity.libelle}}</h1>
+                <div class="buttonTableCont">
+                        {% for lesson in entity.lessons %}
+                            <a class="buttonTableSmall {{lesson.type}}" href="{{path('lesson_show', { id : lesson.id, order : loop.index })}}"> <span class="lessonNumber">{{loop.index}}</span> <br/> {{lesson.libelle}}</a>
+                            {% if loop.index % 3 == 0 %}
+                            </div>
+                            <div class="buttonTableCont">
+                            {% endif %}
+                        {% endfor %}
+                </div>
+            </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

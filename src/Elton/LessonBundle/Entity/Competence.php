@@ -88,4 +88,9 @@ class Competence
     {
         $this->level = $level;
     }
+    
+    public function __toString() 
+    {
+        return $this->libelle;
+    }
 }

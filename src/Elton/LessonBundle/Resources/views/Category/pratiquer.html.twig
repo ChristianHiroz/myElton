@@ -1,8 +1,16 @@
 {% extends "::base.html.twig" %}
 {% block body %}
     {{ parent() }}
-    <a href="{{path('practice_level', {levelId : selectedDivision.level.id })}}">Pratiquer l'anglais</a>
-    {% for category in categorys %}
-        <a href="{{path('category_show', { id : category.id })}}">{{category.libelle}}</a>
-    {% endfor %}
+    <div class="container">
+        <div class="row">
+            <div class="buttonTableCont " style="margin-top:80px;">
+                <a class="buttonTable fs18" href="{{path('practice_level', {levelId : selectedDivision.level.id })}}">Pratiquer l'anglais</a>
+            </div>
+            <div class=" buttonTableCont ">
+                {% for category in categorys %}
+                    <a class="buttonTable {{category.color}} fs18" href="{{path('category_show', { id : category.id })}}">{{category.libelle}}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

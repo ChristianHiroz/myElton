@@ -1,6 +1,6 @@
 <?php
 /**
- * Description of LessonManager
+ * Description of ActivityManager
  *
  * @author Christian Hiroz
  */
@@ -10,7 +10,7 @@ namespace Elton\LessonBundle\Manager;
 use Doctrine\ORM\EntityManager;
 use Elton\CoreBundle\Manager\CoreManager as CoreManager;
 
-class LessonManager extends CoreManager
+class ActivityManager extends CoreManager
 {
     protected $em;
     
@@ -21,6 +21,6 @@ class LessonManager extends CoreManager
     
     public function getRepository()
     {
-        return $this->em->getRepository('EltonLessonBundle:Lesson');
+        return $this->em->getRepository('EltonLessonBundle:Activity');
     }
 }

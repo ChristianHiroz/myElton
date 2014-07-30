@@ -69,11 +69,6 @@ class Teacher extends User
     private $town;
     
     /**
-     * @ORM\OneToMany(targetEntity="Elton\TeacherBundle\Entity\Cart", mappedBy="teacher", cascade={"remove"})
-     */
-    private $carts;
-    
-    /**
      * @ORM\OneToMany(targetEntity="Elton\DivisionBundle\Entity\Division", mappedBy="teacher", cascade={"remove"})
      */
     private $divisions;
@@ -81,7 +76,6 @@ class Teacher extends User
     public function __construct()
     {
         parent::__construct();
-        $this->carts = new \Doctrine\Common\Collections\ArrayCollection();     
         $this->divisions = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -255,27 +249,6 @@ class Teacher extends User
     public function getDivisions()
     {
         return $this->divisions;
-    }
-    
-    /**
-     * Add cart
-     * 
-     * @param Elton\TeacherBundle\Entity\Cart $cart
-     */
-    public function addCart(\Elton\TeacherBundle\Entity\Cart $cart)
-    {
-        $this->carts[] = $cart;
-        $cart->setTeacher($this);
-    }
-    
-    /**
-     * Remove cart
-     * 
-     * @param Elton\TeacherBundle\Entity\Cart $cart
-     */
-    public function removeCart(\Elton\TeacherBundle\Entity\Cart $cart)
-    {
-        $this->carts->removeElement($cart);
     }
     
     /**

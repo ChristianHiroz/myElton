@@ -308,7 +308,6 @@ class DivisionController extends Controller
      * 
      * @param int $id The entity id
      * @Route("/change/{id}", name="division_change")
-     * @Method({"DELETE"})
      */
     public function divisionChangeAction($id)
     {

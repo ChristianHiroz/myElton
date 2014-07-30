@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Elton\CoreBundle\ORM\ColorEnumType;
 
 class CategoryAdmin extends Admin
 {
@@ -15,6 +16,7 @@ class CategoryAdmin extends Admin
         $formMapper
             ->add('libelle', 'text', array('label' => 'Nom de la catégorie'))
             ->add('level', 'sonata_type_model', array('label' => 'Niveau de la catégorie', 'property' => 'libelle'))
+            ->add('color', 'choice', array('label' => 'Couleur du bouton','choices' => ColorEnumType::get_enum_values()))
         ;
     }
 
@@ -24,6 +26,7 @@ class CategoryAdmin extends Admin
         $datagridMapper
             ->add('libelle')
             ->add('level')
+            ->add('color')
         ;
     }
 
@@ -34,6 +37,7 @@ class CategoryAdmin extends Admin
             ->addIdentifier('id')
             ->addIdentifier('libelle')
             ->addIdentifier('level')
+            ->add('color')
         ;
     }
 }

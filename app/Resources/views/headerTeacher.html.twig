@@ -1,12 +1,26 @@
 <header>
-    <div>
-        <div>
+    <div class="container">
+        <div class="row">
+        <div class="col-md-3" style="margin-top: 10px;">
             <a href="{{path('index')}}">
             <img class="resizeHeaderTeacherElton" src="{{asset('bundles/eltoncore/images/smallElton_orange.png')}}"/>
             <img class="resizeHeaderTeacherLogo" src="{{asset('bundles/eltoncore/images/Logo.jpg')}}"/>
             </a>
         </div>
-        <div class="buttons">
+        <div class="dropdown buttonClass col-md-6">
+            <a style="color:white;" href="#" role="button" data-toggle="dropdown" id="dropDownDivision">
+                {{selectedDivision.libelle}}
+                <span class="choose"></span>
+            </a>
+            <ul class="dropdown-menu btn-divisionUl" aria-labelledby="dropDownDivision" role="menu">
+                {% for division in othersDivisions %}
+                    <a href="{{path('division_change', {'id' : division.id} ) }}">{{division.libelle}}</a>
+                    <li class="divider"></li>
+                {% endfor %}
+                <a href="{{path('teacher_create_division')}}">Nouvelle classe</a>
+            </ul>
+        </div>
+        <div class="buttons col-md-3">
             {% if is_granted('ROLE_ADMIN') %}
                 <a href="{{path('fos_user_profile_show')}}">{{user.firstName}} {{user.name | upper}} </a>
                 <a href="{{path('sonata_admin_dashboard')}}">
@@ -28,23 +42,10 @@
                 </a>
             {% endif %}
         </div>
-        <div class="dropdown btn orangeDeg center-block">
-            <a class="white" href="#" data-toggle="dropdown" id="dropDownDivision">
-                {{selectedDivision.libelle}}
-                <span></span>
-            </a>
-            <ul class="dropdown-menu btn-divisionUl" aria-labelledby="dropDownDivision" role="menu">
-                {% for division in othersDivisions %}
-                    <a href="{{path('division_change', {'id' : division.id} ) }}">{{division.libelle}}</a>
-                    <li class="divider"></li>
-                {% endfor %}
-                <a href="{{path('teacher_create_division')}}">Nouvelle classe</a>
-            </ul>
-        </div>
-    </div>
+        </div></div>
 </header>
 {# Menu teacher #}
-<nav>
+<nav style="margin-top: 50px;">
     <div class="centered-pills menuBarTeacher" role="navigation">
         <ul class="nav nav-pills">
             <li class="divider-vertical"></li>
@@ -53,15 +54,20 @@
             </li>
             <li class="divider-vertical"></li>
             <li>
-                <a class="myEltonButtonMenu text-center" href="{{path('index')}}">Culture</a>
+                <a class="myEltonButtonMenu text-center" href="{{path('culture')}}">Culture</a>
             </li>
             <li class="divider-vertical"></li>
             <li>
-                <a class="myEltonButtonMenu text-center" href="{{path('index')}}">Acquis</a>
+                <a class="myEltonButtonMenu text-center" href="{{path('acquis')}}">Acquis</a>
             </li>
             <li class="divider-vertical"></li>
             <li>
-                <a class="myEltonButtonMenu text-center" href="{{path('index')}}">Mon Panier</a>
+                <a class="myEltonButtonMenu text-center" href="{{path('show_cart')}}">
+                    {% if cartNumber > 0 %}
+                    <p id="nbPanier" class="redDot">{{cartNumber}}</p>
+                    {% endif %}
+                    Mon Panier
+                </a>
             </li>
             <li class="divider-vertical"></li>
         </ul>

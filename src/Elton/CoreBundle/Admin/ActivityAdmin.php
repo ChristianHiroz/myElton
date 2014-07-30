@@ -7,26 +7,25 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class LessonAdmin extends Admin
+class ActivityAdmin extends Admin
 {
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('libelle')
+            ->add('name')
+            ->add('description')
             ->add('file', 'sonata_type_model', array('label' => 'Photo de l\'activité'))
-            ->add('files', 'sonata_type_model', array('label' => 'Fichiers','by_reference' => false,'multiple' => true,))
-            ->add('competences', 'sonata_type_model', array('label' => 'Compétences de l\'activité', 'by_reference' => false,'multiple' => true,))
-            ->add('level', 'sonata_type_model', array('label' => 'Niveau de l\'activité'))
-            ->add('category', 'sonata_type_model', array('label' => 'Niveau de la classe'))
-            ;
+            ->add('files', 'sonata_type_model', array('label' => 'Fichiers de l\'activité', 'by_reference' => false,'multiple' => true,))
+            ->add('type', 'choice', array('label' => 'Type d\'activité' ,'choices' => \Elton\CoreBundle\ORM\ActivityEnumType::get_enum_values()))
+                ;
     }
 
     // Fields to be shown on filter forms
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('libelle')->add('competences')->add('level')->add('category')
+            ->add('name')->add('files')
         ;
     }
 
@@ -34,7 +33,7 @@ class LessonAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('libelle')->add('competences')->add('level')->add('category')
+            ->addIdentifier('name')->add('files')->add('description')->add('file')
         ;
     }
 }

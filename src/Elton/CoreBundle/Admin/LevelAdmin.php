@@ -13,7 +13,7 @@ class LevelAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('libelle', 'text', array('label' => 'Nom du niveaus'))
+            ->add('libelle', 'text', array('label' => 'Nom du niveau'))
         ;
     }
 

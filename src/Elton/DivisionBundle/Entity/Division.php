@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 use Elton\CoreBundle\Entity\User as User;
+use Elton\TeacherBundle\Entity\Cart;
 
 /**
  * Class
@@ -228,7 +229,7 @@ class Division extends User
     {
        $this->selected = $selected;  
     }
-    
+        
     /**
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
@@ -248,6 +249,19 @@ class Division extends User
             $this->selected = true;
             $this->enabled = true;
         }
+        if($this->cart == null)
+        {
+            $cart = new Cart();
+            $this->setCart($cart);
+        }
+    }
+    
+    /**
+     * @ORM\PostPersist()
+     */
+    public function postPersit(LifecycleEventArgs $event)
+    {
+
     }
     
     /**
@@ -265,5 +279,9 @@ class Division extends User
                 $event->getEntityManager()->flush();
             }
         }
+    }
+
+    public function __toString() {
+        return $this->libelle;
     }
 }

@@ -13,7 +13,7 @@ class CompetenceAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('libelle', 'text', array('label' => 'Nom de la catégorie'))
+            ->add('libelle', 'text', array('label' => 'Nom de la compétence'))
         ;
     }
 
@@ -29,7 +29,8 @@ class CompetenceAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('id')
+            ->addIdentifier('id')->addIdentifier('libelle')
         ;
     }
+    
 }

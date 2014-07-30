@@ -64,4 +64,25 @@ class LessonRepository extends EntityRepository
         
         return $result;
     }
+    
+    /**
+     * Function used to find the last lesson of the monthly_event category
+     * @return lesson
+     */
+    public function findLastLessonOfMonthlyEventCategory()
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+                'Select l
+                From EltonLessonBundle:Lesson l
+                Join l.category c
+                Join c.level le
+                Where le.libelle = ?1
+                Order By l.id DESC');
+        $query->setParameter(1, "Event");
+        $query->setMaxResults(1);
+        $result = $query->getResult();
+        
+        return $result[0];
+    }
 }

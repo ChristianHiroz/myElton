@@ -2,9 +2,6 @@
 {% block body %}
     {{ parent() }}
     {% if is_granted('ROLE_USER') %}
-        <div>
-            lalala
-        </div>
     {% else %}
         <div class="container">
             <div class="row">

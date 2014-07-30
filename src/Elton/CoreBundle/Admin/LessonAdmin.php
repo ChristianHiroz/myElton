@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Elton\CoreBundle\ORM\LessonEnumType;
 
 class LessonAdmin extends Admin
 {
@@ -14,19 +15,20 @@ class LessonAdmin extends Admin
     {
         $formMapper
             ->add('libelle')
-            ->add('file', 'sonata_type_model', array('label' => 'Photo de l\'activité'))
-            ->add('files', 'sonata_type_model', array('label' => 'Fichiers','by_reference' => false,'multiple' => true,))
-            ->add('competences', 'sonata_type_model', array('label' => 'Compétences de l\'activité', 'by_reference' => false,'multiple' => true,))
-            ->add('level', 'sonata_type_model', array('label' => 'Niveau de l\'activité'))
-            ->add('category', 'sonata_type_model', array('label' => 'Niveau de la classe'))
-            ;
+            ->add('description', 'textarea')
+            ->add('file', 'sonata_type_model', array('label' => 'Photo de la leçon'))
+            ->add('category', 'sonata_type_model', array('label' => 'Catégorie de la lesson'))
+            ->add('activitys', 'sonata_type_model', array('label' => 'Activités de la leçon', 'by_reference' => false,'multiple' => true,))
+            ->add('competences', 'sonata_type_model', array('label' => 'Compétences de l\'activité', 'by_reference' => true,'multiple' => true,))
+            ->add('type', 'choice', array('label'=> 'type', 'choices' => LessonEnumType::get_enum_values()))
+                ;
     }
 
     // Fields to be shown on filter forms
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('libelle')->add('competences')->add('level')->add('category')
+            ->add('libelle')->add('activitys')->add('category')->add('type')->add('competences')
         ;
     }
 
@@ -34,7 +36,7 @@ class LessonAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('libelle')->add('competences')->add('level')->add('category')
+            ->addIdentifier('libelle')->add('activitys')->add('category')->add('type')->add('competences')
         ;
     }
 }

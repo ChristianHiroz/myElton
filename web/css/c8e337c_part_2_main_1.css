@@ -1,29 +1,41 @@
-h1,
-h2,
-h3,
-h4 {
-  font-weight: normal !important;
+/* 
+    Created on : 17 avr. 2014, 11:04:52
+    Author     : Christian Hiroz
+*/
+.menuBar {
+  background: #F29400;
+  height: 40px !important;
 }
-h4 {
-  margin-left: 5px !important;
+.divider-vertical {
+  border-left: 1px solid #f79321;
+  border-right: 1px solid #df7401;
+  height: 40px;
+  display: inline-block;
 }
-hr {
-  color: grey;
-  background: grey;
-  width: 95%;
-  height: 2px !important;
+.myEltonButtonMenu {
+  margin-right: -3px;
+  background-color: #F29400;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: arial;
+  font-size: 15px;
+  font-weight: bold;
+  height: 40px;
+  width: 200px;
 }
-a,
-a:hover,
-a:focus {
-  text-decoration: none !important;
+.myEltonButtonMenu:hover {
+  background-image: linear-gradient(to bottom, #f29400, #e36929);
+  background-color: #E36929;
+  color: #ffffff;
 }
-a.grey {
-  color: grey !important;
+.playbac {
+  margin: 15px 0px 0px 15px;
+  position: absolute;
 }
 .buttons {
   right: 2%;
-  top: 15px;
+  top: 30px;
   position: absolute;
 }
 .divisionButton {
@@ -36,13 +48,18 @@ a.grey {
   position: relative;
   margin-top: -40px;
 }
-h1 {
-  margin-top: -5px !important;
-  font-size: 24px !important;
-}
-.justify {
-  text-align: justify;
-  padding-left: 60px;
+.redDot {
+  background-color: #be0926;
+  height: 20px;
+  width: 20px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 390px;
+  border-radius: 390px;
+  font-size: 14px;
+  position: absolute;
+  top: -22%;
+  right: 1%;
+  color: white;
 }
 body {
   font-family: helvetica, trebuchet, sans-serif !important;
@@ -63,6 +80,207 @@ p {
   color: grey;
   margin-left: 36px !important;
   text-align: inherit;
+}
+hr {
+  color: grey;
+  background: grey;
+  width: 95%;
+  height: 2px !important;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-weight: normal !important;
+}
+h4 {
+  margin-left: 5px !important;
+}
+a,
+a:hover,
+a:focus {
+  text-decoration: none !important;
+}
+a.grey {
+  color: grey !important;
+}
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+h1 {
+  margin-top: -5px !important;
+  font-size: 24px !important;
+}
+* html .centered-pills ul.nav-pills {
+  display: inline;
+}
+/* IE6 */
+* + html .centered-pills ul.nav-pills {
+  display: inline;
+}
+/* IE7 */
+a.linkSiteMap {
+  color: grey;
+}
+a.linkSiteMap:hover {
+  color: grey;
+  font-weight: bold;
+}
+input[type=submit] {
+  background: url(../bundles/eltoncore/images/envoyer.png) no-repeat;
+  width: 140px;
+  height: 75px;
+  cursor: pointer;
+  border: 0;
+  margin-left: 15px;
+}
+.sectionH2 {
+  margin-top: 60px;
+  margin-bottom: 30px;
+  margin-left: -21px;
+}
+.sectionH2bis {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  margin-left: -37px;
+  font-size: 25px !important;
+}
+.cons {
+  position: absolute;
+  top: 15px;
+  right: 11%;
+}
+.submit {
+  background: url(../bundles/eltoncore/images/fermer.png) no-repeat;
+  width: 140px;
+  height: 75px;
+  cursor: pointer;
+  border: 0;
+  margin-left: 15px;
+}
+.justify {
+  text-align: justify;
+  padding-left: 60px;
+}
+.h100 {
+  height: 100px !important;
+}
+.screenMl20 {
+  margin-left: 20px !important;
+}
+.disInBl {
+  display: inline-block;
+}
+.disI {
+  display: inline;
+}
+.fs18 {
+  font-size: 18px !important;
+}
+.center {
+  text-align: center;
+}
+.categoryTitle {
+  position: relative;
+  left: 30%;
+  margin-top: 50px !important;
+  margin-bottom: 35px !important;
+}
+.lessonCategoryTitle {
+  margin-top: 50px !important;
+  margin-bottom: 15px !important;
+}
+.lessonNumber {
+  font-size: 25px !important;
+}
+.lessonNumberIner {
+  font-size: 40px !important;
+  line-height: 60px !important;
+  right: 5%;
+  margin-top: 15px;
+}
+.lessonText {
+  font-size: 18px;
+}
+.choose {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: middle;
+  border-top: 15px solid;
+  border-right: 9px solid transparent;
+  border-left: 9px solid transparent;
+  position: absolute;
+  top: 40%;
+  right: 6%;
+}
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover {
+  background-image: linear-gradient(to bottom, #f79321, #df7401);
+  background-color: #df7401;
+  color: #ffffff;
+}
+.centered-pills {
+  text-align: center;
+}
+.centered-pills ul.nav-pills {
+  display: inline-block;
+}
+.centered-pills li {
+  display: inline;
+}
+.centered-pills a {
+  float: left;
+}
+.row {
+  width: 100% !important;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.container {
+  width: 100% !important;
+}
+.wrap {
+  min-height: 100%;
+  height: auto;
+  margin: 0 auto -138px;
+  padding: 0 0 138px;
+}
+.lessonContainer {
+  text-align: center;
+  margin-top: 56px;
+}
+.footer {
+  margin-top: 75px;
+  height: 50px;
+  bottom: 0px;
+  width: 100%;
+}
+.centeredFooter {
+  margin-bottom: 25px;
+}
+.rightFooter {
+  float: right !important;
+  text-align: right !important;
+}
+.footerText {
+  text-align: center;
+  margin-top: 35px;
+}
+.leftFooter {
+  margin-left: 30px;
+}
+.activityContainer {
+  height: 300px;
+  width: 100%;
+  display: inline-block;
+  border-radius: 0px 20px 8px 10px ;
+  background-color: #cd0054;
+}
+.activityTextContainer {
+  float: left;
+  margin-left: 100px;
 }
 img.resizeHeaderLogo {
   width: auto;
@@ -103,6 +321,7 @@ img.btn-gestion {
 img.resizeHeaderTeacherElton {
   width: auto;
   height: 80px;
+  margin-left: 20px;
 }
 img.resizeHeaderTeacherLogo {
   width: auto;
@@ -121,136 +340,221 @@ img.resizeSpan {
   height: 30px;
   margin-top: -14px;
 }
-.sectionH2 {
-  margin-top: 60px;
-  margin-bottom: 30px;
-  margin-left: -21px;
+img.resizeActivity {
+  width: auto;
+  height: 140px;
+  margin-left: 25px;
+  margin-top: 25px;
 }
-.sectionH2bis {
-  margin-top: 30px;
-  margin-bottom: 15px;
-  margin-left: -37px;
-  font-size: 25px !important;
+img.resizePdfButton {
+  width: auto;
+  height: 180px;
 }
-.playbac {
-  margin: 15px 0px 0px 15px;
-  position: absolute;
+img.resizeWorldMap {
+  width: auto;
+  height: 500px;
 }
-.cons {
-  position: absolute;
-  top: 15px;
-  right: 11%;
+img.resizeCartPicture {
+  width: auto;
+  height: 140px;
 }
-.menuBar {
-  background: #F29400;
-  height: 40px !important;
-}
-.divider-vertical {
-  border-left: 1px solid #f79321;
-  border-right: 1px solid #df7401;
-  height: 40px;
+.buttonSmall {
   display: inline-block;
+  width: 110px;
+  height: 85px;
+  color: white;
+  text-align: center;
+  line-height: 43px;
+  background-color: #66b8dc;
+  border-radius: 20px 0px 10px 7px;
 }
-.myEltonButtonMenu {
-  margin-right: -3px;
-  background-color: #F29400;
+.buttonVerySmall {
   display: inline-block;
+  width: 80px;
+  height: 60px;
+  color: white;
+  text-align: center;
+  line-height: 43px;
+  background-color: #66b8dc;
+  border-radius: 20px 0px 10px 7px;
+}
+.button {
+  display: inline-block;
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-top: 24px;
+  width: 150px;
+  height: 100px;
+  color: white;
+  text-align: center;
+  line-height: 93px;
+  background-color: #66b8dc;
+  border-radius: 30px 0px 20px 10px;
+}
+.buttonBig {
+  display: inline-block;
+  width: 120px;
+  height: 90px;
+  color: white;
+  text-align: center;
+  line-height: 83px;
+  background-color: #66b8dc;
+  border-radius: 30px 0px 20px 10px;
+}
+.buttonActivity {
   cursor: pointer;
-  color: #ffffff;
-  font-family: arial;
-  font-size: 15px;
-  font-weight: bold;
-  height: 40px;
-  width: 200px;
-}
-.myEltonButtonMenu:hover {
-  background-image: linear-gradient(to bottom, #f29400, #e36929);
-  background-color: #E36929;
-  color: #ffffff;
-}
-.nav-pills > li.active > a,
-.nav-pills > li.active > a:hover {
-  background-image: linear-gradient(to bottom, #f79321, #df7401);
-  background-color: #df7401;
-  color: #ffffff;
-}
-.centered-pills {
+  border: 2px solid;
+  display: table-cell;
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-top: 24px;
+  width: 150px;
+  height: 50px;
+  color: black;
   text-align: center;
+  vertical-align: middle;
+  border-color: #cd0054;
+  border-radius: 20px 0px 10px 8px;
 }
-.centered-pills ul.nav-pills {
-  display: inline-block;
-}
-.centered-pills li {
-  display: inline;
-}
-.centered-pills a {
-  float: left;
-}
-.h100 {
-  height: 100px !important;
-}
-.screenMl20 {
-  margin-left: 20px !important;
-}
-.disInBl {
-  display: inline-block;
-}
-* html .centered-pills ul.nav-pills {
-  display: inline;
-}
-/* IE6 */
-* + html .centered-pills ul.nav-pills {
-  display: inline;
-}
-/* IE7 */
-a.linkSiteMap {
-  color: grey;
-}
-a.linkSiteMap:hover {
-  color: grey;
-  font-weight: bold;
-}
-.footer {
-  margin-top: 75px;
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
-}
-.centeredFooter {
-  margin-bottom: 25px;
-}
-.rightFooter {
-  float: right !important;
-  text-align: right !important;
-}
-.footerText {
+.buttonActivity:hover:active {
+  cursor: pointer;
+  border: 2px solid;
+  display: table-cell;
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-top: 24px;
+  width: 150px;
+  height: 50px;
+  color: white;
   text-align: center;
+  vertical-align: middle;
+  border-color: #cd0054;
+  border-radius: 20px 0px 10px 8px;
+  background-color: #cd0054;
+}
+.buttonTable {
+  display: table-cell;
+  width: 150px;
+  height: 100px;
+  vertical-align: middle;
+  line-height: 20px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  background-color: #66b8dc;
+  border-radius: 30px 0px 20px 10px;
+}
+a .button:focus,
+a .button:hover {
+  background-color: #0a71b4;
+  color: white;
+}
+.buttonTableSmall {
+  display: table-cell;
+  width: 110px;
+  height: 85px;
+  vertical-align: middle;
+  line-height: 20px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  background-color: #66b8dc;
+  border-radius: 20px 0px 10px 7px;
+}
+a .button:focus,
+a .button:hover {
+  background-color: #0a71b4;
+  color: white;
+}
+.buttonTableCont {
+  border-spacing: 30px 15px;
+  border-collapse: separate;
+  display: table;
+  margin: 0 auto;
+}
+.buttonClass {
+  background-color: #ffcc96;
+  height: 60px;
   margin-top: 35px;
+  width: 180px;
+  margin-left: 18%;
+  border-radius: 15px;
+  text-align: center;
+  line-height: 56px;
+  font-weight: bold;
+  font-size: 21px;
 }
-.leftFooter {
-  margin-left: 30px;
+.rouge {
+  background-color: #be0926 !important;
 }
-input[type=submit] {
-  background: url(../bundles/eltoncore/images/envoyer.png) no-repeat;
-  width: 140px;
-  height: 75px;
-  cursor: pointer;
-  border: 0;
-  margin-left: 15px;
+.rougeH:hover {
+  color: #be0926 !important;
 }
-.submit {
-  background: url(../bundles/eltoncore/images/fermer.png) no-repeat;
-  width: 140px;
-  height: 75px;
-  cursor: pointer;
-  border: 0;
-  margin-left: 15px;
+.orange {
+  background-color: #f29400 !important;
 }
-.row {
-  width: 100% !important;
+.orangeH:hover {
+  color: #f29400 !important;
 }
-.container {
-  width: 100% !important;
+.beige {
+  background-color: #ffcc96 !important;
+}
+.beigeH:hover {
+  color: #be0926 !important;
+}
+.turquoise {
+  background-color: #ffcc96 !important;
+}
+.turquoiseH:hover {
+  color: #219e98 !important;
+}
+.gris {
+  background-color: #cdcad4 !important;
+}
+.grisH:hover {
+  color: #cdcad4 !important;
+}
+.bleu {
+  background-color: #66b8dc !important;
+}
+.bleuH:hover {
+  color: #66b8dc !important;
+}
+.bleufonce {
+  background-color: #0a71b4 !important;
+}
+.bleufonceH:hover {
+  color: #0a71b4 !important;
+}
+.violet {
+  background-color: #cd0054 !important;
+}
+.violetH:hover {
+  color: #cd0054 !important;
+}
+.noir {
+  background-color: #38373a !important;
+}
+.noirH:hover {
+  color: #38373a !important;
+}
+.notion {
+  background-color: #be0926 !important;
+}
+.notionH:hover {
+  color: #be0926 !important;
+}
+.activités {
+  background-color: #66b8dc !important;
+}
+.activitésH:hover {
+  color: #66b8dc !important;
+}
+.vocabulaire {
+  background-color: #cdcad4 !important;
+}
+.vocabulaireH:hover {
+  color: #cdcad4 !important;
 }
 @media screen and (max-width: 768px) {
   .myEltonButtonMenu {
@@ -314,6 +618,12 @@ input[type=submit] {
   }
   .cons {
     right: 14%;
+  }
+  .footer {
+    margin-top: 300px;
+  }
+  img.resizeActivity {
+    margin-right: 25px;
   }
 }
 @media screen and (min-width: 1067px) and (max-width: 1225px) {

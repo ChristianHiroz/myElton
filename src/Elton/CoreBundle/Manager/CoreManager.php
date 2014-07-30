@@ -30,7 +30,6 @@ use Elton\CoreBundle\Entity\SessionSoapHeader;
         $soapClientHeader = new \SoapHeader($wsNamespace, "AuthentificationSoapHeader", new AuthentificationSoapHeader("PBPWS001", "d4f5b48e-b20d"), true);
         $soapClient->__setSoapHeaders($soapClientHeader);
         $IDSession = $soapClient->WSAuthentification()->WSAuthentificationResult;
-        
 	$soapClientHeaderSecond = new \SoapHeader($wsNamespace, "SessionHeader", new SessionSoapHeader($IDSession), true);
         
         $soapClient->__setSoapHeaders($soapClientHeaderSecond);

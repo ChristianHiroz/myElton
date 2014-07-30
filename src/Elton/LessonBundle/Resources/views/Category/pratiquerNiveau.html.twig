@@ -1,7 +1,21 @@
 {% extends "::base.html.twig" %}
 {% block body %}
     {{ parent() }}
-    {% for category in categorys %}
-        <a href="{{path('category_show', { id : category.id })}}">{{category.libelle}}</a>
-    {% endfor %}
+    <div class="container">
+        <div class="row">
+            <div class="buttonTableCont" style="margin-top:80px;">
+                {% for category in categorys %}
+                    <a class="buttonTable fs18  {{category.color}}" href="{{path('category_show', { id : category.id })}}">{{category.libelle}}</a>
+                    {% if loop.index == 1 %}
+                        </div>
+                        <div class="buttonTableCont">
+                    {% endif %}
+                    {% if loop.index == 4 %}
+                        </div>
+                        <div class="buttonTableCont">
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

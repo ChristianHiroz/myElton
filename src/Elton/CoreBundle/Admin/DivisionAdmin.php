@@ -33,7 +33,7 @@ class DivisionAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('libelle')->add('username')->add('teacher')->add('level')
+            ->addIdentifier('libelle')->addIdentifier('username')->add('teacher')->add('level')
         ;
     }
 }

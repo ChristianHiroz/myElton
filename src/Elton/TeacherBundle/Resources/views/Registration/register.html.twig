@@ -22,9 +22,18 @@
     <div class="item">
         <center>
             <select id="selectedOne"><option>Choisissez votre école</option></select><br/>
-            <input type="text" id="name"/><br/>
-            <input type="text" id="town"/><br/>
-            <input type="text" id="way"/>
+            {{form_label(form.school)}}
+            {{form_widget(form.school)}}
+            {{form_label(form.town)}}
+            {{form_widget(form.town)}}
+            {{form_label(form.address)}}
+            {{form_widget(form.address)}}
+        </center>
+    </div>
+    <div class="item">
+        <center>
+            {{form(form)}}
+            <input type="submit" value=""/>
         </center>
     </div>
 </div>

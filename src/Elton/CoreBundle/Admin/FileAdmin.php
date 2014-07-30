@@ -21,7 +21,7 @@ class FileAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('url')->add('alt')
+            ->add('url')->add('alt')->add('id')
         ;
     }
 
@@ -29,7 +29,7 @@ class FileAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('url')->addIdentifier('alt')
+            ->addIdentifier('url')->addIdentifier('alt')->addIdentifier('id')
         ;
     }
 }

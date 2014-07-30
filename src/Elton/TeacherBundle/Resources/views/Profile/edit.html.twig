@@ -1,6 +1,6 @@
 {% extends '::base.html.twig' %}
 
-{% block body -%}
+{% block body %}
     <div class="smallElton"></div>
     {% form_theme form 'EltonCoreBundle:Form:create_field.html.twig' %}
     <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">

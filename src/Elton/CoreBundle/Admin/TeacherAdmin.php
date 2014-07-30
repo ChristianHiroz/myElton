@@ -41,7 +41,7 @@ class TeacherAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')->add('username')->add('name')->add('firstName')->add('postalCode')->add('email')->add('roles')
+            ->addIdentifier('id')->addIdentifier('username')->addIdentifier('name')->add('firstName')->add('postalCode')->add('email')->add('roles')
         ;
     }
 }

@@ -29,6 +29,9 @@ class RegistrationFormType extends BaseType
             ->add('firstName', 'text', array('label' => 'Prénom', 'attr' => array('placeholder' => 'Entrez votre prénom')))
             ->add('postalCode', 'text', array('label' => 'Code postal', 'attr' => array('placeholder' => 'Entrez le code postal de votre école')))
             ->add('email', 'email', array('label' => 'Adresse email', 'attr'=> array('placeholder' => 'Entrez votre adresse email')))
+            ->add('school', 'text', array('label' => 'École', 'attr' => array('placeholder' => 'Entrez le nom de votre école')))
+            ->add('address', 'text', array('label' => 'Adresse', 'attr' => array('placeholder' => 'Entrez l\'adresse de votre école')))
+            ->add('town', 'text', array('label' => 'Ville', 'attr' => array('placeholder' => 'Entrez la ville de votre école')))
         ;
     }
     

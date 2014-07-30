@@ -57,6 +57,8 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
+        mapping_types:
+            enum: string
         # if using pdo_sqlite as your database driver, add the path in parameters.yml
         # e.g. database_path: "%kernel.root_dir%/data/data.db3"
         # path:     "%database_path%"
@@ -102,11 +104,11 @@ pugx_multi_user:
             name: fos_user_registration_form
             validation_groups:  [Registration, Default]
           template: EltonTeacherBundle:Registration:register.form.html.twig
-#        profile:
-#          form:
-#            type: Acme\UserBundle\Form\Type\ProfileUserOneFormType
-#            name: fos_user_profile_form
-#            validation_groups:  [Profile, Default] 
+        profile:
+          form:
+            type: Elton\TeacherBundle\Form\ProfileFormType
+            name: fos_user_profile_edit
+            validation_groups:  [Profile, Default] 
     user_two:
         entity: 
           class: Elton\DivisionBundle\Entity\Division
