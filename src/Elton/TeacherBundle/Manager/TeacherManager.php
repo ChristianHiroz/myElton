@@ -45,7 +45,7 @@ class TeacherManager extends CoreManager
         if(is_object($user) && $user->hasRole('ROLE_USER'))
         {
             $selectedDivision = $this->container->get('elton.division.manager')->getRepository()->getSelectedDivisionByTeacherId($user->getId());
-            if(is_object($selectedDivision))
+            if(array_key_exists(0, $selectedDivision))
             {    
                 $cartNumber = $selectedDivision[0]->getCart()->getActivitys()->count();
             }
