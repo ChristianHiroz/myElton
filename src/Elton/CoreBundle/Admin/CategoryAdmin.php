@@ -17,6 +17,7 @@ class CategoryAdmin extends Admin
             ->add('libelle', 'text', array('label' => 'Nom de la catégorie'))
             ->add('level', 'sonata_type_model', array('label' => 'Niveau de la catégorie', 'property' => 'libelle'))
             ->add('color', 'choice', array('label' => 'Couleur du bouton','choices' => ColorEnumType::get_enum_values()))
+            ->add('active', 'choice', array('label' => 'Actif', 'choices' => array(0 => 'Non', 1 => 'Oui')))
         ;
     }
 
@@ -27,6 +28,7 @@ class CategoryAdmin extends Admin
             ->add('libelle')
             ->add('level')
             ->add('color')
+            ->add('active')
         ;
     }
 
@@ -38,6 +40,7 @@ class CategoryAdmin extends Admin
             ->addIdentifier('libelle')
             ->addIdentifier('level')
             ->add('color')
+            ->add('active')
         ;
     }
 }

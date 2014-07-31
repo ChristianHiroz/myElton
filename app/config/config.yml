@@ -117,3 +117,6 @@ pugx_multi_user:
 #            type: Acme\UserBundle\Form\Type\ProfileUserTwoFormType
 
 
+sonata_core: ~
+
+

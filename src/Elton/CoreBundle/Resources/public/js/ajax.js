@@ -54,15 +54,21 @@ $("#attribuer").click(function()
 
 function addToCart(activityId)
 {
-    $.ajax({
-            url: Routing.generate('add_cart', {id : activityId }),
-            data: {},
-            success: function(){ 
-                var value = parseInt($("#nbPanier").text());
-                value = value + 1;
-                $("#nbPanier").text(value);
-            }
-        });
+    var value = parseInt($("#nbPanier").text());
+    if(value >= 6) {
+        $("#myFullModal").modal({
+                                    show: true
+                                });
+    } else {
+        $.ajax({
+                url: Routing.generate('add_cart', {id : activityId }),
+                data: {},
+                success: function(){ 
+                    value = value + 1;
+                    $("#nbPanier").text(value);
+                }
+            });
+    }
 }
 
 function setSelect(activityId, cartId)

@@ -29,6 +29,11 @@ class Category
     private $libelle;
     
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $active = 1; //means the category is active
+    
+    /**
      * @var color
      * 
      * @ORM\Column(name="color", type="color")
@@ -145,6 +150,27 @@ class Category
     public function setLevel(\Elton\CoreBundle\Entity\Level $level)
     {
         $this->level = $level;
+    }
+    
+    /**
+     * Set active
+     */
+    public function setActive($active)
+    {
+        if($this->active)
+        {
+            $this->active = false;
+           
+        }
+        else
+        {
+            $this->active = true;
+        }
+    }
+    
+    public function isActive()
+    {
+        return $this->active;
     }
     
     public function __toString() {
