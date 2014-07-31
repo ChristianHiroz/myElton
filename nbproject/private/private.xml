@@ -12,10 +12,12 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/myElton/app/Resources/views/base.html.twig</file>
-            <file>file:/var/www/myElton/src/Elton/LessonBundle/Resources/views/Category/culture.html.twig</file>
+            <file>file:/var/www/myElton/src/Elton/LessonBundle/Entity/Activity.php</file>
+            <file>file:/var/www/myElton/src/Elton/CoreBundle/Resources/public/less/main.less</file>
+            <file>file:/var/www/myElton/src/Elton/TeacherBundle/Resources/views/Cart/show.html.twig</file>
+            <file>file:/var/www/myElton/src/Elton/DivisionBundle/Entity/Division.php</file>
             <file>file:/var/www/myElton/app/Resources/views/headerTeacher.html.twig</file>
-            <file>file:/var/www/myElton/src/Elton/LessonBundle/Controller/CategoryController.php</file>
+            <file>file:/var/www/myElton/src/Elton/TeacherBundle/Entity/CartActivity.php</file>
         </group>
     </open-files>
 </project-private>
