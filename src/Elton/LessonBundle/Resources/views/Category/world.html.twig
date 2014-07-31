@@ -1,0 +1,21 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+    {{ parent() }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h1 class="lessonCategoryTitle" style="color: grey;">Éléments culturels</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <img class="resizeWorldMap" src="{{asset('bundles/eltoncore/images/map.png')}}">
+                {% for category in categorys %}
+                    <a class="{{category.libelle}} buttonVerySmall" style="line-height:55px" href="{{path('category_show', {id : category.id})}}">{{category.libelle}}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

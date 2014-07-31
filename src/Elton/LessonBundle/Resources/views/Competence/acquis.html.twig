@@ -1,0 +1,26 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+    {{ parent() }}
+    <div class="container">
+        <div class="row">
+            <table>
+                {% for competence in competences %}
+                    <tr>
+                        <td>{{competence.libelle}}</td>
+                        {% for divisionCompetence in selectedDivision.competences %}
+                            {% set bool = false %}
+                            {% if competence.libelle == divisionCompetence.libelle %}
+                                {% set bool = true %}
+                            {% endif %} 
+                            {% if bool == true %}
+                                <td>Oui</td>
+                            {% else %}
+                                <td>Non</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

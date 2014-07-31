@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    {{ parent() }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h1 class="lessonCategoryTitle" style="color: grey;">Mon panier d'activités</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                 <div id="unsetted" style="border:2px ; height:500px;width:50%; float:left;">
+                    {% if cart%}
+                        {% for cartactivity in cart %} 
+                            <div class="bouger" style="width:50%; height:33%; text-align: center; box-shadow: 0 15px 10px #777; transform: rotate(-3deg);" onclick="setSelect({{cartactivity.activity.id}}, {{cartactivity.cart.id}})" id="{{cartactivity.activity.id}}">
+                                <img class="resizeCartPicture" src="{{ asset(cartactivity.activity.file.uploadDir ~ '/' ~ cartactivity.activity.file.id ~ '.' ~ cartactivity.activity.file.url) }}" alt="{{cartactivity.activity.file.alt}}"/>
+                                <p style="margin-left:0px!important">{{ cartactivity.activity }}</p>
+                            </div> <br/>
+                        {% endfor %}
+                    {% else %}
+                    {% endif %}
+                </div>
+                <div id="setted" style="border:2px solid red; height:500px; width:50%; float:right;">
+                    {% if settedCart %}
+                        {% for cartactivity in settedCart %}
+                            <div class="bouger" onclick="setSelect({{cartactivity.activity.id}}, {{cartactivity.cart.id}})" id="{{cartactivity.activity.id}}">
+                                {{ cartactivity.activity }}
+                            </div> <br/>
+                        {% endfor %}
+                    {% else %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <a id="attribuer">Attribuer à la classe</a>
+                <a id="supprimer">Supprimer</a>
+                <a href="{{path('empty_cart')}}">Vider la panier</a>
+                </div>
+            </div>  
+    </div>
+{% endblock %}  
