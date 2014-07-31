@@ -21,6 +21,7 @@ class LessonAdmin extends Admin
             ->add('activitys', 'sonata_type_model', array('label' => 'Activités de la leçon', 'by_reference' => false,'multiple' => true,))
             ->add('competences', 'sonata_type_model', array('label' => 'Compétences de l\'activité', 'by_reference' => true,'multiple' => true,))
             ->add('type', 'choice', array('label'=> 'type', 'choices' => LessonEnumType::get_enum_values()))
+            ->add('active', 'choice', array('label' => 'Actif', 'choices' => array(0 => 'Non', 1 => 'Oui')))
                 ;
     }
 
@@ -28,7 +29,7 @@ class LessonAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('libelle')->add('activitys')->add('category')->add('type')->add('competences')
+            ->add('libelle')->add('activitys')->add('category')->add('type')->add('competences')->add('active')
         ;
     }
 
@@ -36,7 +37,7 @@ class LessonAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('libelle')->add('activitys')->add('category')->add('type')->add('competences')
+            ->addIdentifier('libelle')->add('activitys')->add('category')->add('type')->add('competences')->add('active')
         ;
     }
 }

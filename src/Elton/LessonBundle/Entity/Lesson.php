@@ -30,6 +30,11 @@ class Lesson
     private $libelle;
     
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $active = 1; //means the category is active
+    
+    /**
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=255)
@@ -106,6 +111,27 @@ class Lesson
     public function getLibelle()
     {
         return $this->libelle;
+    }
+    
+    /**
+     * Set active
+     */
+    public function setActive($active)
+    {
+        if($this->active)
+        {
+            $this->active = false;
+           
+        }
+        else
+        {
+            $this->active = true;
+        }
+    }
+    
+    public function isActive()
+    {
+        return $this->active;
     }
 
     /**

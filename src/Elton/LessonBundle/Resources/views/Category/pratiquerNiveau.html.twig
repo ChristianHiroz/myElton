@@ -1,11 +1,31 @@
 {% extends "::base.html.twig" %}
 {% block body %}
     {{ parent() }}
+    <div class="modal fade" id="myUnactiveModal" tabindex="-1" role="dialog" aria-labelledby="myUnactiveModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                    <h4 class="modal-title label label-warning modalFS" id="myUnactiveModalLabel">En construction !</h4>
+                </div>
+                <div class="modal-body" style="text-align:center;">
+                    Cette partie sera accessible prochainement
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="buttonTableCont" style="margin-top:80px;">
                 {% for category in categorys %}
-                    <a class="buttonTable fs18  {{category.color}}" href="{{path('category_show', { id : category.id })}}">{{category.libelle}}</a>
+                    {% if category.active %}
+                        <a class="buttonTable fs18  {{category.color}}" href="{{path('category_show', { id : category.id })}}">{{category.libelle}}</a>
+                    {% else %}                        
+                        <a class="buttonTable fs18  {{category.color}}" style="opacity: 0.5;" data-toggle="modal" data-target="#myUnactiveModal">{{category.libelle}}</a>
+                    {% endif %}
                     {% if loop.index == 1 %}
                         </div>
                         <div class="buttonTableCont">
