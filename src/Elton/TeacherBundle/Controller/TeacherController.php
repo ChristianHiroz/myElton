@@ -38,14 +38,16 @@ class TeacherController extends Controller
      * Create a division for the teacher
      * 
      * @Route("/create/division", name="teacher_create_division")
+     * @Template("EltonDivisionBundle:Division:new.html.twig")
      */
     public function createDivisionAction()
     {
+        $returnArray = $this->get('elton.teacher.manager')->check();
         $user = $this->get('security.context')->getToken()->getUser();
         $division = new Division();
         $form = $this->createForm(new DivisionType(), $division, array(
             'action' => $this->generateUrl('teacher_create_division'),
-            'method' => 'POST',
+            'method' => 'POST'
         ));
         $request = $this->get('request');
 
@@ -64,7 +66,8 @@ class TeacherController extends Controller
 
         }
         
-        return $this->render('EltonDivisionBundle:Division:new.html.twig', array('form' => $form->createView()));
+        $returnArray['form'] = $form->createView();
+        return $returnArray;
     }
     
     /**

@@ -24,9 +24,16 @@ class CoreController extends Controller
     public function indexAction()
     {                
         $returnArray = $this->get('elton.teacher.manager')->check();
-        if(is_array($returnArray) && is_object($returnArray['selectedDivision']))
+        if(is_array($returnArray) && is_object($returnArray['user']))
         {
-            return $this->redirect($this->generateUrl('practice'));
+            if(is_object($returnArray['selectedDivision']))
+            {
+                return $this->redirect($this->generateUrl('practice'));
+            }
+            else
+            {
+                return $this->redirect($this->generateUrl('teacher_create_division'));
+            }
         }
         return $returnArray;
     }
