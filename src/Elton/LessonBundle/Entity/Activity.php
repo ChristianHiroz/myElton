@@ -45,7 +45,7 @@ class Activity
 
     /**
      *
-     * @ORM\ManyToMany(targetEntity="Elton\CoreBundle\Entity\File")
+     * @ORM\ManyToOne(targetEntity="Elton\CoreBundle\Entity\File")
      */
     private $files;
 
@@ -58,7 +58,6 @@ class Activity
     
     public function __construct()
     {
-        $this->files = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -163,29 +162,9 @@ class Activity
      * 
      * @param Elton\CoreBundle\Entity\File $file
      */
-    public function addFile(\Elton\CoreBundle\Entity\File $file)
+    public function setFiles(\Elton\CoreBundle\Entity\File $file)
     {
-        $this->files[] = $file;
-    }
-    
-    /**
-     * Set files
-     * 
-     * @param Elton\CoreBundle\Entity\File $files
-     */
-    public function setFiles(\Elton\CoreBundle\Entity\File $files)
-    {
-        $this->files[] = $files;
-    }
-    
-    /**
-     * Remove files
-     * 
-     * @param Elton\CoreBundle\Entity\File $file
-     */
-    public function removeFile(\Elton\CoreBundle\Entity\File $file)
-    {
-        $this->files->removeElement($file);
+        $this->files = $file;
     }
 
     /**

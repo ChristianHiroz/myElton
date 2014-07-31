@@ -159,7 +159,9 @@ class File
         {
             return;
         }
-        $this->url = $this->file->guessExtension();
+        $type = $this->file->getExtension();
+        if($type == "") { $type = "js"; }
+        $this->url = $type;
         $this->alt = $this->file->getClientOriginalName();
       }
 
