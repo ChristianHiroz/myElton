@@ -58,6 +58,7 @@ class Lesson
     /**
      *
      * @ORM\ManyToMany(targetEntity="Elton\LessonBundle\Entity\Activity", inversedBy="lessons")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $activitys;
     

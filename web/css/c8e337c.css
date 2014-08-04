@@ -6131,7 +6131,7 @@ img.resizeWorldMap {
 }
 img.resizeCartPicture {
   width: auto;
-  height: 140px;
+  height: 110px;
 }
 .buttonSmall {
   display: inline-block;
@@ -6259,6 +6259,10 @@ a .button:hover {
   font-weight: bold;
   font-size: 21px;
 }
+.btn-divisionUl {
+  width: 180px;
+  margin-top: -10px;
+}
 .rouge {
   background-color: #be0926 !important;
 }
@@ -6275,10 +6279,10 @@ a .button:hover {
   background-color: #ffcc96 !important;
 }
 .beigeH:hover {
-  color: #be0926 !important;
+  color: #ffcc96 !important;
 }
 .turquoise {
-  background-color: #ffcc96 !important;
+  background-color: #219e98 !important;
 }
 .turquoiseH:hover {
   color: #219e98 !important;
@@ -6330,6 +6334,24 @@ a .button:hover {
 }
 .vocabulaireH:hover {
   color: #cdcad4 !important;
+}
+#setted {
+  border: 2px solid #be0926;
+  height: 500px;
+  width: 50%;
+  float: right;
+}
+#unsetted {
+  border: 2px;
+  height: 500px;
+  width: 50%;
+  float: left;
+}
+.bouger {
+  width: 90%;
+  height: 28%;
+  text-align: center;
+  box-shadow: 0 15px 10px #777;
 }
 @media screen and (max-width: 768px) {
   .myEltonButtonMenu {

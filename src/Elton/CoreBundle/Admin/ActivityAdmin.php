@@ -18,6 +18,7 @@ class ActivityAdmin extends Admin
             ->add('file', 'sonata_type_model', array('label' => 'Photo de l\'activité'))
             ->add('files', 'sonata_type_model', array('label' => 'Fichiers de l\'activité'))
             ->add('type', 'choice', array('label' => 'Type d\'activité' ,'choices' => \Elton\CoreBundle\ORM\ActivityEnumType::get_enum_values()))
+            ->add('active', 'choice', array('label' => 'Actif', 'choices' => array(0 => 'Non', 1 => 'Oui')))
                 ;
     }
 
@@ -25,7 +26,7 @@ class ActivityAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name')->add('files')
+            ->add('name')->add('files')->add('active')
         ;
     }
 
@@ -33,7 +34,7 @@ class ActivityAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name')->add('files')->add('description')->add('file')
+            ->addIdentifier('name')->add('files')->add('description')->add('file')->add('active')
         ;
     }
 }

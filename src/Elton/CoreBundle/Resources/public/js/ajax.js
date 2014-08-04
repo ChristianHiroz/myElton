@@ -41,20 +41,39 @@ $("#attribuer").click(function()
         url: Routing.generate('set_to_division', {activityId : selectedActivity, cartId : selectedCart}),
         data: {}
     });
-    var parentId = $("#" + selectedActivity).closest("div").attr("id");
-    if(parentId === "setted"){
-        $("#unsetted").prepend($("#" + selectedActivity));
-        $("#attribuer").text("Attribuer à la classe");
-    }
-    else{
-        $("#setted").prepend($("#" + selectedActivity));
+    var parentId = $("#" + selectedActivity).closest("div").parent().attr("id");
+    if(parentId === "setted1" || parentId === "setted2"){            
+            if($("#unsetted1 div").length === 3){
+                $("#unsetted2").prepend($("#" + selectedActivity));
+            }
+            else{
+                $("#unsetted1").prepend($("#" + selectedActivity));
+            }
+            $("#"+selectedActivity).css("left", "0px");
+            $("#"+selectedActivity).css("top", "0px");
+            $("#attribuer").text("Attribuer à la classe");
+        }
+    else{            
+        if($("#setted1 div").length === 3){
+            $("#setted2").prepend($("#" + selectedActivity));
+        }
+        else{
+            $("#setted1").prepend($("#" + selectedActivity));
+        }
+        $("#"+selectedActivity).css("left", "0px");
+        $("#"+selectedActivity).css("top", "0px");
         $("#attribuer").text("Désattribuer de la classe");
     }
 });
 
 function addToCart(activityId)
 {
-    var value = parseInt($("#nbPanier").text());
+    if($("#nbPanier").length) {
+        var value = parseInt($("#nbPanier").text());
+    }
+    else {
+        var value = 0;
+    }
     if(value >= 6) {
         $("#myFullModal").modal({
                                     show: true
@@ -65,6 +84,10 @@ function addToCart(activityId)
                 data: {},
                 success: function(){ 
                     value = value + 1;
+                    if(value === 1)
+                    {
+                        $("#panier").append("<p id='nbPanier' class='redDot'>fefsf</p>");
+                    }
                     $("#nbPanier").text(value);
                 }
             });
@@ -85,10 +108,10 @@ function setSelect(activityId, cartId)
         selectedActivity = activityId;
         selectedCart = cartId;
         $("#" + selectedActivity).addClass("rouge");
-        $("#" + selectedActivity).draggable();
+        $("#" + selectedActivity).draggable({ revert: "invalid" });
         $("#" + selectedActivity).draggable("option", "disabled", false);
-        var parentId = $("#" + activityId).closest("div").attr("id");
-        if(parentId === "setted"){
+        var parentId = $("#" + activityId).closest("div").parent().attr("id");
+        if(parentId === "setted1" || parentId === "setted2"){
             $("#attribuer").text("Désattribuer de la classe");
         }
         else{
@@ -99,45 +122,43 @@ function setSelect(activityId, cartId)
 
 $("#setted").droppable({
     drop: function( event, ui ) {
+        var parentId = $("#" + selectedActivity).closest("div").parent().parent().attr("id");
+        if(parentId === "unsetted") {  
             $.ajax({
-            url: Routing.generate('set_to_division', {activityId : selectedActivity, cartId : selectedCart}),
-            data: {}
-        });
-        var parentId = $("#" + selectedActivity).parent("div").attr("id");
-        if(parentId === "setted"){
-            $("#unsetted").prepend($("#" + selectedActivity));
-            $("#"+selectedActivity).css("left", "0px");
-            $("#"+selectedActivity).css("top", "0px");
-            $("#attribuer").text("Attribuer à la classe");
-        }
-        else{
-            $("#setted").prepend($("#" + selectedActivity));
-            $("#"+selectedActivity).css("left", "0px");
-            $("#"+selectedActivity).css("top", "0px");
+                url: Routing.generate('set_to_division', {activityId : selectedActivity, cartId : selectedCart}),
+                data: {}
+            });
+            if($("#setted1 div").length === 3) {
+                $("#setted2").prepend($("#" + selectedActivity));
+            }
+            else{
+                $("#setted1").prepend($("#" + selectedActivity));
+            }
             $("#attribuer").text("Désattribuer de la classe");
-        }
+        }         
+        $("#"+selectedActivity).css("left", "0px");
+        $("#"+selectedActivity).css("top", "0px");
     }
 });
 
 $("#unsetted").droppable({
     drop: function( event, ui ) {
+        var parentId = $("#" + selectedActivity).closest("div").parent().parent().attr("id");
+        if(parentId === "setted") {  
             $.ajax({
-            url: Routing.generate('set_to_division', {activityId : selectedActivity, cartId : selectedCart}),
-            data: {}
-        });
-        var parentId = $("#" + selectedActivity).parent("div").attr("id");
-        if(parentId === "setted"){
-            $("#unsetted").prepend($("#" + selectedActivity));
-            $("#attribuer").text("Attribuer à la classe");
-            $("#"+selectedActivity).css("left", "0px");
-            $("#"+selectedActivity).css("top", "0px");
-        }
-        else{
-            $("#setted").prepend($("#" + selectedActivity));
-            $("#attribuer").text("Désattribuer de la classe");
-            $("#"+selectedActivity).css("left", "0px");
-            $("#"+selectedActivity).css("top", "0px");
-        }
+                url: Routing.generate('set_to_division', {activityId : selectedActivity, cartId : selectedCart}),
+                data: {}
+            });
+            if($("#unsetted div").length === 3) {
+                $("#unsetted2").prepend($("#" + selectedActivity));
+            }
+            else{
+                $("#unsetted1").prepend($("#" + selectedActivity));
+            }
+            $("#attribuer").text("Attribuer de la classe");
+        }           
+        $("#"+selectedActivity).css("left", "0px");
+        $("#"+selectedActivity).css("top", "0px");
     }
 });
 
@@ -150,22 +171,12 @@ $("#supprimer").click(function()
             $("#"+selectedActivity).remove();
             var value = parseInt($("#nbPanier").text());
             value = value - 1;
-            $("#nbPanier").text(value);
-        }
-    });
-});
-
-
-$("#supprimer").click(function()
-{
-    $.ajax({
-        url: Routing.generate('delete_cart', {id : selectedActivity}),
-        data: {},
-        success: function(){
-            $("#"+selectedActivity).remove();
-            var value = parseInt($("#nbPanier").text());
-            value = value - 1;
-            $("#nbPanier").text(value);
+            if(value === 0) {
+                $("#nbPanier").remove();
+            }
+            else {
+                $("#nbPanier").text(value);
+            }
         }
     });
 });

@@ -15,8 +15,10 @@ class EltonCoreBundle extends Bundle
         Type::addType('color', 'Elton\CoreBundle\ORM\ColorEnumType');
         Type::addType('lessonType', 'Elton\CoreBundle\ORM\LessonEnumType');
         Type::addType('activityType', 'Elton\CoreBundle\ORM\ActivityEnumType');
+        Type::addType('trimestreType', 'Elton\CoreBundle\ORM\TrimestreEnumType');
         $em->getConnection()->getDatabasePlatform()->registerDoctrineTypeMapping('color', 'color');
         $em->getConnection()->getDatabasePlatform()->registerDoctrineTypeMapping('lessonType', 'lessonType');
         $em->getConnection()->getDatabasePlatform()->registerDoctrineTypeMapping('activityType', 'activityType');
+        $em->getConnection()->getDatabasePlatform()->registerDoctrineTypeMapping('trimestreType', 'trimestreType');
     }
 }

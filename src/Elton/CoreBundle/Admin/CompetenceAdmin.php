@@ -14,6 +14,7 @@ class CompetenceAdmin extends Admin
     {
         $formMapper
             ->add('libelle', 'text', array('label' => 'Nom de la compétence'))
+            ->add('trimestre', 'choice', array('label' => 'Trimestre de la compétences' ,'choices' => \Elton\CoreBundle\ORM\TrimestreEnumType::get_enum_values()))
         ;
     }
 
@@ -21,7 +22,7 @@ class CompetenceAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('libelle')
+            ->add('libelle')->add('trimestre')
         ;
     }
 
@@ -29,7 +30,7 @@ class CompetenceAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('id')->addIdentifier('libelle')
+            ->addIdentifier('id')->addIdentifier('libelle')->add('trimestre')
         ;
     }
     

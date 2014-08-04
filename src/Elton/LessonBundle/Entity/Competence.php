@@ -35,7 +35,14 @@ class Competence
      */
     private $level;
 
-
+    /**
+     * @var trimestreType
+     * 
+     * @ORM\Column(name="type", type="trimestreType")
+     * 
+     */
+    private $trimestre;
+    
     /**
      * Get id
      *
@@ -87,6 +94,26 @@ class Competence
     public function setLevel(\Elton\CoreBundle\Entity\Level $level)
     {
         $this->level = $level;
+    }
+    
+    /**
+     * Get trimestre
+     * 
+     * @return trimestreType
+     */
+    public function getTrimestre()
+    {
+        return $this->trimestre;
+    }
+    
+    /**
+     * Set trimestre
+     * 
+     * @param trimestreType $trimestre
+     */
+    public function setTrimestre($trimestre)
+    {
+        $this->trimestre = $trimestre;
     }
     
     public function __toString() 

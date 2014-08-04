@@ -64,7 +64,7 @@
             </li>
             <li class="divider-vertical"></li>
             <li>
-                <a class="myEltonButtonMenu text-center" href="{{path('show_cart')}}">
+                <a  id="panier" class="myEltonButtonMenu text-center" href="{{path('show_cart')}}">
                     {% if cartNumber > 0 %}
                     <p id="nbPanier" class="redDot">{{cartNumber}}</p>
                     {% endif %}

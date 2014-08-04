@@ -2,28 +2,42 @@
 
 {% block body -%}
     {{ parent() }}
+    <div class="modal fade" id="myUnactiveModal" tabindex="-1" role="dialog" aria-labelledby="myUnactiveModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                    <h4 class="modal-title label label-warning modalFS" id="myUnactiveModalLabel">En construction !</h4>
+                </div>
+                <div class="modal-body" style="text-align:center;">
+                    Cette activité sera accessible prochainement
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
     {% for activity in entity.activitys %}
         {% if activity.files.url == "mp3" %}
             MP3MP3MP3
         {% elseif activity.files.url == "jpg" or activity.files.url == "jpeg" or activity.files.url == "png" %}
             JPGJPGJPG
-        {% elseif activity.files.url == "mp4" %}
-            MP4MP4MP4
         {% elseif activity.files.url == "js" %}
-            <div class="modal fade" id="myGameModal" tabindex="-1" role="dialog" aria-labelledby="myGameModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
+            <div class="modal fade" id="myGameModal" tabindex="-1" role="dialog" aria-labelledby="myGameModalLabel" aria-hidden="true" >
+                <div class="modal-dialog" style="width: 95%; height:750px;">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                             <h4 class="modal-title label label-warning modalFS" id="myGameModalLabel">Panier plein</h4>
                         </div>
-                        <div class="modal-body" style="text-align:center;">
-                            <script src="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}"></script>
-                            <div  style="border:1px solid black;z-index:1;-moz-border-radius:8px;border-radius:8px;text-align:center; width:1030px; height:430px;">
-                                <canvas id="game" width="1000" height="400" style="background-color: #77B5FE; margin-top:15px; margin-right:15px;">
+                        <div class="modal-body" style="text-align:center; width:95%;">
+                            <div  style="border:1px solid black;z-index:1;-moz-border-radius:8px;border-radius:8px;text-align:center;">
+                                <canvas width="750" height="450" id="game" style="background-color: #77B5FE; margin-top:15px; margin-bottom: 15px; margin-right:15px;">
                                     <p lang="fr">Votre navigateur ne supporte pas la balise canvas.</p>
                                 </canvas>
                             </div>
+                            <script src="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}"></script>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
@@ -90,55 +104,67 @@
                         <img class="resizePdfButton" src="{{asset('bundles/eltoncore/images/vocabulaire.jpg')}}"/>
                     </div>
                 {% endif %}
-                <div class="buttonTableCont" style='margin-top:30px' role="tablist">
-                    {% for activity in entity.activitys %}
-                        {% if loop.index == 1 %}
-                        <a class="buttonActivity  {{activity.type}} " href="#{{loop.index}}" role="tab" data-toggle="tab">{{activity.type}}</a>
-                        {% else %}
-                            <a class="buttonActivity  {{activity.type}} " href="#{{loop.index}}" role="tab" data-toggle="tab">{{activity.type}}</a>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                <div class="tab-content activityContainer" style=" margin-top: -8px;">
-                    {% for activity in entity.activitys %}
-                        {% if loop.index == 1 %}
-                            <div class="tab-pane fade in active" id="{{loop.index}}">
-                                <div class="row">
-                                    <div class="col-md-4" style="padding:0px!important">
-                                        <img style="float:left;" class="resizeActivity" src="{{ asset(activity.file.uploadDir ~ '/' ~ activity.file.id ~ '.' ~ activity.file.url) }}" alt="{{activity.file.alt}}"/>
-                                    </div>  
-                                    <div class="col-md-8" style=" margin:auto!important;  padding:0px!important">
-                                        <p style="color:white;margin-top:35px;"><span style="font-size:20px;">{{activity.name}}</span><br/>{{activity.description}}</p>
-                                        <div class="buttonTableCont">
-                                            <a class="buttonActivity bleu" onclick="addToCart({{activity.id}});">Ajouter au panier</a>
-                                            {% if activity.files.url == "js" %}
-                                                <a class="buttonActivity bleu" data-toggle="modal" data-target="#myGameModal">Lancer l'activité</a>
-                                            {% else %}
-                                            <a class="buttonActivity bleu">Lancer l'activité</a>
-                                            {% endif %}
+                {% set bool = false %}
+                {% for activity in entity.activitys %}
+                    {% if activity.active == 1 %}
+                        {% set bool = true %}
+                    {% endif %}
+                {% endfor %}
+                {% if entity.activitys.count() > 0 %}
+                    <div class="buttonTableCont" style='margin-top:30px' role="tablist">
+                        {% for activity in entity.activitys %}
+                            {% if activity.active == 1 %}
+                                <a class="buttonActivity  {{activity.type}} " href="#{{loop.index}}" role="tab" data-toggle="tab">{{activity.type}}</a>
+                            {% else %}
+                                <a class="buttonActivity  {{activity.type}} "  style="opacity: 0.5;" role="tab" data-toggle="modal" data-target="#myUnactiveModal">{{activity.type}}</a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% if bool == true %}
+                        <div class="tab-content activityContainer" style=" margin-top: -8px;">
+                            {% for activity in entity.activitys %}
+                                {% if activity.active == 1 %}
+                                    {% if loop.index == 1 %}
+                                        <div class="tab-pane fade in active" id="{{loop.index}}">
+                                            <div class="row">
+                                                <div class="col-md-4" style="padding:0px!important">
+                                                    <img style="float:left;" class="resizeActivity" src="{{ asset(activity.file.uploadDir ~ '/' ~ activity.file.id ~ '.' ~ activity.file.url) }}" alt="{{activity.file.alt}}"/>
+                                                </div>  
+                                                <div class="col-md-8" style=" margin:auto!important;  padding:0px!important">
+                                                    <p style="color:white;margin-top:35px;"><span style="font-size:20px;">{{activity.name}}</span><br/>{{activity.description}}</p>
+                                                    <div class="buttonTableCont">
+                                                        <a class="buttonActivity bleu" onclick="addToCart({{activity.id}});">Ajouter au panier</a>
+                                                        {% if activity.files.url == "js" %}
+                                                            <a class="buttonActivity bleu" data-toggle="modal" data-target="#myGameModal">Lancer l'activité</a>
+                                                        {% else %}
+                                                        <a class="buttonActivity bleu">Lancer l'activité</a>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% else %}
-                            <div class="tab-pane fade" id="{{loop.index}}">
-                                <div class="row">
-                                    <div class="col-md-5" style="padding:0px!important">
-                                        <img  class="resizeActivity" src="{{ asset(activity.file.uploadDir ~ '/' ~ activity.file.id ~ '.' ~ activity.file.url) }}" alt="{{activity.file.alt}}"/>
-                                    </div>  
-                                    <div class="col-md-1"></div>
-                                    <div class="col-md-7" style=" padding:0px!important">
-                                        <p style="margin-left:0px!important; margin-top:25px;color:white;">{{activity.name}}<br/>{{activity.description}}</p>
-                                        <div class="buttonTableCont">
-                                            <a class="buttonActivity bleu" onclick="addToCart({{activity.id}})">Ajouter au panier</a>
-                                            <a class="buttonActivity bleu">Lancer l'activité</a>
+                                    {% else %}
+                                        <div class="tab-pane fade" id="{{loop.index}}">
+                                            <div class="row">
+                                                <div class="col-md-5" style="padding:0px!important">
+                                                    <img  class="resizeActivity" src="{{ asset(activity.file.uploadDir ~ '/' ~ activity.file.id ~ '.' ~ activity.file.url) }}" alt="{{activity.file.alt}}"/>
+                                                </div>  
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-7" style=" padding:0px!important">
+                                                    <p style="margin-left:0px!important; margin-top:25px;color:white;">{{activity.name}}<br/>{{activity.description}}</p>
+                                                    <div class="buttonTableCont">
+                                                        <a class="buttonActivity bleu" onclick="addToCart({{activity.id}})">Ajouter au panier</a>
+                                                        <a class="buttonActivity bleu">Lancer l'activité</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endif %}
             </div>
             <div class="col-md-3"></div>
         </div>

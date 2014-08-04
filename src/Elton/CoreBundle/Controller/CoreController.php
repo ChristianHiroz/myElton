@@ -24,8 +24,6 @@ class CoreController extends Controller
     public function indexAction()
     {                
         $returnArray = $this->get('elton.teacher.manager')->check();
-        $em = $this->getDoctrine()->getEntityManager();
-        $em->getConnection()->getConfiguration()->setSQLLogger(null);
         if(is_array($returnArray) && array_key_exists('user', $returnArray))
         {
             if(is_object($returnArray['selectedDivision']))
