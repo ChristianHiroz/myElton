@@ -42,15 +42,15 @@
                 </div>
             </div>
         {% elseif activity.files.url == "jpg" or activity.files.url == "jpeg" or activity.files.url == "png" %}
-            <div class="modal fade" id="myPictureModal" tabindex="-1" role="dialog" aria-labelledby="myPictureModalLabel" aria-hidden="true" >
+            <div class="modal fade" id="myPictureModal" tabindex="-1" role="dialog" aria-labelledby="myPictureModalLabel" aria-hidden="true" style="height:100%;">
                 <div class="modal-dialog"  style='width:85%;'>
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                             <h4 class="modal-title label label-warning modalFS" id="myPictureModalLabel">Image</h4>
                         </div>
-                        <div class="modal-body" style="text-align:center; width:95%;">
-                            <img style="width:100%; height: 100%;" src="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" alt="{{activity.files.alt}}"/>
+                        <div class="modal-body" style="text-align:center; width:100%; height:0%;">
+                            <img style="width:auto; height: 70%;" src="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" alt="{{activity.files.alt}}"/>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
@@ -60,13 +60,13 @@
             </div>
         {% elseif activity.files.url == "js" %}
             <div class="modal fade" id="myGameModal" tabindex="-1" role="dialog" aria-labelledby="myGameModalLabel" aria-hidden="true" >
-                <div class="modal-dialog" style="width: 95%; height:750px;">
+                <div class="modal-dialog" style="width: 95%; height:650px;">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                             <h4 class="modal-title label label-warning modalFS" id="myGameModalLabel">Jeu</h4>
                         </div>
-                        <div class="modal-body" style="text-align:center; width:95%;">
+                        <div class="modal-body" style="text-align:center; width:100%;">
                             <div  style="border:1px solid black;z-index:1;-moz-border-radius:8px;border-radius:8px;text-align:center;">
                                 <canvas width="750" height="450" id="game" style="background-color: #77B5FE; margin-top:15px; margin-bottom: 15px; margin-right:15px;">
                                     <p lang="fr">Votre navigateur ne supporte pas la balise canvas.</p>
@@ -82,15 +82,15 @@
             </div>
         {% elseif activity.files.url == "mp4" %}
             <div class="modal fade" id="myVimeoModal" tabindex="-1" role="dialog" aria-labelledby="myVimeoModalLabel" aria-hidden="true" >
-                <div class="modal-dialog">
+                <div class="modal-dialog" style="width:57%; height:57%;">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                             <h4 class="modal-title label label-warning modalFS" id="myVimeoModalLabel">Vidéo</h4>
                         </div>
-                        <div class="modal-body" style="text-align:center; width:95%;">
+                        <div class="modal-body" style="text-align:center; width:100%; height:100%;">
                             {% set videoName = activity.files.alt|slice(0, activity.files.alt|length-4) %}
-                            <iframe src="//player.vimeo.com/video/{{videoName}}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                            <iframe id="vimeoIframe" style="width:100%; height: 100%;" src="//player.vimeo.com/video/{{videoName}}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
@@ -100,14 +100,14 @@
             </div>
         {% elseif activity.files.url == "pdf" %}
             <div class="modal fade" id="myPdfModal" tabindex="-1" role="dialog" aria-labelledby="myPdfModalLabel" aria-hidden="true" >
-                <div class="modal-dialog">
+                <div class="modal-dialog" style="width: 90%; height:75%;">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                             <h4 class="modal-title label label-warning modalFS" id="myPdfModalLabel">{{activity.files.alt|slice(0, activity.files.alt|length-4)}}</h4>
                         </div>
-                        <div class="modal-body" style="text-align:center; width:95%;">
-                            <iframe src='{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}'></iframe>
+                        <div class="modal-body" style="width:100%; height:1%; text-align: center;">
+                            <iframe style="width: 95%; height: 90%;" src='{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}'  align="middle"></iframe>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
@@ -133,6 +133,24 @@
             </div>
         </div>
     </div>
+    {% if entity.file.url == "pdf" %}
+        <div class="modal fade" id="myPdfDocModal" tabindex="-1" role="dialog" aria-labelledby="myPdfDocModalLabel" aria-hidden="true" >
+            <div class="modal-dialog" style="width: 90%; height:75%;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                        <h4 class="modal-title label label-warning modalFS" id="myPdfDocModalLabel">{{entity.file.alt|slice(0, entity.file.alt|length-4)}}</h4>
+                    </div>
+                    <div class="modal-body" style="width:100%; height:1%; text-align: center;">
+                        <iframe style="width: 95%; height: 90%;" src='{{ asset(entity.file.uploadDir ~ '/' ~ entity.file.id ~ '.' ~ entity.file.url) }}'  align="middle"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
     <div class="container" style="height:750px;">
         <div class="row">
             <div class="col-md-3"></div>
@@ -146,14 +164,41 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <p style="margin-left: 0px!important" class="lessonText">{{entity.description | nl2br }}</p>
-                {% if entity.type == "notion" %}
-                    <div class="center" style='margin-top:30px'>
-                        <img class="resizePdfButton" src="{{asset('bundles/eltoncore/images/notion.jpg')}}"/>
+                {% if entity.category.libelle == "Culture" %}
+                    <div class="center" style='margin-top:30px;height: 250px;'>
+                        {% if entity.file.url == "pdf" %}
+                            <a data-toggle="modal" data-target="#myPdfDocModal"><img class="resizePdfButton" src="{{asset('bundles/eltoncore/images/culture.jpg')}}"/></a>
+                        {% elseif entity.file.url == "mp4" %}
+                            {% set videoName = entity.file.alt|slice(0, entity.file.alt|length-4) %}
+                            <iframe id="vimeoBiIframe" style="width:80%; height: 100%;" src="//player.vimeo.com/video/{{videoName}}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        {% endif %}
                     </div>
-                {% endif %}
-                {% if entity.type == "activités" %}
-                    <div class="center" style='margin-top:30px'>
-                        <img class="resizePdfButton" src="{{asset('bundles/eltoncore/images/activites.jpg')}}"/><br/><br/>
+                {% elseif entity.category.libelle == "Event" %}
+                    <div class="center" style='margin-top:30px;height: 250px;'>
+                        {% if entity.file.url == "pdf" %}
+                            <a data-toggle="modal" data-target="#myPdfDocModal"><img class="resizePdfButton" src="{{asset('bundles/eltoncore/images/event.jpg')}}"/></a>
+                        {% elseif entity.file.url == "mp4" %}
+                            {% set videoName = entity.file.alt|slice(0, entity.file.alt|length-4) %}
+                            <iframe id="vimeoBiIframe" style="width:80%; height: 100%;" src="//player.vimeo.com/video/{{videoName}}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        {% endif %}
+                    </div>
+                {% elseif entity.type == "notion" %}
+                    <div class="center" style='margin-top:30px;height: 250px;'>
+                        {% if entity.file.url == "pdf" %}
+                            <a data-toggle="modal" data-target="#myPdfDocModal"><img class="resizePdfButton" src="{{asset('bundles/eltoncore/images/notion.jpg')}}"/></a>
+                        {% elseif entity.file.url == "mp4" %}
+                            {% set videoName = entity.file.alt|slice(0, entity.file.alt|length-4) %}
+                            <iframe id="vimeoBiIframe" style="width:80%; height: 100%;" src="//player.vimeo.com/video/{{videoName}}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        {% endif %}
+                    </div>
+                {% elseif entity.type == "activités" %}
+                    <div class="center" style='margin-top:30px;height: 250px;'>
+                        {% if entity.file.url == "pdf" %}
+                            <a data-toggle="modal" data-target="#myPdfDocModal"><img class="resizePdfButton" src="{{asset('bundles/eltoncore/images/activité.jpg')}}"/></a>
+                        {% elseif entity.file.url == "mp4" %}
+                            {% set videoName = entity.file.alt|slice(0, entity.file.alt|length-4) %}
+                            <iframe id="vimeoBiIframe" style="width:80%; height: 100%;" src="//player.vimeo.com/video/{{videoName}}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        {% endif %}
                         {% for competence in entity.competences %}
                             {% set bool = false %}
                             {% for divisionCompetence in selectedDivision.competences %}
@@ -168,10 +213,14 @@
                             {% endif %}
                         {% endfor %}
                     </div>
-                {% endif %}
-                {% if entity.type == "vocabulaire" %}
-                    <div class="center" style='margin-top:30px'>
-                        <img class="resizePdfButton" src="{{asset('bundles/eltoncore/images/vocabulaire.jpg')}}"/>
+                {% elseif entity.type == "vocabulaire" %}
+                    <div class="center" style='margin-top:30px;height: 250px;'>
+                        {% if entity.file.url == "pdf" %}
+                            <a data-toggle="modal" data-target="#myPdfDocModal"><img class="resizePdfButton" src="{{asset('bundles/eltoncore/images/vocabulaire.jpg')}}"/></a>
+                        {% elseif entity.file.url == "mp4" %}
+                            {% set videoName = entity.file.alt|slice(0, entity.file.alt|length-4) %}
+                            <iframe id="vimeoBiIframe" style="width:80%; height: 100%;" src="//player.vimeo.com/video/{{videoName}}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        {% endif %}
                     </div>
                 {% endif %}
                 {% set bool = false %}
@@ -208,10 +257,15 @@
                                                             <a class="buttonActivity bleu" data-toggle="modal" data-target="#myGameModal">Lancer l'activité</a>
                                                         {% elseif activity.files.url == "mp3"%}
                                                             <a class="buttonActivity bleu" data-toggle="modal" data-target="#myAudioModal">Lancer l'activité</a>
+                                                            <a class="buttonActivity bleu" href="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" download="{{activity.files.id ~ '.' ~ activity.files.url}}">Télécharger l'activité</a>
                                                         {% elseif activity.files.url == "mp4"%}
                                                             <a class="buttonActivity bleu" data-toggle="modal" data-target="#myVimeoModal">Lancer l'activité</a>
                                                         {% elseif activity.files.url == "jpg" or activity.files.url == "jpeg" or activity.files.url == "png"%}
                                                             <a class="buttonActivity bleu" data-toggle="modal" data-target="#myPictureModal">Lancer l'activité</a>
+                                                            <a class="buttonActivity bleu" href="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" download="{{activity.files.id ~ '.' ~ activity.files.url}}">Télécharger l'activité</a>
+                                                        {% elseif activity.files.url == "pdf" %}
+                                                            <a class="buttonActivity bleu" data-toggle="modal" data-target="#myPdfModal">Lancer l'activité</a>                                                            
+                                                            <a class="buttonActivity bleu" href="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" download="{{activity.files.id ~ '.' ~ activity.files.url}}">Télécharger l'activité</a>
                                                         {% else %}
                                                         <a class="buttonActivity bleu">Lancer l'activité</a>
                                                         {% endif %}
@@ -222,18 +276,23 @@
                                     {% else %}
                                         <div class="tab-pane fade" id="{{loop.index}}">
                                             <div class="row">
-                                                <div class="col-md-5" style="padding:0px!important">
-                                                    <img  class="resizeActivity" src="{{ asset(activity.file.uploadDir ~ '/' ~ activity.file.id ~ '.' ~ activity.file.url) }}" alt="{{activity.file.alt}}"/>
+                                                <div class="col-md-4" style="padding:0px!important">
+                                                    <img style="float:left;" class="resizeActivity" src="{{ asset(activity.file.uploadDir ~ '/' ~ activity.file.id ~ '.' ~ activity.file.url) }}" alt="{{activity.file.alt}}"/>
                                                 </div>  
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-7" style=" padding:0px!important">
-                                                    <p style="margin-left:0px!important; margin-top:25px;color:white;">{{activity.name}}<br/>{{activity.description}}</p>
+                                                <div class="col-md-8" style=" margin:auto!important;  padding:0px!important">
+                                                    <p style="color:white;margin-top:35px;"><span style="font-size:20px;">{{activity.name}}</span><br/>{{activity.description}}</p>
                                                     <div class="buttonTableCont">
                                                         <a class="buttonActivity bleu" onclick="addToCart({{activity.id}});">Ajouter au panier</a>
                                                         {% if activity.files.url == "js" %}
                                                             <a class="buttonActivity bleu" data-toggle="modal" data-target="#myGameModal">Lancer l'activité</a>
                                                         {% elseif activity.files.url == "mp3"%}
                                                             <a class="buttonActivity bleu" data-toggle="modal" data-target="#myAudioModal">Lancer l'activité</a>
+                                                        {% elseif activity.files.url == "mp4"%}
+                                                            <a class="buttonActivity bleu" data-toggle="modal" data-target="#myVimeoModal">Lancer l'activité</a>
+                                                        {% elseif activity.files.url == "jpg" or activity.files.url == "jpeg" or activity.files.url == "png"%}
+                                                            <a class="buttonActivity bleu" data-toggle="modal" data-target="#myPictureModal">Lancer l'activité</a>
+                                                        {% elseif activity.files.url == "pdf" %}
+                                                            <a class="buttonActivity bleu" data-toggle="modal" data-target="#myPdfModal">Lancer l'activité</a>
                                                         {% else %}
                                                         <a class="buttonActivity bleu">Lancer l'activité</a>
                                                         {% endif %}

@@ -77,6 +77,7 @@ class Teacher extends User
     {
         parent::__construct();
         $this->divisions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->roles = array('ROLE_TEACHER', 'ROLE_USER');
     }
 
 

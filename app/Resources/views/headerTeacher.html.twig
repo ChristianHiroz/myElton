@@ -8,7 +8,7 @@
             </a>
         </div>
         {% if selectedDivision %}
-            <div class="dropdown buttonClass col-md-6">
+            <div class="dropdown buttonClass violet col-md-6">
                 <a style="color:white;" href="#" role="button" data-toggle="dropdown" id="dropDownDivision">
                     {{selectedDivision.libelle}}
                     <span class="choose"></span>
@@ -35,7 +35,7 @@
                     <img class="btn-gestion" src="{{asset('bundles/eltoncore/images/logout.png')}}"/>
                 </a>
             {% elseif is_granted('ROLE_USER') %}
-                <a href="{{path('fos_user_profile_show')}}">{{user.firstName}} {{user.name | upper}} </a>
+                {{user.firstName}} {{user.name | upper}}
                 <a href="{{path('teacher_options')}}">
                     <img class="btn-gestion" src="{{asset('bundles/eltoncore/images/edit.png')}}"/>
                 </a>

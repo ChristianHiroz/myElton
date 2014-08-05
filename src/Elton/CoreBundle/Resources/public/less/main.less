@@ -3,8 +3,11 @@
 //Menu bar & Header
 .menuBar {background: #F29400; height:40px !important;}
 .divider-vertical {border-left: 1px solid #f79321;border-right: 1px solid #df7401;height: 40px;display:inline-block;}
+.divider-vertical-bleu {border-left: 1px solid @bleuLogoElton;border-right: 1px solid @bleuElton;height: 40px;display:inline-block;}
 .myEltonButtonMenu {margin-right: -3px;background-color: #F29400;display: inline-block;cursor: pointer;color: #ffffff;font-family: arial;font-size: 15px;font-weight: bold;height: 40px;width: 200px;}
+.buttonBlue {margin-right: -3px;background-color: #F29400;display: inline-block;cursor: pointer;color: #ffffff;font-family: arial;font-size: 15px;font-weight: bold;height: 40px;width: 200px;}
 .myEltonButtonMenu:hover{background-image: linear-gradient(to bottom, #F29400, #E36929);background-color: #E36929;color: #ffffff;}
+.buttonBlue:hover{background-image: linear-gradient(to bottom, @bleuLogoElton, @bleuElton);background-color: @bleuElton;color: #ffffff;}
 .playbac {margin:15px 0px 0px 15px; position:absolute;}
 .buttons{ right:2%; top:30px; position:absolute;}
 .divisionButton {position:absolute; text-align:center;}
@@ -13,7 +16,7 @@
 
 //Balises rewrite
 body {font-family:helvetica, trebuchet, sans-serif !important;font-size:14px;min-height:100%; width:100%; overflow-x: hidden ; position: relative !important;}
-html { width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden ; position: relative !important;}
+html { width: 100%; height:100%; overflow-y: auto; overflow-x: hidden ; position: relative !important;}
 p {color:grey;margin-left:36px !important; text-align:inherit;}
 hr {color: grey;background: grey; width: 95%; height: 2px!important;}
 h1, h2, h3, h4 {font-weight:normal !important;}
@@ -68,7 +71,7 @@ input[type=submit]{background:url(../images/envoyer.png) no-repeat;width:140px;h
 .rightFooter{float:right!important; text-align:right!important;}
 .footerText{ text-align:center; margin-top: 35px;}
 .leftFooter{margin-left:30px}
-.activityContainer{height:300px;width:100%;display:inline-block;border-radius: 0px 20px 8px 10px ;background-color: @violetElton;}
+.activityContainer{height:190px;width:100%;display:inline-block;border-radius: 0px 20px 8px 10px ;background-color: @violetElton;}
 .activityTextContainer{float:left; margin-left:100px;}
 
 //Resizes
@@ -85,7 +88,7 @@ img.resizeHeaderElton{width:auto;height: 150px;}
 img.resizeElton{width:auto;height: 300px;}
 img.resizeSpan{width:auto;height:30px; margin-top:-14px;}
 img.resizeActivity{width:auto; height:140px;margin-left: 25px;margin-top: 25px;}
-img.resizePdfButton{width:auto; height:180px;}
+img.resizePdfButton{width:auto; height:250px;border: 1px solid grey;}
 img.resizeWorldMap{width:auto; height: 500px;}
 img.resizeCartPicture{width:auto; height:110px;}
 
@@ -117,18 +120,20 @@ a .button:focus, a .button:hover{background-color: @bleuLogoElton;color: white;}
 .grisH:hover{color:@grisElton!important;}
 .bleu{background-color: @bleuElton!important;}
 .bleuH:hover{color:@bleuElton!important;}
+.bleuT:hover{background-color:@bleuLogoElton!important;}
 .bleufonce{background-color: @bleuLogoElton!important;}
 .bleufonceH:hover{color:@bleuLogoElton!important;}
 .violet{background-color: @violetElton!important;}
 .violetH:hover{color:@violetElton!important;}
 .noir{background-color: @grisSombreElton!important;}
 .noirH:hover{color:@grisSombreElton!important;}
-.notion{background-color: @rougeElton!important;}
-.notionH:hover{color:@rougeElton!important;}
-.activités{background-color: @bleuElton!important;}
-.activitésH:hover{color:@bleuElton!important;}
+.notion{background-color: @bleuElton!important;}
+.notionH:hover{color:@bleuElton!important;}
+.activités{background-color: @turquoiseElton!important;}
+.activitésH:hover{color:@turquoiseElton!important;}
 .vocabulaire{background-color: @grisElton!important;}
 .vocabulaireH:hover{color:@grisElton!important;}
+.culture{background-color:@violetEltonBis;}
 
 //Cart
 #setted{border:2px solid @rougeElton; height:500px; width:50%; float:right;}

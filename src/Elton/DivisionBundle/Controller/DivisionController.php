@@ -22,19 +22,14 @@ class DivisionController extends Controller
     /**
      * Lists all Division entities.
      *
-     * @Route("/", name="division")
+     * @Route("/", name="base_division")
      * @Method("GET")
      * @Template()
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('EltonDivisionBundle:Division')->findAll();
-
-        return array(
-            'entities' => $entities,
-        );
+        $division = $this->get('security.context')->getToken()->getUser();
+        return array('user' => $division);
     }
     
     /**

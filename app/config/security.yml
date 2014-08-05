@@ -4,6 +4,7 @@ security:
         Elton\DivisionBundle\Entity\Division: md5
 
     role_hierarchy:
+        ROLE_TEACHER: ROLE_USER
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
@@ -35,5 +36,6 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/teacher, role: ROLE_USER }
+        - { path: ^/teacher, role: ROLE_TEACHER }
+        - { path: ^/division, role: ROLE_USER }
         - { path: ^/admin/, role: ROLE_ADMIN }

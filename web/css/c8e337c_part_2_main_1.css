@@ -12,7 +12,25 @@
   height: 40px;
   display: inline-block;
 }
+.divider-vertical-bleu {
+  border-left: 1px solid #0a71b4;
+  border-right: 1px solid #66b8dc;
+  height: 40px;
+  display: inline-block;
+}
 .myEltonButtonMenu {
+  margin-right: -3px;
+  background-color: #F29400;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: arial;
+  font-size: 15px;
+  font-weight: bold;
+  height: 40px;
+  width: 200px;
+}
+.buttonBlue {
   margin-right: -3px;
   background-color: #F29400;
   display: inline-block;
@@ -27,6 +45,11 @@
 .myEltonButtonMenu:hover {
   background-image: linear-gradient(to bottom, #f29400, #e36929);
   background-color: #E36929;
+  color: #ffffff;
+}
+.buttonBlue:hover {
+  background-image: linear-gradient(to bottom, #0a71b4, #66b8dc);
+  background-color: #66b8dc;
   color: #ffffff;
 }
 .playbac {
@@ -272,7 +295,7 @@ input[type=submit] {
   margin-left: 30px;
 }
 .activityContainer {
-  height: 300px;
+  height: 190px;
   width: 100%;
   display: inline-block;
   border-radius: 0px 20px 8px 10px ;
@@ -348,7 +371,8 @@ img.resizeActivity {
 }
 img.resizePdfButton {
   width: auto;
-  height: 180px;
+  height: 250px;
+  border: 1px solid grey;
 }
 img.resizeWorldMap {
   width: auto;
@@ -524,6 +548,9 @@ a .button:hover {
 .bleuH:hover {
   color: #66b8dc !important;
 }
+.bleuT:hover {
+  background-color: #0a71b4 !important;
+}
 .bleufonce {
   background-color: #0a71b4 !important;
 }
@@ -543,22 +570,25 @@ a .button:hover {
   color: #38373a !important;
 }
 .notion {
-  background-color: #be0926 !important;
-}
-.notionH:hover {
-  color: #be0926 !important;
-}
-.activités {
   background-color: #66b8dc !important;
 }
-.activitésH:hover {
+.notionH:hover {
   color: #66b8dc !important;
+}
+.activités {
+  background-color: #219e98 !important;
+}
+.activitésH:hover {
+  color: #219e98 !important;
 }
 .vocabulaire {
   background-color: #cdcad4 !important;
 }
 .vocabulaireH:hover {
   color: #cdcad4 !important;
+}
+.culture {
+  background-color: #6666bb;
 }
 #setted {
   border: 2px solid #be0926;

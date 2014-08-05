@@ -48,8 +48,10 @@
     </head>
     <body>
         {% block body %}
-            {% if is_granted('ROLE_USER') %}
+            {% if is_granted('ROLE_TEACHER') %}
                 {% include('::headerTeacher.html.twig') %}
+            {% elseif is_granted('ROLE_USER') %}
+                {% include('::headerDivision.html.twig') %}
             {% else %}
                 {% include('::header.html.twig') %}
             {% endif %}

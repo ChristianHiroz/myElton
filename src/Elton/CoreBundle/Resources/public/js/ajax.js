@@ -202,3 +202,11 @@ function unValidateLesson(idLesson)
         }
     });
 };
+
+$('#myVimeoModal').on('hidden.bs.modal', function (e) {
+    var iframe = $("#vimeoIframe");
+    var div = $("#vimeoIframe").parent();
+    iframe.remove();
+    div.append(iframe);
+
+});

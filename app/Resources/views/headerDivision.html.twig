@@ -1,0 +1,29 @@
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3" style="margin-top: 10px;">
+                <a href="{{path('index')}}">
+                <img class="resizeHeaderTeacherElton" src="{{asset('bundles/eltoncore/images/smallElton_orange.png')}}"/>
+                <img class="resizeHeaderTeacherLogo" src="{{asset('bundles/eltoncore/images/Logo.jpg')}}"/>
+                </a>
+            </div>
+            <div class="col-md-6"></div>
+            <div class="buttons col-md-3">
+                <a  style="float:right;" href="{{path('fos_user_security_logout')}}">
+                    <img class="btn-gestion" src="{{asset('bundles/eltoncore/images/logout.png')}}"/><br/>
+                </a>
+                <span style="float:right; margin-top:14px; margin-right: 30px; font-size: 22px;">Les loulous</span>
+            </div>
+        </div>
+    </div>
+</header>
+{# Menu division #}
+<nav style="margin-top: 50px;">
+    <div class="centered-pills menuBarTeacher bleu" role="navigation">
+        <ul class="nav nav-pills">
+            <li>
+                <a class="buttonBlue text-center bleu" href="{{path('base_division')}}">Accueil</a>    
+            </li>
+        </ul>
+    </div>
+</nav>

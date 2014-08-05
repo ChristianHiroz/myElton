@@ -71,6 +71,7 @@ class Division extends User
     {
         parent::__construct();
         $this->competences = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->enabled = true;
     }
     
     /**
