@@ -18,7 +18,7 @@ class ActivityAdmin extends Admin
             ->add('file', 'sonata_type_model', array('label' => 'Photo de l\'activité'))
             ->add('files', 'sonata_type_model', array('label' => 'Fichiers de l\'activité'))
             ->add('type', 'choice', array('label' => 'Type d\'activité' ,'choices' => \Elton\CoreBundle\ORM\ActivityEnumType::get_enum_values()))
-            ->add('active', 'choice', array('label' => 'Actif', 'choices' => array(0 => 'Oui', 1 => 'Non')))
+            ->add('active', 'choice', array('label' => 'Actif', 'choices' => array(1 => 'Oui', 0 => 'Non')))
                 ;
     }
 
