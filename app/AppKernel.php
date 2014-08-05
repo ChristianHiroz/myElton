@@ -22,7 +22,7 @@ class AppKernel extends Kernel
             new Elton\CoreBundle\EltonCoreBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Sonata\CoreBundle\SonataCoreBundle(),
-            new Sonata\BlockBundle\SonataBlockBundle(),
+            new Sonata\BlockBundle\SonataBlockBundle(),        
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),      
             new Sonata\AdminBundle\SonataAdminBundle(),

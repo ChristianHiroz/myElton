@@ -159,8 +159,13 @@ class File
         {
             return;
         }
-        $type = $this->file->getExtension();
-        if($type == "") { $type = "js"; }
+        $type = $this->file->guessExtension();
+        $ext = $this->file->getMimeType();
+        if($ext == "audio/mpeg") { $type = "mp3"; }
+        else if($ext == "audio/ogg") { $type = "ogg"; }
+        else if ($ext == "text/plain") { $type = "js" ; }
+        else if ($ext == "application/pdf") { $type = "pdf" ; }
+        else if ($ext == "inode/x-empty") { $type = "mp4" ; }
         $this->url = $type;
         $this->alt = $this->file->getClientOriginalName();
       }

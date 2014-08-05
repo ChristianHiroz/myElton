@@ -20,16 +20,51 @@
     </div>
     {% for activity in entity.activitys %}
         {% if activity.files.url == "mp3" %}
-            MP3MP3MP3
+            <div class="modal fade" id="myAudioModal" tabindex="-1" role="dialog" aria-labelledby="myAudioModalLabel" aria-hidden="true" >
+                <div class="modal-dialog" style='margin-top:200px;'>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                            <h4 class="modal-title label label-warning modalFS" id="myAudioModalLabel">Audio</h4>
+                        </div>
+                        <div class="modal-body" style="text-align:center; width:95%;">
+                            <audio controls>
+                               {# <source src="ogg.ogg" type="audio/ogg"> #}
+                                <source src="{{ asset(activity.files.uploadDir ~ '/' ~activity.files.id ~ '.' ~ activity.files.url)}}" type="audio/mpeg">
+                              Votre navigateur ne supporte pas les éléments audios, veuillez le mettre à jour.
+                            </audio>
+                            <script src="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}"></script>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         {% elseif activity.files.url == "jpg" or activity.files.url == "jpeg" or activity.files.url == "png" %}
-            JPGJPGJPG
+            <div class="modal fade" id="myPictureModal" tabindex="-1" role="dialog" aria-labelledby="myPictureModalLabel" aria-hidden="true" >
+                <div class="modal-dialog"  style='width:85%;'>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                            <h4 class="modal-title label label-warning modalFS" id="myPictureModalLabel">Image</h4>
+                        </div>
+                        <div class="modal-body" style="text-align:center; width:95%;">
+                            <img style="width:100%; height: 100%;" src="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" alt="{{activity.files.alt}}"/>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         {% elseif activity.files.url == "js" %}
             <div class="modal fade" id="myGameModal" tabindex="-1" role="dialog" aria-labelledby="myGameModalLabel" aria-hidden="true" >
                 <div class="modal-dialog" style="width: 95%; height:750px;">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                            <h4 class="modal-title label label-warning modalFS" id="myGameModalLabel">Panier plein</h4>
+                            <h4 class="modal-title label label-warning modalFS" id="myGameModalLabel">Jeu</h4>
                         </div>
                         <div class="modal-body" style="text-align:center; width:95%;">
                             <div  style="border:1px solid black;z-index:1;-moz-border-radius:8px;border-radius:8px;text-align:center;">
@@ -38,6 +73,41 @@
                                 </canvas>
                             </div>
                             <script src="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}"></script>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% elseif activity.files.url == "mp4" %}
+            <div class="modal fade" id="myVimeoModal" tabindex="-1" role="dialog" aria-labelledby="myVimeoModalLabel" aria-hidden="true" >
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                            <h4 class="modal-title label label-warning modalFS" id="myVimeoModalLabel">Vidéo</h4>
+                        </div>
+                        <div class="modal-body" style="text-align:center; width:95%;">
+                            {% set videoName = activity.files.alt|slice(0, activity.files.alt|length-4) %}
+                            <iframe src="//player.vimeo.com/video/{{videoName}}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% elseif activity.files.url == "pdf" %}
+            <div class="modal fade" id="myPdfModal" tabindex="-1" role="dialog" aria-labelledby="myPdfModalLabel" aria-hidden="true" >
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                            <h4 class="modal-title label label-warning modalFS" id="myPdfModalLabel">{{activity.files.alt|slice(0, activity.files.alt|length-4)}}</h4>
+                        </div>
+                        <div class="modal-body" style="text-align:center; width:95%;">
+                            <iframe src='{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}'></iframe>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
@@ -136,6 +206,12 @@
                                                         <a class="buttonActivity bleu" onclick="addToCart({{activity.id}});">Ajouter au panier</a>
                                                         {% if activity.files.url == "js" %}
                                                             <a class="buttonActivity bleu" data-toggle="modal" data-target="#myGameModal">Lancer l'activité</a>
+                                                        {% elseif activity.files.url == "mp3"%}
+                                                            <a class="buttonActivity bleu" data-toggle="modal" data-target="#myAudioModal">Lancer l'activité</a>
+                                                        {% elseif activity.files.url == "mp4"%}
+                                                            <a class="buttonActivity bleu" data-toggle="modal" data-target="#myVimeoModal">Lancer l'activité</a>
+                                                        {% elseif activity.files.url == "jpg" or activity.files.url == "jpeg" or activity.files.url == "png"%}
+                                                            <a class="buttonActivity bleu" data-toggle="modal" data-target="#myPictureModal">Lancer l'activité</a>
                                                         {% else %}
                                                         <a class="buttonActivity bleu">Lancer l'activité</a>
                                                         {% endif %}
@@ -153,8 +229,14 @@
                                                 <div class="col-md-7" style=" padding:0px!important">
                                                     <p style="margin-left:0px!important; margin-top:25px;color:white;">{{activity.name}}<br/>{{activity.description}}</p>
                                                     <div class="buttonTableCont">
-                                                        <a class="buttonActivity bleu" onclick="addToCart({{activity.id}})">Ajouter au panier</a>
+                                                        <a class="buttonActivity bleu" onclick="addToCart({{activity.id}});">Ajouter au panier</a>
+                                                        {% if activity.files.url == "js" %}
+                                                            <a class="buttonActivity bleu" data-toggle="modal" data-target="#myGameModal">Lancer l'activité</a>
+                                                        {% elseif activity.files.url == "mp3"%}
+                                                            <a class="buttonActivity bleu" data-toggle="modal" data-target="#myAudioModal">Lancer l'activité</a>
+                                                        {% else %}
                                                         <a class="buttonActivity bleu">Lancer l'activité</a>
+                                                        {% endif %}
                                                     </div>
                                                 </div>
                                             </div>

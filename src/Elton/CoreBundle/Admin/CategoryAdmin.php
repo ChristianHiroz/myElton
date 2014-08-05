@@ -17,7 +17,7 @@ class CategoryAdmin extends Admin
             ->add('libelle', 'text', array('label' => 'Nom de la catégorie'))
             ->add('level', 'sonata_type_model', array('label' => 'Niveau de la catégorie', 'property' => 'libelle'))
             ->add('color', 'choice', array('label' => 'Couleur du bouton','choices' => ColorEnumType::get_enum_values()))
-            ->add('active', 'choice', array('label' => 'Actif', 'choices' => array(0 => 'Non', 1 => 'Oui')))
+            ->add('active', 'choice', array('label' => 'Actif', 'choices' => array(0 => 'Oui', 1 => 'Non')))
         ;
     }
 

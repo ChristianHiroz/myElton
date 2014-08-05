@@ -119,15 +119,7 @@ class Lesson
      */
     public function setActive($active)
     {
-        if($this->active)
-        {
-            $this->active = false;
-           
-        }
-        else
-        {
-            $this->active = true;
-        }
+        $this->active = $active;
     }
     
     public function isActive()
