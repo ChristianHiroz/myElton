@@ -23,16 +23,27 @@ class CoreController extends Controller
      */
     public function indexAction()
     {                
+        $user = $this->get('security.context')->getToken()->getUser();
         $returnArray = $this->get('elton.teacher.manager')->check();
-        if(is_array($returnArray) && array_key_exists('user', $returnArray))
+        if($user instanceof \Elton\TeacherBundle\Entity\Teacher || $user instanceof \Elton\DivisionBundle\Entity\Division)
         {
-            if(is_object($returnArray['selectedDivision']))
+            if($user->hasRole('ROLE_TEACHER'))
             {
-                return $this->redirect($this->generateUrl('practice'));
+                if(is_array($returnArray) && array_key_exists('user', $returnArray))
+                {
+                    if(is_object($returnArray['selectedDivision']))
+                    {
+                        return $this->redirect($this->generateUrl('practice'));
+                    }
+                    else
+                    {
+                        return $this->redirect($this->generateUrl('teacher_create_division'));
+                    }
+                }
             }
-            else
+            else if($user->hasRole('ROLE_USER'))
             {
-                return $this->redirect($this->generateUrl('teacher_create_division'));
+                return $this->redirect($this->generateUrl('base_division'));
             }
         }
         return $returnArray;

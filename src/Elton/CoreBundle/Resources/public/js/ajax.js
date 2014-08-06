@@ -120,6 +120,16 @@ function setSelect(activityId, cartId)
     }
 }
 
+function launchSelectedActivity()
+{
+    if(selectedActivity !== null)
+    {
+        $("#" + selectedActivity + "Modal").modal({
+                                    show: true
+                                });
+    }
+}
+
 $("#setted").droppable({
     drop: function( event, ui ) {
         var parentId = $("#" + selectedActivity).closest("div").parent().parent().attr("id");
@@ -204,6 +214,15 @@ function unValidateLesson(idLesson)
 };
 
 $('#myVimeoModal').on('hidden.bs.modal', function (e) {
+    var iframe = $("#vimeoIframe");
+    var div = $("#vimeoIframe").parent();
+    iframe.remove();
+    div.append(iframe);
+
+});
+
+
+$('.myVimeoModal').on('hidden.bs.modal', function (e) {
     var iframe = $("#vimeoIframe");
     var div = $("#vimeoIframe").parent();
     iframe.remove();

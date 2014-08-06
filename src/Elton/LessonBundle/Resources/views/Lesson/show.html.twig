@@ -287,12 +287,15 @@
                                                             <a class="buttonActivity bleu" data-toggle="modal" data-target="#myGameModal">Lancer l'activité</a>
                                                         {% elseif activity.files.url == "mp3"%}
                                                             <a class="buttonActivity bleu" data-toggle="modal" data-target="#myAudioModal">Lancer l'activité</a>
+                                                            <a class="buttonActivity bleu" href="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" download="{{activity.files.id ~ '.' ~ activity.files.url}}">Télécharger l'activité</a>
                                                         {% elseif activity.files.url == "mp4"%}
                                                             <a class="buttonActivity bleu" data-toggle="modal" data-target="#myVimeoModal">Lancer l'activité</a>
                                                         {% elseif activity.files.url == "jpg" or activity.files.url == "jpeg" or activity.files.url == "png"%}
                                                             <a class="buttonActivity bleu" data-toggle="modal" data-target="#myPictureModal">Lancer l'activité</a>
+                                                            <a class="buttonActivity bleu" href="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" download="{{activity.files.id ~ '.' ~ activity.files.url}}">Télécharger l'activité</a>
                                                         {% elseif activity.files.url == "pdf" %}
-                                                            <a class="buttonActivity bleu" data-toggle="modal" data-target="#myPdfModal">Lancer l'activité</a>
+                                                            <a class="buttonActivity bleu" data-toggle="modal" data-target="#myPdfModal">Lancer l'activité</a>                                                            
+                                                            <a class="buttonActivity bleu" href="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" download="{{activity.files.id ~ '.' ~ activity.files.url}}">Télécharger l'activité</a>
                                                         {% else %}
                                                         <a class="buttonActivity bleu">Lancer l'activité</a>
                                                         {% endif %}
