@@ -14,7 +14,9 @@
     {% if label is empty %}
         {% set label = name|humanize %}
     {% endif %}
-    <button type="{{ type|default('button') }}" {{ block('button_attributes') }}  class="btn bold btnBeigeEltonPetit mlSubmit">{{ label|trans({}, translation_domain) }}</button>
+    <div class="center">
+    <button type="{{ type|default('button') }}" {{ block('button_attributes') }}  class="buttonAll violetBis">{{ label|trans({}, translation_domain) }}</button>
+    </div>
 {% endspaceless %}
 {% endblock button_widget %}
     

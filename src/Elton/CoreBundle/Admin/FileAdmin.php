@@ -14,6 +14,7 @@ class FileAdmin extends Admin
     {
         $formMapper
             ->add('file', 'file', array('label' => 'Fichier'))
+            ->add('ogg', 'sonata_type_model', array('label' => 'Ogg', 'property' => 'alt', 'required' => false))
         ;
     }
 
@@ -21,7 +22,7 @@ class FileAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('url')->add('alt')->add('id')
+            ->add('url')->add('alt')->add('id')->add('ogg')
         ;
     }
 
@@ -29,7 +30,7 @@ class FileAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('url')->addIdentifier('alt')->addIdentifier('id')
+            ->addIdentifier('url')->addIdentifier('alt')->addIdentifier('id')->add('ogg')
         ;
     }
 }

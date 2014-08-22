@@ -21,6 +21,11 @@ class File
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="File")
+     */
+    private $ogg;
 
     /**
      * @var string
@@ -36,9 +41,6 @@ class File
      */
     private $alt;
     
-    /**
-     *@ORM\ManyToMany(targetEntity="Elton\LessonBundle\Entity\Activity", mappedBy="files")
-     */
     private $activitys;
 
     private $file; 
@@ -53,6 +55,29 @@ class File
     public function getId()
     {
         return $this->id;
+    }
+    
+    /**
+     * Set ogg
+     * 
+     * @param File $ogg
+     * @return File
+     */
+    public function setOgg($ogg)
+    {
+        $this->ogg = $ogg;
+        
+        return $this;
+    }
+    
+    /**
+     * Get ogg
+     * 
+     * @param File $ogg
+     */
+    public function getOgg()
+    {
+        return $this->ogg;
     }
 
     /**

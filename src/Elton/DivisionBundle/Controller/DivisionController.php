@@ -185,6 +185,7 @@ class DivisionController extends Controller
      */
     public function editAction($id)
     {
+        $returnArray = $this->get('elton.teacher.manager')->check();
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('EltonDivisionBundle:Division')->find($id);
@@ -195,13 +196,12 @@ class DivisionController extends Controller
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
+        $returnArray['entity'] = $entity;
+        $returnArray['form'] = $editForm;
+        $returnArray['delete_form'] = $deleteForm;
+        
+        return $returnArray;
+    } 
 
     /**
     * Creates a form to edit a Division entity.

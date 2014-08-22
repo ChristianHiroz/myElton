@@ -1,0 +1,6 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {{parent()}}
+    {{ render(controller('EltonTeacherBundle:Profile:edit')) }}
+{% endblock %}

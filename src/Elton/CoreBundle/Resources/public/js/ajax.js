@@ -1,4 +1,4 @@
-var listeNom; var listeVille; var listeRue; var selectedActivity; var selectedCart;
+var listeNom; var listeVille; var listeRue; var selectedActivity = 0; var selectedCart;
 
 $('#fos_user_registration_form_postalCode').focusout(function()
 {
@@ -62,7 +62,7 @@ $("#attribuer").click(function()
         }
         $("#"+selectedActivity).css("left", "0px");
         $("#"+selectedActivity).css("top", "0px");
-        $("#attribuer").text("Désattribuer de la classe");
+        $("#attribuer").text("Ne plus attribuer");
     }
 });
 
@@ -97,26 +97,41 @@ function addToCart(activityId)
 function setSelect(activityId, cartId)
 {   
     if(activityId === selectedActivity){
-        $("#" + selectedActivity).removeClass("rouge");
-        $("#" + selectedActivity).draggable("option", "disabled", true);
+        $("#" + selectedActivity).removeClass("culture");
+        $("#" + selectedActivity+"p").removeClass("textBlc");
+        $("#" + selectedActivity).parent().draggable("option", "disabled", true);
         $("#attribuer").text("Attribuer à la classe");
         selectedActivity = 0;
     }
     else{
-        $("#" + selectedActivity).removeClass("rouge");
-        $("#" + selectedActivity).draggable("option", "disabled", true);
+        $("#" + selectedActivity).removeClass("culture");
+        $("#" + selectedActivity+"p").removeClass("textBlc");
+        $("#" + selectedActivity).parent().draggable("option", "disabled", true);
         selectedActivity = activityId;
         selectedCart = cartId;
-        $("#" + selectedActivity).addClass("rouge");
-        $("#" + selectedActivity).draggable({ revert: "invalid" });
-        $("#" + selectedActivity).draggable("option", "disabled", false);
+        $("#" + selectedActivity).addClass("culture");
+        $("#" + selectedActivity+"p").addClass("textBlc");
+        $("#" + selectedActivity).parent().draggable({ revert: "invalid" });
+        $("#" + selectedActivity).parent().draggable("option", "disabled", false);
         var parentId = $("#" + activityId).closest("div").parent().attr("id");
         if(parentId === "setted1" || parentId === "setted2"){
-            $("#attribuer").text("Désattribuer de la classe");
+            $("#attribuer").text("Ne plus attribuer");
         }
         else{
             $("#attribuer").text("Attribuer à la classe");
         }
+    }
+    if(selectedActivity !== 0){
+        $("#btnPanier1").addClass("violet");
+        $("#btnPanier2").addClass("violetBis");
+        $("#btnPanier1").removeClass("borderViolet");
+        $("#btnPanier2").removeClass("borderVioletBis");
+    }
+    else{
+        $("#btnPanier1").removeClass("violet");
+        $("#btnPanier2").removeClass("violetBis");
+        $("#btnPanier1").addClass("borderViolet");
+        $("#btnPanier2").addClass("borderVioletBis");
     }
 }
 
@@ -132,43 +147,53 @@ function launchSelectedActivity()
 
 $("#setted").droppable({
     drop: function( event, ui ) {
-        var parentId = $("#" + selectedActivity).closest("div").parent().parent().attr("id");
+        var parentId = $("#" + selectedActivity).closest("div").parent().parent().parent().attr("id");
         if(parentId === "unsetted") {  
             $.ajax({
                 url: Routing.generate('set_to_division', {activityId : selectedActivity, cartId : selectedCart}),
                 data: {}
             });
-            if($("#setted1 div").length === 3) {
-                $("#setted2").prepend($("#" + selectedActivity));
+            if($("#setted1 div").length === 9) {
+                $("#setted2").prepend($("#" + selectedActivity).parent());
             }
             else{
-                $("#setted1").prepend($("#" + selectedActivity));
+                if($("#setted1 div").length === 1) { $("#tadada").remove(); }
+                $("#setted1").prepend($("#" + selectedActivity).parent());
             }
-            $("#attribuer").text("Désattribuer de la classe");
+            if($("#unsetted1 div").length === 0 && $("#unsetted2 div").length === 0)
+            {
+                $("#unsetted1").append(' <div id="tadada" style="border:1px dashed grey; width: 80%; height: 170px; margin-top: 25px; text-align: center;display:inline-block;"><p style="display:table-cell; line-height: 55px; width:45%; margin:auto!important;">Déposez <br/> une activité <br/> ici</p></div>');
+            }
+            $("#attribuer").text("Ne plus attribuer");
         }         
-        $("#"+selectedActivity).css("left", "0px");
-        $("#"+selectedActivity).css("top", "0px");
+        $("#"+selectedActivity).parent().css("left", "0px");
+        $("#"+selectedActivity).parent().css("top", "0px");
     }
 });
 
 $("#unsetted").droppable({
     drop: function( event, ui ) {
-        var parentId = $("#" + selectedActivity).closest("div").parent().parent().attr("id");
+        var parentId = $("#" + selectedActivity).closest("div").parent().parent().parent().attr("id");
         if(parentId === "setted") {  
             $.ajax({
                 url: Routing.generate('set_to_division', {activityId : selectedActivity, cartId : selectedCart}),
                 data: {}
             });
-            if($("#unsetted div").length === 3) {
-                $("#unsetted2").prepend($("#" + selectedActivity));
+            if($("#unsetted1 div").length === 9) {
+                $("#unsetted2").prepend($("#" + selectedActivity).parent());
             }
             else{
-                $("#unsetted1").prepend($("#" + selectedActivity));
+                if($("#unsetted1 div").length === 1) { $("#tadada").remove(); }
+                $("#unsetted1").prepend($("#" + selectedActivity).parent());
+            }
+            if($("#setted1 div").length === 0 && $("#setted2 div").length === 0)
+            {
+                $("#setted1").append(' <div id="tadada" style="border:1px dashed grey; width: 80%; height: 170px; margin-top: 25px; text-align: center;display:inline-block;"><p style="display:table-cell; line-height: 55px; width:45%; margin:auto!important;">Déposez <br/> une activité <br/> ici</p></div>');
             }
             $("#attribuer").text("Attribuer de la classe");
         }           
-        $("#"+selectedActivity).css("left", "0px");
-        $("#"+selectedActivity).css("top", "0px");
+        $("#"+selectedActivity).parent().css("left", "0px");
+        $("#"+selectedActivity).parent().css("top", "0px");
     }
 });
 
@@ -221,10 +246,9 @@ $('#myVimeoModal').on('hidden.bs.modal', function (e) {
 
 });
 
-
-$('.myVimeoModal').on('hidden.bs.modal', function (e) {
-    var iframe = $("#vimeoIframe");
-    var div = $("#vimeoIframe").parent();
+$('#myAudioModal').on('hidden.bs.modal', function (e) {
+    var iframe = $("#audioIframe");
+    var div = $("#audioIframe").parent();
     iframe.remove();
     div.append(iframe);
 

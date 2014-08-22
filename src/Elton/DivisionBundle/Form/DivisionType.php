@@ -9,7 +9,7 @@ use Doctrine\ORM\EntityRepository;
 
 class DivisionType extends AbstractType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */

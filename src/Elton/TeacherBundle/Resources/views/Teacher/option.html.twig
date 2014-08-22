@@ -2,9 +2,9 @@
 
 {% block body %}
     {{ parent() }}
-    <center>
+    <div class='center' style='margin-top: 50px;'>
         <h1>Réglages</h1><br/><br/>
-        <a class="btn-elton blueLogo" href="{{path('teacher_options_divisions')}}"><span>Classes</span></a> &nbsp &nbsp                     
-        <a class="btn-elton rouge" href="{{path('fos_user_profile_edit')}}"><span>Compte</span></a>
-    </center>
+        <a class="buttonAll bleu fs18" href="{{path('teacher_options_divisions')}}"><span>Classes</span></a> &nbsp &nbsp                     
+        <a class="buttonAll violetBis fs18" href="{{path('teacher_modifier')}}"><span>Compte</span></a>
+    </div>
 {% endblock %}

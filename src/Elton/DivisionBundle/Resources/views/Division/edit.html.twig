@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {{parent()}}
+    <br/>
+    <div class="col-md-2"></div>
+    <div class="col-md-7">
+        {% form_theme form 'EltonCoreBundle:Form:create_field.html.twig' %}
+        {% form_theme delete_form 'EltonCoreBundle:Form:create_field.html.twig' %}
+        <div>
+            {{form(form)}}
+        </div>
+        
+        
+            {{form(delete_form)}}
+    </div>
+{% endblock %}

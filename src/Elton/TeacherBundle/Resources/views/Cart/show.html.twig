@@ -5,7 +5,13 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <h1 class="lessonCategoryTitle" style="color: grey;">Mon panier d'activités</h1>
+                <h1 class="lessonCategoryTitle" style="color: grey;">Mon panier d'activités</h1><br/><br/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-4 center">
+                <h1 class="txtViolet">Ma classe</h1>
             </div>
         </div>
         <div class="row">
@@ -16,24 +22,38 @@
                         {% if cart %}
                             {% for cartactivity in cart %} 
                                 {% if loop.index > 3 %}
-                                {% else %}                                      
-                                    <div class="bouger" style="" onclick="setSelect({{cartactivity.activity.id}}, {{cartactivity.cart.id}})" id="{{cartactivity.activity.id}}">
-                                        <img class="resizeCartPicture" src="{{ asset(cartactivity.activity.file.uploadDir ~ '/' ~ cartactivity.activity.file.id ~ '.' ~ cartactivity.activity.file.url) }}" alt="{{cartactivity.activity.file.alt}}"/>
-                                        <p style="margin-left:0px!important">{{ cartactivity.activity }}</p>
-                                    </div> <br/>
+                                {% else %}    
+                                    <div class="bouger">
+                                        <div class="bougerImage">                                        
+                                            <img class="resizeCartType" src="{{asset('bundles/eltoncore/images/' ~ cartactivity.activity.type ~'blanc.png')}}"/>
+                                        </div>
+                                        <div class="bougerEnfant" style="" onclick="setSelect({{cartactivity.activity.id}}, {{cartactivity.cart.id}})" id="{{cartactivity.activity.id}}">
+                                            <img class="resizeCartPicture  hidden-xs" src="{{ asset(cartactivity.activity.file.uploadDir ~ '/' ~ cartactivity.activity.file.id ~ '.' ~ cartactivity.activity.file.url) }}" alt="{{cartactivity.activity.file.alt}}"/>
+                                            <p id="{{cartactivity.activity.id}}p" style="margin-left:0px!important;margin-top: 7px;">{{ cartactivity.activity }}</p>
+                                        </div>
+                                    </div><br/>
                                 {% endif %}
                             {% endfor %}
+                        {% else %}
+                            <div id="tadada" style="border:1px dashed grey; width: 80%; height: 170px; margin-top: 25px; text-align: center;display:inline-block;">
+                                <p style="display:table-cell; line-height: 55px; width:45%; margin:auto!important;">Déposez <br/> une activité <br/> ici</p>
+                            </div>
                         {% endif %}
                     </div>
                     <div id="unsetted2" style="width:50%; float:right;">
                         {% if cart %}
                             {% for cartactivity in cart %} 
                                 {% if loop.index < 4 %}
-                                {% else %}                                      
-                                    <div class="bouger" style="" onclick="setSelect({{cartactivity.activity.id}}, {{cartactivity.cart.id}})" id="{{cartactivity.activity.id}}">
-                                        <img class="resizeCartPicture" src="{{ asset(cartactivity.activity.file.uploadDir ~ '/' ~ cartactivity.activity.file.id ~ '.' ~ cartactivity.activity.file.url) }}" alt="{{cartactivity.activity.file.alt}}"/>
-                                        <p style="margin-left:0px!important">{{ cartactivity.activity }}</p>
-                                    </div> <br/>
+                                {% else %}     
+                                    <div class="bouger">
+                                        <div class="bougerImage">                                        
+                                            <img class="resizeCartType" src="{{asset('bundles/eltoncore/images/' ~ cartactivity.activity.type ~'blanc.png')}}"/>
+                                        </div>
+                                        <div class="bougerEnfant" style="" onclick="setSelect({{cartactivity.activity.id}}, {{cartactivity.cart.id}})" id="{{cartactivity.activity.id}}">
+                                            <img class="resizeCartPicture  hidden-xs" src="{{ asset(cartactivity.activity.file.uploadDir ~ '/' ~ cartactivity.activity.file.id ~ '.' ~ cartactivity.activity.file.url) }}" alt="{{cartactivity.activity.file.alt}}"/>
+                                            <p id="{{cartactivity.activity.id}}p" style="margin-left:0px!important;margin-top: 7px;">{{ cartactivity.activity }}</p>
+                                        </div>
+                                    </div><br/>
                                 {% endif %}
                             {% endfor %}
                         {% endif %}
@@ -44,24 +64,38 @@
                         {% if settedCart %}
                             {% for cartactivity in settedCart %}
                                 {% if loop.index > 3 %}
-                                {% else %} 
-                                    <div class="bouger" style="" onclick="setSelect({{cartactivity.activity.id}}, {{cartactivity.cart.id}})" id="{{cartactivity.activity.id}}">
-                                        <img class="resizeCartPicture" src="{{ asset(cartactivity.activity.file.uploadDir ~ '/' ~ cartactivity.activity.file.id ~ '.' ~ cartactivity.activity.file.url) }}" alt="{{cartactivity.activity.file.alt}}"/>
-                                        <p style="margin-left:0px!important">{{ cartactivity.activity }}</p>
-                                    </div> <br/>
+                                {% else %}
+                                    <div class="bouger">
+                                        <div class="bougerImage">                                        
+                                            <img class="resizeCartType" src="{{asset('bundles/eltoncore/images/' ~ cartactivity.activity.type ~'blanc.png')}}"/>
+                                        </div>
+                                        <div class="bougerEnfant" style="" onclick="setSelect({{cartactivity.activity.id}}, {{cartactivity.cart.id}})" id="{{cartactivity.activity.id}}">
+                                            <img class="resizeCartPicture  hidden-xs" src="{{ asset(cartactivity.activity.file.uploadDir ~ '/' ~ cartactivity.activity.file.id ~ '.' ~ cartactivity.activity.file.url) }}" alt="{{cartactivity.activity.file.alt}}"/>
+                                            <p id="{{cartactivity.activity.id}}p" style="margin-left:0px!important;margin-top: 7px;">{{ cartactivity.activity }}</p>
+                                        </div>
+                                    </div><br/>
                                 {% endif %}
-                            {% endfor %}     
+                            {% endfor %}
+                            {% else %}
+                            <div id="tadada" style="border:1px dashed grey; width: 80%; height: 170px; margin-top: 25px; text-align: center;display:inline-block;">
+                                <p style="display:table-cell; line-height: 55px; width:45%; margin:auto!important;">Déposez <br/> une activité <br/> ici</p>
+                            </div>
                         {% endif %}
                     </div>
                     <div id="setted2" style="width:50%; float:right;">
                         {% if settedCart %}
                             {% for cartactivity in settedCart %}
                                 {% if loop.index < 4 %}
-                                {% else %} 
-                                    <div class="bouger" style="" onclick="setSelect({{cartactivity.activity.id}}, {{cartactivity.cart.id}})" id="{{cartactivity.activity.id}}">
-                                        <img class="resizeCartPicture" src="{{ asset(cartactivity.activity.file.uploadDir ~ '/' ~ cartactivity.activity.file.id ~ '.' ~ cartactivity.activity.file.url) }}" alt="{{cartactivity.activity.file.alt}}"/>
-                                        <p style="margin-left:0px!important">{{ cartactivity.activity }}</p>
-                                    </div> <br/>
+                                {% else %}
+                                    <div class="bouger">
+                                        <div class="bougerImage">                                        
+                                            <img class="resizeCartType" src="{{asset('bundles/eltoncore/images/' ~ cartactivity.activity.type ~'blanc.png')}}"/>
+                                        </div>
+                                        <div class="bougerEnfant" style="" onclick="setSelect({{cartactivity.activity.id}}, {{cartactivity.cart.id}})" id="{{cartactivity.activity.id}}">
+                                            <img class="resizeCartPicture  hidden-xs" src="{{ asset(cartactivity.activity.file.uploadDir ~ '/' ~ cartactivity.activity.file.id ~ '.' ~ cartactivity.activity.file.url) }}" alt="{{cartactivity.activity.file.alt}}"/>
+                                            <p id="{{cartactivity.activity.id}}p" style="margin-left:0px!important;margin-top: 7px;">{{ cartactivity.activity }}</p>
+                                        </div>
+                                    <div><br/>
                                 {% endif %}
                             {% endfor %}
                         {% endif %}
@@ -71,10 +105,10 @@
         </div>
         <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <a id="attribuer">Attribuer à la classe</a>
-                <a id="supprimer">Supprimer</a>
-                <a href="{{path('empty_cart')}}">Vider la panier</a>
+            <div class="col-md-8" style="text-align:center; margin-top: 20px;">
+                <a id="btnPanier1" class="buttonAll borderViolet" id="attribuer">Attribuer à la classe</a>
+                <a id="btnPanier2" class="buttonAll borderVioletBis" id="supprimer">Supprimer du panier</a>
+                <a id="btnPanier3" class="buttonAll noir" href="{{path('empty_cart')}}">Vider la panier</a>
                 </div>
             </div>  
     </div>

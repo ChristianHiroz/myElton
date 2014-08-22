@@ -3,21 +3,39 @@
     {{ parent() }}
     <div class="container">
         <div class="row">
-            <table>
+            <table style="margin-top: 50px; text-align: center;">
+                <tr>
+                    <td style="border: 1px solid black; padding: 4px;">Nom de la compétence</td>
+                    <td style="border: 1px solid black; padding: 4px;">1<sup>er</sup> trimestre</td>
+                    <td style="border: 1px solid black; padding: 4px;">2<sup>ème</sup> trimestre</td>
+                    <td style="border: 1px solid black; padding: 4px;">3<sup>ème</sup> trimestre</td>
+                </tr>
                 {% for competence in competences %}
                     <tr>
-                        <td>{{competence.libelle}}</td>
+                        <td style="border: 1px solid black; padding: 4px;">{{competence.libelle}}</td>
+                        {% set bool = false %}
                         {% for divisionCompetence in selectedDivision.competences %}
-                            {% set bool = false %}
                             {% if competence.libelle == divisionCompetence.libelle %}
                                 {% set bool = true %}
                             {% endif %} 
-                            {% if bool == true %}
-                                <td>Oui</td>
-                            {% else %}
-                                <td>Non</td>
-                            {% endif %}
                         {% endfor %}
+                        {% if bool == false%}
+                            <td style="border: 1px solid black; padding: 4px;"></td>
+                            <td style="border: 1px solid black; padding: 4px;"></td>
+                            <td style="border: 1px solid black; padding: 4px;"></td>
+                        {% elseif bool == true and competence.trimestre == "Premier trimestre" %}
+                            <td style="border: 1px solid black; padding: 4px;">X</td>
+                            <td style="border: 1px solid black; padding: 4px;"></td>
+                            <td style="border: 1px solid black; padding: 4px;"></td>
+                        {% elseif bool == true and competence.trimestre == "Second trimestre" %}
+                            <td style="border: 1px solid black; padding: 4px;"></td>
+                            <td style="border: 1px solid black; padding: 4px;">X</td>
+                            <td style="border: 1px solid black; padding: 4px;"></td>
+                        {% elseif bool == true and competence.trimestre == "Troisième trimestre" %}
+                            <td style="border: 1px solid black; padding: 4px;"></td>
+                            <td style="border: 1px solid black; padding: 4px;"></td>
+                            <td style="border: 1px solid black; padding: 4px;">X</td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
             </table>

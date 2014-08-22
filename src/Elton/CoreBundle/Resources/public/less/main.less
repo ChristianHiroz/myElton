@@ -9,7 +9,7 @@
 .myEltonButtonMenu:hover{background-image: linear-gradient(to bottom, #F29400, #E36929);background-color: #E36929;color: #ffffff;}
 .buttonBlue:hover{background-image: linear-gradient(to bottom, @bleuLogoElton, @bleuElton);background-color: @bleuElton;color: #ffffff;}
 .playbac {margin:15px 0px 0px 15px; position:absolute;}
-.buttons{ right:2%; top:30px; position:absolute;}
+.buttons{top:30px; right:2%; position:absolute;}
 .divisionButton {position:absolute; text-align:center;}
 .menuBarTeacher{background: #F29400; height:40px !important; position:relative; margin-top:-40px;}
 .redDot{background-color: @rougeElton; height:20px; width:20px; -moz-border-radius: 50%;-webkit-border-radius: 390px;border-radius: 390px;font-size: 14px;position: absolute;top: -22%;right: 1%; color:white;}
@@ -33,11 +33,9 @@ h1 { margin-top:-5px !important;  font-size:24px!important;}
 //Presentation website
 a.linkSiteMap{color:grey;}
 a.linkSiteMap:hover{color:grey; font-weight:bold;}
-input[type=submit]{background:url(../images/envoyer.png) no-repeat;width:140px;height: 75px;cursor: pointer;border:0;margin-left:15px;}
 .sectionH2{margin-top:60px; margin-bottom:30px;margin-left:-21px;}
 .sectionH2bis{margin-top:30px; margin-bottom:15px;margin-left:-37px;font-size:25px!important;}
 .cons { position:absolute; top:15px; right:11%;}
-.submit{background:url(../images/fermer.png) no-repeat;width:140px;height: 75px;cursor: pointer;border:0;margin-left:15px;}
 .justify{ text-align:justify; padding-left:60px; }
 
 //Usefull stuffs
@@ -67,10 +65,11 @@ input[type=submit]{background:url(../images/envoyer.png) no-repeat;width:140px;h
 .wrap { min-height: 100%; height:auto; margin: 0 auto -138px; padding: 0 0 138px;}
 .lessonContainer { text-align: center; margin-top: 56px;}
 .footer{margin-top:75px;height:50px;bottom:0px; width:100%;}
+.afooter:hover {opacity:1.0!important; color:@bleuElton;}
 .centeredFooter{margin-bottom:25px;}
 .rightFooter{float:right!important; text-align:right!important;}
 .footerText{ text-align:center; margin-top: 35px;}
-.leftFooter{margin-left:30px}
+.leftFooter{margin-left:30px;}
 .activityContainer{height:190px;width:100%;display:inline-block;border-radius: 0px 20px 8px 10px ;background-color: @violetElton;}
 .activityTextContainer{float:left; margin-left:100px;}
 
@@ -91,6 +90,7 @@ img.resizeActivity{width:auto; height:140px;margin-left: 25px;margin-top: 25px;}
 img.resizePdfButton{width:auto; height:250px;border: 1px solid grey;}
 img.resizeWorldMap{width:auto; height: 500px;}
 img.resizeCartPicture{width:auto; height:110px;}
+img.resizeCartType{width:auto; height:20px; background-color:grey;}
 
 // Buttons
 .buttonSmall{display:inline-block;width: 110px;height: 85px;color: white;text-align: center;line-height: 43px;background-color: @bleuElton;border-radius: 20px 0px 10px 7px;}
@@ -106,8 +106,8 @@ a .button:focus, a .button:hover{background-color: @bleuLogoElton;color: white;}
 .buttonTableCont{border-spacing:30px 15px;border-collapse:separate; display:table; margin: 0 auto;}
 .buttonClass{background-color: @beigeElton;height: 60px; margin-top: 35px; width:180px; margin-left:18%;border-radius: 15px; text-align: center; line-height:56px;font-weight:bold; font-size: 21px;}
 .btn-divisionUl{width:180px; margin-top: -10px;}
-.buttonAll{cursor:pointer;margin-left: 12px; margin-right:12px; margin-top: 24px;width: 150px;height: 50px;color: black;text-align: center;background-color:@violetEltonBis;border-radius: 20px 0px 10px 8px;display:inline-block; line-height:49px; color:white;}
-
+.buttonAll{cursor:pointer;margin-left: 12px; margin-right:12px; margin-top: 24px;width: 150px;height: 50px;color: black;text-align: center;color:white;border-radius: 20px 0px 10px 8px;display:inline-block; line-height:49px;}
+a:hover {color:white; opacity:0.7; filter: alpha(opacity=40);}
 
 
 // Colors
@@ -127,6 +127,7 @@ a .button:focus, a .button:hover{background-color: @bleuLogoElton;color: white;}
 .bleufonce{background-color: @bleuLogoElton!important;}
 .bleufonceH:hover{color:@bleuLogoElton!important;}
 .violet{background-color: @violetElton!important;}
+.violetBis{background-color: @violetEltonBis!important;}
 .violetH:hover{color:@violetElton!important;}
 .noir{background-color: @grisSombreElton!important;}
 .noirH:hover{color:@grisSombreElton!important;}
@@ -137,16 +138,33 @@ a .button:focus, a .button:hover{background-color: @bleuLogoElton;color: white;}
 .vocabulaire{background-color: @grisElton!important;}
 .vocabulaireH:hover{color:@grisElton!important;}
 .culture{background-color:@violetEltonBis;}
+.txtViolet{color:@violetElton;}
+.borderVioletBis{border:1px solid @violetEltonBis; color: @violetEltonBis;}
+.borderViolet{border:1px solid @violetElton; color: @violetElton;}
+.borderNoir{border:1px solid @grisSombreElton; color: @grisSombreElton;}
 
 //Cart
-#setted{border:2px solid @rougeElton; height:500px; width:50%; float:right;}
-#unsetted{border:2px ; height:500px;width:50%; float:left;}
-.bouger{width:90%; height:28%; text-align: center; box-shadow: 0 15px 10px #777;}
+.textBlc{color:white!important;}
+#setted{border:2px solid @violetElton; height:600px; width:50%; float:right; text-align:center;}
+#unsetted{border:2px ; height:600px;width:50%; float:left; text-align:center;}
+.bouger{width:80%; height:23%; text-align: center;display:inline-block; margin-top: 20px;}
+.bougerImage{width:70%;display:inline-block;background-color:grey;}
+.bougerEnfant{border:1px solid grey; -moz-box-shadow: 7px 7px 5px 0px #9b9b9b;-webkit-box-shadow: 7px 7px 5px 0px #9b9b9b;-o-box-shadow: 7px7px 5px 0px #9b9b9b;box-shadow: 7px 7px 5px 0px #9b9b9b;filter:progid:DXImageTransform.Microsoft.Shadow(color=#9b9b9b, Direction=135, Strength=5); img{margin-top:5px;} }
 
 // Media Querys
-@media screen and (max-width : 768px){
+@media screen and (max-width : 850px){
   .myEltonButtonMenu{width:120px;font-size:12px !important;}
   .divider-vertical{height:40px;}
+  img.resizeCartPicture{height:90px;}
+}
+
+@media screen and (max-width : 710px) {
+    img.resizeCartPicture{height:70px;}
+}
+
+@media screen and (max-width : 525px){
+  .myEltonButtonMenu{width:98px;font-size:12px !important;}
+  .logo{position:relative!important;}
 }
 
 
@@ -171,6 +189,9 @@ a .button:focus, a .button:hover{background-color: @bleuLogoElton;color: white;}
   .cons { right: 14%;}
   .footer{margin-top:300px;}
     img.resizeActivity{margin-right:25px;}
+  .rightFooter{float:none!important; text-align:center!important;}
+  .leftFooter{margin:0px!important;text-align: center!important;}
+  .logo{position:absolute; left: 2%;}
 }
 
 @media screen and (min-width:1067px) and (max-width:1225px){
