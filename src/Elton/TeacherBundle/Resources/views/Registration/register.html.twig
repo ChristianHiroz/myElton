@@ -1,49 +1,39 @@
 {% block body -%}
     <div class="smallElton"></div>
     {% form_theme form 'EltonCoreBundle:Form:create_field.html.twig' %}
-<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_register">
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-
-  <div class="carousel-inner">
-    <div class="item active">
-        <center>
-            {{ form_label(form.name) }}
-            {{ form_widget(form.name) }}
-            {{ form_label(form.firstName) }}
-            {{ form_widget(form.firstName) }}
-        </center>
-    </div>
-    <div class="item">
-        <center>
-            {{ form_label(form.postalCode) }}
-            {{ form_widget(form.postalCode) }}
-        </center>
-    </div>
-    <div class="item">
-        <center>
-            <select id="selectedOne"><option>Choisissez votre école</option></select><br/>
-            {{form_label(form.school)}}
-            {{form_widget(form.school)}}
-            {{form_label(form.town)}}
-            {{form_widget(form.town)}}
-            {{form_label(form.address)}}
-            {{form_widget(form.address)}}
-        </center>
-    </div>
-    <div class="item">
-        <center>
-            {{form(form)}}
-            <input type="submit" value=""/>
-        </center>
-    </div>
-</div>
-        <center>
-  <a class="" href="#carousel-example-generic" data-slide="prev">
-    <span class=""><<<</span>
-  </a>
-  <a class="" href="#carousel-example-generic" data-slide="next">
-    <span class="">>>></span>
-  </a>
-            </center>
-    </div> </FORM>
+    <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_register">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active center">
+                        {{ form_label(form.name) }}
+                        {{ form_widget(form.name) }}
+                        {{ form_label(form.firstName) }}
+                        {{ form_widget(form.firstName) }}
+                </div>
+                <div class="item center">
+                        {{ form_label(form.postalCode) }}
+                        {{ form_widget(form.postalCode) }}
+                </div>
+                <div class="item center">
+                        <select id="selectedOne"><option>Choisissez votre école</option></select><br/>
+                        {{form_label(form.school)}}
+                        {{form_widget(form.school)}}
+                        {{form_label(form.town)}}
+                        {{form_widget(form.town)}}
+                        {{form_label(form.address)}}
+                        {{form_widget(form.address)}}
+                </div>
+                <div class="item center">
+                        {{form(form)}}
+                        <input type="submit" class="buttonAll violetBis" value="S'inscrire"/>
+                 </div>
+            </div>
+    <ol class="carousel-indicators" style="position:relative; margin-top: 40px;">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+    </ol> 
+        </div>
+    </form>
 {% endblock %}

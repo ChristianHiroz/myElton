@@ -163,8 +163,8 @@ a.linkSiteMap:hover {
 }
 .cons {
   position: absolute;
-  top: 15px;
-  right: 11%;
+  top: 0px;
+  right: 2%;
 }
 .justify {
   text-align: justify;
@@ -239,6 +239,12 @@ a.linkSiteMap:hover {
 }
 .centered-pills a {
   float: left;
+}
+.carousel-indicators .active {
+  background-color: #6666bb !important;
+}
+.carousel-indicators li {
+  border-color: #6666bb !important;
 }
 .row {
   width: 100% !important;
@@ -737,9 +743,6 @@ a:hover {
   .row {
     margin-left: 0px !important;
   }
-  .cons {
-    right: 14%;
-  }
   .footer {
     margin-top: 300px;
   }
@@ -763,23 +766,14 @@ a:hover {
   img.resizeCons {
     height: 140px;
   }
-  .cons {
-    right: 12%;
-  }
 }
 @media screen and (min-width: 900px) and (max-width: 1067px) {
   img.resizeCons {
     height: 120px;
   }
-  .cons {
-    right: 13%;
-  }
 }
 @media screen and (min-width: 700px) and (max-width: 900px) {
   img.resizeCons {
     height: 120px;
-  }
-  .cons {
-    right: 15%;
   }
 }

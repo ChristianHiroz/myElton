@@ -2,13 +2,29 @@
 
 {% block body %}
     {{ parent() }}
-    <center><h1>Réglages</h1></center>
-        <a href="{{path('division_change', {'id' : selectedDivision.id} ) }}">{{selectedDivision.libelle}}</a>
-        <a href="{{path('teacher_update_division', {'id' : selectedDivision.id} )}}">Modifier</a>
-        <br/>
-    {% for division in othersDivisions %}
-        <a href="{{path('division_change', {'id' : division.id} ) }}">{{division.libelle}}</a>
-        <a href="{{path('teacher_update_division', {'id' : division.id} )}}">Modifier</a>
-        <br/>
-    {% endfor %}
+    {% set color = "violet" %}
+    <div class="center" style="margin-top: 50px;"><h1>Modifier mes classes</h1></div>
+    <div class="buttonTableCont">
+            <a class="buttonTable {{color}}" href="{{path('teacher_update_division', {'id' : selectedDivision.id} ) }}">{{selectedDivision.libelle}}</a>
+            <br/>
+        {% for division in othersDivisions %}
+            {% if loop.index == 1 %}
+                {% set color = "rouge" %}
+            {% elseif loop.index == 2 %}
+                {% set color = "bleu" %}
+            {% elseif loop.index == 3 %}
+                {% set color = "violetBis" %}
+            {% elseif loop.index == 4 %}
+                {% set color = "gris" %}
+            {% elseif loop.index == 5 %}
+                {% set color = "noir" %}
+            {% elseif loop.index == 6 %}
+                {% set color = "orange" %}
+            {% elseif loop.index == 7 %}
+                {% set color = "turquoise" %}
+            {% endif %}
+            <a class="buttonTable {{color}}" href="{{path('teacher_update_division', {'id' : division.id} ) }}">{{division.libelle}}</a>
+            <br/>
+        {% endfor %}
+    </div>
 {% endblock %}
