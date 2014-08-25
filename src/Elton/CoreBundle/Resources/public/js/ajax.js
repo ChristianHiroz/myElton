@@ -253,3 +253,8 @@ $('#myAudioModal').on('hidden.bs.modal', function (e) {
     div.append(iframe);
 
 });
+
+$('.buttonActivity').click(function(e) {
+    $('.buttonActivity').removeClass('active');
+    $(this).addClass('active');
+});

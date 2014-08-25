@@ -245,7 +245,7 @@ class DivisionController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('division_show', array('id' => $id)));
+            return $this->redirect($this->generateUrl('teacher_options_divisions'));
         }
 
         return array(
@@ -277,7 +277,7 @@ class DivisionController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('division'));
+        return $this->redirect($this->generateUrl('teacher_options_divisions'));
     }
 
     /**

@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Elton\DivisionBundle\Form\DivisionType;
+use Elton\DivisionBundle\Form\DivisionEditType;
 use Elton\DivisionBundle\Entity\Division;
 
 /**
@@ -152,12 +153,12 @@ class TeacherController extends Controller
     */
     private function createEditForm(Division $entity)
     {
-        $form = $this->createForm(new DivisionType(), $entity, array(
+        $form = $this->createForm(new DivisionEditType(), $entity, array(
             'action' => $this->generateUrl('division_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
         $form->setData($entity);
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Modifier'));
 
         return $form;
     }
@@ -175,7 +176,7 @@ class TeacherController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('division_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Supprimer'))
             ->getForm()
         ;
     }

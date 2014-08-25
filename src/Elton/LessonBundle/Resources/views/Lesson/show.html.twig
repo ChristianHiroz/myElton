@@ -232,12 +232,15 @@
                     {% endif %}
                 {% endfor %}
                 {% if entity.activitys.count() > 0 %}
-                    <div class="buttonTableCont" style='margin-top:30px' role="tablist">
+                    <div class="buttonTableCont" style='margin-top:30px' role="navigation">
                         {% for activity in entity.activitys %}
                             {% if activity.active == 1 %}
-                                <a class="buttonActivity  {{activity.type}} " href="#{{loop.index}}" role="tab" data-toggle="tab"><img style="width:auto; height: 50px;" src="{{asset('bundles/eltoncore/images/' ~ activity.type ~ '.png')}}"></a>
+                                {% if loop.index == 1 %}                                
+                                    <a class="buttonActivity active {{activity.type}} " href="#{{loop.index}}" role="tab" data-toggle="tab"><img style="width:auto; height: 30px;" src="{{asset('bundles/eltoncore/images/' ~ activity.type ~ '.png')}}"></a>
+                                {% endif %}
+                                <a class="buttonActivity  {{activity.type}} " href="#{{loop.index}}" role="tab" data-toggle="tab"><img style="width:auto; height: 30px;" src="{{asset('bundles/eltoncore/images/' ~ activity.type ~ '.png')}}"></a>
                             {% else %}
-                                <a class="buttonActivity  {{activity.type}} "  style="opacity: 0.5;" role="tab" data-toggle="modal" data-target="#myUnactiveModal">{{activity.type}}</a>
+                                <a class="buttonActivity  {{activity.type}} "  style="opacity: 0.5;" role="tab" data-toggle="modal" data-target="#myUnactiveModal"><img style="width:auto; height: 30px;" src="{{asset('bundles/eltoncore/images/' ~ activity.type ~ '.png')}}"></a>
                             {% endif %}
                         {% endfor %}
                     </div>
@@ -254,22 +257,22 @@
                                                 <div class="col-md-8" style=" margin:auto!important;  padding:0px!important">
                                                     <p style="color:white;margin-top:35px;"><span style="font-size:20px;">{{activity.name}}</span><br/>{{activity.description}}</p>
                                                     <div class="buttonTableCont">
-                                                        <a class="buttonActivity bleu" onclick="addToCart({{activity.id}});">Ajouter au panier</a>
+                                                        <a class="buttonActivityMod noir" onclick="addToCart({{activity.id}});">Ajouter au panier</a>
                                                         {% if activity.files.url == "js" %}
-                                                            <a class="buttonActivity bleu" data-toggle="modal" data-target="#myGameModal">Lancer l'activité</a>
+                                                            <a class="buttonActivityMod noir" data-toggle="modal" data-target="#myGameModal">Lancer l'activité</a>
                                                         {% elseif activity.files.url == "mp3"%}
-                                                            <a class="buttonActivity bleu" data-toggle="modal" data-target="#myAudioModal">Lancer l'activité</a>
-                                                            <a class="buttonActivity bleu" href="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" download="{{activity.files.id ~ '.' ~ activity.files.url}}">Télécharger l'activité</a>
+                                                            <a class="buttonActivityMod noir" data-toggle="modal" data-target="#myAudioModal">Lancer l'activité</a>
+                                                            <a class="buttonActivityMod noir" href="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" download="{{activity.files.id ~ '.' ~ activity.files.url}}">Télécharger l'activité</a>
                                                         {% elseif activity.files.url == "mp4"%}
-                                                            <a class="buttonActivity bleu" data-toggle="modal" data-target="#myVimeoModal">Lancer l'activité</a>
+                                                            <a class="buttonActivityMod noir" data-toggle="modal" data-target="#myVimeoModal">Lancer l'activité</a>
                                                         {% elseif activity.files.url == "jpg" or activity.files.url == "jpeg" or activity.files.url == "png"%}
-                                                            <a class="buttonActivity bleu" data-toggle="modal" data-target="#myPictureModal">Lancer l'activité</a>
-                                                            <a class="buttonActivity bleu" href="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" download="{{activity.files.id ~ '.' ~ activity.files.url}}">Télécharger l'activité</a>
+                                                            <a class="buttonActivityMod noir" data-toggle="modal" data-target="#myPictureModal">Lancer l'activité</a>
+                                                            <a class="buttonActivityMod noir" href="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" download="{{activity.files.id ~ '.' ~ activity.files.url}}">Télécharger l'activité</a>
                                                         {% elseif activity.files.url == "pdf" %}
-                                                            <a class="buttonActivity bleu" data-toggle="modal" data-target="#myPdfModal">Lancer l'activité</a>                                                            
-                                                            <a class="buttonActivity bleu" href="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" download="{{activity.files.id ~ '.' ~ activity.files.url}}">Télécharger l'activité</a>
+                                                            <a class="buttonActivityMod noir" data-toggle="modal" data-target="#myPdfModal">Lancer l'activité</a>                                                            
+                                                            <a class="buttonActivityMod noir" href="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" download="{{activity.files.id ~ '.' ~ activity.files.url}}">Télécharger l'activité</a>
                                                         {% else %}
-                                                        <a class="buttonActivity bleu">Lancer l'activité</a>
+                                                        <a class="buttonActivityMod noir">Lancer l'activité</a>
                                                         {% endif %}
                                                     </div>
                                                 </div>
@@ -284,22 +287,22 @@
                                                 <div class="col-md-8" style=" margin:auto!important;  padding:0px!important">
                                                     <p style="color:white;margin-top:35px;"><span style="font-size:20px;">{{activity.name}}</span><br/>{{activity.description}}</p>
                                                     <div class="buttonTableCont">
-                                                        <a class="buttonActivity bleu" onclick="addToCart({{activity.id}});">Ajouter au panier</a>
+                                                        <a class="buttonActivityMod noir" onclick="addToCart({{activity.id}});">Ajouter au panier</a>
                                                         {% if activity.files.url == "js" %}
-                                                            <a class="buttonActivity bleu" data-toggle="modal" data-target="#myGameModal">Lancer l'activité</a>
+                                                            <a class="buttonActivityMod noir" data-toggle="modal" data-target="#myGameModal">Lancer l'activité</a>
                                                         {% elseif activity.files.url == "mp3"%}
-                                                            <a class="buttonActivity bleu" data-toggle="modal" data-target="#myAudioModal">Lancer l'activité</a>
-                                                            <a class="buttonActivity bleu" href="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" download="{{activity.files.id ~ '.' ~ activity.files.url}}">Télécharger l'activité</a>
+                                                            <a class="buttonActivityMod noir" data-toggle="modal" data-target="#myAudioModal">Lancer l'activité</a>
+                                                            <a class="buttonActivityMod noir" href="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" download="{{activity.files.id ~ '.' ~ activity.files.url}}">Télécharger l'activité</a>
                                                         {% elseif activity.files.url == "mp4"%}
-                                                            <a class="buttonActivity bleu" data-toggle="modal" data-target="#myVimeoModal">Lancer l'activité</a>
+                                                            <a class="buttonActivityMod noir" data-toggle="modal" data-target="#myVimeoModal">Lancer l'activité</a>
                                                         {% elseif activity.files.url == "jpg" or activity.files.url == "jpeg" or activity.files.url == "png"%}
-                                                            <a class="buttonActivity bleu" data-toggle="modal" data-target="#myPictureModal">Lancer l'activité</a>
-                                                            <a class="buttonActivity bleu" href="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" download="{{activity.files.id ~ '.' ~ activity.files.url}}">Télécharger l'activité</a>
+                                                            <a class="buttonActivityMod noir" data-toggle="modal" data-target="#myPictureModal">Lancer l'activité</a>
+                                                            <a class="buttonActivityMod noir" href="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" download="{{activity.files.id ~ '.' ~ activity.files.url}}">Télécharger l'activité</a>
                                                         {% elseif activity.files.url == "pdf" %}
-                                                            <a class="buttonActivity bleu" data-toggle="modal" data-target="#myPdfModal">Lancer l'activité</a>                                                            
-                                                            <a class="buttonActivity bleu" href="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" download="{{activity.files.id ~ '.' ~ activity.files.url}}">Télécharger l'activité</a>
+                                                            <a class="buttonActivityMod noir" data-toggle="modal" data-target="#myPdfModal">Lancer l'activité</a>                                                            
+                                                            <a class="buttonActivityMod noir" href="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" download="{{activity.files.id ~ '.' ~ activity.files.url}}">Télécharger l'activité</a>
                                                         {% else %}
-                                                        <a class="buttonActivity bleu">Lancer l'activité</a>
+                                                        <a class="buttonActivityMod noir">Lancer l'activité</a>
                                                         {% endif %}
                                                     </div>
                                                 </div>
