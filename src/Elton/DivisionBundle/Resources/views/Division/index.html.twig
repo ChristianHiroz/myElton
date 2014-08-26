@@ -4,7 +4,7 @@
     {{ parent() }}
         {% for cartactivity in user.cart.activitys %}
             {% if cartactivity.activity.files.url == "mp3" %}
-                <div class="modal fade" id="{{cartactivity.activity.id}}Modal" tabindex="-1" role="dialog" aria-labelledby="myAudioModalLabel" aria-hidden="true" >
+                <div class="modal fade myAudioModal" id="{{cartactivity.activity.id}}Modal" tabindex="-1" role="dialog" aria-labelledby="myAudioModalLabel" aria-hidden="true" >
                     <div class="modal-dialog" style='margin-top:200px;'>
                         <div class="modal-content">
                             <div class="modal-header">
@@ -12,8 +12,10 @@
                                 <h4 class="modal-title label label-warning modalFS" id="myAudioModalLabel">Audio</h4>
                             </div>
                             <div class="modal-body" style="text-align:center; width:95%;">
-                                <audio controls>
-                                   {# <source src="ogg.ogg" type="audio/ogg"> #}
+                                <audio id="audioIframe" controls>
+                                    {% if cartactivity.activity.files.ogg %}
+                                        <source src="{{ asset(cartactivity.activity.files.ogg.uploadDir ~ '/' ~ cartactivity.activity.files.ogg.id ~ '.' ~ cartactivity.activity.files.ogg.url)}}" type="audio/ogg">
+                                    {% endif %}
                                     <source src="{{ asset(cartactivity.activity.files.uploadDir ~ '/' ~cartactivity.activity.files.id ~ '.' ~ cartactivity.activity.files.url)}}" type="audio/mpeg">
                                   Votre navigateur ne supporte pas les éléments audios, veuillez le mettre à jour.
                                 </audio>
@@ -43,7 +45,7 @@
                     </div>
                 </div>
             {% elseif cartactivity.activity.files.url == "js" %}
-                <div class="modal fade" id="{{cartactivity.activity.id}}Modal" tabindex="-1" role="dialog" aria-labelledby="myGameModalLabel" aria-hidden="true" >
+                <div class="modal fade myGameModal" id="{{cartactivity.activity.id}}Modal" tabindex="-1" role="dialog" aria-labelledby="myGameModalLabel" aria-hidden="true" >
                     <div class="modal-dialog" style="width: 95%; height:650px;">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -51,7 +53,7 @@
                                 <h4 class="modal-title label label-warning modalFS" id="myGameModalLabel">Jeu</h4>
                             </div>
                             <div class="modal-body" style="text-align:center; width:100%;">
-                                <div  style="border:1px solid black;z-index:1;-moz-border-radius:8px;border-radius:8px;text-align:center;">
+                                <div id="lala" style="border:1px solid black;z-index:1;-moz-border-radius:8px;border-radius:8px;text-align:center;">
                                     <canvas width="750" height="450" id="game" style="background-color: #77B5FE; margin-top:15px; margin-bottom: 15px; margin-right:15px;">
                                         <p lang="fr">Votre navigateur ne supporte pas la balise canvas.</p>
                                     </canvas>
@@ -102,7 +104,11 @@
             {% endif %}
         {% endfor %}
         <div class="buttonTableCont">
+            {% set bool = false %}
             {% for cartactivity in user.cart.activitys %}
+                {% if loop.index == 1 %}
+                    {% set bool = true %}
+                {% endif %}
                 {% if loop.index == 4 %}
                     </div>
                     <div class="buttonTableCont">
@@ -112,8 +118,14 @@
                     <p style="margin-left:0px!important">{{ cartactivity.activity }}</p>
                 </div>
             {% endfor %}
-        </div>
-        <div class="buttonTableCont">
-            <a class="buttonTableSmall" onclick="launchSelectedActivity()">Lancer l'activité</a>
-        </div>
+            </div>
+            {% if bool == true %}
+                <div class="buttonTableCont">
+                    <a class="buttonTableSmall" onclick="launchSelectedActivity();">Lancer l'activité</a>
+                </div>
+            {% elseif bool == false %}
+                <div style="margin-top:50px;">
+                    <p style='font-size: 21px;'>Aucune activité n'a été donné par ton professeur</p>
+                </div>
+            {% endif %}
 {% endblock %}

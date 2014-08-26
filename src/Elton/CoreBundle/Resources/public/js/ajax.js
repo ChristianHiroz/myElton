@@ -246,7 +246,23 @@ $('#myVimeoModal').on('hidden.bs.modal', function (e) {
 
 });
 
+$('.myVimeoModal').on('hidden.bs.modal', function (e) {
+    var iframe = $("#vimeoIframe");
+    var div = $("#vimeoIframe").parent();
+    iframe.remove();
+    div.append(iframe);
+
+});
+
 $('#myAudioModal').on('hidden.bs.modal', function (e) {
+    var iframe = $("#audioIframe");
+    var div = $("#audioIframe").parent();
+    iframe.remove();
+    div.append(iframe);
+
+});
+
+$('.myAudioModal').on('hidden.bs.modal', function (e) {
     var iframe = $("#audioIframe");
     var div = $("#audioIframe").parent();
     iframe.remove();
