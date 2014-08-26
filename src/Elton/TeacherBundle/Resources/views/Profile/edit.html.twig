@@ -1,4 +1,6 @@
+{% extends '::base.html.twig' %}
 {% block body %}
+    {{ parent () }}
     {% form_theme form 'EltonCoreBundle:Form:create_field.html.twig' %}
     <div class="col-md-2"></div>
     <div class="col-md-8" style="margin-top: 50px;">

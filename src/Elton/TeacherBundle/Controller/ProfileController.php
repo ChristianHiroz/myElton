@@ -80,7 +80,7 @@ class ProfileController extends ContainerAware
                 $userManager->updateUser($user);
 
                 if (null === $response = $event->getResponse()) {
-                    $url = $this->container->get('router')->generate('fos_user_profile_show');
+                    $url = $this->container->get('router')->generate('fos_user_profile_edit');
                     $response = new RedirectResponse($url);
                 }
 
@@ -89,10 +89,12 @@ class ProfileController extends ContainerAware
                 return $response;
             }
         }
-
+        $returnArray = $this->container->get('elton.teacher.manager')->check();
+        $returnArray['form'] = $form->createView();
+        
         return $this->container->get('templating')->renderResponse(
             'FOSUserBundle:Profile:edit.html.'.$this->container->getParameter('fos_user.template.engine'),
-            array('form' => $form->createView())
+            $returnArray
         );
     }
 }

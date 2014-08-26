@@ -14,7 +14,7 @@
                 <img class="img-responsive" src="{{asset('bundles/eltoncore/images/map.png')}}">
                 <div class="center" style="margin-top:25px;">
                     {% for category in categorys %}
-                        <a class="{{category.libelle}} buttonVerySmall" style="line-height:55px; margin-left:20px;" href="{{path('category_show', {id : category.id})}}">{{category.libelle}}</a>
+                        <a class="{{category.color}} buttonVerySmall" style="line-height:55px; margin-left:20px;" href="{{path('category_show', {id : category.id})}}">{{category.libelle}}</a>
                     {% endfor %}
                 </div>
             </div>

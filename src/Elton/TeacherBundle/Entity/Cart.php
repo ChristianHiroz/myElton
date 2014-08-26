@@ -23,7 +23,7 @@ class Cart
     private $id;
     
     /**
-     * @ORM\OneToOne(targetEntity="Elton\DivisionBundle\Entity\Division", inversedBy="cart")
+     * @ORM\OneToOne(targetEntity="Elton\DivisionBundle\Entity\Division", inversedBy="cart", cascade="remove")
      */
     private $division;
     

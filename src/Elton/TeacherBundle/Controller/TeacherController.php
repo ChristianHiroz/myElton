@@ -181,19 +181,6 @@ class TeacherController extends Controller
         ;
     }
     
-    /**
-     * 
-     * @Route("/modifier", name="teacher_modifier")
-     * @Method("GET")
-     * @Template("EltonTeacherBundle:Teacher:editPage.html.twig")
-     */
-    public function editPageAction()
-    {
-        $returnArray = $this->get('elton.teacher.manager')->check();
-        
-        return $returnArray;
-    }
-    
     public function __toString() {
         return $this->username;
     }

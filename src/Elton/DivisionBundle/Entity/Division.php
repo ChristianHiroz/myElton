@@ -63,7 +63,7 @@ class Division extends User
     private $competences;
     
     /**
-     * @ORM\OneToOne(targetEntity="Elton\TeacherBundle\Entity\Cart", mappedBy="division", cascade="persist")
+     * @ORM\OneToOne(targetEntity="Elton\TeacherBundle\Entity\Cart", mappedBy="division", cascade={"persist", "remove"})
      */
     private $cart;
 

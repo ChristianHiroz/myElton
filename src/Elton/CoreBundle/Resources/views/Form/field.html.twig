@@ -1,0 +1,31 @@
+{% form_theme form _self %}
+
+
+{% block form_widget_simple %}
+{% spaceless %}
+    {% set type = type|default('text') %}
+    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %} class="form-control "/>
+{% endspaceless %}
+{% endblock form_widget_simple %}
+
+    
+{% block button_widget %}
+{% spaceless %}
+    {% if label is empty %}
+        {% set label = name|humanize %}
+    {% endif %}
+    <div class="center">
+        <button type="{{ type|default('button') }}" {{ block('button_attributes') }}  class="buttonAll noir">{{ label|trans({}, translation_domain) }}</button>
+    </div>
+{% endspaceless %}
+{% endblock button_widget %}
+    
+{% block form_row %}
+{% spaceless %}
+    <div class="form-group ml150">
+        {{ form_label(form) }}
+        {{ form_errors(form) }}
+        {{ form_widget(form)}}
+    </div>
+{% endspaceless %}
+{% endblock form_row %}

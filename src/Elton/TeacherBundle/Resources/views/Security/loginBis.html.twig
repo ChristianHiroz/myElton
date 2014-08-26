@@ -5,25 +5,29 @@
     <br/>
     {% trans_default_domain 'FOSUserBundle' %}
     <br/>   
-{% if error %}
+<div class="col-md-2"></div>
+<div class="col-md-8">  
+    {% if error %}
     <div>{{ error|trans }}</div>
 {% endif %}
+    <form action="{{ path("fos_user_security_check") }}" method="post">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-<form action="{{ path("fos_user_security_check") }}" method="post">
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-
-    <label for="username">Nom d'utilisateur</label>
-    <input class="form-control width50" type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="Entrez votre nom d'utilisateur" />
-    <br/>
-    <label for="password">Mot de passe</label>
-    <input class="form-control width50" type="password" id="password" name="_password" required="required" placeholder="Entrez votre mot de passe" />
-    <br/>
-    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    <label for="remember_me">Se souvenir de moi</label>
-    <br/>
-    <input class="btn btn-warning ml50" type="submit" id="_submit" name="_submit" value="Envoyer" />
-    <br/>
-    <a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a>
-</form>
+        <label for="username">Nom d'utilisateur</label>
+        <input class="form-control width50" type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="Entrez votre nom d'utilisateur" />
+        <br/>
+        <label for="password">Mot de passe</label>
+        <input class="form-control width50" type="password" id="password" name="_password" required="required" placeholder="Entrez votre mot de passe" />
+        <br/>
+        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+        <label for="remember_me">Se souvenir de moi</label>
+        <br/>
+        <div class="text-align:center;">
+            <input class="buttonAll fs18 violetBis" type="submit" id="_submit" name="_submit" value="Envoyer" />
+        </div>
+        <br/>
+        <a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a>
+    </form>
+</div>
 
 {% endblock %}

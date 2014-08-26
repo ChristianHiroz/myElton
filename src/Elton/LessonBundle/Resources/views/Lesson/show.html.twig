@@ -13,7 +13,7 @@
                     Cette activité sera accessible prochainement
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn center-block shadow btnBeigeElton orange bold" style="color:white!important;"data-dismiss="modal">Fermer</button>
                 </div>
             </div>
         </div>
@@ -158,7 +158,7 @@
             <div class="col-md-3"></div>
             <div class="col-md-6 lessonCategoryTitle" >
                 <h1><a style="color:grey; margin-bottom: 35px; margin-top:0px !important; background: none !important;" class="{{entity.category.color}}H" href="{{path('category_show', { id : entity.category.id })}}">{{entity.category.libelle}}</a></h1>
-                <p class="disInBl buttonVerySmall lessonNumberIner {{entity.type}}">{{order}}</p> &nbsp &nbsp &nbsp &nbsp
+                <p class="disInBl buttonVerySmall lessonNumberIner {{entity.type}}">{% if entity.category.level != "Event" %} {{order}} {% endif %}</p> &nbsp &nbsp &nbsp &nbsp
                 <h1 class="disInBl" style="bottom:0%">{{entity.libelle}}</h1>
             </div>
         </div>
@@ -237,8 +237,9 @@
                             {% if activity.active == 1 %}
                                 {% if loop.index == 1 %}                                
                                     <a class="buttonActivity active {{activity.type}} " href="#{{loop.index}}" role="tab" data-toggle="tab"><img style="width:auto; height: 30px;" src="{{asset('bundles/eltoncore/images/' ~ activity.type ~ '.png')}}"></a>
-                                {% endif %}
+                                {% else %}
                                 <a class="buttonActivity  {{activity.type}} " href="#{{loop.index}}" role="tab" data-toggle="tab"><img style="width:auto; height: 30px;" src="{{asset('bundles/eltoncore/images/' ~ activity.type ~ '.png')}}"></a>
+                                {% endif %}
                             {% else %}
                                 <a class="buttonActivity  {{activity.type}} "  style="opacity: 0.5;" role="tab" data-toggle="modal" data-target="#myUnactiveModal"><img style="width:auto; height: 30px;" src="{{asset('bundles/eltoncore/images/' ~ activity.type ~ '.png')}}"></a>
                             {% endif %}

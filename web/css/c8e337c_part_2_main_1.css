@@ -435,7 +435,7 @@ img.resizeCartType {
   margin-right: 12px;
   margin-top: 24px;
   width: 150px;
-  height: 30px;
+  height: 50px;
   color: black;
   text-align: center;
   vertical-align: middle;
@@ -450,7 +450,7 @@ img.resizeCartType {
   margin-right: 12px;
   margin-top: 24px;
   width: 150px;
-  height: 30px;
+  height: 50px;
   color: white;
   text-align: center;
   vertical-align: middle;
@@ -467,7 +467,7 @@ img.resizeCartType {
   margin-top: 24px;
   width: 90px;
   height: 40px;
-  color: black;
+  color: white;
   text-align: center;
   vertical-align: middle;
   border-color: transparent;
@@ -482,7 +482,7 @@ img.resizeCartType {
   margin-top: 24px;
   width: 90px;
   height: 40px;
-  color: white;
+  color: white !important;
   text-align: center;
   vertical-align: middle;
   border-color: transparent;
