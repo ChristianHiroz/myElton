@@ -25,7 +25,6 @@
             </div>
                 </div>
             </div>
-        {% endif %}
         <div class="buttons col-md-3" style="padding:0;">
             {% if is_granted('ROLE_ADMIN') %}
                 <span class="hidden-sm hidden-xs">{{user.firstName}} {{user.name | upper}}</span>
@@ -49,10 +48,13 @@
             {% endif %}
         </div>
         </div></div>
+        
+        {% endif %}
 </header>
 {# Menu teacher #}
 <nav style="margin-top: 50px;">
     <div class="centered-pills menuBarTeacher" role="navigation">
+        {% if selectedDivision %}
         <ul class="nav nav-pills">
             <li class="divider-vertical"></li>
             <li>
@@ -77,5 +79,6 @@
             </li>
             <li class="divider-vertical"></li>
         </ul>
+        {% endif %}
     </div>
 </nav>

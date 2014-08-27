@@ -225,6 +225,17 @@
                         {% endif %}
                     </div>
                 {% endif %}
+            </div>
+        </div>
+            <div class="visible-xs center row" style='margin-top:50px;'>
+                <div class='col-md-2'></div>
+                <div class='col-md-6'>
+                    <p class='fs18'>Désolé, ce contenu n'est pas accessible sur mobile.</p>
+                </div>
+            </div>
+        <div class="row hidden-xs">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
                 {% set bool = false %}
                 {% for activity in entity.activitys %}
                     {% if activity.active == 1 %}
@@ -245,8 +256,12 @@
                             {% endif %}
                         {% endfor %}
                     </div>
+                </div>
+                </div>
+        <div class="row hidden-xs">
+            <div class="col-md-2"></div>
                     {% if bool == true %}
-                        <div class="tab-content activityContainer" style=" margin-top: -8px;">
+                        <div class="tab-content activityContainer col-md-8" style="padding: 0; margin-top: -8px;">
                             {% for activity in entity.activitys %}
                                 {% if activity.active == 1 %}
                                     {% if loop.index == 1 %}
@@ -315,8 +330,7 @@
                         </div>
                     {% endif %}
                 {% endif %}
-            </div>
-            <div class="col-md-3"></div>
+            <div class="col-md-2"></div>
         </div>
     </div>
 {% endblock %}

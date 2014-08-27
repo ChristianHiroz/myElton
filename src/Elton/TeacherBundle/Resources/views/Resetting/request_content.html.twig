@@ -1,17 +1,22 @@
 {% block body %}
-    <div class="smallElton"></div>
-
-<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
-    <div>
-        {% if invalid_username is defined %}
-            <p>{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}</p>
-        {% endif %}
-        <label for="username">Nom d'utilisateur</label> <br/>
-        <input class="form-control width50" type="text" id="username" name="username" required="required" /> <br/>
+    <div class="container" style="margin-top:50px;">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+            <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+                <div>
+                    {% if invalid_username is defined %}
+                        <p>Ce nom d'utilisateur n'existe pas.</p>
+                    {% endif %}
+                    <label for="username">Nom d'utilisateur</label> <br/>
+                    <input class="form-control width50" type="text" id="username" name="username" required="required" /> <br/>
+                </div>
+                <div class="center">
+                    <input class="buttonAll violetBis" type="submit" value="Envoyer" />
+                </div>
+            </form>
+            </div>
+        </div>
     </div>
-    <div>
-        <input class="btn btn-warning" type="submit" value="Envoyer" />
-    </div>
-</form>
     
 {% endblock %}
