@@ -156,6 +156,10 @@ function launchSelectedActivity()
     }
 }
 
+$('#lancer').click( function (e) {
+    $("#" + selectedActivity + "Modal").modal({show: true});
+});
+
 $("#setted").droppable({
     drop: function( event, ui ) {
         var parentId = $("#" + selectedActivity).closest("div").parent().parent().parent().attr("id");
