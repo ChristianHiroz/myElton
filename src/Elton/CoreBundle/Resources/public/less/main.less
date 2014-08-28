@@ -22,9 +22,9 @@ hr {color: grey;background: grey; width: 95%; height: 2px!important;}
 h1, h2, h3, h4 {font-weight:normal !important;}
 h4{margin-left:5px!important;}
 a, a:hover, a:focus{text-decoration:none!important;}
-a.grey{ color:grey !important;}
-table{margin-left: auto;margin-right: auto;}
-h1 { margin-top:-5px !important;  font-size:24px!important;}
+a.grey{color:grey !important;}
+table{margin-left:auto;margin-right:auto;}
+h1 { margin-top:-5px !important;font-size:24px!important;}
 
 //Compatibility stuffs
 * html .centered-pills ul.nav-pills { display:inline; } /* IE6 */
@@ -115,7 +115,7 @@ a .button:focus, a .button:hover{background-color: @bleuLogoElton;color: white;}
 a.buttonTable:hover {color:white; opacity:0.7; filter: alpha(opacity=40);}
 a.buttonTableSmall:hover {color:white; opacity:0.7; filter: alpha(opacity=40);}
 .buttonAll.fs18{font-size:18px!important; line-height: 49px !important;}
-
+.buttonAll:hover{opacity:0.5;color:white;}
 
 // Colors
 .rouge{background-color: @rougeElton!important;}
@@ -135,6 +135,7 @@ a.buttonTableSmall:hover {color:white; opacity:0.7; filter: alpha(opacity=40);}
 .bleufonceH:hover{color:@bleuLogoElton!important;}
 .violet{background-color: @violetElton!important;}
 .violetBis{background-color: @violetEltonBis!important;}
+.violetBisH:hover{color: @violetEltonBis!important;}
 .violetH:hover{color:@violetElton!important;}
 .noir{background-color: @grisSombreElton!important;}
 .noirH:hover{color:@grisSombreElton!important;}
@@ -147,6 +148,7 @@ a.buttonTableSmall:hover {color:white; opacity:0.7; filter: alpha(opacity=40);}
 .culture{background-color:@violetEltonBis;}
 .txtViolet{color:@violetElton;}
 .borderVioletBis{border:1px solid @violetEltonBis; color: @violetEltonBis;}
+.borderBleu{border:1px solid @bleuElton; color: @bleuElton;}
 .borderViolet{border:1px solid @violetElton; color: @violetElton;}
 .borderNoir{border:1px solid @grisSombreElton; color: @grisSombreElton;}
 
@@ -172,6 +174,7 @@ a.buttonTableSmall:hover {color:white; opacity:0.7; filter: alpha(opacity=40);}
 @media screen and (max-width : 525px){
   .myEltonButtonMenu{width:98px;font-size:12px !important;}
   .logo{position:relative!important;}
+  img.resizeCartPicture{height:90px;}
 }
 
 
@@ -202,10 +205,12 @@ a.buttonTableSmall:hover {color:white; opacity:0.7; filter: alpha(opacity=40);}
 
 @media screen and (min-width:1067px) and (max-width:1225px){
   img.resizeCons{height:140px;}
+  img.resizeCartPicture{height:90px;}
 }
 
 @media screen and (min-width:900px) and (max-width:1067px){
   img.resizeCons{height:120px;}
+  img.resizeCartPicture{height:85px;}
 }
 
 @media screen and (min-width:700px) and (max-width:900px){

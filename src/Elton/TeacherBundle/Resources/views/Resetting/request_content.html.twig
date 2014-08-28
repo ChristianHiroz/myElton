@@ -8,7 +8,11 @@
                     {% if invalid_username is defined %}
                         <p>Ce nom d'utilisateur n'existe pas.</p>
                     {% endif %}
-                    <label for="username">Nom d'utilisateur</label> <br/>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <label for="username">Nom de la classe</label> <br/>
+                    {% else %}
+                        <label for="username">Nom d'utilisateur</label> <br/>
+                    {% endif %}
                     <input class="form-control width50" type="text" id="username" name="username" required="required" /> <br/>
                 </div>
                 <div class="center">

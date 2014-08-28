@@ -41,27 +41,27 @@ $("#attribuer").click(function()
         url: Routing.generate('set_to_division', {activityId : selectedActivity, cartId : selectedCart}),
         data: {}
     });
-    var parentId = $("#" + selectedActivity).closest("div").parent().attr("id");
+    var parentId = $("#" + selectedActivity + "parent").parent().attr("id");
     if(parentId === "setted1" || parentId === "setted2"){            
             if($("#unsetted1 div").length === 3){
-                $("#unsetted2").prepend($("#" + selectedActivity));
+                $("#unsetted2").prepend($("#" + selectedActivity + "parent"));
             }
             else{
-                $("#unsetted1").prepend($("#" + selectedActivity));
+                $("#unsetted1").prepend($("#" + selectedActivity + "parent"));
             }
-            $("#"+selectedActivity).css("left", "0px");
-            $("#"+selectedActivity).css("top", "0px");
+            $("#" + selectedActivity + "parent").css("left", "0px");
+            $("#" + selectedActivity + "parent").css("top", "0px");
             $("#attribuer").text("Attribuer à la classe");
         }
     else{            
         if($("#setted1 div").length === 3){
-            $("#setted2").prepend($("#" + selectedActivity));
+            $("#setted2").prepend($("#" + selectedActivity + "parent"));
         }
         else{
-            $("#setted1").prepend($("#" + selectedActivity));
+            $("#setted1").prepend($("#" + selectedActivity + "parent"));
         }
-        $("#"+selectedActivity).css("left", "0px");
-        $("#"+selectedActivity).css("top", "0px");
+        $("#" + selectedActivity + "parent").css("left", "0px");
+        $("#" + selectedActivity + "parent").css("top", "0px");
         $("#attribuer").text("Ne plus attribuer");
     }
 });
@@ -113,7 +113,7 @@ function setSelect(activityId, cartId)
         $("#" + selectedActivity+"p").addClass("textBlc");
         $("#" + selectedActivity).parent().draggable({ revert: "invalid" });
         $("#" + selectedActivity).parent().draggable("option", "disabled", false);
-        var parentId = $("#" + activityId).closest("div").parent().attr("id");
+        var parentId = $("#" + activityId + "parent").closest("div").parent().attr("id");
         if(parentId === "setted1" || parentId === "setted2"){
             $("#attribuer").text("Ne plus attribuer");
         }
@@ -122,16 +122,27 @@ function setSelect(activityId, cartId)
         }
     }
     if(selectedActivity !== 0){
-        $("#btnPanier1").addClass("violet");
-        $("#btnPanier2").addClass("violetBis");
-        $("#btnPanier1").removeClass("borderViolet");
-        $("#btnPanier2").removeClass("borderVioletBis");
+        $(".btnPanier1").addClass("violet");
+        $(".btnPanier2").addClass("violetBis");
+        $(".btnPanier4").addClass("bleu");
+        $(".btnPanier4").removeClass("borderBleu");
+        $(".btnPanier1").removeClass("borderViolet");
+        $(".btnPanier2").removeClass("borderVioletBis");        
+        $(".btnPanier1").removeClass("violetH");
+        $(".btnPanier2").removeClass("violetBisH");
+        $(".btnPanier4").removeClass("bleuH");
+        
     }
     else{
-        $("#btnPanier1").removeClass("violet");
-        $("#btnPanier2").removeClass("violetBis");
-        $("#btnPanier1").addClass("borderViolet");
-        $("#btnPanier2").addClass("borderVioletBis");
+        $(".btnPanier1").removeClass("violet");
+        $(".btnPanier2").removeClass("violetBis");
+        $(".btnPanier4").removeClass("bleu");
+        $(".btnPanier4").addClass("borderBleu");
+        $(".btnPanier1").addClass("borderViolet");
+        $(".btnPanier2").addClass("borderVioletBis");        
+        $(".btnPanier1").addClass("violetH");
+        $(".btnPanier2").addClass("violetBisH");
+        $(".btnPanier4").addClass("bleuH");
     }
 }
 
@@ -203,7 +214,7 @@ $("#supprimer").click(function()
         url: Routing.generate('delete_cart', {id : selectedActivity}),
         data: {},
         success: function(){
-            $("#"+selectedActivity).remove();
+            $("#"+selectedActivity + "parent").remove();
             var value = parseInt($("#nbPanier").text());
             value = value - 1;
             if(value === 0) {

@@ -6347,6 +6347,10 @@ a.buttonTableSmall:hover {
   font-size: 18px !important;
   line-height: 49px !important;
 }
+.buttonAll:hover {
+  opacity: 0.5;
+  color: white;
+}
 .rouge {
   background-color: #be0926 !important;
 }
@@ -6398,6 +6402,9 @@ a.buttonTableSmall:hover {
 .violetBis {
   background-color: #6666bb !important;
 }
+.violetBisH:hover {
+  color: #6666bb !important;
+}
 .violetH:hover {
   color: #cd0054 !important;
 }
@@ -6434,6 +6441,10 @@ a.buttonTableSmall:hover {
 .borderVioletBis {
   border: 1px solid #6666bb;
   color: #6666bb;
+}
+.borderBleu {
+  border: 1px solid #66b8dc;
+  color: #66b8dc;
 }
 .borderViolet {
   border: 1px solid #cd0054;
@@ -6507,6 +6518,9 @@ a.buttonTableSmall:hover {
   }
   .logo {
     position: relative !important;
+  }
+  img.resizeCartPicture {
+    height: 90px;
   }
 }
 @media screen and (max-width: 430px) {
@@ -6583,10 +6597,16 @@ a.buttonTableSmall:hover {
   img.resizeCons {
     height: 140px;
   }
+  img.resizeCartPicture {
+    height: 90px;
+  }
 }
 @media screen and (min-width: 900px) and (max-width: 1067px) {
   img.resizeCons {
     height: 120px;
+  }
+  img.resizeCartPicture {
+    height: 85px;
   }
 }
 @media screen and (min-width: 700px) and (max-width: 900px) {

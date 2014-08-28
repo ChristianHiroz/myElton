@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: @EltonCoreBundle/Resources/config/admin.xml }
+    - { resource: @EltonTeacherBundle/Resources/config/mailer.xml }
 
 framework:
     #esi:             ~

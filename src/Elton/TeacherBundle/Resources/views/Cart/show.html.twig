@@ -1,6 +1,107 @@
 {% extends '::base.html.twig' %}
 {% block body %}
     {{ parent() }}
+        {% for cartactivity in cart %}
+            {% if cartactivity.activity.files.url == "mp3" %}
+                <div class="modal fade myAudioModal" id="{{cartactivity.activity.id}}Modal" tabindex="-1" role="dialog" aria-labelledby="myAudioModalLabel" aria-hidden="true" >
+                    <div class="modal-dialog" style='margin-top:200px;'>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                                <h4 class="modal-title label label-warning modalFS" id="myAudioModalLabel">Audio</h4>
+                            </div>
+                            <div class="modal-body" style="text-align:center; width:95%;">
+                                <audio id="audioIframe" controls>
+                                    {% if cartactivity.activity.files.ogg %}
+                                        <source src="{{ asset(cartactivity.activity.files.ogg.uploadDir ~ '/' ~ cartactivity.activity.files.ogg.id ~ '.' ~ cartactivity.activity.files.ogg.url)}}" type="audio/ogg">
+                                    {% endif %}
+                                    <source src="{{ asset(cartactivity.activity.files.uploadDir ~ '/' ~cartactivity.activity.files.id ~ '.' ~ cartactivity.activity.files.url)}}" type="audio/mpeg">
+                                  Votre navigateur ne supporte pas les éléments audios, veuillez le mettre à jour.
+                                </audio>
+                                <script src="{{ asset(cartactivity.activity.files.uploadDir ~ '/' ~ cartactivity.activity.files.id ~ '.' ~ cartactivity.activity.files.url) }}"></script>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% elseif cartactivity.activity.files.url == "jpg" or cartactivity.activity.files.url == "jpeg" or cartactivity.activity.files.url == "png" %}
+                <div class="modal fade" id="{{cartactivity.activity.id}}Modal" tabindex="-1" role="dialog" aria-labelledby="myPictureModalLabel" aria-hidden="true" style="height:100%;">
+                    <div class="modal-dialog"  style='width:85%;'>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                                <h4 class="modal-title label label-warning modalFS" id="myPictureModalLabel">Image</h4>
+                            </div>
+                            <div class="modal-body" style="text-align:center; width:100%; height:0%;">
+                                <img style="width:auto; height: 70%;" src="{{ asset(cartactivity.activity.files.uploadDir ~ '/' ~ cartactivity.activity.files.id ~ '.' ~ cartactivity.activity.files.url) }}" alt="{{cartactivity.activity.files.alt}}"/>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% elseif cartactivity.activity.files.url == "js" %}
+                <div class="modal fade myGameModal" id="{{cartactivity.activity.id}}Modal" tabindex="-1" role="dialog" aria-labelledby="myGameModalLabel" aria-hidden="true" >
+                    <div class="modal-dialog" style="width: 95%; height:650px;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                                <h4 class="modal-title label label-warning modalFS" id="myGameModalLabel">Jeu</h4>
+                            </div>
+                            <div class="modal-body" style="text-align:center; width:100%;">
+                                <div id="lala" style="border:1px solid black;z-index:1;-moz-border-radius:8px;border-radius:8px;text-align:center;">
+                                    <canvas width="750" height="450" id="game" style="background-color: #77B5FE; margin-top:15px; margin-bottom: 15px; margin-right:15px;">
+                                        <p lang="fr">Votre navigateur ne supporte pas la balise canvas.</p>
+                                    </canvas>
+                                </div>
+                                <script src="{{ asset(cartactivity.activity.files.uploadDir ~ '/' ~ cartactivity.activity.files.id ~ '.' ~ cartactivity.activity.files.url) }}"></script>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% elseif cartactivity.activity.files.url == "mp4" %}
+                <div class="modal fade myVimeoModal" id="{{cartactivity.activity.id}}Modal" tabindex="-1" role="dialog" aria-labelledby="myVimeoModalLabel" aria-hidden="true" >
+                    <div class="modal-dialog" style="width:57%; height:57%;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                                <h4 class="modal-title label label-warning modalFS" id="myVimeoModalLabel">Vidéo</h4>
+                            </div>
+                            <div class="modal-body" style="text-align:center; width:100%; height:100%;">
+                                {% set videoName = cartactivity.activity.files.alt|slice(0, cartactivity.activity.files.alt|length-4) %}
+                                <iframe id="vimeoIframe" style="width:100%; height: 100%;" src="//player.vimeo.com/video/{{videoName}}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% elseif cartactivity.activity.files.url == "pdf" %}
+                <div class="modal fade" id="{{cartactivity.activity.id}}Modal" tabindex="-1" role="dialog" aria-labelledby="myPdfModalLabel" aria-hidden="true" >
+                    <div class="modal-dialog" style="width: 90%; height:75%;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                                <h4 class="modal-title label label-warning modalFS" id="myPdfModalLabel">{{activity.files.alt|slice(0, activity.files.alt|length-4)}}</h4>
+                            </div>
+                            <div class="modal-body" style="width:100%; height:1%; text-align: center;">
+                                <iframe style="width: 95%; height: 90%;" src='{{ asset(cartactivity.activity.files.uploadDir ~ '/' ~ cartactivity.cartactivity.activity.files.id ~ '.' ~ cartactivity.activity.files.url) }}'  align="middle"></iframe>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
     <div class="container">
         <div class="row">
             <div class="col-md-2"></div>
@@ -23,7 +124,7 @@
                             {% for cartactivity in cart %} 
                                 {% if loop.index > 3 %}
                                 {% else %}    
-                                    <div class="bouger">
+                                    <div class="bouger" id="{{cartactivity.activity.id}}parent">
                                         <div class="bougerImage">                                        
                                             <img class="resizeCartType" src="{{asset('bundles/eltoncore/images/' ~ cartactivity.activity.type ~'blanc.png')}}"/>
                                         </div>
@@ -45,7 +146,7 @@
                             {% for cartactivity in cart %} 
                                 {% if loop.index < 4 %}
                                 {% else %}     
-                                    <div class="bouger">
+                                    <div class="bouger" id="{{cartactivity.activity.id}}parent">
                                         <div class="bougerImage">                                        
                                             <img class="resizeCartType" src="{{asset('bundles/eltoncore/images/' ~ cartactivity.activity.type ~'blanc.png')}}"/>
                                         </div>
@@ -65,7 +166,7 @@
                             {% for cartactivity in settedCart %}
                                 {% if loop.index > 3 %}
                                 {% else %}
-                                    <div class="bouger">
+                                    <div class="bouger" id="{{cartactivity.activity.id}}parent">
                                         <div class="bougerImage">                                        
                                             <img class="resizeCartType" src="{{asset('bundles/eltoncore/images/' ~ cartactivity.activity.type ~'blanc.png')}}"/>
                                         </div>
@@ -87,7 +188,7 @@
                             {% for cartactivity in settedCart %}
                                 {% if loop.index < 4 %}
                                 {% else %}
-                                    <div class="bouger">
+                                    <div class="bouger" id="{{cartactivity.activity.id}}parent">
                                         <div class="bougerImage">                                        
                                             <img class="resizeCartType" src="{{asset('bundles/eltoncore/images/' ~ cartactivity.activity.type ~'blanc.png')}}"/>
                                         </div>
@@ -106,10 +207,17 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8" style="text-align:center; margin-top: 20px;">
-                <a id="btnPanier1" class="buttonAll borderViolet" id="attribuer">Attribuer à la classe</a>
-                <a id="btnPanier2" class="buttonAll borderVioletBis" id="supprimer">Supprimer du panier</a>
-                <a id="btnPanier3" class="buttonAll noir" href="{{path('empty_cart')}}">Vider le panier</a>
-                </div>
-            </div>  
+                <a class="buttonAll borderViolet violetH btnPanier1" id="attribuer">Attribuer à la classe</a>
+                <a class="buttonAll borderVioletBis violetBisH btnPanier2" id="supprimer">Supprimer du panier</a>
+                <a class="buttonAll borderBleu bleuH btnPanier4" id="lancer">Lancer l'activité</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8" style="text-align:center; margin-top: 20px;">
+                <a class="buttonAll noir btnPanier3" href="{{path('empty_cart')}}">Vider le panier</a>
+            </div>
+        </div>
+                
     </div>
-{% endblock %}  
+{% endblock %} 
