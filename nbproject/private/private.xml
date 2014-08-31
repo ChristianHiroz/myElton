@@ -12,8 +12,25 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/var/www/myElton/src/Elton/DivisionBundle/Resources/views/Division/edit.html.twig</file>
+            <file>file:/var/www/myElton/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/config/mailer.xml</file>
+            <file>file:/var/www/myElton/src/Elton/TeacherBundle/Resources/views/Resetting/email.txt.twig</file>
+            <file>file:/var/www/myElton/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/config/security.xml</file>
+            <file>file:/var/www/myElton/src/Elton/TeacherBundle/Resources/views/layout.html.twig</file>
+            <file>file:/var/www/myElton/src/Elton/TeacherBundle/Resources/views/Cart/show.html.twig</file>
+            <file>file:/var/www/myElton/src/Elton/CoreBundle/Resources/public/js/ajax.js</file>
+            <file>file:/var/www/myElton/src/Elton/TeacherBundle/Controller/ResettingController.php</file>
             <file>file:/var/www/myElton/src/Elton/CoreBundle/Resources/public/less/main.less</file>
+            <file>file:/var/www/myElton/src/Elton/TeacherBundle/Resources/views/Resetting/reset.html.twig</file>
+            <file>file:/var/www/myElton/src/Elton/TeacherBundle/Mailer/Mailer.php</file>
             <file>file:/var/www/myElton/src/Elton/LessonBundle/Resources/views/Lesson/show.html.twig</file>
+            <file>file:/var/www/myElton/src/Elton/TeacherBundle/Resources/views/Resetting/request_content.html.twig</file>
+            <file>file:/var/www/myElton/src/Elton/TeacherBundle/Resources/views/Resetting/checkEmail.html.twig</file>
+            <file>file:/var/www/myElton/src/Elton/TeacherBundle/Resources/config/mailer.xml</file>
+            <file>file:/var/www/myElton/src/Elton/DivisionBundle/Resources/views/Division/index.html.twig</file>
+            <file>file:/var/www/myElton/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/DependencyInjection/Configuration.php</file>
+            <file>file:/var/www/myElton/src/Elton/TeacherBundle/Resources/views/Resetting/reset_content.html.twig</file>
+            <file>file:/var/www/myElton/app/config/config.yml</file>
         </group>
     </open-files>
 </project-private>

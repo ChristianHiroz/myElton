@@ -166,7 +166,7 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <p style="margin-left: 0px!important" class="lessonText">{{entity.description | nl2br }}</p>
-                {% if entity.category.libelle == "Culture" %}
+                {% if entity.category.level.libelle == "Culture" %}
                     <div class="center" style='margin-top:30px;height: 250px;'>
                         {% if entity.file.url == "pdf" %}
                             <a data-toggle="modal" data-target="#myPdfDocModal"><img class="resizePdfButton" src="{{asset('bundles/eltoncore/images/culture.jpg')}}"/></a>
@@ -175,7 +175,7 @@
                             <iframe id="vimeoBiIframe" style="width:80%; height: 100%;" src="//player.vimeo.com/video/{{videoName}}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                         {% endif %}
                     </div>
-                {% elseif entity.category.libelle == "Event" %}
+                {% elseif entity.category.level.libelle == "Event" %}
                     <div class="center" style='margin-top:30px;height: 250px;'>
                         {% if entity.file.url == "pdf" %}
                             <a data-toggle="modal" data-target="#myPdfDocModal"><img class="resizePdfButton" src="{{asset('bundles/eltoncore/images/event.jpg')}}"/></a>
@@ -196,7 +196,7 @@
                 {% elseif entity.type == "activités" %}
                     <div class="center" style='margin-top:30px;height: 250px;'>
                         {% if entity.file.url == "pdf" %}
-                            <a data-toggle="modal" data-target="#myPdfDocModal"><img class="resizePdfButton" src="{{asset('bundles/eltoncore/images/activité.jpg')}}"/></a>
+                            <a data-toggle="modal" data-target="#myPdfDocModal"><img class="resizePdfButton" src="{{asset('bundles/eltoncore/images/activite.jpg')}}"/></a>
                         {% elseif entity.file.url == "mp4" %}
                             {% set videoName = entity.file.alt|slice(0, entity.file.alt|length-4) %}
                             <iframe id="vimeoBiIframe" style="width:80%; height: 100%;" src="//player.vimeo.com/video/{{videoName}}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -270,7 +270,7 @@
                                                 <div class="col-md-4" style="padding:0px!important">
                                                     <img style="float:left;" class="resizeActivity" src="{{ asset(activity.file.uploadDir ~ '/' ~ activity.file.id ~ '.' ~ activity.file.url) }}" alt="{{activity.file.alt}}"/>
                                                 </div>  
-                                                <div class="col-md-8" style=" margin:auto!important;  padding:0px!important">
+                                                <div class="col-md-8" style=" margin:auto!important;      padding:0px!important">
                                                     <p style="color:white;margin-top:35px;"><span style="font-size:20px;">{{activity.name}}</span><br/>{{activity.description}}</p>
                                                     <div class="buttonTableCont">
                                                         <a class="buttonActivityMod noir" onclick="addToCart({{activity.id}});">Ajouter au panier</a>
