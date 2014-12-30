@@ -1,0 +1,41 @@
+Bienvenue sur My Elton, {{user.civilite}} {{user.name}} !   
+<br/>
+<form method="post" action="{{ogoneAddress}}">
+<INPUT type="hidden" NAME="PSPID" value="{{pspid}}">
+<INPUT type="hidden" NAME="orderID" VALUE="{{numCommande}}">
+<INPUT type="hidden" NAME="amount" VALUE="{{montant}}">
+<INPUT type="hidden" NAME="currency" VALUE="EUR">
+<INPUT type="hidden" NAME="language" VALUE="fr_FR">
+<INPUT type="hidden" NAME="TP" VALUE="http://www.myelton.fr">
+<INPUT type="hidden" NAME="accepturl" VALUE="localhost{{accepturl}}">
+<INPUT type="hidden" NAME="declineurl" VALUE="localhost{{declineurl}}">
+<INPUT type="hidden" NAME="exceptionurl" VALUE="localhost{{exceptionurl}}">
+<INPUT type="hidden" NAME="cancelurl" VALUE="localhost{{cancelurl}}">
+<INPUT type="hidden" NAME="homeurl" VALUE="http://www.myelton.fr">
+<INPUT type="hidden" NAME="catalogurl" VALUE="http://www.myelton.fr">
+<INPUT type="hidden" NAME="CN" VALUE="">
+<INPUT type="hidden" name="EMAIL" value="p.ducouret@playbac.fr">
+<INPUT type="hidden" NAME="OWNERZIP" VALUE="75003">
+<INPUT type="hidden" NAME="OWNERCTY" VALUE="FRANCE">
+<INPUT type="hidden" NAME="OWNERADRESS" VALUE="14 bis rue des Minimes">
+<INPUT type="hidden" NAME="COM" VALUE="">
+<INPUT type="hidden" NAME="COMPLUS" VALUE="">
+<INPUT type="hidden" NAME="PARAMPLUS" VALUE="Societe=PBP">
+<INPUT type="hidden" NAME="SHASIGN" VALUE="{{shastring}}">
+Merci de faire confiance à My Elton pour vos cours d’anglais ! Vous avez choisi : {{user.offer.name}} !<br/>
+<br/>
+En attendant le règlement de votre paiement, vous bénéficiez d’une période d’essai de 10 jours.<br/>
+Pendant cette période d’essai, vous pouvez accéder au contenu du 1er trimestre.<br/>
+<br/>
+Pour rappel, votre nom d’utilisateur est : {{user.username}} !<br/>
+<br/>
+Pour débloquer tous les cours et tout le contenu du site, nous vous proposons plusieurs solutions :<br/>
+&nbsp;    - paiement par carte bleue, en cliquant <input type="submit" value="ici"/> </form><br/>
+&nbsp;    - paiement par chèque, en imprimant ce mail et en nous le retournant, accompagné du chèque à l’ordre de Play Bac Presse, à l’adresse donnée en pied de page de ce mail<br/>
+&nbsp;    - paiement en liquide, en imprimant ce mail et en nous le retournant, accompagné du montant indiqué, à l’adresse donnée en pied de page de ce mail<br/>
+<br/>
+Vous pourrez profiter pleinement de toutes les possibilités offertes par My Elton dès validation de votre paiement <br/>
+<br/>
+Pour vous familiariser avec le site et ne rien manquer des fonctionnalités proposées, n’hésitez pas à regarder nos tutoriels vidéos en vous rendant <a href="{{path("category_show", {id : 6})}}">ici</a>. Vous les trouverez également par le biais du lien <a href="{{path('accueil')}}">« Découvrir My Elton »</a> disponible sur la page d’accueil de votre espace personnel. <br/>
+<br/>
+A bientôt sur My Elton !<br/>

@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+
+{% block body -%}
+    {{ parent() }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>            
+            <div class="col-md-6">
+                <div class="center mt50">
+                    <h4> Une erreur est survenue lors de votre inscription sur My Elton : </h4>
+                    <p class="nomargin">Le code promotionnel que vous avez renseigné n’est pas destiné à votre établissement. <br/> Merci de vérifier les informations que vous avez rentrées !</p>
+                    <a class="buttonAll violet txtBlc" href="{{path('code_promo_verif')}}">Retour</a>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+
+        </div>
+    </div>
+{% endblock %}

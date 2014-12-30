@@ -20,7 +20,7 @@
     </div>
     {% for activity in entity.activitys %}
         {% if activity.files.url == "mp3" %}
-            <div class="modal fade" id="myAudioModal" tabindex="-1" role="dialog" aria-labelledby="myAudioModalLabel" aria-hidden="true" >
+            <div class="modal fade myAudioModal" id="myAudioModal{{activity.id}}" tabindex="-1" role="dialog" aria-labelledby="myAudioModalLabel" aria-hidden="true" >
                 <div class="modal-dialog" style='margin-top:200px;'>
                     <div class="modal-content">
                         <div class="modal-header">
@@ -44,7 +44,7 @@
                 </div>
             </div>
         {% elseif activity.files.url == "jpg" or activity.files.url == "jpeg" or activity.files.url == "png" %}
-            <div class="modal fade" id="myPictureModal" tabindex="-1" role="dialog" aria-labelledby="myPictureModalLabel" aria-hidden="true" style="height:100%;">
+            <div class="modal fade myPictureModal" id="myPictureModal{{activity.id}}" tabindex="-1" role="dialog" aria-labelledby="myPictureModalLabel" aria-hidden="true" style="height:100%;">
                 <div class="modal-dialog"  style='width:85%;'>
                     <div class="modal-content">
                         <div class="modal-header">
@@ -61,7 +61,7 @@
                 </div>
             </div>
         {% elseif activity.files.url == "js" %}
-            <div class="modal fade" id="myGameModal" tabindex="-1" role="dialog" aria-labelledby="myGameModalLabel" aria-hidden="true" >
+            <div class="modal fade myGameModal" id="myGameModal{{activity.id}}" tabindex="-1" role="dialog" aria-labelledby="myGameModalLabel" aria-hidden="true" >
                 <div class="modal-dialog" style="width: 95%; height:650px;">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -83,7 +83,7 @@
                 </div>
             </div>
         {% elseif activity.files.url == "mp4" %}
-            <div class="modal fade" id="myVimeoModal" tabindex="-1" role="dialog" aria-labelledby="myVimeoModalLabel" aria-hidden="true" >
+            <div class="modal fade myVimeoModal" id="myVimeoModal{{activity.id}}" tabindex="-1" role="dialog" aria-labelledby="myVimeoModalLabel" aria-hidden="true" >
                 <div class="modal-dialog" style="width:57%; height:57%;">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -101,7 +101,7 @@
                 </div>
             </div>
         {% elseif activity.files.url == "pdf" %}
-            <div class="modal fade" id="myPdfModal" tabindex="-1" role="dialog" aria-labelledby="myPdfModalLabel" aria-hidden="true" >
+            <div class="modal fade myPdfModal" id="myPdfModal{{activity.id}}" tabindex="-1" role="dialog" aria-labelledby="myPdfModalLabel" aria-hidden="true" >
                 <div class="modal-dialog" style="width: 90%; height:75%;">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -166,6 +166,9 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <p style="margin-left: 0px!important" class="lessonText">{{entity.description | nl2br }}</p>
+                {% if entity.description2 %}                
+                    <p style="margin-left: 0px!important" class="lessonText">{{entity.description2 | nl2br }}</p>
+                {% endif %}
                 {% if entity.category.level.libelle == "Culture" %}
                     <div class="center" style='margin-top:30px;height: 250px;'>
                         {% if entity.file.url == "pdf" %}
@@ -275,17 +278,17 @@
                                                     <div class="buttonTableCont">
                                                         <a class="buttonActivityMod noir" onclick="addToCart({{activity.id}});">Ajouter au panier</a>
                                                         {% if activity.files.url == "js" %}
-                                                            <a class="buttonActivityMod noir" data-toggle="modal" data-target="#myGameModal">Lancer l'activité</a>
+                                                            <a class="buttonActivityMod noir" data-toggle="modal" data-target="#myGameModal{{activity.id}}">Lancer l'activité</a>
                                                         {% elseif activity.files.url == "mp3"%}
-                                                            <a class="buttonActivityMod noir" data-toggle="modal" data-target="#myAudioModal">Lancer l'activité</a>
+                                                            <a class="buttonActivityMod noir" data-toggle="modal" data-target="#myAudioModal{{activity.id}}">Lancer l'activité</a>
                                                             <a class="buttonActivityMod noir" href="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" download="{{activity.files.id ~ '.' ~ activity.files.url}}">Télécharger l'activité</a>
                                                         {% elseif activity.files.url == "mp4"%}
-                                                            <a class="buttonActivityMod noir" data-toggle="modal" data-target="#myVimeoModal">Lancer l'activité</a>
+                                                            <a class="buttonActivityMod noir" data-toggle="modal" data-target="#myVimeoModal{{activity.id}}">Lancer l'activité</a>
                                                         {% elseif activity.files.url == "jpg" or activity.files.url == "jpeg" or activity.files.url == "png"%}
-                                                            <a class="buttonActivityMod noir" data-toggle="modal" data-target="#myPictureModal">Lancer l'activité</a>
+                                                            <a class="buttonActivityMod noir" data-toggle="modal" data-target="#myPictureModal{{activity.id}}">Lancer l'activité</a>
                                                             <a class="buttonActivityMod noir" href="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" download="{{activity.files.id ~ '.' ~ activity.files.url}}">Télécharger l'activité</a>
                                                         {% elseif activity.files.url == "pdf" %}
-                                                            <a class="buttonActivityMod noir" data-toggle="modal" data-target="#myPdfModal">Lancer l'activité</a>                                                            
+                                                            <a class="buttonActivityMod noir" data-toggle="modal" data-target="#myPdfModal{{activity.id}}">Lancer l'activité</a>                                                            
                                                             <a class="buttonActivityMod noir" href="{{ asset(activity.files.uploadDir ~ '/' ~ activity.files.id ~ '.' ~ activity.files.url) }}" download="{{activity.files.id ~ '.' ~ activity.files.url}}">Télécharger l'activité</a>
                                                         {% else %}
                                                         <a class="buttonActivityMod noir">Lancer l'activité</a>

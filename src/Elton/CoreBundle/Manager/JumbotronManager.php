@@ -9,7 +9,7 @@ namespace Elton\CoreBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
 
-class FileManager extends CoreManager{
+class JumbotronManager extends CoreManager{
     protected $em;
     
     public function __construct(EntityManager $em)
@@ -19,6 +19,6 @@ class FileManager extends CoreManager{
     
     public function getRepository()
     {
-        return $this->em->getRepository('EltonCoreBundle:File');
+        return $this->em->getRepository('EltonCoreBundle:Jumbotron');
     }
 }

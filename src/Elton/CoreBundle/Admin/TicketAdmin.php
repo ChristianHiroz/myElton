@@ -7,14 +7,16 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class FileAdmin extends Admin
+class TicketAdmin extends Admin
 {
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('file', 'file', array('label' => 'Fichier'))
-            ->add('ogg', 'sonata_type_model', array('label' => 'Ogg', 'property' => 'alt', 'required' => false))
+            ->add('reason', 'sonata_type_model', array('label' => 'Raison'))
+            ->add('description', 'textarea', array('label' => 'Description du ticket'))
+            ->add('user', 'sonata_type_model', array('label' => 'Utilisateur'))
+            ->add('isSolved', 'choice', array('label' => 'Résolu', 'choices' => array(1 => 'Oui', 0 => 'Non')))
         ;
     }
 
@@ -22,7 +24,7 @@ class FileAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('url')->add('alt')->add('id')->add('ogg')
+            ->add('isSolved')->add('reason')->add('user')->add('lastUpdate')
         ;
     }
 
@@ -30,7 +32,10 @@ class FileAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('url')->addIdentifier('alt')->addIdentifier('id')->add('ogg')
+            ->addIdentifier('reason')
+            ->addIdentifier('user')
+            ->addIdentifier('lastUpdate')
+            ->addIdentifier('isSolved')
         ;
     }
 }

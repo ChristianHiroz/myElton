@@ -1,0 +1,74 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+    {{ parent() }}
+    <div class="container">
+        <div class="row mt50">
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-4 center">
+                {% if jumbotron.messageWelcome %}
+                    <h1 class="grisSombreElton nomargin">{{ jumbotron.messageWelcome | raw }}</h1>
+                {% endif %}
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+        </div>
+        {%  if jumbotron.active %}
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8 center mt25">
+                    <div class="jumbotron" style="padding-bottom: 20px !important">
+                        <h1>{{ jumbotron.title | raw}}</h1>
+                        <div class="divJumbo">
+                            {{ jumbotron.message | raw }}</div>
+                        {% if jumbotron.temp %}
+                            <p><a class="btn bleufonce noirh btn-lg textBlc" href="{{ path('temp') }}" role="button">{{ jumbotron.link }}</a></p>
+                        {%  endif %}
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        {% endif %}
+        <div class="row mt50">
+            <div class="col-md-2"></div>
+            <div class="col-md-2 accueilBox">
+                <h3 class="accueilTitle center">Tutoriels vidéos</h3>
+                <p class="accueilMessage nomargin center">C’est votre première utilisation ? Ou vous souhaitez en savoir plus sur
+                    l’utilisation de My Elton ? Nous avons préparé plusieurs vidéos pour vous !</p>
+                <div class="center mt25">
+                    <a class="accueilLink turquoise txtBlc" href="{{ path("category_show", {id : 6})}}">Lien</a>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-2 accueilBox">
+                <h3 class="accueilTitle center ">Prononciation</h3>
+                <p class="accueilMessage nomargin center">Notre professeur partenaire vous aide à respecter les règles de base de la
+                    prononciation pour pouvoir vous faire comprendre partout !</p>
+                <div class="center mt25">
+                    <a class="accueilLink bleu txtBlc" href="{{ path("category_show", {id : 7})}}">Lien</a>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-2 accueilBox">
+                <h3 class="accueilTitle center">Echangeons !</h3>
+                <p class="accueilMessage nomargin center">Vous avez des idées d’activité à nous transmettre ? Ou une remarque
+                    générale sur l’utilisation de My Elton ? Nous sommes à votre écoute !</p>
+                <div class="center mt25">
+                    <a class="accueilLink bleufonce txtBlc" href="{{ path("ticket_new")}}">Lien</a>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row mt50">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 center">
+                <h3>Suivez les actualités de My Elton sur le compte twitter !</h3>
+                <a class="twitter-timeline" href="https://twitter.com/my_elton" data-widget-id="536831807426396160">
+                    Tweets de @my_elton
+                </a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+{% endblock %}

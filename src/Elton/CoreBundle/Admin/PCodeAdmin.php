@@ -7,14 +7,16 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class FileAdmin extends Admin
+class PCodeAdmin extends Admin
 {
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('file', 'file', array('label' => 'Fichier'))
-            ->add('ogg', 'sonata_type_model', array('label' => 'Ogg', 'property' => 'alt', 'required' => false))
+            ->add('code', 'text', array('label' => 'Code promotionnel'))                 
+            ->add('postalCode', 'text', array('label' => 'Code postal (75001, 7500X, 750XX, 75XXX)'))
+            ->add('offer', 'sonata_type_model', array('label' => 'Offre associée'))
+
         ;
     }
 
@@ -22,7 +24,7 @@ class FileAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('url')->add('alt')->add('id')->add('ogg')
+            ->add('id')->add('code')->add('postalCode')->add('offer')
         ;
     }
 
@@ -30,7 +32,7 @@ class FileAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('url')->addIdentifier('alt')->addIdentifier('id')->add('ogg')
+            ->add('id')->addIdentifier('code')->addIdentifier('postalCode')->addIdentifier('offer')
         ;
     }
 }

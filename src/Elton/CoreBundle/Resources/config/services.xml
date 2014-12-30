@@ -7,11 +7,18 @@
     <parameters>
         <parameter key="elton.level_manager.class">Elton\CoreBundle\Manager\LevelManager</parameter> 
         <parameter key="elton.file_manager.class">Elton\CoreBundle\Manager\FileManager</parameter>
+        <parameter key="elton.jumbotron_manager.class">Elton\CoreBundle\Manager\JumbotronManager</parameter>
         <parameter key="elton.core_manager.class">Elton\CoreBundle\Manager\CoreManager</parameter>
+        <parameter key="elton.mailer.class">Elton\CoreBundle\Mailer\Mailer</parameter>
+        <parameter key="payment.template">EltonCoreBundle:Mail:paymentRequest.txt.twig</parameter>
+        <parameter key="paymentFree.template">EltonCoreBundle:Mail:paymentFree.txt.twig</parameter>
     </parameters>
     
     <services>
         <service id="elton.level.manager" class="%elton.level_manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager"/>            
+        </service>
+        <service id="jumbotron" class="%elton.jumbotron_manager.class%">
             <argument type="service" id="doctrine.orm.entity_manager"/>            
         </service>
         <service id="elton.file.manager" class="%elton.file_manager.class%">
@@ -19,6 +26,22 @@
         </service>
         <service id="elton.core.manager" class="%elton.core_manager.class%">
             <argument type="service" id="doctrine.orm.entity_manager"/>            
+        </service>
+        <service id="elton.mailer" class="%elton.mailer.class%">
+            <argument type="service" id="mailer" />
+            <argument type="service" id="router" />
+            <argument type="service" id="elton.payment" />
+            <argument type="service" id="templating" />
+            <argument type="service" id="jumbotron" />
+            <argument type="collection">
+                <argument key="template" type="collection">
+                    <argument key="payment">%payment.template%</argument>
+                    <argument key="paymentFree">%paymentFree.template%</argument>
+                </argument>
+                <argument key="from_email" type="collection">
+                    <argument key="elton">elton@playbac.fr</argument>
+                </argument>
+            </argument>
         </service>
     </services>
 </container>

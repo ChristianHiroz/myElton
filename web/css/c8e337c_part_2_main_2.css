@@ -1,0 +1,897 @@
+/* 
+    Created on : 17 avr. 2014, 11:04:52
+    Author     : Christian Hiroz
+*/
+.menuBar {
+  background: #F29400;
+  height: 40px !important;
+}
+.divider-vertical {
+  border-left: 1px solid #f79321;
+  border-right: 1px solid #df7401;
+  height: 40px;
+  display: inline-block;
+}
+.divider-vertical-bleu {
+  border-left: 1px solid #0a71b4;
+  border-right: 1px solid #66b8dc;
+  height: 40px;
+  display: inline-block;
+}
+.myEltonButtonMenu {
+  margin-right: -3px;
+  background-color: #F29400;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: arial;
+  font-size: 15px;
+  font-weight: bold;
+  height: 40px;
+  width: 200px;
+}
+.buttonBlue {
+  margin-right: -3px;
+  background-color: #F29400;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: arial;
+  font-size: 15px;
+  font-weight: bold;
+  height: 40px;
+  width: 200px;
+}
+.myEltonButtonMenu:hover {
+  background-image: linear-gradient(to bottom, #f29400, #e36929);
+  background-color: #E36929;
+  color: #ffffff;
+}
+.buttonBlue:hover {
+  background-image: linear-gradient(to bottom, #0a71b4, #66b8dc);
+  background-color: #66b8dc;
+  color: #ffffff;
+}
+.playbac {
+  margin: 15px 0px 0px 15px;
+  position: absolute;
+}
+.buttons {
+  top: 30px;
+  right: 2%;
+  position: absolute;
+}
+.divisionButton {
+  position: absolute;
+  text-align: center;
+}
+.menuBarTeacher {
+  background: #F29400;
+  height: 40px !important;
+  position: relative;
+  margin-top: -40px;
+}
+.redDot {
+  background-color: #be0926;
+  height: 20px;
+  width: 20px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 390px;
+  border-radius: 390px;
+  font-size: 14px;
+  position: absolute;
+  top: -22%;
+  right: 1%;
+  color: white;
+}
+body {
+  font-family: helvetica, trebuchet, sans-serif !important;
+  font-size: 14px;
+  min-height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative !important;
+}
+html {
+  width: 100%;
+  height: 100%;
+  position: relative !important;
+}
+p {
+  color: grey;
+  margin-left: 36px !important;
+  text-align: inherit;
+}
+hr {
+  color: grey;
+  background: grey;
+  width: 95%;
+  height: 2px !important;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-weight: normal !important;
+}
+h4 {
+  margin-left: 5px !important;
+}
+a,
+a:hover,
+a:focus {
+  text-decoration: none !important;
+}
+a.grey {
+  color: grey !important;
+}
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+h1 {
+  margin-top: -5px !important;
+  font-size: 24px !important;
+}
+* html .centered-pills ul.nav-pills {
+  display: inline;
+}
+/* IE6 */
+* + html .centered-pills ul.nav-pills {
+  display: inline;
+}
+/* IE7 */
+a.linkSiteMap {
+  color: grey;
+}
+a.linkSiteMap:hover {
+  color: grey;
+  font-weight: bold;
+}
+.sectionH2 {
+  margin-top: 60px;
+  margin-bottom: 30px;
+  margin-left: -21px;
+}
+.sectionH2bis {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  margin-left: -37px;
+  font-size: 25px !important;
+}
+.cons {
+  position: absolute;
+  top: 0px;
+  right: 2%;
+}
+.justify {
+  text-align: justify;
+  padding-left: 60px;
+}
+.nomargin {
+  margin: 0px 0px 0px 0px !important;
+}
+.h100 {
+  height: 100px !important;
+}
+.resizable {
+  resize: both;
+  overflow: auto;
+}
+.screenMl20 {
+  margin-left: 20px !important;
+}
+.disInBl {
+  display: inline-block;
+}
+.disI {
+  display: inline;
+}
+.fs18 {
+  font-size: 18px !important;
+}
+.center {
+  text-align: center !important;
+}
+.categoryTitle {
+  position: relative;
+  left: 30%;
+  margin-top: 50px !important;
+  margin-bottom: 35px !important;
+}
+.lessonCategoryTitle {
+  margin-top: 50px !important;
+  margin-bottom: 15px !important;
+}
+.lessonNumber {
+  font-size: 25px !important;
+}
+.lessonNumberIner {
+  font-size: 40px !important;
+  line-height: 60px !important;
+  right: 5%;
+  margin-top: 15px;
+}
+.lessonText {
+  font-size: 18px;
+}
+.choose {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: middle;
+  border-top: 15px solid;
+  border-right: 9px solid transparent;
+  border-left: 9px solid transparent;
+  position: absolute;
+  top: 40%;
+  right: 6%;
+}
+.mt50 {
+  margin-top: 50px !important;
+}
+.mt25 {
+  margin-top: 25px !important;
+}
+.mb25 {
+  margin-bottom: 25px !important;
+}
+.ml25 {
+  margin-left: 25px !important;
+}
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover {
+  background-image: linear-gradient(to bottom, #f79321, #df7401);
+  background-color: #df7401;
+  color: #ffffff;
+}
+.centered-pills {
+  text-align: center;
+}
+.centered-pills ul.nav-pills {
+  display: inline-block;
+}
+.centered-pills li {
+  display: inline;
+}
+.centered-pills a {
+  float: left;
+}
+.carousel-indicators .active {
+  background-color: #6666bb !important;
+}
+.carousel-indicators li {
+  border-color: #6666bb !important;
+}
+.buttonTableCont a.active {
+  background-color: #cd0054 !important;
+}
+.divJumbo {
+  margin-bottom: 15px;
+  font-size: 21px;
+  font-weight: 200;
+}
+.row {
+  width: 100% !important;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.container {
+  width: 100% !important;
+}
+.wrap {
+  min-height: 100%;
+  height: auto;
+  margin: 0 auto -138px;
+  padding: 0 0 138px;
+}
+.lessonContainer {
+  text-align: center;
+  margin-top: 56px;
+}
+.footer {
+  margin-top: 75px;
+  height: 50px;
+  bottom: 0px;
+  width: 100%;
+}
+.afooter:hover {
+  opacity: 1.0 !important;
+  color: #66b8dc;
+}
+.centeredFooter {
+  margin-bottom: 25px;
+}
+.rightFooter {
+  float: right !important;
+  text-align: right !important;
+}
+.footerText {
+  text-align: center;
+  margin-top: 35px;
+}
+.leftFooter {
+  margin-left: 30px;
+}
+.activityContainer {
+  display: inline-block;
+  border-radius: 0px 20px 8px 10px ;
+  background-color: #cd0054;
+}
+.activityTextContainer {
+  float: left;
+  margin-left: 100px;
+}
+img.resizeHeaderLogo {
+  width: auto;
+  height: 200px;
+}
+img.resizePlume {
+  width: auto;
+  height: 20px;
+  margin-left: 5px;
+  opacity: 0.7;
+  filter: alpha(opacity=40);
+  /* For IE8 and earlier */
+}
+img.resizeRes {
+  width: auto;
+  height: 40px;
+}
+img.resizeCons {
+  width: auto;
+  height: 160px;
+}
+img.resizeButton {
+  width: auto;
+  height: 96px;
+}
+img.resizeSpan2 {
+  width: auto;
+  height: 25px;
+  padding-bottom: 7px;
+  margin-left: 10px;
+  margin-bottom: 15px;
+  margin-right: 7px;
+}
+img.btn-gestion {
+  height: 60px;
+  width: auto;
+}
+img.resizeHeaderTeacherElton {
+  width: auto;
+  height: 80px;
+  margin-left: 20px;
+}
+img.resizeHeaderTeacherLogo {
+  width: auto;
+  height: 100px;
+}
+img.resizeHeaderElton {
+  width: auto;
+  height: 150px;
+}
+img.resizeElton {
+  width: auto;
+  height: 300px;
+}
+img.resizeSpan {
+  width: auto;
+  height: 30px;
+  margin-top: -14px;
+}
+img.resizeActivity {
+  width: auto;
+  height: 140px;
+  margin-left: 25px;
+  margin-top: 25px;
+}
+img.resizePdfButton {
+  width: auto;
+  height: 250px;
+  border: 1px solid grey;
+}
+img.resizeWorldMap {
+  width: auto;
+  height: 500px;
+}
+img.resizeCartPicture {
+  width: auto;
+  height: 110px;
+}
+img.resizeCartType {
+  width: auto;
+  height: 20px;
+  background-color: grey;
+}
+.buttonSmall {
+  display: inline-block;
+  width: 110px;
+  height: 85px;
+  color: white;
+  text-align: center;
+  line-height: 43px;
+  background-color: #66b8dc;
+  border-radius: 20px 0px 10px 7px;
+}
+.buttonVerySmall {
+  display: inline-block;
+  width: 80px;
+  height: 60px;
+  color: white;
+  text-align: center;
+  line-height: 43px;
+  background-color: #66b8dc;
+  border-radius: 20px 0px 10px 7px;
+}
+.button {
+  display: inline-block;
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-top: 24px;
+  width: 150px;
+  height: 100px;
+  color: white;
+  text-align: center;
+  line-height: 93px;
+  background-color: #66b8dc;
+  border-radius: 30px 0px 20px 10px;
+}
+.buttonBig {
+  display: inline-block;
+  width: 120px;
+  height: 90px;
+  color: white;
+  text-align: center;
+  line-height: 83px;
+  background-color: #66b8dc;
+  border-radius: 30px 0px 20px 10px;
+}
+.buttonActivity {
+  cursor: pointer;
+  border: 2px solid;
+  display: table-cell;
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-top: 24px;
+  width: 150px;
+  height: 50px;
+  color: black;
+  text-align: center;
+  vertical-align: middle;
+  border-color: #cd0054;
+  border-radius: 20px 0px 10px 8px;
+}
+.buttonActivity:hover:active {
+  cursor: pointer;
+  border: 2px solid;
+  display: table-cell;
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-top: 24px;
+  width: 150px;
+  height: 50px;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  border-color: #cd0054;
+  border-radius: 20px 0px 10px 8px;
+  background-color: #cd0054;
+}
+.buttonActivityMod {
+  cursor: pointer;
+  border: 2px solid;
+  display: table-cell;
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-top: 24px;
+  width: 90px;
+  height: 40px;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  border-color: transparent;
+  border-radius: 20px 0px 10px 8px;
+}
+.buttonActivityMod:hover:active {
+  cursor: pointer;
+  border: 2px solid;
+  display: table-cell;
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-top: 24px;
+  width: 90px;
+  height: 40px;
+  color: white !important;
+  text-align: center;
+  vertical-align: middle;
+  border-color: transparent;
+  border-radius: 20px 0px 10px 8px;
+  background-color: #cd0054;
+}
+.buttonTable {
+  display: table-cell;
+  width: 150px;
+  height: 100px;
+  vertical-align: middle;
+  line-height: 20px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  background-color: #66b8dc;
+  border-radius: 30px 0px 20px 10px;
+}
+a .button:focus,
+a .button:hover {
+  background-color: #0a71b4;
+  color: white;
+}
+.buttonTableSmall {
+  display: table-cell;
+  width: 110px;
+  height: 85px;
+  vertical-align: middle;
+  line-height: 20px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  background-color: #66b8dc;
+  border-radius: 20px 0px 10px 7px;
+}
+a .button:focus,
+a .button:hover {
+  background-color: #0a71b4;
+  color: white;
+}
+.buttonTableCont {
+  border-spacing: 30px 15px;
+  border-collapse: separate;
+  display: table;
+  margin: 0 auto;
+}
+.buttonClass {
+  background-color: #ffcc96;
+  height: 60px;
+  margin-top: 35px;
+  width: 180px;
+  margin-left: 18%;
+  border-radius: 15px;
+  text-align: center;
+  line-height: 56px;
+  font-weight: bold;
+  font-size: 21px;
+}
+.btn-divisionUl {
+  width: 180px;
+  margin-top: -10px;
+}
+.buttonAll {
+  cursor: pointer;
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-top: 24px;
+  width: 150px;
+  height: 50px;
+  color: black;
+  text-align: center;
+  color: white;
+  border-radius: 20px 0px 10px 8px;
+  display: inline-block;
+  line-height: 45px;
+  border-color: transparent;
+}
+a.buttonTable:hover {
+  color: white;
+  opacity: 0.7;
+  filter: alpha(opacity=40);
+}
+a.buttonTableSmall:hover {
+  color: white;
+  opacity: 0.7;
+  filter: alpha(opacity=40);
+}
+.buttonAll.fs18 {
+  font-size: 18px !important;
+  line-height: 49px !important;
+}
+.buttonAll:hover {
+  opacity: 0.5;
+  color: white;
+}
+.divisionShow {
+  height: 175px;
+  width: 200px;
+  border: 1px solid grey;
+  -moz-box-shadow: 7px 7px 5px 0px #9b9b9b;
+  -webkit-box-shadow: 7px 7px 5px 0px #9b9b9b;
+  -o-box-shadow: 7px7px 5px 0px #9b9b9b;
+  box-shadow: 7px 7px 5px 0px #9b9b9b;
+  filter: progid:DXImageTransform.Microsoft.Shadow(color=#9b9b9b, Direction=135, Strength=5);
+}
+.divisionShow img {
+  margin-top: 5px;
+}
+.rouge {
+  background-color: #be0926 !important;
+}
+.rougeH:hover {
+  color: #be0926 !important;
+}
+.orange {
+  background-color: #f29400 !important;
+}
+.orangeH:hover {
+  color: #f29400 !important;
+}
+.beige {
+  background-color: #ffcc96 !important;
+}
+.beigeH:hover {
+  color: #ffcc96 !important;
+}
+.turquoise {
+  background-color: #219e98 !important;
+}
+.turquoiseH:hover {
+  color: #219e98 !important;
+}
+.gris {
+  background-color: #cdcad4 !important;
+}
+.grisH:hover {
+  color: #cdcad4 !important;
+}
+.bleu {
+  background-color: #66b8dc !important;
+}
+.bleuH:hover {
+  color: #66b8dc !important;
+}
+.bleuT:hover {
+  background-color: #0a71b4 !important;
+}
+.bleufonce {
+  background-color: #0a71b4 !important;
+}
+.bleufonceH:hover {
+  color: #0a71b4 !important;
+}
+.violet {
+  background-color: #cd0054 !important;
+}
+.violetBis {
+  background-color: #6666bb !important;
+}
+.violetBisH:hover {
+  color: #6666bb !important;
+}
+.violetH:hover {
+  color: #cd0054 !important;
+}
+.noir {
+  background-color: #38373a !important;
+}
+.noirH:hover {
+  color: #38373a !important;
+}
+.noirHBold:hover {
+  color: #38373a !important;
+  font-weight: bold;
+}
+.notion {
+  background-color: #66b8dc !important;
+}
+.notionH:hover {
+  color: #66b8dc !important;
+}
+.activités {
+  background-color: #219e98 !important;
+}
+.activitésH:hover {
+  color: #219e98 !important;
+}
+.vocabulaire {
+  background-color: #cdcad4 !important;
+}
+.vocabulaireH:hover {
+  color: #cdcad4 !important;
+}
+.culture {
+  background-color: #6666bb;
+}
+.txtViolet {
+  color: #cd0054;
+}
+.borderVioletBis {
+  border: 1px solid #6666bb;
+  color: #6666bb;
+}
+.borderBleu {
+  border: 1px solid #66b8dc;
+  color: #66b8dc;
+}
+.borderViolet {
+  border: 1px solid #cd0054;
+  color: #cd0054;
+}
+.borderNoir {
+  border: 1px solid #38373a;
+  color: #38373a;
+}
+.textBlc {
+  color: white;
+}
+#setted {
+  border: 2px solid #cd0054;
+  height: 670px;
+  width: 50%;
+  float: right;
+  text-align: center;
+}
+#unsetted {
+  border: 2px;
+  height: 700px;
+  width: 50%;
+  float: left;
+  text-align: center;
+}
+.bouger {
+  width: 80%;
+  height: 23%;
+  text-align: center;
+  display: inline-block;
+  margin-top: 20px;
+}
+.bougerImage {
+  width: 70%;
+  display: inline-block;
+  background-color: grey;
+}
+.bougerEnfant {
+  height: 175px;
+  border: 1px solid grey;
+  -moz-box-shadow: 7px 7px 5px 0px #9b9b9b;
+  -webkit-box-shadow: 7px 7px 5px 0px #9b9b9b;
+  -o-box-shadow: 7px7px 5px 0px #9b9b9b;
+  box-shadow: 7px 7px 5px 0px #9b9b9b;
+  filter: progid:DXImageTransform.Microsoft.Shadow(color=#9b9b9b, Direction=135, Strength=5);
+}
+.bougerEnfant img {
+  margin-top: 5px;
+}
+.accueilBox {
+  height: 250px;
+  border-radius: 10px;
+  border-style: dotted;
+  border-width: 1px;
+}
+.accueilLink {
+  margin: -10px 0px 0px 0px;
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 20px 0px 10px 7px;
+}
+@media screen and (max-width: 850px) {
+  .myEltonButtonMenu {
+    width: 120px;
+    font-size: 12px !important;
+  }
+  .divider-vertical {
+    height: 40px;
+  }
+  img.resizeCartPicture {
+    height: 90px;
+  }
+}
+@media screen and (max-width: 710px) {
+  img.resizeCartPicture {
+    height: 70px;
+  }
+}
+@media screen and (max-width: 525px) {
+  .myEltonButtonMenu {
+    width: 98px;
+    font-size: 12px !important;
+  }
+  .logo {
+    position: relative !important;
+  }
+  img.resizeCartPicture {
+    height: 90px;
+  }
+}
+@media screen and (max-width: 430px) {
+  .myEltonButtonMenu {
+    width: 95px;
+    height: 50px;
+    font-size: 12px !important;
+  }
+  .body {
+    font-size: 12px !important;
+  }
+  .menuBar {
+    height: 50px !important;
+  }
+  .divider-vertical {
+    height: 50px;
+  }
+  .rightFooter {
+    text-align: center !important;
+    margin-bottom: 25px;
+  }
+  .row {
+    margin-left: 0px !important;
+  }
+  .leftFooter {
+    margin-bottom: 25px;
+    margin-left: 0px !important;
+  }
+  hr {
+    width: 75%;
+  }
+  .sectionH2bis {
+    font-size: 22px !important;
+    margin-left: -5px;
+  }
+  .spanFAQ {
+    margin-bottom: 75px !important;
+  }
+  img.resizeSpan2 {
+    margin-bottom: 90px !important;
+  }
+}
+@media screen and (max-width: 993px) {
+  .sectionH2bis {
+    font-size: 22px !important;
+    margin-left: -5px;
+  }
+  .spanFAQ {
+    margin-bottom: 75px !important;
+  }
+  .row {
+    margin-left: 0px !important;
+  }
+  .footer {
+    margin-top: 300px;
+  }
+  img.resizeActivity {
+    margin-right: 25px;
+  }
+  .rightFooter {
+    float: none !important;
+    text-align: center !important;
+  }
+  .leftFooter {
+    margin: 0px !important;
+    text-align: center !important;
+  }
+  .logo {
+    position: absolute;
+    left: 2%;
+  }
+}
+@media screen and (min-width: 1067px) and (max-width: 1225px) {
+  img.resizeCons {
+    height: 140px;
+  }
+  img.resizeCartPicture {
+    height: 90px;
+  }
+}
+@media screen and (min-width: 900px) and (max-width: 1067px) {
+  img.resizeCons {
+    height: 120px;
+  }
+  img.resizeCartPicture {
+    height: 85px;
+  }
+}
+@media screen and (min-width: 700px) and (max-width: 900px) {
+  img.resizeCons {
+    height: 120px;
+  }
+}

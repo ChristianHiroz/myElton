@@ -1,24 +1,38 @@
 <?php
 /**
- * Description of FileManager
+ * Service that perform payment link creation, and response handling.
  *
  * @author Christian Hiroz
  */
 
-namespace Elton\CoreBundle\Manager;
 
-use Doctrine\ORM\EntityManager;
+namespace Elton\PaymentBundle\Service;
 
-class FileManager extends CoreManager{
-    protected $em;
+class Payment
+{
+    protected $pspid;
+    protected $ogoneAddress;
+    protected $shasign;
     
-    public function __construct(EntityManager $em)
+    public function __construct()
     {
-        $this->em = $em;
+        $this->pspid = "PBPPLAYBAC";
+        $this->ogoneAddress = "https://secure.ogone.com/ncol/prod/orderstandard.asp";
+        $this->shasign = "wegener";
     }
     
-    public function getRepository()
+    public function getPspId()
     {
-        return $this->em->getRepository('EltonCoreBundle:File');
+        return $this->pspid;
+    }
+    
+    public function getOgoneAddress()
+    {
+        return $this->ogoneAddress;
+    }
+    
+    public function getShaSign()
+    {
+        return $this->shasign;
     }
 }

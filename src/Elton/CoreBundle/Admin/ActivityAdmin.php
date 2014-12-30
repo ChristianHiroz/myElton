@@ -13,12 +13,14 @@ class ActivityAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name')
+            ->add('name', 'text', array('label' => 'Nom'))
             ->add('description')
             ->add('file', 'sonata_type_model', array('label' => 'Photo de l\'activité'))
             ->add('files', 'sonata_type_model', array('label' => 'Fichiers de l\'activité'))
             ->add('type', 'choice', array('label' => 'Type d\'activité' ,'choices' => \Elton\CoreBundle\ORM\ActivityEnumType::get_enum_values()))
             ->add('active', 'choice', array('label' => 'Actif', 'choices' => array(1 => 'Oui', 0 => 'Non')))
+            ->add('level', 'sonata_type_model', array('label' => 'Niveau de l\'activité'))
+            ->add('category', 'sonata_type_model', array('label' => 'Catégorie de l\'activité'))
                 ;
     }
 

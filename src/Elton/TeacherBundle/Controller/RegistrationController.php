@@ -22,7 +22,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Model\UserInterface;
-
 /**
  * Controller managing the registration
  *
@@ -32,7 +31,7 @@ use FOS\UserBundle\Model\UserInterface;
 class RegistrationController extends ContainerAware
 {
     public function registerAction(Request $request)
-    {
+    {      
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
         $formFactory = $this->container->get('fos_user.registration.form.factory');
         /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
@@ -72,6 +71,7 @@ class RegistrationController extends ContainerAware
                 return $response;
             }
         }
+        
 
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:register.html.'.$this->getEngine(), array(
             'form' => $form->createView(),
@@ -115,7 +115,17 @@ class RegistrationController extends ContainerAware
 
         $user->setConfirmationToken(null);
         $user->setEnabled(true);
-
+        
+        //On ajoute l'offre à l'USER
+        $session = $this->container->get('session');
+        $offer = $this->container->get('elton.offer.manager')->getRepository()->find($session->get('offerId'));
+        $user->setOffer($offer);
+        $session->remove('offerId');
+        $this->container->get('elton.teacher.manager')->persist($user);
+        $pcode = $session->get('promoCode');
+        //Envoie du mail de paiement
+        $this->container->get('elton.mailer')->sendPaymentRequest($user);
+        
         $event = new GetResponseUserEvent($user, $request);
         $dispatcher->dispatch(FOSUserEvents::REGISTRATION_CONFIRM, $event);
 

@@ -5,8 +5,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
+        
+        <!-- Sonata admins declarations -->
        <service id="sonata.file.type" class="Elton\CoreBundle\Admin\FileAdmin">
-          <tag name="sonata.admin" manager_type="orm" group="Content" label="Fichiers"/>
+          <tag name="sonata.admin" manager_type="orm" group="Contenu" label="Fichiers"/>
           <argument />
           <argument>Elton\CoreBundle\Entity\File</argument>
           <argument />
@@ -15,7 +17,7 @@
           </call>
         </service>
        <service id="sonata.category.type" class="Elton\CoreBundle\Admin\CategoryAdmin">
-          <tag name="sonata.admin" manager_type="orm" group="Content" label="Categories"/>
+          <tag name="sonata.admin" manager_type="orm" group="Cours" label="Categories"/>
           <argument />
           <argument>Elton\LessonBundle\Entity\Category</argument>
           <argument />
@@ -24,7 +26,7 @@
           </call>
         </service>
        <service id="sonata.level.type" class="Elton\CoreBundle\Admin\LevelAdmin">
-          <tag name="sonata.admin" manager_type="orm" group="Content" label="Niveaux"/>
+          <tag name="sonata.admin" manager_type="orm" group="Contenu" label="Niveaux"/>
           <argument />
           <argument>Elton\CoreBundle\Entity\Level</argument>
           <argument />
@@ -33,7 +35,7 @@
           </call>
         </service>
        <service id="sonata.teacher.type" class="Elton\CoreBundle\Admin\TeacherAdmin">
-          <tag name="sonata.admin" manager_type="orm" group="Content" label="Professeurs"/>
+          <tag name="sonata.admin" manager_type="orm" group="Utilisateur" label="Professeurs"/>
           <argument />
           <argument>Elton\TeacherBundle\Entity\Teacher</argument>
           <argument />
@@ -42,7 +44,7 @@
           </call>
         </service>    
        <service id="sonata.competence.type" class="Elton\CoreBundle\Admin\CompetenceAdmin">
-          <tag name="sonata.admin" manager_type="orm" group="Content" label="Compétences"/>
+          <tag name="sonata.admin" manager_type="orm" group="Cours" label="Compétences"/>
           <argument />
           <argument>Elton\LessonBundle\Entity\Competence</argument>
           <argument />
@@ -51,7 +53,7 @@
           </call>
         </service>    
        <service id="sonata.lesson.type" class="Elton\CoreBundle\Admin\LessonAdmin">
-          <tag name="sonata.admin" manager_type="orm" group="Content" label="Leçons"/>
+          <tag name="sonata.admin" manager_type="orm" group="Cours" label="Leçons"/>
           <argument />
           <argument>Elton\LessonBundle\Entity\Lesson</argument>
           <argument />
@@ -60,7 +62,7 @@
           </call>
         </service>    
        <service id="sonata.activity.type" class="Elton\CoreBundle\Admin\ActivityAdmin">
-          <tag name="sonata.admin" manager_type="orm" group="Content" label="Activités"/>
+          <tag name="sonata.admin" manager_type="orm" group="Cours" label="Activités"/>
           <argument />
           <argument>Elton\LessonBundle\Entity\Activity</argument>
           <argument />
@@ -69,13 +71,56 @@
           </call>
         </service>    
        <service id="sonata.division.type" class="Elton\CoreBundle\Admin\DivisionAdmin">
-          <tag name="sonata.admin" manager_type="orm" group="Content" label="Classes"/>
+          <tag name="sonata.admin" manager_type="orm" group="Utilisateur" label="Classes"/>
           <argument />
           <argument>Elton\DivisionBundle\Entity\Division</argument>
           <argument />
           <call method="setTranslationDomain">
               <argument>EltonCoreBundle</argument>
           </call>
-        </service>    
+        </service>
+       <service id="sonata.ticket.type" class="Elton\CoreBundle\Admin\TicketAdmin">
+          <tag name="sonata.admin" manager_type="orm" group="Ticket" label="Tickets"/>
+          <argument />
+          <argument>Elton\TeacherBundle\Entity\Ticket</argument>
+          <argument />
+          <call method="setTranslationDomain">
+              <argument>EltonCoreBundle</argument>
+          </call>
+        </service>
+       <service id="sonata.ticketreason.type" class="Elton\CoreBundle\Admin\TicketReasonAdmin">
+          <tag name="sonata.admin" manager_type="orm" group="Ticket" label="Raisons tickets"/>
+          <argument />
+          <argument>Elton\TeacherBundle\Entity\TicketReason</argument>
+          <argument />
+          <call method="setTranslationDomain">
+              <argument>EltonCoreBundle</argument>
+          </call>
+        </service>
+        <service id="sonata.offer.type" class="Elton\CoreBundle\Admin\OfferAdmin">
+          <tag name="sonata.admin" manager_type="orm" group="Payment" label="Offres"/>
+          <argument />
+          <argument>Elton\PaymentBundle\Entity\Offer</argument>
+          <argument />
+          <call method="setTranslationDomain">
+              <argument>EltonPaymentBundle</argument>
+          </call>
+        </service>
+        <service id="sonata.pcode.type" class="Elton\CoreBundle\Admin\PCodeAdmin">
+          <tag name="sonata.admin" manager_type="orm" group="Payment" label="Codes promo"/>
+          <argument />
+          <argument>Elton\PaymentBundle\Entity\PCode</argument>
+          <argument />
+          <call method="setTranslationDomain">
+              <argument>EltonPaymentBundle</argument>
+          </call>
+        </service>
+        
+        <!-- Sonata blocks creations -->
+        <service id="sonata.block.service.backoffice" class="Elton\CoreBundle\Block\BackOfficeBlockService">
+            <tag name="sonata.block" />
+            <argument>sonata.block.service.backoffice</argument>
+            <argument type="service" id="templating" />
+        </service>
    </services>
 </container>

@@ -15,6 +15,7 @@ class FileAdmin extends Admin
         $formMapper
             ->add('file', 'file', array('label' => 'Fichier'))
             ->add('ogg', 'sonata_type_model', array('label' => 'Ogg', 'property' => 'alt', 'required' => false))
+            ->add('level', 'sonata_type_model')
         ;
     }
 

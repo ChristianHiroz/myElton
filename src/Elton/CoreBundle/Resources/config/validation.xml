@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="Elton\CoreBundle\Entity\User">
+        <!-- maximum length for username -->
+        <property name="username">
+            <constraint name="Length">
+                <option name="max">10</option>
+                <option name="maxMessage">Votre nom d'utilisateur ne peut dépasser {{ limit }} characters.</option>
+            </constraint>
+        </property>
+    </class>
+</constraint-mapping>

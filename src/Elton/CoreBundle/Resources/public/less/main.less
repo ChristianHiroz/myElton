@@ -16,7 +16,7 @@
 
 //Balises rewrite
 body {font-family:helvetica, trebuchet, sans-serif !important;font-size:14px;min-height:100%; width:100%; overflow-x: hidden ; position: relative !important;}
-html { width: 100%; height:100%; overflow-y: auto; overflow-x: hidden ; position: relative !important;}
+html { width: 100%; height:100%;position: relative !important;}
 p {color:grey;margin-left:36px !important; text-align:inherit;}
 hr {color: grey;background: grey; width: 95%; height: 2px!important;}
 h1, h2, h3, h4 {font-weight:normal !important;}
@@ -39,18 +39,24 @@ a.linkSiteMap:hover{color:grey; font-weight:bold;}
 .justify{ text-align:justify; padding-left:60px; }
 
 //Usefull stuffs
+.nomargin{ margin: 0px 0px 0px 0px !important;}
 .h100{ height:100px !important;}
+.resizable { resize: both;  overflow: auto; }
 .screenMl20 { margin-left:20px!important; }
 .disInBl { display: inline-block; }
 .disI{ display: inline;}
 .fs18{font-size:18px!important;}
-.center {text-align:center;}
+.center {text-align:center!important;}
 .categoryTitle{position:relative; left:30%;margin-top: 50px!important;margin-bottom: 35px!important;}
 .lessonCategoryTitle{margin-top: 50px!important;margin-bottom: 15px!important;}
 .lessonNumber{font-size:25px !important;}
 .lessonNumberIner{font-size:40px !important; line-height: 60px!important;right:5%; margin-top: 15px; }
 .lessonText{font-size: 18px;}
 .choose{ display: inline-block; width: 0; height: 0;vertical-align: middle; border-top: 15px solid; border-right: 9px solid transparent; border-left: 9px solid transparent; position:absolute;top:40%; right:6%;}
+.mt50{margin-top: 50px !important;}
+.mt25{margin-top: 25px !important;}
+.mb25{margin-bottom: 25px !important;}
+.ml25{margin-left: 25px !important;}
 
 //TWBS Rewrite
 .nav-pills > li.active > a,.nav-pills > li.active > a:hover{background-image: linear-gradient(to bottom, #f79321, #df7401);background-color: #df7401;color: #ffffff;}
@@ -61,6 +67,7 @@ a.linkSiteMap:hover{color:grey; font-weight:bold;}
 .carousel-indicators .active{ background-color: @violetEltonBis!important;}
 .carousel-indicators li{ border-color: @violetEltonBis!important;}
 .buttonTableCont a.active{background-color: @violetElton!important;}
+.divJumbo{    margin-bottom: (@jumbotron-padding / 2); font-size: @jumbotron-font-size; font-weight: 200;}
 
 //Containers
 .row{width:100%!important; margin-left:0px; margin-right:0px;}
@@ -116,6 +123,7 @@ a.buttonTable:hover {color:white; opacity:0.7; filter: alpha(opacity=40);}
 a.buttonTableSmall:hover {color:white; opacity:0.7; filter: alpha(opacity=40);}
 .buttonAll.fs18{font-size:18px!important; line-height: 49px !important;}
 .buttonAll:hover{opacity:0.5;color:white;}
+.divisionShow{height:175px; width: 200px; border:1px solid grey; -moz-box-shadow: 7px 7px 5px 0px #9b9b9b;-webkit-box-shadow: 7px 7px 5px 0px #9b9b9b;-o-box-shadow: 7px7px 5px 0px #9b9b9b;box-shadow: 7px 7px 5px 0px #9b9b9b;filter:progid:DXImageTransform.Microsoft.Shadow(color=#9b9b9b, Direction=135, Strength=5); img{margin-top:5px;} }
 
 // Colors
 .rouge{background-color: @rougeElton!important;}
@@ -139,6 +147,7 @@ a.buttonTableSmall:hover {color:white; opacity:0.7; filter: alpha(opacity=40);}
 .violetH:hover{color:@violetElton!important;}
 .noir{background-color: @grisSombreElton!important;}
 .noirH:hover{color:@grisSombreElton!important;}
+.noirHBold:hover{color:@grisSombreElton!important;font-weight: bold;}
 .notion{background-color: @bleuElton!important;}
 .notionH:hover{color:@bleuElton!important;}
 .activités{background-color: @turquoiseElton!important;}
@@ -153,12 +162,17 @@ a.buttonTableSmall:hover {color:white; opacity:0.7; filter: alpha(opacity=40);}
 .borderNoir{border:1px solid @grisSombreElton; color: @grisSombreElton;}
 
 //Cart
-.textBlc{color:white!important;}
-#setted{border:2px solid @violetElton; height:600px; width:50%; float:right; text-align:center;}
-#unsetted{border:2px ; height:600px;width:50%; float:left; text-align:center;}
+.textBlc{color:white;}
+#setted{border:2px solid @violetElton; height:670px; width:50%; float:right; text-align:center;}
+#unsetted{border:2px ; height:700px;width:50%; float:left; text-align:center;}
 .bouger{width:80%; height:23%; text-align: center;display:inline-block; margin-top: 20px;}
 .bougerImage{width:70%;display:inline-block;background-color:grey;}
-.bougerEnfant{border:1px solid grey; -moz-box-shadow: 7px 7px 5px 0px #9b9b9b;-webkit-box-shadow: 7px 7px 5px 0px #9b9b9b;-o-box-shadow: 7px7px 5px 0px #9b9b9b;box-shadow: 7px 7px 5px 0px #9b9b9b;filter:progid:DXImageTransform.Microsoft.Shadow(color=#9b9b9b, Direction=135, Strength=5); img{margin-top:5px;} }
+.bougerEnfant{height:175px; border:1px solid grey; -moz-box-shadow: 7px 7px 5px 0px #9b9b9b;-webkit-box-shadow: 7px 7px 5px 0px #9b9b9b;-o-box-shadow: 7px7px 5px 0px #9b9b9b;box-shadow: 7px 7px 5px 0px #9b9b9b;filter:progid:DXImageTransform.Microsoft.Shadow(color=#9b9b9b, Direction=135, Strength=5); img{margin-top:5px;} }
+
+
+//Accueil page
+.accueilBox{ height: 250px; border-radius: 10px; border-style: dotted; border-width: 1px;}
+.accueilLink{margin: -10px 0px 0px 0px; display:inline-block;width: 80px;height: 40px;color: white;text-align: center;line-height: 40px;border-radius: 20px 0px 10px 7px;}
 
 // Media Querys
 @media screen and (max-width : 850px){

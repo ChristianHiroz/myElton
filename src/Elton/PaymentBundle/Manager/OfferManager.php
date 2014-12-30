@@ -1,15 +1,18 @@
 <?php
 /**
- * Description of FileManager
+ * Description of OfferManager
  *
  * @author Christian Hiroz
  */
 
-namespace Elton\CoreBundle\Manager;
+
+namespace Elton\PaymentBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
+use Elton\CoreBundle\Manager\CoreManager as CoreManager;
 
-class FileManager extends CoreManager{
+class OfferManager extends CoreManager
+{
     protected $em;
     
     public function __construct(EntityManager $em)
@@ -19,6 +22,6 @@ class FileManager extends CoreManager{
     
     public function getRepository()
     {
-        return $this->em->getRepository('EltonCoreBundle:File');
+        return $this->em->getRepository('EltonPaymentBundle:Offer');
     }
 }

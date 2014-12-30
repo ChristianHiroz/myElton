@@ -1,0 +1,124 @@
+# Group
+group:
+    edit:
+        submit: Mettre à jour le groupe
+    show:
+        name: Nom du groupe
+    new:
+        submit: Créer le groupe
+    flash:
+        updated: Le groupe a été mis à jour
+        created: Le groupe a été créé
+        deleted: Le groupe a été supprimé
+
+# Security
+"Bad credentials": Nom d'utilisateur ou mot de passe incorrect
+"User account is disabled.": Vous devez activer votre compte.
+"User account is locked.":   Le compte utilisateur est verrouillé.
+"User account has expired.": Le compte de l'utilisateur a expiré.
+"User credentials have expired.": Les informations d'identification ont expiré.
+
+security:
+    login:
+        username: "Nom d'utilisateur :"
+        password: "Mot de passe :"
+        remember_me: Se souvenir de moi
+        submit: Connexion
+
+# Profile
+profile:
+    show:
+        username: Nom d'utilisateur
+        email: Adresse e-mail
+    edit:
+        submit: Mettre à jour
+    flash:
+        updated: Le profil a été mis à jour
+
+# Password change
+change_password:
+    submit: Modifier le mot de passe
+    flash:
+        success: Le mot de passe a été modifié
+
+# Registration
+registration:
+    check_email: Il ne nous reste qu’à confirmer votre adresse e-mail. Pour cela, nous avons envoyé un e-mail à l’adresse %email%. Cliquez sur le lien contenu dans cet e-mail pour valider votre inscription ! 
+    check_email_title:  Votre inscription sur My Elton est quasiment terminée !
+    confirmed: Félicitations %username%, votre compte est maintenant activé.
+    back: Retour à la page d'origine.
+    submit: Enregistrer
+    flash:
+        user_created: L'utilisateur a été créé avec succès
+    email:
+        subject: Bienvenue %username% !
+        message: |
+            Bonjour %username% !
+
+            Pour valider votre compte utilisateur, merci de vous rendre sur %confirmationUrl%
+
+            Cordialement,
+            L'équipe.
+
+# Password resetting
+resetting:
+    password_already_requested: Un nouveau mot de passe a déjà été demandé pour cet utilisateur dans les dernières 24 heures.
+    check_email: Un e-mail a été envoyé à l'adresse %email%. Il contient un lien sur lequel il vous faudra cliquer afin de réinitialiser votre mot de passe.
+    request:
+        invalid_username: Le nom d'utilisateur ou l'adresse e-mail "%username%" n'existe pas.
+        username: "Nom d'utilisateur ou adresse e-mail :"
+        submit: Réinitialiser le mot de passe
+    reset:
+        submit: Modifier le mot de passe
+    flash:
+        success: Le mot de passe a été réinitialisé avec succès
+    email:
+        subject: Réinitialisation de votre mot de passe
+        message: |
+            Bonjour %username% !
+
+            Pour réinitialiser votre mot de passe, merci de vous rendre sur %confirmationUrl%
+
+            Cordialement,
+            L'équipe.
+
+# Global strings
+layout:
+    logout: Déconnexion
+    login: Connexion
+    register: Inscription
+    logged_in_as: Connecté en tant que %username%
+
+# Form field labels
+form:
+    group_name: "Nom du groupe :"
+    username: "Nom d'utilisateur :"
+    email: "Adresse e-mail :"
+    current_password: "Mot de passe actuel :"
+    password: "Mot de passe :"
+    password_confirmation: "Vérification :"
+    new_password: "Nouveau mot de passe :"
+    new_password_confirmation: "Vérification :"
+
+#payment mail
+payment:
+    email:
+        subject: Bienvenue sur My Elton, %civil% %name% !
+        message: |
+            Merci de faire confiance à My Elton pour vos cours d’anglais ! Vous avez choisi : %offer% !
+
+            En attendant le règlement de votre paiement, vous bénéficiez d’une période d’essai de 10 jours.
+            Pendant cette période d’essai, vous pouvez accéder au contenu du 1er trimestre.
+
+            Pour rappel, votre nom d’utilisateur est : %username% !
+
+            Pour débloquer tous les cours et tout le contenu du site, nous vous proposons plusieurs solutions :
+                - paiement par carte bleue, en cliquant ici %paymentLink%
+                - paiement par chèque, en imprimant ce mail et en nous le retournant, accompagné du chèque à l’ordre de Play Bac Presse, à l’adresse donnée en pied de page de ce mail
+                - paiement en liquide, en imprimant ce mail et en nous le retournant, accompagné du montant indiqué, à l’adresse donnée en pied de page de ce mail
+
+            Vous pourrez profiter pleinement de toutes les possibilités offertes par My Elton dès validation de votre paiement 
+
+            Pour vous familiariser avec le site et ne rien manquer des fonctionnalités proposées, n’hésitez pas à regarder nos tutoriels vidéos en vous rendant <a href="%videoLink%">ici</a> . Vous les trouverez également par le biais du lien « Découvrir My Elton » %accueilUrl% disponible sur la page d’accueil de votre espace personnel. 
+            
+            A bientôt sur My Elton !

@@ -13,10 +13,55 @@ use Elton\DivisionBundle\Entity\Division;
 /**
  * Teacher controller.
  *
- * @Route("/teacher")
  */
 class TeacherController extends Controller
 {
+
+
+    /**
+     * @Route("/accueil", name="accueil")
+     * @Method({"GET"})
+     * @Template("EltonCoreBundle:Core:accueil.html.twig")
+     */
+    public function accueilAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('EltonCoreBundle:Jumbotron')->find(1);
+        $returnArray = $this->get('elton.teacher.manager')->check();
+        $returnArray['jumbotron'] = $entity;
+
+        if($returnArray=='')
+        {
+            return $this->redirect($this->generateUrl("index"));
+        }
+        else
+        {
+            return $returnArray;
+        }
+    }
+
+    /**
+     * @Route("/temp", name="temp")
+     * @Method({"GET"})
+     * @Template("EltonCoreBundle:Core:temp.html.twig")
+     */
+    public function tempAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('EltonCoreBundle:Jumbotron')->find(1);
+        $returnArray = $this->get('elton.teacher.manager')->check();
+        $returnArray['jumbotron'] = $entity;
+
+        if($returnArray=='')
+        {
+            return $this->redirect($this->generateUrl("index"));
+        }
+        else
+        {
+            return $returnArray;
+        }
+    }
+
     /**
      * Create a division for the teacher
      * 

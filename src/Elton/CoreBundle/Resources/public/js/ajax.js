@@ -94,6 +94,32 @@ function addToCart(activityId)
     }
 }
 
+function changeButtonName()
+{
+    if($("#nextButton").text() === "Suivant"){
+        $("#nextButton").text("Précédent");
+    }
+    else{
+        $("#nextButton").text("Suivant");
+    }
+}
+
+function setSelected(activityId, cartId)
+{   
+    if(activityId === selectedActivity){
+        $("#" + selectedActivity).removeClass("culture");
+        $("#" + selectedActivity+"p").removeClass("textBlc");
+        selectedActivity = 0;
+    }
+    else{
+        $("#" + selectedActivity).removeClass("culture");
+        $("#" + selectedActivity+"p").removeClass("textBlc");
+        selectedActivity = activityId;
+        selectedCart = cartId;
+        $("#" + selectedActivity).addClass("culture");
+        $("#" + selectedActivity+"p").addClass("textBlc");
+    }
+}
 function setSelect(activityId, cartId)
 {   
     if(activityId === selectedActivity){

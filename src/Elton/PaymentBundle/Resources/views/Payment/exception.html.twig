@@ -1,0 +1,23 @@
+{% extends "::base.html.twig" %}
+
+{% block body -%}
+    {{ parent() }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>            
+            <div class="col-md-6">
+                <div class="center mt50">
+                    <h4> Votre paiement a été refusé </h4>
+                    <p class="nomargin bold">Nous vous invitons à procéder de nouveau au paiement dans quelques minutes</p>
+                    <p class="nomargin">
+                        En cas de refus successifs, merci de nous signaler votre cas en envoyant un mail à l’adresse
+                        elton@playbac.fr <br/> A bientôt sur My Elton !
+                    </p>
+                    <a class="buttonAll violet txtBlc" href="{{path('accueil')}}">Retour</a>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+
+        </div>
+    </div>
+{% endblock %}

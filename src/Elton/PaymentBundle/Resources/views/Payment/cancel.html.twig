@@ -1,0 +1,20 @@
+{% extends "::base.html.twig" %}
+
+{% block body -%}
+    {{ parent() }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>            
+            <div class="col-md-6">
+                <div class="center mt50">
+                    <h4> Votre paiement a été annulé </h4>
+                    <p class="nomargin">Si l’annulation n’est pas de votre fait, merci de nous signaler votre cas en envoyant un mail à l’adresse elton@playbac.fr
+                        <br/> A bientôt sur My Elton !!</p>
+                    <a class="buttonAll violet txtBlc" href="{{path('accueil')}}">Retour</a>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+
+        </div>
+    </div>
+{% endblock %}

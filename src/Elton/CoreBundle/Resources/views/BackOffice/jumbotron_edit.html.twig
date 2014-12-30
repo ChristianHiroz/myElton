@@ -1,0 +1,12 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <a class="mt25 ml25 txtBlc noirH accueilLink turquoise" href="{{ path('sonata_admin_dashboard')}}">Retour</a>
+    <div class="smallElton"></div>
+    {% form_theme edit_form 'EltonCoreBundle:Form:create_field.html.twig' %}
+    <div class="col-md-2"></div>
+    <div class="col-md-8" style="margin-top: 50px;">
+        {{form(edit_form)}}
+    </div>
+
+{% endblock %}

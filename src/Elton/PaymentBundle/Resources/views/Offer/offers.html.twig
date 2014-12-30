@@ -1,0 +1,40 @@
+{% extends "::base.html.twig" %}
+
+{% block body -%}
+    {{ parent() }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 mt25">
+                <h1 class="lessonCategoryTitle">Choisissez votre offre !</h1> 
+                <div class="list-group">
+                    {% for offer in offers %}
+                        {% if offer.isActive %}
+                            <a href="#" id="{{offer.id}}" class="list-group-item">
+                                <h4 class="list-group-item-heading">{{ offer.name }}</h4>
+                                <p class="list-group-item-text">{{ offer.description }}</p>
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                    <a href="#" id="0" class="list-group-item">
+                        <h4 class="list-group-item-heading">Vous avez un code promotionnel?</h4>
+                        <p class="list-group-item-text">Cliquez ici pour le renseigner !</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4" id="buttonDiv">
+                    <div class="center">
+                        <a class="buttonAll borderVioletBis violetBisH offerButton" id="button0" href="{{path('code_promo_verif')}}">Je veux en profiter !</a>
+                    </div>
+                    <div class="center invisible">
+                        <a class="buttonAll borderVioletBis violetBisH offerButton" id="button1" href="{{path('fos_user_registration_register')}}">Je veux en profiter !</a>
+                    </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+    
+{% endblock %}

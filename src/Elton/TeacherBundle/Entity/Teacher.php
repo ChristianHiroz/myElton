@@ -29,6 +29,13 @@ class Teacher extends User
     /**
      * @var string
      * 
+     * @ORM\Column(name="civilite", type="string", length=100)
+     */
+    private $civilite;
+    
+    /**
+     * @var string
+     * 
      * @ORM\Column(name="name", type="string", length=100)
      */
     private $name;
@@ -69,9 +76,19 @@ class Teacher extends User
     private $town;
     
     /**
+     * @ORM\OneToMany(targetEntity="Elton\TeacherBundle\Entity\Ticket", mappedBy="user")
+     */
+    private $tickets;
+    
+    /**
      * @ORM\OneToMany(targetEntity="Elton\DivisionBundle\Entity\Division", mappedBy="teacher", cascade={"remove"})
      */
     private $divisions;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Elton\PaymentBundle\Entity\Offer", cascade={"persist"})
+     */
+    private $offer;
     
     public function __construct()
     {
@@ -119,6 +136,26 @@ class Teacher extends User
     public function setName($name)
     {
         $this->name = $name;
+    }
+    
+    /**
+     * Get civilite
+     * 
+     * @return string
+     */
+    public function getCivilite()
+    {
+        return $this->civilite;
+    }
+    
+    /**
+     * Set civilite
+     * 
+     * @param string $civilite
+     */
+    public function setCivilite($civilite)
+    {
+        $this->civilite = $civilite;
     }
     
     /**
@@ -250,6 +287,58 @@ class Teacher extends User
     public function getDivisions()
     {
         return $this->divisions;
+    }
+    
+        
+    /**
+     * Add ticket
+     * 
+     * @param Elton\TeacherBundle\Entity\Ticket $ticket
+     */
+    public function addTicket(\Elton\TeacherBundle\Entity\Ticket $ticket)
+    {
+        $this->tickets[] = $ticket;
+        $ticket->setUser($this);
+    }
+    
+    /**
+     * Remove ticket
+     * 
+     * @param Elton\TeacherBundle\Entity\Ticket $ticket
+     */
+    public function removeTicket(\Elton\TeacherBundle\Entity\Ticket $ticket)
+    {
+        $this->tickets->removeElement($ticket);
+    }
+    
+    /**
+     * Get tickets
+     * 
+     * @return Doctrine\Common\Collections\Collection
+     */
+    public function getTickets()
+    {
+        return $this->tickets;
+    }
+    
+    /**
+     * Get offer
+     * 
+     * @return offer
+     */
+    public function getOffer()
+    {
+        return $this->offer;
+    }
+    
+    /**
+     * Set offer
+     * 
+     * @param offer $offer
+     */
+    public function setOffer($offer)
+    {
+        $this->offer = $offer;
     }
     
     /**

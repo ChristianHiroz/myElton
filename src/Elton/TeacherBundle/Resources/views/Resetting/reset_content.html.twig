@@ -1,7 +1,10 @@
-
-<form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset">
-    {{ form_widget(form) }}
-    <div>
-        <input class="buttonAll violetBis" type="submit" value="{{ 'resetting.reset.submit'|trans }}" />
-    </div>
-</form>
+<div class="col-md-4"></div>
+<div class="col-md-4" style="margin-top:50px;">
+    {% form_theme form 'EltonCoreBundle:Form:create_field.html.twig' %}
+    <form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset">
+        {{ form_widget(form) }}
+        <div class='center'>
+            <input class="buttonAll violetBis" type="submit" value="Valider" />
+        </div>
+    </form>
+</div>

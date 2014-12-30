@@ -7,14 +7,20 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class FileAdmin extends Admin
+class OfferAdmin extends Admin
 {
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('file', 'file', array('label' => 'Fichier'))
-            ->add('ogg', 'sonata_type_model', array('label' => 'Ogg', 'property' => 'alt', 'required' => false))
+            ->add('name', 'text', array('label' => 'Nom de l\'offre'))  
+            ->add('price', 'number', array('label' => 'Prix de l\'offre'))
+            ->add('startAt', 'date', array('label' => 'Date de début'))            
+            ->add('endAt', 'date', array('label' => 'Date de fin'))
+            ->add('description', 'textarea', array('label' => 'Description de l\'offre'))
+            ->add('isActive', 'choice', array('label' => 'Actif', 'choices' => array(1 => 'Oui', 0 => 'Non')))               
+            ->add('isEnCours', 'choice', array('label' => 'En cours', 'choices' => array(1 => 'Oui', 0 => 'Non')))
+
         ;
     }
 
@@ -22,7 +28,7 @@ class FileAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('url')->add('alt')->add('id')->add('ogg')
+            ->add('id')->add('isActive')->add('isEnCours')->add('name')
         ;
     }
 
@@ -30,7 +36,7 @@ class FileAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('url')->addIdentifier('alt')->addIdentifier('id')->add('ogg')
+            ->add('id')->addIdentifier('isActive')->addIdentifier('isEnCours')->addIdentifier('name')
         ;
     }
 }

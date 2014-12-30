@@ -80,6 +80,10 @@ class ResettingController extends ContainerAware
         $email = $request->query->get('email');
         $returnArray = $this->container->get('elton.teacher.manager')->check();
         $returnArray['email'] = $email;
+        if(isset($returnArray['user']))
+        {
+            $returnArray['email'] = $returnArray['user']->getEmail();
+        }
 
         if (empty($email)) {
             // the user does not come from the sendEmail action
@@ -127,7 +131,7 @@ class ResettingController extends ContainerAware
                 $userManager->updateUser($user);
 
                 if (null === $response = $event->getResponse()) {
-                    $url = $this->container->get('router')->generate('fos_user_profile_show');
+                    $url = $this->container->get('router')->generate('index');
                     $response = new RedirectResponse($url);
                 }
 
@@ -136,11 +140,10 @@ class ResettingController extends ContainerAware
                 return $response;
             }
         }
-         
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:reset.html.'.$this->getEngine(), array(
-            'token' => $token,
-            'form' => $form->createView(),
-        ));
+        $returnArray = $this->container->get('elton.teacher.manager')->check();
+        $returnArray['token'] = $token;
+        $returnArray['form'] = $form->createView();
+        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:reset.html.'.$this->getEngine(), $returnArray);
     }
 
     /**

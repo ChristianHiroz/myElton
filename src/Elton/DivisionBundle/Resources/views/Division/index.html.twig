@@ -90,10 +90,10 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                                <h4 class="modal-title label label-warning modalFS" id="myPdfModalLabel">{{activity.files.alt|slice(0, activity.files.alt|length-4)}}</h4>
+                                <h4 class="modal-title label label-warning modalFS" id="myPdfModalLabel">{{cartactivity.activity.files.alt|slice(0, cartactivity.activity.files.alt|length-4)}}</h4>
                             </div>
                             <div class="modal-body" style="width:100%; height:1%; text-align: center;">
-                                <iframe style="width: 95%; height: 90%;" src='{{ asset(cartactivity.activity.files.uploadDir ~ '/' ~ cartactivity.cartactivity.activity.files.id ~ '.' ~ cartactivity.activity.files.url) }}'  align="middle"></iframe>
+                                <iframe style="width: 95%; height: 90%;" src='{{ asset(cartactivity.activity.files.uploadDir ~ '/' ~ cartactivity.activity.files.id ~ '.' ~ cartactivity.activity.files.url) }}'  align="middle"></iframe>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>
@@ -103,29 +103,36 @@
                 </div>
             {% endif %}
         {% endfor %}
-        <div class="buttonTableCont">
-            {% set bool = false %}
-            {% for cartactivity in user.cart.activitys %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6" style="margin-bottom: 25px;">
+                {% set bool = false %}
+                {% for cartactivity in user.cart.activitys %}                
                 {% if loop.index == 1 %}
                     {% set bool = true %}
                 {% endif %}
-                {% if loop.index == 4 %}
+                    <div style="width:28%; margin-left: 4%; height:23%; text-align: center;display:inline-block; margin-top: 20px;"  onclick="setSelected({{cartactivity.activity.id}}, {{cartactivity.cart.id}})">
+                        <div class="bougerImage">                                        
+                            <img class="resizeCartType" src="{{asset('bundles/eltoncore/images/' ~ cartactivity.activity.type ~'blanc.png')}}"/>
+                        </div>
+                        <div class="bougerEnfant" id="{{cartactivity.activity.id}}">
+                            <img class="resizeCartPicture  hidden-xs" src="{{ asset(cartactivity.activity.file.uploadDir ~ '/' ~ cartactivity.activity.file.id ~ '.' ~ cartactivity.activity.file.url) }}" alt="{{cartactivity.activity.file.alt}}"/>
+                            <p id="{{cartactivity.activity.id}}p" style="margin-left:0px!important;margin-top: 7px;">{{ cartactivity.activity }}</p>
+                        </div>
                     </div>
+                {% endfor %}
+                {% if bool == true %}
                     <div class="buttonTableCont">
+                        <a class="buttonTableSmall" onclick="launchSelectedActivity();">Lancer l'activité</a>
+                    </div>
+                {% elseif bool == false %}
+                    <div style="margin-top:50px;">
+                        <p style='font-size: 21px;'>Aucune activité n'a été donnée par ton professeur</p>
+                    </div>
                 {% endif %}
-                <div style="display:table-cell; text-align:center;" onclick="setSelect({{cartactivity.activity.id}}, {{cartactivity.cart.id}})" id="{{cartactivity.activity.id}}">
-                    <img class="resizeCartPicture" src="{{ asset(cartactivity.activity.file.uploadDir ~ '/' ~ cartactivity.activity.file.id ~ '.' ~ cartactivity.activity.file.url) }}" alt="{{cartactivity.activity.file.alt}}"/>
-                    <p style="margin-left:0px!important">{{ cartactivity.activity }}</p>
                 </div>
-            {% endfor %}
             </div>
-            {% if bool == true %}
-                <div class="buttonTableCont">
-                    <a class="buttonTableSmall" onclick="launchSelectedActivity();">Lancer l'activité</a>
-                </div>
-            {% elseif bool == false %}
-                <div style="margin-top:50px;">
-                    <p style='font-size: 21px;'>Aucune activité n'a été donnée par ton professeur</p>
-                </div>
-            {% endif %}
+        </div>
+
 {% endblock %}

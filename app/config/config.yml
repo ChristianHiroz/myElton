@@ -25,6 +25,7 @@ framework:
         handler_id:  ~
     fragments:       ~
     http_method_override: true
+    
 
 # Twig Configuration
 twig:
@@ -71,7 +72,8 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
     transport: smtp
-    host: smtp.veepee.com:25
+    host: smtp.orange.fr
+    delivery_address: twinkie.hiroz@gmail.com
     
 
 fos_user:
@@ -92,11 +94,22 @@ sonata_block:
     default_contexts: [cms]
     blocks:
         # Enable the SonataAdminBundle block
+        sonata.block.service.backoffice:
         sonata.admin.block.admin_list:
             contexts:   [admin]
             
 sonata_admin:
     title: myElton
+    templates:
+       dashboard: ::dashboard.html.twig
+    dashboard:
+        blocks:
+                -
+                    position: left
+                    type: sonata.admin.block.admin_list
+                -
+                    position: right
+                    type: sonata.block.service.backoffice
         
 pugx_multi_user:
   users:

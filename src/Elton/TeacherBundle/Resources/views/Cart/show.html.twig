@@ -89,10 +89,10 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                                <h4 class="modal-title label label-warning modalFS" id="myPdfModalLabel">{{activity.files.alt|slice(0, activity.files.alt|length-4)}}</h4>
+                                <h4 class="modal-title label label-warning modalFS" id="myPdfModalLabel">{{cartactivity.activity.files.alt|slice(0, cartactivity.activity.files.alt|length-4)}}</h4>
                             </div>
                             <div class="modal-body" style="width:100%; height:1%; text-align: center;">
-                                <iframe style="width: 95%; height: 90%;" src='{{ asset(cartactivity.activity.files.uploadDir ~ '/' ~ cartactivity.cartactivity.activity.files.id ~ '.' ~ cartactivity.activity.files.url) }}'  align="middle"></iframe>
+                                <iframe style="width: 95%; height: 90%;" src='{{ asset(cartactivity.activity.files.uploadDir ~ '/' ~ cartactivity.activity.files.id ~ '.' ~ cartactivity.activity.files.url) }}'  align="middle"></iframe>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn center-block shadow btnBeigeElton bold" data-dismiss="modal">Fermer</button>

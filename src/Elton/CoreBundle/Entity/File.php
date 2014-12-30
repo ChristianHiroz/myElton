@@ -40,9 +40,13 @@ class File
      * @ORM\Column(name="alt", type="string", length=255)
      */
     private $alt;
-    
-    private $activitys;
 
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Elton\CoreBundle\Entity\Level")
+     */
+    private $level;
+    
     private $file; 
     private $tempFilename;
 
@@ -172,7 +176,27 @@ class File
     public function getFile()
     {
         return $this->file;
+    }    
+    
+    /**
+     * Get level
+     * 
+     * @return Elton\CoreBundle\Entity\Level
+     */
+    public function getLevel()
+    {
+        return $this->level;
     }
+    
+    /**
+     * Set level
+     * 
+     * @param Elton\CoreBundle\Entity\Level $level
+     */
+    public function setLevel(\Elton\CoreBundle\Entity\Level $level)
+    {
+        $this->level = $level;
+    }   
     
     /**
      * @ORM\PrePersist()

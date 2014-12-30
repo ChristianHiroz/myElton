@@ -1,0 +1,37 @@
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+    <div class="cms-block cms-block-element">
+        <table class="table table-condensed sonata-ba-list">
+            <tbody>
+                <tr>
+                    <td colspan="3" style="background: none repeat scroll 0 0 #F7F7F7;">
+                        <strong>{{ settings.title }}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="sonata-ba-list-label">Jumbotron</td>
+                    <td>
+                        <div class="btn-group">
+                            <a class="btn btn-link" href="{{ path('jumbotron_update') }}">
+                                <i class="icon-plus"></i>
+                                Modifier
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="sonata-ba-list-label">Mail</td>
+                    <td>
+                        <div class="btn-group">
+                            <a class="btn btn-link">
+                                <i class="icon-plus"></i>
+                                Ecrire
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -33,7 +33,8 @@ class CoreController extends Controller
                 {
                     if(is_object($returnArray['selectedDivision']))
                     {
-                        return $this->redirect($this->generateUrl('practice'));
+                        $this->container->get('elton.mailer')->sendPaymentRequest($user);
+                        return $this->redirect($this->generateUrl('accueil'));
                     }
                     else
                     {
@@ -48,7 +49,7 @@ class CoreController extends Controller
         }
         return $returnArray;
     }
-    
+
     /**
      * @Route("/en-savoir-plus", name="savoir_plus")
      * @Method({"GET"})

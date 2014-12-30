@@ -28,7 +28,7 @@ class AppKernel extends Kernel
             new Sonata\AdminBundle\SonataAdminBundle(),
             new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
-            
+            new Elton\PaymentBundle\EltonPaymentBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

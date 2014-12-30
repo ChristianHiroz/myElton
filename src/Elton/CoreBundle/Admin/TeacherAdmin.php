@@ -14,6 +14,7 @@ class TeacherAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('civilite', 'choice', array('label' => 'Civilité', 'choices' => array("M." => 'M.', "Mme." => 'Mme.')))
             ->add('username', 'text', array('label' => 'Nom d\'utilisateur', 'attr'=> array('placeholder' => 'Entrez votre nom d\'utilisateur')))
             ->add('plainPassword', 'repeated', array(
                 'type' => 'password',
@@ -23,6 +24,9 @@ class TeacherAdmin extends Admin
                 'invalid_message' => 'fos_user.password.mismatch',
             ))
             ->add('name', 'text', array('label' => 'Nom', 'attr' => array('placeholder' => 'Entrez le nom que vos élèves verront')))
+            ->add('school', 'text', array('label' => 'Ecole', 'attr' => array('placeholder' => 'Entrez le nom de votre école')))
+            ->add('address', 'text', array('label' => 'Adresse', 'attr' => array('placeholder' => 'Entrez l\'adresse de votre école')))
+            ->add('town', 'text', array('label' => 'Ville', 'attr' => array('placeholder' => 'Entrez le nom de la ville de votre école')))
             ->add('firstName', 'text', array('label' => 'Prénom', 'attr' => array('placeholder' => 'Entrez votre prénom')))
             ->add('postalCode', 'text', array('label' => 'Code postal', 'attr' => array('placeholder' => 'Entrez le code postal de votre école')))
             ->add('email', 'email', array('label' => 'Adresse email', 'attr'=> array('placeholder' => 'Entrez votre adresse email')))

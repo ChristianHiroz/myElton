@@ -1,15 +1,17 @@
 <?php
 /**
- * Description of FileManager
+ * Description of PCodeManager
  *
  * @author Christian Hiroz
  */
 
-namespace Elton\CoreBundle\Manager;
+namespace Elton\PaymentBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
+use Elton\CoreBundle\Manager\CoreManager;
 
-class FileManager extends CoreManager{
+class PCodeManager extends CoreManager
+{
     protected $em;
     
     public function __construct(EntityManager $em)
@@ -19,6 +21,19 @@ class FileManager extends CoreManager{
     
     public function getRepository()
     {
-        return $this->em->getRepository('EltonCoreBundle:File');
+        return $this->em->getRepository('EltonPaymentBundle:PCode');
+    }
+    
+    
+    /*
+     * @return bool if $promoCode & $postalCode match
+     */
+    public function getPCode($promoCode, $postalCode)
+    {
+        $repo = $this->getRepository();
+        
+        $postalCodeMatch = $repo->getPCodeInSchool($promoCode, $postalCode);
+        
+        return $postalCodeMatch;
     }
 }

@@ -1,17 +1,4 @@
 {# Buttons modals #}
-<div class="modal fade" id="myRegisterModal" tabindex="-1" role="dialog" aria-labelledby="myRegisterModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h4 class="modal-title label violetBis modalFS" id="myRegisterModalLabel">Inscription</h4>
-            </div>
-            <div class="modal-body">
-                {{ render(controller('FOSUserBundle:Registration:register')) }}
-            </div>
-        </div>
-    </div>
-</div>
 <div class="modal fade" id="myLoginModal" tabindex="-1" role="dialog" aria-labelledby="myLoginModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -27,7 +14,7 @@
 </div>
 {# end Buttons modals #}
 <header>
-            <a data-toggle="modal" data-target="#myLoginModal" class="visible-xs"  style="width:100%; background-color:#0A71B4; height:auto;  border-bottom:1px solid grey; text-align: center; color:white;">Connexion</a>
+    <a data-toggle="modal" data-target="#myLoginModal" class="visible-xs"  style="width:100%; background-color:#0A71B4; height:auto;  border-bottom:1px solid grey; text-align: center; color:white;">Connexion</a>
     <a class="playbac hidden-xs" href="http://www.playbacpresse.fr/">
         <img src="{{asset('bundles/eltoncore/images/logoplaybac.png')}}"/>
     </a>
@@ -39,7 +26,7 @@
     </div>
     <div class="cons hidden-xs">
             <a data-toggle="modal" data-target="#myLoginModal" class="buttonAll bleu fs18" style="display:block!important;">Connexion</a>
-            <a data-toggle="modal" data-target="#myRegisterModal" class="buttonAll violetBis fs18">S'inscrire</a><br/>
+            <a href="{{path('offers')}}" class="buttonAll violetBis fs18">S'inscrire</a><br/>
     </div>
     <div style="text-align:center">
         <h1 style="margin-bottom:20px">La méthode d'anglais pensée pour les professeurs des Écoles !</h1>

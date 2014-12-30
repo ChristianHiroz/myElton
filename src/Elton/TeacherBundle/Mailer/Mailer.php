@@ -53,7 +53,14 @@ class Mailer implements MailerInterface
      */
     public function sendResettingEmailMessage(UserInterface $user)
     {
-        $template = $this->parameters['resetting.template'];
+        if($user instanceof \Elton\DivisionBundle\Entity\Division)
+        {
+            $template = "EltonTeacherBundle:Resetting:emailDivision.txt.twig";
+        }
+        else
+        {
+            $template = $this->parameters['resetting.template'];
+        }
         $url = $this->router->generate('fos_user_resetting_reset', array('token' => $user->getConfirmationToken()), true);
         $rendered = $this->templating->render($template, array(
             'user' => $user,

@@ -17,6 +17,7 @@ class RegistrationFormType extends BaseType
         parent::buildForm($builder, $options);
         
         $builder
+            ->add('civilite', 'choice', array('label' => 'Civilité', "attr" => array("class" => "form-control"), 'choices' => array("M." => 'M.', "Mme." => 'Mme.')))
             ->add('username', 'text', array('label' => 'Nom d\'utilisateur', 'attr'=> array('placeholder' => 'Entrez votre nom d\'utilisateur')))
             ->add('plainPassword', 'repeated', array(
                 'type' => 'password',

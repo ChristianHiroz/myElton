@@ -1,3 +1,8 @@
+elton_payment:
+    resource: "@EltonPaymentBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 elton_core:
     resource: "@EltonCoreBundle/Controller/"
     type:     annotation

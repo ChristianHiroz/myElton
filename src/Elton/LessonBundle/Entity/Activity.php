@@ -60,6 +60,17 @@ class Activity
      */
     private $file;
     
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Elton\CoreBundle\Entity\Level")
+     */
+    private $level;
+    
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Elton\LessonBundle\Entity\Category", inversedBy="lessons")
+     */
+    private $category;
     
     public function __construct()
     {
@@ -204,6 +215,47 @@ class Activity
     {
         return $this->active;
     }
+    
+    /**
+     * Get level
+     * 
+     * @return Elton\CoreBundle\Entity\Level
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+    
+    /**
+     * Set level
+     * 
+     * @param Elton\CoreBundle\Entity\Level $level
+     */
+    public function setLevel(\Elton\CoreBundle\Entity\Level $level)
+    {
+        $this->level = $level;
+    }  
+    
+    /**
+     * Get category
+     * 
+     * @return Elton\LessonBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+    
+    /**
+     * Set category
+     * 
+     * @param Elton\LessonBundle\Entity\Category $category
+     */
+    public function setCategory(\Elton\LessonBundle\Entity\Category $category)
+    {
+        $this->category = $category;
+    }
+
     
     public function __toString() 
     {

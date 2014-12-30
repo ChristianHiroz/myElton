@@ -8,7 +8,14 @@
 {% endspaceless %}
 {% endblock form_widget_simple %}
 
-    
+{% block textarea_widget -%}
+      <textarea class="form-control resizable" rows="5" {{ block('widget_attributes') }}>{{ value }}</textarea>
+{%- endblock textarea_widget %}
+
+{% block checkbox_widget -%}
+        <input style="margin: -5px 5px 0px 9px;" type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+{%- endblock checkbox_widget %}
+
 {% block button_widget %}
 {% spaceless %}
     {% if label is empty %}
