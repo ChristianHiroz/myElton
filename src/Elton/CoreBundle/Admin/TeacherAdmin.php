@@ -37,7 +37,7 @@ class TeacherAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('username')->add('name')->add('firstName')->add('postalCode')->add('email')
+            ->add('username')->add('name')->add('firstName')->add('postalCode')->add('email')->add('roles')
         ;
     }
 

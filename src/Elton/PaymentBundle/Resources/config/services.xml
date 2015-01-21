@@ -8,6 +8,7 @@
         <parameter key="elton.offer_manager.class">Elton\PaymentBundle\Manager\OfferManager</parameter> 
         <parameter key="elton.pcode_manager.class">Elton\PaymentBundle\Manager\PCodeManager</parameter>
         <parameter key="elton.payment.class">Elton\PaymentBundle\Service\Payment</parameter>
+        <parameter key="elton.subscription_manager.class">Elton\PaymentBundle\Manager\SubscriptionManager</parameter>
     </parameters>
     
     <services>
@@ -17,7 +18,10 @@
         <service id="elton.pcode.manager" class="%elton.pcode_manager.class%">
             <argument type="service" id="doctrine.orm.entity_manager"/>            
         </service>
-        <service id="elton.payment" class="%elton.payment.class%">           
+        <service id="elton.subscription.manager" class="%elton.subscription_manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager"/>            
+        </service>
+        <service id="elton.payment" class="%elton.payment.class%">
         </service>
     </services>
 </container>

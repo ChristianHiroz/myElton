@@ -11,11 +11,12 @@
 
 namespace Elton\TeacherBundle\Controller;
 
-use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContextInterface;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
-class SecurityController extends ContainerAware
+class SecurityController extends Controller
 {
     public function loginAction(Request $request)
     {
@@ -62,11 +63,11 @@ class SecurityController extends ContainerAware
     {
         if($data['error'] == '')
         {
-            $template = sprintf('EltonTeacherBundle:Security:login.html.%s', $this->container->getParameter('fos_user.template.engine'));
+            $template = 'EltonTeacherBundle:Security:login.html.twig';
         }
         else
         {
-            $template = sprintf('EltonTeacherBundle:Security:loginBis.html.%s', $this->container->getParameter('fos_user.template.engine'));
+            $template = sprintf('EltonTeacherBundle:Security:loginBis.html.twig');
         }
         return $this->container->get('templating')->renderResponse($template, $data);
     }

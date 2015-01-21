@@ -7,6 +7,7 @@
     <parameters>
         <parameter key="elton.teacher_manager.class">Elton\TeacherBundle\Manager\TeacherManager</parameter>
         <parameter key="elton.cart_manager.class">Elton\TeacherBundle\Manager\CartManager</parameter>
+        <parameter key="elton.ticket_manager.class">Elton\TeacherBundle\Manager\TicketManager</parameter>
     </parameters>
     
     <services>
@@ -15,6 +16,10 @@
             <argument type="service" id="service_container"/> 
         </service>        
         <service id="elton.cart.manager" class="%elton.cart_manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <argument type="service" id="service_container"/>         
+        </service>        
+        <service id="elton.ticket.manager" class="%elton.ticket_manager.class%">
             <argument type="service" id="doctrine.orm.entity_manager"/>
             <argument type="service" id="service_container"/>         
         </service>

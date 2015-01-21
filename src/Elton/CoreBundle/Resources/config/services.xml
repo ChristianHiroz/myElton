@@ -11,7 +11,14 @@
         <parameter key="elton.core_manager.class">Elton\CoreBundle\Manager\CoreManager</parameter>
         <parameter key="elton.mailer.class">Elton\CoreBundle\Mailer\Mailer</parameter>
         <parameter key="payment.template">EltonCoreBundle:Mail:paymentRequest.txt.twig</parameter>
+        <parameter key="paymentConfirm.template">EltonCoreBundle:Mail:paymentConfirm.txt.twig</parameter>
         <parameter key="paymentFree.template">EltonCoreBundle:Mail:paymentFree.txt.twig</parameter>
+        <parameter key="paymentRelance.template">EltonCoreBundle:Mail:paymentRelance.txt.twig</parameter>
+        <parameter key="registerEnd.template">EltonCoreBundle:Mail:registerEnd.txt.twig</parameter>
+        <parameter key="testEnding.template">EltonCoreBundle:Mail:testEnding.txt.twig</parameter>
+        <parameter key="testEnd.template">EltonCoreBundle:Mail:testEnd.txt.twig</parameter>
+        <parameter key="boarding.template">EltonCoreBundle:Mail:boarding.txt.twig</parameter>
+        <parameter key="elton.login_listener.class">Elton\TeacherBundle\Listener\LoginListener</parameter>   
     </parameters>
     
     <services>
@@ -37,11 +44,24 @@
                 <argument key="template" type="collection">
                     <argument key="payment">%payment.template%</argument>
                     <argument key="paymentFree">%paymentFree.template%</argument>
+                    <argument key="paymentConfirm">%paymentConfirm.template%</argument>
+                    <argument key="paymentRelance">%paymentRelance.template%</argument>
+                    <argument key="registerEnd">%registerEnd.template%</argument>
+                    <argument key="testEnd">%testEnd.template%</argument>
+                    <argument key="testEnding">%testEnding.template%</argument>
+                    <argument key="boarding">%boarding.template%</argument>
                 </argument>
                 <argument key="from_email" type="collection">
                     <argument key="elton">elton@playbac.fr</argument>
                 </argument>
             </argument>
+            <argument type="service" id="elton.teacher.manager"/>
+        </service>
+        <service id="elton.login.listener" class="%elton.login_listener.class%">
+            <argument type="service" id="security.context"/> 
+            <argument type="service" id="doctrine"/> 
+            <argument type="service" id="elton.mailer"/>
+            <tag name="kernel.event_listener" event="security.interactive_login"/>
         </service>
     </services>
 </container>

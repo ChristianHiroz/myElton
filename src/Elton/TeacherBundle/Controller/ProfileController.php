@@ -16,7 +16,7 @@ use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Model\UserInterface;
-use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -26,7 +26,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  *
  * @author Christophe Coevoet <stof@notk.org>
  */
-class ProfileController extends ContainerAware
+class ProfileController extends Controller
 {
     /**
      * Show the user
@@ -38,7 +38,9 @@ class ProfileController extends ContainerAware
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Profile:show.html.'.$this->container->getParameter('fos_user.template.engine'), array('user' => $user));
+        return $this->render('FOSUserBundle:Profile:show.html.twig', array(
+            'user' => $user
+        ));
     }
 
     /**
@@ -92,9 +94,6 @@ class ProfileController extends ContainerAware
         $returnArray = $this->container->get('elton.teacher.manager')->check();
         $returnArray['form'] = $form->createView();
         
-        return $this->container->get('templating')->renderResponse(
-            'FOSUserBundle:Profile:edit.html.'.$this->container->getParameter('fos_user.template.engine'),
-            $returnArray
-        );
+        return $this->render('FOSUserBundle:Profile:edit.html.twig', $returnArray);
     }
 }

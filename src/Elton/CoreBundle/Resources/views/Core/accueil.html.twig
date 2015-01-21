@@ -22,7 +22,7 @@
                         <div class="divJumbo">
                             {{ jumbotron.message | raw }}</div>
                         {% if jumbotron.temp %}
-                            <p><a class="btn bleufonce noirh btn-lg textBlc" href="{{ path('temp') }}" role="button">{{ jumbotron.link }}</a></p>
+                            <p style="margin-left:0px!important;"><a class="btn bleufonce noirh btn-lg textBlc" href="{{ path('temp') }}" role="button">{{ jumbotron.link }}</a></p>
                         {%  endif %}
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                 <h3 class="accueilTitle center">Tutoriels vidéos</h3>
                 <p class="accueilMessage nomargin center">C’est votre première utilisation ? Ou vous souhaitez en savoir plus sur
                     l’utilisation de My Elton ? Nous avons préparé plusieurs vidéos pour vous !</p>
-                <div class="center mt25">
+                <div class="center accueilLinkBox">
                     <a class="accueilLink turquoise txtBlc" href="{{ path("category_show", {id : 6})}}">Lien</a>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                 <h3 class="accueilTitle center ">Prononciation</h3>
                 <p class="accueilMessage nomargin center">Notre professeur partenaire vous aide à respecter les règles de base de la
                     prononciation pour pouvoir vous faire comprendre partout !</p>
-                <div class="center mt25">
+                <div class="center accueilLinkBox">
                     <a class="accueilLink bleu txtBlc" href="{{ path("category_show", {id : 7})}}">Lien</a>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                 <h3 class="accueilTitle center">Echangeons !</h3>
                 <p class="accueilMessage nomargin center">Vous avez des idées d’activité à nous transmettre ? Ou une remarque
                     générale sur l’utilisation de My Elton ? Nous sommes à votre écoute !</p>
-                <div class="center mt25">
+                <div class="center accueilLinkBox">
                     <a class="accueilLink bleufonce txtBlc" href="{{ path("ticket_new")}}">Lien</a>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 
 <container xmlns="http://symfony.com/schema/dic/services"
@@ -11,6 +11,15 @@
           <tag name="sonata.admin" manager_type="orm" group="Contenu" label="Fichiers"/>
           <argument />
           <argument>Elton\CoreBundle\Entity\File</argument>
+          <argument />
+          <call method="setTranslationDomain">
+              <argument>EltonCoreBundle</argument>
+          </call>
+        </service>
+       <service id="sonata.tracking.type" class="Elton\CoreBundle\Admin\TrackingAdmin">
+          <tag name="sonata.admin" manager_type="orm" group="Payment" label="Codes tracking"/>
+          <argument />
+          <argument>Elton\PaymentBundle\Entity\Tracking</argument>
           <argument />
           <call method="setTranslationDomain">
               <argument>EltonCoreBundle</argument>
@@ -79,6 +88,15 @@
               <argument>EltonCoreBundle</argument>
           </call>
         </service>
+        <service id="elton.subscription.type" class="Elton\CoreBundle\Admin\SubscriptionAdmin">
+          <tag name="sonata.admin" manager_type="orm" group="Utilisateur" label="Abonnement"/>
+          <argument />
+          <argument>Elton\PaymentBundle\Entity\Subscription</argument>
+          <argument />
+          <call method="setTranslationDomain">
+              <argument>EltonCoreBundle</argument>
+          </call>      
+        </service>
        <service id="sonata.ticket.type" class="Elton\CoreBundle\Admin\TicketAdmin">
           <tag name="sonata.admin" manager_type="orm" group="Ticket" label="Tickets"/>
           <argument />
@@ -114,7 +132,7 @@
           <call method="setTranslationDomain">
               <argument>EltonPaymentBundle</argument>
           </call>
-        </service>
+        </service>       
         
         <!-- Sonata blocks creations -->
         <service id="sonata.block.service.backoffice" class="Elton\CoreBundle\Block\BackOfficeBlockService">

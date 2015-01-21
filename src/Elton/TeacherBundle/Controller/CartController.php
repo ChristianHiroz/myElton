@@ -10,13 +10,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 /**
  * Cart controller.
  *
- * @Route("/cart")
+ * @Route("/bureau")
  */
 class CartController extends Controller
 {   
     
     /**
-     * @Route("/show", name="show_cart")
+     * @Route("/", name="show_cart")
      * @Method({"GET"})
      * @Template()
      */

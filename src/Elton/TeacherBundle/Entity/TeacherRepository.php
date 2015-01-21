@@ -47,6 +47,34 @@ class TeacherRepository extends EntityRepository
         return $result;
     }
     
+    public function getInactifTeacher()
+    {        
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+                'Select t
+                From EltonTeacherBundle:Teacher t
+                Where NOT t.roles LIKE :roles AND t.roles LIKE :role');
+        $query->setParameter('roles', '%ROLE_TEACHER_PREMIUM%');
+        $query->setParameter('role', '%ROLE_TEACHER_INACTIF%');
+        $result = $query->getResult();
+        return $result;
+        
+    }
+    
+    public function getPayingTeacher()
+    {        
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+                'Select t
+                From EltonTeacherBundle:Teacher t
+                Where NOT t.roles LIKE :roles AND t.roles LIKE :role');
+        $query->setParameter('roles', '%ROLE_TEACHER_PREMIUM%');
+        $query->setParameter('role', '%ROLE_TEACHER_PAYING%');
+        $result = $query->getResult();
+        return $result;
+        
+    }
+    
     /**
      * Function used to find a teacher by his name
      * @param string $name name of the teacher you are looking for

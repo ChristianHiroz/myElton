@@ -30,16 +30,23 @@ class File
     /**
      * @var string
      *
-     * @ORM\Column(name="url", type="string", length=255)
+     * @ORM\Column(name="url", type="string", length=255, nullable=true)
      */
     private $url;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="alt", type="string", length=255)
+     * @ORM\Column(name="alt", type="string", length=255, nullable=true)
      */
     private $alt;
+    
+    /**
+     * @var string
+     * 
+     * @ORM\Column(name="lien", type="string", length=255, nullable=true)
+     */
+    private $lien;
 
     /**
      *
@@ -106,7 +113,29 @@ class File
     {
         return $this->url;
     }
+    
+    /**
+     * Set lien
+     *
+     * @param string $lien
+     * @return File
+     */
+    public function setLien($lien)
+    {
+        $this->lien = $lien;
 
+        return $this;
+    }
+
+    /**
+     * Get lien
+     *
+     * @return string 
+     */
+    public function getLien()
+    {
+        return $this->lien;
+    }
     /**
      * Set alt
      *
@@ -206,6 +235,8 @@ class File
     {
         if (null === $this->file)
         {
+            $this->url = "mp4" ; 
+            $this->alt = $this->lien; 
             return;
         }
         $type = $this->file->guessExtension();
@@ -216,7 +247,8 @@ class File
         else if ($ext == "application/pdf") { $type = "pdf" ; }
         else if ($ext == "inode/x-empty") { $type = "mp4" ; }
         $this->url = $type;
-        $this->alt = $this->file->getClientOriginalName();
+        
+            $this->alt = $this->file->getClientOriginalName();
       }
 
     /**

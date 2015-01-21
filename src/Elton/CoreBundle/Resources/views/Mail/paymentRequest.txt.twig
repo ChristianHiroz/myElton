@@ -1,41 +1,102 @@
-Bienvenue sur My Elton, {{user.civilite}} {{user.name}} !   
+Bienvenue sur My Elton !   
 <br/>
-<form method="post" action="{{ogoneAddress}}">
-<INPUT type="hidden" NAME="PSPID" value="{{pspid}}">
-<INPUT type="hidden" NAME="orderID" VALUE="{{numCommande}}">
-<INPUT type="hidden" NAME="amount" VALUE="{{montant}}">
-<INPUT type="hidden" NAME="currency" VALUE="EUR">
-<INPUT type="hidden" NAME="language" VALUE="fr_FR">
-<INPUT type="hidden" NAME="TP" VALUE="http://www.myelton.fr">
-<INPUT type="hidden" NAME="accepturl" VALUE="localhost{{accepturl}}">
-<INPUT type="hidden" NAME="declineurl" VALUE="localhost{{declineurl}}">
-<INPUT type="hidden" NAME="exceptionurl" VALUE="localhost{{exceptionurl}}">
-<INPUT type="hidden" NAME="cancelurl" VALUE="localhost{{cancelurl}}">
-<INPUT type="hidden" NAME="homeurl" VALUE="http://www.myelton.fr">
-<INPUT type="hidden" NAME="catalogurl" VALUE="http://www.myelton.fr">
-<INPUT type="hidden" NAME="CN" VALUE="">
-<INPUT type="hidden" name="EMAIL" value="p.ducouret@playbac.fr">
-<INPUT type="hidden" NAME="OWNERZIP" VALUE="75003">
-<INPUT type="hidden" NAME="OWNERCTY" VALUE="FRANCE">
-<INPUT type="hidden" NAME="OWNERADRESS" VALUE="14 bis rue des Minimes">
-<INPUT type="hidden" NAME="COM" VALUE="">
-<INPUT type="hidden" NAME="COMPLUS" VALUE="">
-<INPUT type="hidden" NAME="PARAMPLUS" VALUE="Societe=PBP">
-<INPUT type="hidden" NAME="SHASIGN" VALUE="{{shastring}}">
-Merci de faire confiance à My Elton pour vos cours d’anglais ! Vous avez choisi : {{user.offer.name}} !<br/>
-<br/>
-En attendant le règlement de votre paiement, vous bénéficiez d’une période d’essai de 10 jours.<br/>
-Pendant cette période d’essai, vous pouvez accéder au contenu du 1er trimestre.<br/>
-<br/>
-Pour rappel, votre nom d’utilisateur est : {{user.username}} !<br/>
-<br/>
-Pour débloquer tous les cours et tout le contenu du site, nous vous proposons plusieurs solutions :<br/>
-&nbsp;    - paiement par carte bleue, en cliquant <input type="submit" value="ici"/> </form><br/>
-&nbsp;    - paiement par chèque, en imprimant ce mail et en nous le retournant, accompagné du chèque à l’ordre de Play Bac Presse, à l’adresse donnée en pied de page de ce mail<br/>
-&nbsp;    - paiement en liquide, en imprimant ce mail et en nous le retournant, accompagné du montant indiqué, à l’adresse donnée en pied de page de ce mail<br/>
-<br/>
-Vous pourrez profiter pleinement de toutes les possibilités offertes par My Elton dès validation de votre paiement <br/>
-<br/>
-Pour vous familiariser avec le site et ne rien manquer des fonctionnalités proposées, n’hésitez pas à regarder nos tutoriels vidéos en vous rendant <a href="{{path("category_show", {id : 6})}}">ici</a>. Vous les trouverez également par le biais du lien <a href="{{path('accueil')}}">« Découvrir My Elton »</a> disponible sur la page d’accueil de votre espace personnel. <br/>
-<br/>
-A bientôt sur My Elton !<br/>
+<table cellpadding="0" cellspacing="0" border="0" align="center" >
+  <tr>
+    <td width="31" height="45"><img src="www.myelton.fr/ME/ME_head_1g.jpg" border="0" style="display:block" /></td>
+    <td width="121" height="45"><a href="http://www.playbacpresse.fr" target="BLANK"><img src="www.myelton.fr/ME/ME_head_1m_logo.jpg" border="0" style="display:block" /></a></td>
+    <td width="460" height="45"><img src="www.myelton.fr/ME/ME_head_1d.jpg" border="0" style="display:block" /></td>
+  </tr>
+</table>
+<table cellpadding="0" cellspacing="0" border="0" align="center" >
+  <tr>
+    <td width="237" height="60"><img src="www.myelton.fr/ME/ME_head_2g.jpg" border="0" style="display:block" /></td>
+    <td width="138" height="60"><a href="http://www.myelton.fr" target="BLANK"><img src="www.myelton.fr/ME/ME_head_2m_logo.jpg" border="0" style="display:block" /></a></td>
+    <td width="237" height="60"><img src="www.myelton.fr/ME/ME_head_2d.jpg" border="0" style="display:block" /></td>
+  </tr>
+  <tr>
+    <td width="612" height="36" colspan="3"><img src="www.myelton.fr/ME/ME_head_3.jpg" border="0" style="display:block" /></td>
+  </tr>
+</table>
+<table cellpadding="0" cellspacing="0" border="0" align="center" >
+  <tr>
+    <td width="485" height="27"><img src="www.myelton.fr/ME/ME_head_4g.jpg" border="0" style="display:block" /></td>
+    <td width="26" height="27"><a href="https://www.facebook.com/pages/My-Elton/1453403721612011?ref=bookmarks" target="BLANK"><img src="www.myelton.fr/ME/ME_head_4m_fcb.jpg" border="0" style="display:block"/></a></td>
+    <td width="26" height="27"><a href="https://twitter.com/my_elton" target="BLANK"><img src="www.myelton.fr/ME/ME_head_4m_twit.jpg" border="0" style="display:block"/></a></td>
+    <td width="25" height="27"><a href="https://plus.google.com/+MyeltonFr/posts" target="BLANK"><img src="www.myelton.fr/ME/ME_head_4m_gplus.jpg" border="0" style="display:block"/></a></td>
+    <td width="50" height="27"><img src="www.myelton.fr/ME/ME_head_4d.jpg" border="0" style="display:block" /></td>
+  </tr>
+</table>
+<table cellpadding="0" cellspacing="0" border="0" align="center" >
+  <tr>
+    <td width="612" height="30"><img src="www.myelton.fr/ME/ME_corps_1.jpg" border="0" style="display:block" /></td>
+  </tr>
+</table>
+<table cellpadding="0" cellspacing="0" border="0" style="background-color:#F6F6F6" align="center"><!--line-height:19px-->
+  <tr>
+    <td width="58"><img src="www.myelton.fr/ME/ME_corps_2g_MIDb.jpg" style="display:block" border="0" /></td>
+    <td width="493" align="left" valign="top"><font face="helvetica,arial,sans-serif" size="2" color="#38373A">
+    	<br />
+        Bienvenue sur My Elton, {{user.civilite}} {{user.name}} !<br />
+        <br />
+        Merci de faire confiance &agrave; My Elton pour vos cours d’anglais !
+        <br />
+        Vous avez choisi : <strong>{{offer.name}}</strong >
+        <br />
+        Pour rappel, votre nom d’utilisateur est : <strong>{{user.username}}</strong>
+        <br />
+        <br />
+        En attendant le r&egrave;glement de votre paiement, vous b&eacute;n&eacute;ficiez d’une p&eacute;riode d’essai de 10 jours. Pendant cette p&eacute;riode d’essai, vous pouvez acc&eacute;der au contenu du 1er trimestre.
+        <br />
+        <br />
+        Pour d&eacute;bloquer tous les cours et tout le contenu du site, nous vous proposons plusieurs solutions : <br />
+        <ul>
+            <li>paiement par carte bleue, en cliquant <a href="http://www.myelton.fr{{url}}" class="btn btn-danger" type="submit" style="color:#159FC5;border:none;background:transparent;text-decoration:underline;">ici</a> </li>
+          <li>paiement par ch&egrave;que à l’ordre de Play Bac Presse ou en liquide, en imprimant ce mail et en le retournant, accompagn&eacute; du montant indiqu&eacute;, &agrave; Play Bac Presse - My Elton, 14bis rue des Minimes, 75003 PARIS</li>
+        </ul>
+        <br />
+        Vous pourrez profiter pleinement de toutes les possibilit&eacute;s offertes par My Elton d&egrave;s validation de votre paiement !
+        <br />
+        <br />
+        Pour vous familiariser avec le site et ne rien manquer des fonctionnalit&eacute;s propos&eacute;es, n’h&eacute;sitez pas &agrave; regarder nos <a href="https://vimeo.com/album/3035416"><font color="#159FC5">tutoriels vid&eacute;os</font></a>.
+        <br />
+    <td width="61"><img src="www.myelton.fr/ME/ME_corps_2d_MIDb.jpg" style="display:block" border="0"/></td>
+  </tr>
+</table>
+<table cellpadding="0" cellspacing="0" border="0" align="center" >
+  <tr>
+    <td width="612" height="24" colspan="3"><img src="www.myelton.fr/ME/ME_foot_1.jpg" border="0" style="display:block" /></td>
+  </tr>
+  <tr>
+    <td width="215" height="25"><img src="www.myelton.fr/ME/ME_foot_2g.jpg" border="0" style="display:block" /></td>
+    <td width="184" height="25"><a href="http://www.myelton.fr" target="BLANK"><img src="www.myelton.fr/ME/ME_foot_2m_clic.jpg" border="0" style="display:block"/></a></td>
+    <td width="213" height="25"><img src="www.myelton.fr/ME/ME_foot_2d.jpg" border="0" style="display:block" /></td>
+  </tr>
+</table>
+<table cellpadding="0" cellspacing="0" border="0" align="center" >
+  <tr>
+    <td width="612" height="43" colspan="3"><img src="www.myelton.fr/ME/ME_foot_3.jpg" border="0" style="display:block" /></td>
+  </tr>
+  <tr>
+    <td width="65" height="14"><img src="www.myelton.fr/ME/ME_foot_4g.jpg" border="0" style="display:block" /></td>
+    <td width="86" height="14"><a href="mailto:elton@playbac.fr" target="BLANK"><img src="www.myelton.fr/ME/ME_foot_4m_mail.jpg" border="0" style="display:block"/></a></td>
+    <td width="461" height="14"><img src="www.myelton.fr/ME/ME_foot_4d.jpg" border="0" style="display:block"/></td>
+  </tr>
+</table>
+<table cellpadding="0" cellspacing="0" border="0" align="center" >
+  <tr>
+    <td width="612" height="32" colspan="3"><img src="www.myelton.fr/ME/ME_foot_5.jpg" border="0" style="display:block" /></td>
+  </tr>
+  <tr>
+    <td width="429" height="28"><img src="www.myelton.fr/ME/ME_foot_6g.jpg" border="0" style="display:block" /></td>
+    <td width="153" height="28"><a href="http://www.playbacpresse.fr" target="BLANK"><img src="www.myelton.fr/ME/ME_foot_6m.jpg" border="0" style="display:block"/></a></td>
+    <td width="30" height="28"><img src="www.myelton.fr/ME/ME_foot_6d.jpg" border="0" style="display:block"/></td>
+  </tr>
+</table>
+<table border="0" width="540" height="101" align="center" style="text-align:center;">
+  <tbody>
+    <tr>
+      <td><font face="helvetica,arial,sans-serif" size="1" color="#38373A">Conform&eacute;ment &agrave; la loi fran&ccedil;aise &quot;informatique et libert&eacute;s&quot; du 6 janvier 1978 sur la protection des donn&eacute;es personnelles et de la vie priv&eacute;e, vous pouvez &agrave; tout moment demander &agrave; acc&eacute;der, faire rectifier ou supprimer les informations personnelles vous concernant ou vous opposer &agrave; leur traitement par playbacpresse.fr<br /><br/>
+      </td>
+    </tr>
+  </tbody>
+</table>

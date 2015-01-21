@@ -32,18 +32,15 @@ class PCodeController extends Controller
            
            if(!empty($pCode))
            {            
-               $session =  $this->container->get('session');
+               $session = $this->getRequest()->getSession();
+               $session->start();
                
-               //Mise en session de l'offre et du code promo
-               $session->set('offerId', $pCode[0]->getOffer()->getId());
-               $session->set('promoCode', $pCode[0]->getCode());
-               
-               return $this->redirect($this->generateUrl('fos_user_registration_register'));
+               if($pCode[0]->getOffer()->isEnCours() && $pCode[0]->getOffer()->isActive()){
+                return $this->redirect($this->generateUrl('fos_user_registration_register', array('offer' => $pCode[0]->getOffer()->getId())));
+               }
            }
-           else
-           {
-               return $this->redirect($this->generateUrl('wrong_pcode'));
-           }
+           
+           return $this->redirect($this->generateUrl('wrong_pcode'));
         }
         
         return array('form' => $form->createView());

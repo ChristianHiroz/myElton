@@ -8,6 +8,7 @@
 namespace Elton\TeacherBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
+use Elton\TeacherBundle\Entity\Teacher;
 use Elton\CoreBundle\Manager\CoreManager as CoreManager;
 
 class TeacherManager extends CoreManager
@@ -67,6 +68,22 @@ class TeacherManager extends CoreManager
         }
         
         return $returnArray;
+    }
+    
+    public function translateToTeacher($flyer){
+        $teacher = new Teacher();
+        $teacher->setName($flyer->getName());
+        $teacher->setCivilite($flyer->getCivilite());
+        $teacher->setFirstName($flyer->getFirstName());
+        $teacher->setPostalCode($flyer->getPostalCode());
+        $teacher->setEmail($flyer->getEmail());
+        $teacher->setSchool($flyer->getSchool());
+        $teacher->setTown($flyer->getTown());
+        $teacher->setAddress($flyer->getAddress());
+        $teacher->setSubscription($flyer->getSubscriptions());
+        $teacher->setEnabled(true);
+        
+        return $teacher;
     }
 
 }

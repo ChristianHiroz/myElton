@@ -24,11 +24,16 @@ class LessonController extends Controller
     public function showAction($id, $order)
     {
         $returnArray = $this->get('elton.teacher.manager')->check();
-        
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('EltonLessonBundle:Lesson')->find($id);
-
+$free = array(1,2,7,6,8,9,18,19);
+        if(!in_array($entity->getCategory()->getId(), $free))
+        {
+            if($returnArray['user']->hasRole("ROLE_TEACHER_PREMIUM")){}else{
+            return $this->redirect($this->generateUrl("no_premium"));}
+        }
+        
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Lesson entity.');
         }

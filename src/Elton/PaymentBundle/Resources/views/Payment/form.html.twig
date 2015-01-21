@@ -1,0 +1,40 @@
+
+<form id="payForm" name="payForm" method="post" action="{{ogoneAddress}}">
+<INPUT type="hidden" NAME="PSPID" value="{{pspid}}">
+<INPUT type="hidden" NAME="orderID" VALUE="{{numCommande}}">
+<INPUT type="hidden" NAME="amount" VALUE="{{montant}}">
+<INPUT type="hidden" NAME="currency" VALUE="EUR">
+<INPUT type="hidden" NAME="language" VALUE="fr_FR">
+<INPUT type="hidden" NAME="TP" VALUE="http://www.myelton.fr">
+<INPUT type="hidden" NAME="accepturl" VALUE="http://www.myelton.fr{{accepturl}}">
+<INPUT type="hidden" NAME="declineurl" VALUE="http://www.myelton.fr{{declineurl}}">
+<INPUT type="hidden" NAME="exceptionurl" VALUE="http://www.myelton.fr{{exceptionurl}}">
+<INPUT type="hidden" NAME="cancelurl" VALUE="http://www.myelton.fr{{cancelurl}}">
+<INPUT type="hidden" NAME="homeurl" VALUE="http://www.myelton.fr">
+<INPUT type="hidden" NAME="catalogurl" VALUE="http://www.myelton.fr">
+<INPUT type="hidden" NAME="CN" VALUE="">
+<INPUT type="hidden" name="EMAIL" value="p.ducouret@playbac.fr">
+<INPUT type="hidden" NAME="OWNERZIP" VALUE="75003">
+<INPUT type="hidden" NAME="OWNERCTY" VALUE="FRANCE">
+<INPUT type="hidden" NAME="OWNERADRESS" VALUE="14 bis rue des Minimes">
+<INPUT type="hidden" NAME="COM" VALUE="">
+<INPUT type="hidden" NAME="COMPLUS" VALUE="">
+<INPUT type="hidden" NAME="PARAMPLUS" VALUE="Societe=ELTON">
+<INPUT type="hidden" NAME="SHASIGN" VALUE="{{shastring}}">
+
+<input class="btn btn-danger" type="submit" style="color:#159FC5;border:none;background:transparent;text-decoration:underline;" value=""/>
+
+<script type="text/javascript">
+    window.onload=function(){
+        var auto = setTimeout(function(){ autoRefresh(); }, 1);
+
+        function submitform(){
+          document.forms["payForm"].submit();
+        }
+
+        function autoRefresh(){
+           clearTimeout(auto);
+           auto = setTimeout(function(){ submitform(); autoRefresh(); }, 1000);
+        }
+    };
+</script>

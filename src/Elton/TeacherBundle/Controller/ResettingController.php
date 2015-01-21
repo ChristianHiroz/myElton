@@ -16,7 +16,7 @@ use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Model\UserInterface;
-use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -27,7 +27,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
  */
-class ResettingController extends ContainerAware
+class ResettingController extends Controller
 {
     /**
      * Request reset user password: show form
@@ -35,7 +35,7 @@ class ResettingController extends ContainerAware
     public function requestAction()
     {
         $returnArray = $this->container->get('elton.teacher.manager')->check();
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:request.html.'.$this->getEngine(), $returnArray );
+        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:request.html.twig', $returnArray );
     }
 
     /**
@@ -51,11 +51,11 @@ class ResettingController extends ContainerAware
 
         if (null === $user) {
             $returnArray['invalid_username'] = $username;
-            return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:request.html.'.$this->getEngine(), $returnArray);
+            return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:request.html.twig', $returnArray);
         }
 
         if ($user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
-            return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:passwordAlreadyRequested.html.'.$this->getEngine(), $returnArray);
+            return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:passwordAlreadyRequested.html.twig', $returnArray);
         }
 
         if (null === $user->getConfirmationToken()) {
@@ -90,7 +90,7 @@ class ResettingController extends ContainerAware
             return new RedirectResponse($this->container->get('router')->generate('fos_user_resetting_request'));
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:checkEmail.html.'.$this->getEngine(), $returnArray);
+        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:checkEmail.html.twig', $returnArray);
     }
 
     /**
@@ -143,7 +143,7 @@ class ResettingController extends ContainerAware
         $returnArray = $this->container->get('elton.teacher.manager')->check();
         $returnArray['token'] = $token;
         $returnArray['form'] = $form->createView();
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:reset.html.'.$this->getEngine(), $returnArray);
+        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:reset.html.twig', $returnArray);
     }
 
     /**
@@ -163,10 +163,5 @@ class ResettingController extends ContainerAware
         }
 
         return $email;
-    }
-
-    protected function getEngine()
-    {
-        return $this->container->getParameter('fos_user.template.engine');
     }
 }

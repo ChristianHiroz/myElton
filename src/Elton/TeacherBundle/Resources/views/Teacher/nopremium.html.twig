@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="modal fade in active" style="margin-top: 150px!important;" id="myForbiddenModal" tabindex="-1" role="dialog" aria-labelledby="myForbiddenModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="{{path('accueil')}}" class="close">x</a>
+                    <h4 class="modal-title label label-warning modalFS" id="myForbiddenModalLabel">En attente !</h4>
+                </div>
+                <div class="modal-body" style="text-align:center;">
+                    Ce cours vous sera accessible une fois votre paiement traité. Les modalités de paiement sont renseignées dans le mail reçu à votre inscription sur le site. 
+                    Cliquez ici pour recevoir à nouveau le mail sur votre adresse {{user.email}}
+                </div>
+                <div class="modal-footer">
+                    <a href="{{path('send_payment_request')}}" class="btn right-block shadow btnBeigeElton orange bold" style="color:white!important;">Renvoyer le mail</a>
+                    <a href="{{path('accueil')}}"class="btn left-block shadow btnBeigeElton orange bold" style="color:white!important;">Retour</a>
+                </div>
+            </div>
+        </div>
+    </div>
+                    
+    
+{% endblock %}

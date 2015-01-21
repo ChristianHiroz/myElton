@@ -51,14 +51,18 @@ registration:
     flash:
         user_created: L'utilisateur a été créé avec succès
     email:
-        subject: Bienvenue %username% !
+        subject: Bienvenue %civ% %username% !
         message: |
-            Bonjour %username% !
-
-            Pour valider votre compte utilisateur, merci de vous rendre sur %confirmationUrl%
-
-            Cordialement,
-            L'équipe.
+            Bonjour %civ% %username% !
+            
+            Pour confirmer votre inscription à My Elton, nous devons valider votre adresse e-mail.
+            Merci de cliquer sur le lien suivant pour activer votre compte :
+            %confirmationUrl%
+            
+            En cliquant sur ce lien, vous allez être amené à créer votre première classe. Vous pourrez dès lors
+            profiter des fonctionnalités de My Elton !
+            
+            A bientôt sur My Elton !
 
 # Password resetting
 resetting:

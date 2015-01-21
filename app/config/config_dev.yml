@@ -40,5 +40,4 @@ assetic:
             apply_to: "\.less$"
 
 swiftmailer:
-    delivery_address: twinkie.hiroz@gmail.com
-
+    delivery_address: elton@playbac.fr 

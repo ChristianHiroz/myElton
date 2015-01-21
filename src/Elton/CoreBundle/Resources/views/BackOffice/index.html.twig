@@ -14,19 +14,41 @@
                     <td>
                         <div class="btn-group">
                             <a class="btn btn-link" href="{{ path('jumbotron_update') }}">
-                                <i class="icon-plus"></i>
+                                <i class="fa fa-plus-circle"></i>
                                 Modifier
                             </a>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td class="sonata-ba-list-label">Mail</td>
+                    <td class="sonata-ba-list-label">Prof inactifs</td>
                     <td>
                         <div class="btn-group">
-                            <a class="btn btn-link">
-                                <i class="icon-plus"></i>
-                                Ecrire
+                            <a class="btn btn-link" href="{{ path('teacher_inactif_list') }}">
+                                <i class="glyphicon glyphicon-list"></i>
+                                Liste
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                 <tr>
+                    <td class="sonata-ba-list-label">Prof en attente</td>
+                    <td>
+                        <div class="btn-group">
+                            <a class="btn btn-link" href="{{ path('teacher_paying_list') }}">
+                                <i class="glyphicon glyphicon-list"></i>
+                                Liste
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                 <tr>
+                    <td class="sonata-ba-list-label">Prof par flyer</td>
+                    <td>
+                        <div class="btn-group">
+                            <a class="btn btn-link" href="{{ path('admin_flyer_create') }}">
+                                <i class="fa fa-plus-circle"></i>
+                                Créer
                             </a>
                         </div>
                     </td>

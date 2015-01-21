@@ -92,7 +92,14 @@ class Mailer implements MailerInterface
             ->setSubject($subject)
             ->setFrom($fromEmail)
             ->setTo($toEmail)
-            ->setBody($body);
+            ->setBody(
+                '<html>' .
+                ' <head></head>' .
+                ' <body>' .
+                $body .
+                ' </body>' .
+                '</html>',
+                'text/html');
 
         $this->mailer->send($message);
     }

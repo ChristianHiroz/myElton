@@ -9,6 +9,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Elton\DivisionBundle\Form\DivisionType;
 use Elton\DivisionBundle\Form\DivisionEditType;
 use Elton\DivisionBundle\Entity\Division;
+use Elton\TeacherBundle\Form\RegistrationEndFormType;
+use Symfony\Component\HttpFoundation\Request;
+use Elton\TeacherBundle\Entity\Teacher;
 
 /**
  * Teacher controller.
@@ -17,7 +20,69 @@ use Elton\DivisionBundle\Entity\Division;
 class TeacherController extends Controller
 {
 
+    /**
+     * @Route("/private", name="no_premium")
+     * @Template("EltonTeacherBundle:Teacher:nopremium.html.twig")
+     */
+    public function noPremiumAction()
+    {
+        $returnArray = $this->get('elton.teacher.manager')->check();
+        
+        return $returnArray;
+    }
 
+    /**
+     * @Route("/registerEnd/{id}", name="flyer_to_teacher")
+     * @Template("EltonTeacherBundle:Teacher:registerEnd.html.twig")
+     */
+    public function registerEndAction($id, Request $request)
+    {
+        $flyer = $this->getDoctrine()->getManager()->getRepository('EltonTeacherBundle:Flyer')->find($id);
+        $teacher = $this->container->get('elton.teacher.manager')->translateToTeacher($flyer);
+        
+        $form = $this->createCreateForm($teacher, $id);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $teacher->addRole('ROLE_TEACHER');
+            $teacher->addRole('ROLE_USER');
+            $em->persist($teacher);
+            $em->flush();
+            if($teacher->getSubscriptions()->last()->getIsPaymentValid()){
+                $teacher->addRole('ROLE_TEACHER_PREMIUM');
+                $em->persist($teacher);
+                $em->flush();
+                $this->container->get('elton.mailer')->sendPaymentConfirmation($teacher);
+            }
+            else{
+                $teacher->addRole('ROLE_TEACHER_PAYING');
+                $em->persist($teacher);
+                $em->flush();
+                $this->container->get('elton.mailer')->sendPaymentRequest($teacher);
+            }
+            return $this->redirect($this->generateUrl('teacher_ask_login'));
+        }
+
+        return array(
+            'entity' => $teacher,
+            'form'   => $form->createView(),
+        );
+        
+    }
+    
+    private function createCreateForm(Teacher $entity, $id)
+    {
+        $form = $this->createForm(new RegistrationEndFormType(), $entity, array(
+            'action' => $this->generateUrl('flyer_to_teacher', array('id' => $id)),
+            'method' => 'POST',
+        ));
+
+        $form->add('submit', 'submit', array('label' => 'Suivant'));
+
+        return $form;
+    }
+    
     /**
      * @Route("/accueil", name="accueil")
      * @Method({"GET"})
@@ -96,6 +161,16 @@ class TeacherController extends Controller
         
         $returnArray['form'] = $form->createView();
         return $returnArray;
+    }
+    
+    
+    /**
+     * @Route("/finInscription", name="teacher_ask_login")
+     * @Template("EltonTeacherBundle:Teacher:askLogin.html.twig")
+     */
+    public function askLoginAction()
+    {
+        return array();
     }
     
     /**

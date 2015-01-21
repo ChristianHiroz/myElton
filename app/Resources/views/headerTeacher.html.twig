@@ -62,11 +62,11 @@
             </li>
             <li class="divider-vertical"></li>
             <li>
-                <a class="myEltonButtonMenu text-center" href="{{path('practice')}}">Pratiquer</a>
+                <a class="myEltonButtonMenu text-center" href="{{path('practice_level', {levelId : selectedDivision.level.id })}}">Pratiquer</a>
             </li>
             <li class="divider-vertical"></li>
             <li>
-                <a class="myEltonButtonMenu text-center" href="{{path('culture')}}">Culture</a>
+                <a class="myEltonButtonMenu text-center" href="{{path('monthly_event')}}">Culture</a>
             </li>
             <li class="divider-vertical"></li>
             <li>
@@ -78,7 +78,7 @@
                     {% if cartNumber > 0 %}
                     <p id="nbPanier" class="redDot">{{cartNumber}}</p>
                     {% endif %}
-                    Mon Panier
+                    Mon bureau
                 </a>
             </li>
             <li class="divider-vertical"></li>

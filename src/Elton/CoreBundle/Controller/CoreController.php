@@ -33,7 +33,6 @@ class CoreController extends Controller
                 {
                     if(is_object($returnArray['selectedDivision']))
                     {
-                        $this->container->get('elton.mailer')->sendPaymentRequest($user);
                         return $this->redirect($this->generateUrl('accueil'));
                     }
                     else
@@ -91,7 +90,7 @@ class CoreController extends Controller
     }
     
     /**
-     * @Route("/foire-aux-questions", name="faq")
+     * @Route("/foire-aux-questions", name="faq", options={"expose"=true})
      * @Method({"GET"})
      * @Template("EltonCoreBundle:Core:faq.html.twig")
      */

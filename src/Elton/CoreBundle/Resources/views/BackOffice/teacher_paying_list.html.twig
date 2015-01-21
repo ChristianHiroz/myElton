@@ -1,0 +1,74 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <a class="mt25 ml25 txtBlc noirH accueilLink turquoise" href="{{ path('sonata_admin_dashboard')}}">Retour</a>
+            </div>
+            <div class="col-md-8 center mt25">
+                <h1>Liste des profs en attente</h1>
+            </div>
+        </div>
+        {% if send %}
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8 mt25 center">
+                    <div class="alert alert-warning alert-dismissible fade in" role="alert"><h1 style="margin-top:5px !important;">Spam Time - Email Send</h1></div>
+                </div>
+            </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 sonata-ba-list">
+                <div class='box box-primary'>
+                    <table class='table table-bordered table-stripped'>
+                        <thead>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Nom d'utilisateur</th>
+                            <th>Mail</th>
+                            <th>Code Postal</th>
+                            <th>Modifier</th>
+                            <th>Modifier paiement</th>
+                            <th>Email paiement</th>
+                        </thead>
+                            <tbody>
+                            {% for teacher in teachers %}
+                                <tr>
+                                    <td>{{teacher.id}}</td>
+                                    <td>{{teacher.firstName}}</td>
+                                    <td>{{teacher.name}}</td>
+                                    <td>{{teacher.email}}</td>
+                                    <td>{{teacher.postalCode}}</td>
+                                    <td>
+                                        <a href="{{path('admin_elton_teacher_teacher_edit', {id : teacher.id})}}">
+                                            <i class="">
+                                                Modifier
+                                            </i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{path('admin_elton_payment_subscription_edit', {id : teacher.subscriptions.last.id})}}">
+                                            <i class="">
+                                                Modifier
+                                            </i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{path('admin_send_payment', {id : teacher.id})}}">
+                                            <i class="">
+                                                Renvoyer
+                                            </i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+{% endblock %}

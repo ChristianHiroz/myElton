@@ -13,8 +13,9 @@ class FileAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('file', 'file', array('label' => 'Fichier'))
+            ->add('file', 'file', array('label' => 'Fichier', 'required' => false))
             ->add('ogg', 'sonata_type_model', array('label' => 'Ogg', 'property' => 'alt', 'required' => false))
+            ->add('lien', 'text', array('label' => 'Lien', 'required' => false))
             ->add('level', 'sonata_type_model')
         ;
     }

@@ -25,12 +25,12 @@ class OfferController extends Controller
     
     /**
      * @Route("/offre/{id}", name="offer_choosed", options={"expose"=true})
-     * @Template()
      */
     public function offerChoosedAction($id)
     {
         if($id != "0"){
-            $session =  $this->container->get('session');
+            $session = $this->getRequest()->getSession();
+            $session->start();
             //mise en session de l'offre
             $session->set('offerId', $id);
             

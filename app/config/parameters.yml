@@ -1,17 +1,17 @@
 # This file is auto-generated during the composer install
 parameters:
     database_driver: pdo_mysql
-    database_host: localhost
-    database_port: 80
-    database_name: myElton
+    database_host: pma.playbac.fr
+    database_port: null
+    database_name: myelton
     database_user: myelton
     database_password: pbpelton!2014
     mailer_transport: smtp
-    mailer_host: smtp.orange.fr
+    mailer_host: localhost
     mailer_user: null
     mailer_password: null
     locale: fr
     secret: cej73fkn
     elton.user: userpass
     elton.admin: adminpass
-    session_name: polo
+    session_name: elton

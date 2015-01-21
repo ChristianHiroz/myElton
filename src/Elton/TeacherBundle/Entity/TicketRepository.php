@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class TicketRepository extends EntityRepository
 {
+    public function getOpenTicket()
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+            'SELECT t
+             FROM EltonTeacherBundle:Ticket t
+             WHERE t.isSolved = false');
+        
+        $result = $query->getResult();
+        return $result;
+    }
 }

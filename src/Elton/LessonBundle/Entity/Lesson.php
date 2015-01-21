@@ -37,16 +37,9 @@ class Lesson
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="description", type="string", length=1500)
      */
     private $description;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description2", type="string", length=255)
-     */
-    private $description2;
     
     /**
      * @var lessonType
@@ -155,29 +148,6 @@ class Lesson
     public function getDescription()
     {
         return $this->description;
-    }
-    
-    /**
-     * Set description2
-     *
-     * @param string $description2
-     * @return Lesson
-     */
-    public function setDescription2($description2)
-    {
-        $this->description2 = $description2;
-
-        return $this;
-    }
-
-    /**
-     * Get description2
-     *
-     * @return string 
-     */
-    public function getDescription2()
-    {
-        return $this->description2;
     }
 
     

@@ -33,7 +33,9 @@
     </head>
     <body>
         {% block body %}
-            {% if is_granted('ROLE_TEACHER') %}
+            {% if (is_granted('ROLE_TEACHER_INACTIF')) and (not is_granted('ROLE_ADMIN')) and (not is_granted('ROLE_TEACHER_PREMIUM')) %}
+                {% include('::headerInactif.html.twig') %}
+            {% elseif is_granted('ROLE_TEACHER') %}
                 {% include('::headerTeacher.html.twig') %}
             {% elseif is_granted('ROLE_USER') %}
                 {% include('::headerDivision.html.twig') %}

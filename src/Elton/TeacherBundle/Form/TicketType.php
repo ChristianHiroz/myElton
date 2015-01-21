@@ -15,8 +15,8 @@ class TicketType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('reason', 'entity', array('class' => 'EltonTeacherBundle:TicketReason', 'property' => 'libelle', "attr" => array("class" => "form-control")))
-            ->add('description', 'textarea')
+            ->add('reason', 'entity', array('label' => 'Raison', 'class' => 'EltonTeacherBundle:TicketReason', 'property' => 'libelle', "attr" => array("class" => "form-control")))
+            ->add('description', 'textarea', array('label' => 'Votre rêquete'))
         ;
     }
     

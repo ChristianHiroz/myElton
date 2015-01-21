@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Subscription
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Elton\PaymentBundle\Entity\SubscriptionRepository")
  */
 class Subscription
 {
@@ -22,16 +22,12 @@ class Subscription
     private $id;
 
     /**
-     * @var \stdClass
-     *
-     * @ORM\Column(name="teacher", type="object")
+     * @ORM\ManyToOne(targetEntity="Elton\TeacherBundle\Entity\Teacher", inversedBy="subscriptions")
      */
     private $teacher;
 
     /**
-     * @var \stdClass
-     *
-     * @ORM\Column(name="offer", type="object")
+     * @ORM\ManyToOne(targetEntity="Elton\PaymentBundle\Entity\Offer", cascade={"persist"})
      */
     private $offer;
 
@@ -45,108 +41,112 @@ class Subscription
     /**
      * @var boolean
      *
-     * @ORM\Column(name="isPaymentValid", type="boolean")
+     * @ORM\Column(name="isPaymentValid", type="boolean", nullable=true)
      */
     private $isPaymentValid;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="paymentDate", type="datetime")
+     * @ORM\Column(name="paymentDate", type="datetime", nullable=true)
      */
     private $paymentDate;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="paymentType", type="string", length=2)
+     * @ORM\Column(name="paymentType", type="string", length=2, nullable=true)
      */
     private $paymentType;
 
     /**
-     * @var string
      *
-     * @ORM\Column(name="track", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Elton\PaymentBundle\Entity\Tracking")
+     *
      */
     private $track;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="acceptance", type="string", length=255)
+     * @ORM\Column(name="acceptance", type="string", length=255, nullable=true)
      */
     private $acceptance;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="amount", type="float")
+     * @ORM\Column(name="amount", type="float", nullable=true)
      */
     private $amount;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="brand", type="string", length=255)
+     * @ORM\Column(name="brand", type="string", length=255, nullable=true)
      */
     private $brand;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="cartno", type="string", length=255)
+     * @ORM\Column(name="cartno", type="string", length=255, nullable=true)
      */
     private $cartno;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="cn", type="string", length=255)
+     * @ORM\Column(name="cn", type="string", length=255, nullable=true)
      */
     private $cn;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="currency", type="string", length=255)
+     * @ORM\Column(name="currency", type="string", length=255, nullable=true)
      */
     private $currency;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="ed", type="datetime")
+     * @ORM\Column(name="ed", type="datetime", nullable=true)
      */
     private $ed;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ncerror", type="string", length=255)
+     * @ORM\Column(name="ncerror", type="string", length=255, nullable=true)
      */
     private $ncerror;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="orderID", type="string", length=255)
+     * @ORM\Column(name="orderID", type="string", length=255, nullable=true)
      */
     private $orderID;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="PAYID", type="string", length=255)
+     * @ORM\Column(name="PAYID", type="string", length=255, nullable=true)
      */
     private $pAYID;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="status", type="string", length=255)
+     * @ORM\Column(name="status", type="string", length=255, nullable=true)
      */
     private $status;
-
+    
+    public function __construct()
+    {
+        $this->subscriptionDate = new \DateTime();
+    }
 
     /**
      * Get id
@@ -236,6 +236,9 @@ class Subscription
     public function setIsPaymentValid($isPaymentValid)
     {
         $this->isPaymentValid = $isPaymentValid;
+        if($isPaymentValid){
+            $this->setPaymentDate(new \DateTime());
+        }
 
         return $this;
     }
@@ -571,4 +574,5 @@ class Subscription
     {
         return $this->status;
     }
+    
 }

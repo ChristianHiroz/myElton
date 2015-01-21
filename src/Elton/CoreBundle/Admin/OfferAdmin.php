@@ -18,8 +18,8 @@ class OfferAdmin extends Admin
             ->add('startAt', 'date', array('label' => 'Date de début'))            
             ->add('endAt', 'date', array('label' => 'Date de fin'))
             ->add('description', 'textarea', array('label' => 'Description de l\'offre'))
-            ->add('isActive', 'choice', array('label' => 'Actif', 'choices' => array(1 => 'Oui', 0 => 'Non')))               
-            ->add('isEnCours', 'choice', array('label' => 'En cours', 'choices' => array(1 => 'Oui', 0 => 'Non')))
+            ->add('isActive', 'choice', array('label' => 'Actif', 'choices' => array(1 => 'Oui', 0 => 'Non')))       
+            ->add('isEnCours', 'choice', array('label' => 'En cours', 'choices' => array(1 => 'Oui', 0 => 'Non')))       
 
         ;
     }

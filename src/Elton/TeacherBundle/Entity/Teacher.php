@@ -86,9 +86,9 @@ class Teacher extends User
     private $divisions;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Elton\PaymentBundle\Entity\Offer", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Elton\PaymentBundle\Entity\Subscription", mappedBy="teacher", cascade={"persist"})
      */
-    private $offer;
+    private $subscriptions;
     
     public function __construct()
     {
@@ -322,23 +322,24 @@ class Teacher extends User
     }
     
     /**
-     * Get offer
+     * Get subs
      * 
-     * @return offer
+     * @return subs
      */
-    public function getOffer()
+    public function getSubscriptions()
     {
-        return $this->offer;
+        return $this->subscriptions;
     }
     
     /**
-     * Set offer
+     * Set subs
      * 
-     * @param offer $offer
+     * @param sub $subscription
      */
-    public function setOffer($offer)
+    public function setSubscription($subscription)
     {
-        $this->offer = $offer;
+        $this->subscriptions[] = $subscription;
+        $subscription->setTeacher($this);
     }
     
     /**

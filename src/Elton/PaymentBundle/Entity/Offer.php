@@ -153,7 +153,12 @@ class Offer
      */
     public function isEnCours()
     {
-        return $this->isEnCours;
+        if($this->endAt < new \DateTime()){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
     /**
@@ -265,6 +270,11 @@ class Offer
     public function addCode($code)
     {
         $this->codes[] = $code;
+    }
+    
+    public function isCodesEmpty()
+    {
+        return $this->codes->isEmpty();
     }
 
     /**

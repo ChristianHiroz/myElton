@@ -17,8 +17,8 @@ class LessonAdmin extends Admin
             ->add('libelle')
             ->add('description', 'textarea')
             ->add('file', 'sonata_type_model', array('label' => 'Document de la leçon'))
-            ->add('category', 'sonata_type_model', array('label' => 'Catégorie de la lesson', 'attr' => array('class' => 'boSelectCategory')))
-            ->add('activitys', 'sonata_type_model', array('label' => 'Activités de la leçon', 'by_reference' => false,'multiple' => true, 'required' => false, 'attr' => array('class' => 'boSelectActivity span5')))
+            ->add('category', 'sonata_type_model', array('label' => 'Catégorie de la lesson'))
+            ->add('activitys', 'sonata_type_model', array('label' => 'Activités de la leçon', 'by_reference' => false,'multiple' => true, 'required' => false))
             ->add('competences', 'sonata_type_model', array('label' => 'Compétences de l\'activité', 'by_reference' => true,'multiple' => true,))
             ->add('type', 'choice', array('label'=> 'type', 'choices' => LessonEnumType::get_enum_values()))
             ->add('active', 'choice', array('label' => 'Actif', 'choices' => array(1 => 'Oui', 0 => 'Non')))
@@ -37,7 +37,7 @@ class LessonAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('libelle')->add('activitys')->add('category')->add('type')->add('competences')->add('active')
+            ->addIdentifier('libelle')->addIdentifier('activitys')->addIdentifier('category')->addIdentifier('type')->addIdentifier('competences')->addIdentifier('active')
         ;
     }
 }

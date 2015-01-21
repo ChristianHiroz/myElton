@@ -6,10 +6,12 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8 mt25">
-                <h1 class="lessonCategoryTitle">Choisissez votre offre !</h1> 
+                <div class="center">
+                    <h1 class="lessonCategoryTitle">Choisissez votre offre !</h1> 
+                </div>
                 <div class="list-group">
                     {% for offer in offers %}
-                        {% if offer.isActive %}
+                        {% if offer.isActive and offer.isEnCours and offer.isCodesEmpty %}
                             <a href="#" id="{{offer.id}}" class="list-group-item">
                                 <h4 class="list-group-item-heading">{{ offer.name }}</h4>
                                 <p class="list-group-item-text">{{ offer.description }}</p>
@@ -30,7 +32,7 @@
                         <a class="buttonAll borderVioletBis violetBisH offerButton" id="button0" href="{{path('code_promo_verif')}}">Je veux en profiter !</a>
                     </div>
                     <div class="center invisible">
-                        <a class="buttonAll borderVioletBis violetBisH offerButton" id="button1" href="{{path('fos_user_registration_register')}}">Je veux en profiter !</a>
+                        <a class="buttonAll borderVioletBis violetBisH offerButton" id="button1" href="{{path('fos_user_registration_register', {offer: 1})}}">Je veux en profiter !</a>
                     </div>
             </div>
             <div class="col-md-4"></div>
