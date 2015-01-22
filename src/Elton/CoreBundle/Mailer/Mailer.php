@@ -98,7 +98,6 @@ class Mailer {
         $this->sendEmailMessage($rendered, $this->parameters['from_email']['elton'], $user->getEmail());
         
     }
-    
     public function sendTestEnd(Teacher $user, $end = false)
     {
         $subscription = $user->getSubscriptions()->last();
@@ -114,7 +113,7 @@ class Mailer {
             'offer' => $subscription->getOffer(),
             'url' => $this->router->generate('teacher_payment_form', array('id' => $user->getId())),
         ));
-        
+
         $this->sendEmailMessage($rendered, $this->parameters['from_email']['elton'], $user->getEmail());
     }
     /**

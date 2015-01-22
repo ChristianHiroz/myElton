@@ -39,5 +39,3 @@ assetic:
             file: %kernel.root_dir%/../vendor/oyejorge/less.php/lessc.inc.php
             apply_to: "\.less$"
 
-swiftmailer:
-    delivery_address: elton@playbac.fr 
