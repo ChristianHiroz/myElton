@@ -62,6 +62,9 @@ class LoginListener {
                 if(!$user->hasRole("ROLE_TEACHER_INACTIF") OR !$user->hasRole("ROLE_TEACHER_PREMIUM") OR !$user->hasRole("ROLE_TEACHER_PAYING")){
                     $user->addRole("ROLE_TEACHER_PAYING");
                 }
+		if($user->hasRole("ROLE_TEACHER_PREMIUM") && $user->hasRole("ROLE_TEACHER_PAYING") ){
+		    $user->removeRole("ROLE_TEACHER_PAYING");
+		}
 
                 $this->em->persist($user);
                 $this->em->flush();
